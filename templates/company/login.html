@@ -1,0 +1,45 @@
+{% extends 'company/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="col-md-5 offset-md-2">
+                            <!--Form with header-->
+                            <div class="card">
+                                <div class="card-block">
+                                    <form method="post">
+                                        <!--Header-->
+                                        <div class="form-header">
+                                            <h3><i class="fa fa-lock"></i> Login:</h3>
+                                        </div>
+                                        {% csrf_token %}
+                                        <!--Body-->
+                                        {% if form.non_field_errors %}
+                                            {% for error in form.non_field_errors %}
+                                                <div class="red-text">
+                                                    {{ error }}
+                                                </div>
+                                            {% endfor %}
+                                            <br>
+                                        {% endif %}
+                                        <div class="md-form">
+                                            <i class="fa fa-envelope prefix"></i>
+                                            <input type="text" name="username" id="username" class="form-control">
+                                            <label for="username">Username</label>
+                                        </div>
+
+                                        <div class="md-form">
+                                            <i class="fa fa-lock prefix" style="font-size: 2.5rem;"></i>
+                                            <input type="password" name="password" id="password" class="form-control">
+                                            <label for="password">Password</label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="btn btn-primary" type="submit">Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+</body>
+</html>

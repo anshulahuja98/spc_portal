@@ -1,0 +1,7 @@
+{% if field.errors %}
+    {% for error in field.errors %}
+        <p class="red-text mb-1">
+            <small>{{ error|escape }}</small>
+        </p>
+    {% endfor %}
+{% endif %}
