@@ -38,5 +38,5 @@ Procedure:
     ```
 - Run development server on localhost
     ```
-    python manage.py runserver --settings=ta_portal.settings
+    python manage.py runserver
     ```
