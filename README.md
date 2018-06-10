@@ -20,7 +20,7 @@ Procedure:
 - Create a new virtual environment and activate it.
     ```
     sudo apt-get install -y python3-venv
-    python3 -m venv ta_portal_venv
+    python3 -m venv spc_portal_venv
     source spc_portal_venv/bin/activate
     ```
 - Use pip to install other dependencies from `requirements.txt`
