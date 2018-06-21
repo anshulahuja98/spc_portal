@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import RegexValidator
-from django.shortcuts import reverse
 
 
 class CompanyProfile(models.Model):
@@ -11,7 +9,6 @@ class CompanyProfile(models.Model):
         ('2', 'Other'),
     )
     # Model
-    # uuid
     name = models.CharField(max_length=30)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=30)  # add choices
