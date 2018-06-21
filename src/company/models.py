@@ -31,7 +31,7 @@ class JobOffer(models.Model):
 
 
 class InternOffer(models.Model):
-    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, related_name='joboffer',
+    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, related_name='internoffer',
                                 blank=True)
     # job prof
     job_designation = models.CharField(max_length=30)

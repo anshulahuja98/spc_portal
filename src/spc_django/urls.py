@@ -18,9 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
 
-    # path('login/', CustomLoginView.as_view()),
     path('admin/', admin.site.urls),
-    path('company/', include('company.urls')),
-    path('student/', include('student.urls')),
+    # path('company/', include('company.urls')),
+    # path('student/', include('student.urls')),
     path('', include('main.urls')),
 ]
