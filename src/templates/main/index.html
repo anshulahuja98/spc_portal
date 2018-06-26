@@ -1,156 +1,126 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
 {% block body %}
-    <div id="myCarousel" class="my-carousel carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-            <li data-target="#myCarousel" data-slide-to="4" class=""></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="carousel-image" src="{%  static '/img/img1.JPG' %}" alt="IIT Jodhpur Permanent Campus" >
+
+
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div id="carousel-example-1z" class="carousel carousel-fit slide carousel-fade"
+                         data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <!-- All images are of size 790 x 320 px
+                            to resize, use this site:  http://resizeimage.net/-->
+
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" style="height: auto;width: 100%;"
+                                     src="./public/img/carousel_1(1).jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100 h-100" src="./public/img/carousel_2(1).jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="./public/img/carousel_3(1).jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="./public/img/carousel_4(1).jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="./public/img/carousel_6(1).jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="./public/img/carousel_7(1).jpg">
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <!--/.Controls-->
+                    </div>
+                    <!--/.Carousel Wrapper-->
+
+                </div>
+                <div class="col-lg-3">
+                    <br>
+                    <div class="card">
+                        <div class="card" id="my-card"><h4>&nbsp Recent News</h4></div>
+                        <div class="card-block">
+                            <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
+                            <p class="d-block w-100">1. OSP conducted AMA Sessions for CSE, EE & ME students</p>
+                            <!-- </marquee> -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img class="carousel-image" src="{%  static '/img/img2.JPG' %}" alt="IIT Jodhpur Permanent Campus">
-            </div>
-            <div class="carousel-item">
-                <img class="carousel-image" src="{%  static '/img/img3.jpeg' %}" alt="IIT Jodhpur Permanent Campus">
-            </div>
-            <div class="carousel-item">
-                <img class="carousel-image" src="{%  static '/img/img4.jpeg' %}" alt="IIT Jodhpur Permanent Campus">
-            </div>
-            <div class="carousel-item">
-                <img class="carousel-image" src="{%  static '/img/img5.JPG' %}" alt="IIT Jodhpur Permanent Campus">
-            </div>
-        </div>
-    </div>
-<br>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; About Us</span></div>
+                        <div class="card-block" align="justify">
+                            <p class="card-text"> Welcome to the <b>Student Placement Website of IIT Jodhpur!</b>
+                                <br><br>
+                                Founded in 2008, IIT Jodhpur has emerged in developing a distinct culture of
+                                engineering and science education and other areas of scholarship, to best fulfill the
+                                current and emerging needs of the changing Indian Society. IIT Jodhpur close
+                                association with leading industries and research institutes effectively helps student
+                                gain
+                                hands on experience and solve technical challenges. As on date, the Institute has 848
+                                students spread across 555 B.Tech. students, 56 M.Tech. students, 71 M.Sc. students and
+                                166 Ph.D. students pursuing various academic programs Also, this year we have upcoming
+                                Department of Metallurgical and Material Engineering, which offers courses in M.Tech.
+                                and Ph.D. The department teaching, research and consulting activities will cover a broad
+                                spectrum of material science and industrial metallurgy. IIT Jodhpur is also making
+                                research in addressing national needs especially those leading to the development of
+                                technology for diagnostic and treatment by medical professionals with its new Department
+                                of Biological Science and Bioengineering which is planned towards Biological science,
+                                medical science, technology and their interfaces. The department will offer a wide range
+                                of courses from foundation level to advanced level in the said domains for the various
+                                degree programs. Hands-on learning will be emphasized using state-of-the-art centralized
+                                research facilities.<br><br>
+                                IIT Jodhpur has moved to its sprawling 852 acre residential Permanent Campus on
+                                National Highway 65 (NNE of Jodhpur towards Nagaur). The Permanent Campus is
+                                meticulously planned and envisioned to stand as a symbol of academics - simple, but
+                                deep.<br><br>
+                                IIT Jodhpur promotes technology thought and action. It is on the mission to prepare
+                                competent technology graduates. We, the office of student placement aims to create an
+                                encouraging atmosphere for students by providing them ample reminders to build
+                                competencies in sync with their dream career , thereby ensuring their smooth landing in
+                                the professional world. Also, it will sensitize students in best possible way by
+                                promoting
+                                them to take responsibility for their own career decision and prepare them for the
+                                industry. Thus, it will provide services and resources that assist the students in their
+                                ongoing efforts of competence developing, career planning and employer searching.
+                                Office of student placement had a dedicated workforce of students and volunteer
+                                students, who are equipped to help guests visiting from the Employer organization
+                                acquaint themselves with the placement procedure and provide necessary logistic
+                                equipment.<br><br>
+                                We extend a cordial invitation to you to participate in Campus Placement Drive for the
+                                season 2018-19 and hope that you will find the best talent you were looking for.
+                                <br>
+                            </p>
 
-<br>
-<!--
-  <div class="container" align="center" height="1000px" width="100%">
-
-     <p align="center" style="font-family:bebas;font-size:50px;color:white;">Office of Students' Placement, IIT Jodhpur</p>
- </div>
-
- <br>
- <div class="row" align="center">
-     <div class="col-sm-3"></div>
-     <div class="col-sm-3"><a href="/student/login" class="btn btn-primary btn-lg primary">Student Area</a></div>
-     <div class="col-sm-3"><a href="/company/login" class="btn btn-primary btn-lg primary">Company Area</a></div>
- </div>
- <br><br>
--->
-
-
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-
-        <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; About Us</span></div>
-            <div class="card-block">
-                <p class="card-text">         Welcome to the <b>Student Placement Website of IIT Jodhpur!</b> IIT Jodhpur is one of the eight new IITs announced by the MHRD, in 2008. Our graduates are provided with education that seeks rigorous thinking, hard work and fundamentals.
-	                        The Office of Student Placements is managed by the Institute in consultation with the students. The tasks of contacting various companies, their interaction with the students, arranging for the pre-placement talks, tests, interviews,
-	                        entire work is coordinated by the Office of Student Placements.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-</div>
-<br><br>
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-
-        <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Perspective</span></div>
-            <div class="card-block">
-                <p class="card-text">    Students earn B.Tech degrees in Electrical Engineering, Computer Science and Engineering, Mechanical Engineering and Systems Sciene as well as M.Tech degrees in Energy, Information and Communication Technology and Systems Science,
-                    but they are taught subjects from versatile backgrounds namely organizational Behaviour, English Literature, International Relations and Renewable Energy. Students not only choose courses to specialise but also learn as Robert
-                    Frost once said “to mix vocation with avocation”.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-</div>
-<br><br>
-<!--<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-
-        <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; An Invitation to IIT Jodhpur</span></div>
-            <div class="card-block">
-                <p class="card-text">     With this introduction, we welcome the Student Recruiters with open arms to join us at the Student Placement Portal of IIT Jodhpur and hope that the association will grow not only in the student placement sector, but also in other professional areas.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-</div>
-<br><br>-->
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-
-        <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Welcome</span></div>
-            <div class="card-block">
-                <p class="card-text">           On behalf of the Office of Student Placements, I welcome you to the student placement program of IIT Jodhpur. The Office of Student Placements has been setup as an interface between companies and students, to help organize the placement process in an
-                    orderly and efficient manner, with the intent of developing a long-lasting and mutually beneficial relationship.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-</div>
-<br><br>
-
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-
-        <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Research Projects and Company Experience</span></div>
-            <div class="card-block">
-                <p class="card-text">         Undergraduates of our Institute undergo an eight-week summer training in reputed organizations, both in India or abroad. In the previous academic year, more than half of our students were placed for summer internships in several reputed companies. The
-                    list of companies that have offered internship to IIT Jodhpur students in previous years includes names such as Microsoft, Shree Cement, Common Floor, Silicon Mentor, Ishi Systems, Trident Groups, Havells, BHEL, IOCL, BARC etc.
-                    Some of them have participated in research projects at universities in USA, Canada, Japan, Germany, France and Ireland. Also some were involved in projects on campus. Institute places emphasis on inter-disciplinary projects to
-                    nurture multifaceted skills and creativity required for handling existing and anticipated real-world problems. I believe that our students will be an asset to the organization they join.
-                </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-1">
-    </div>
-</div>
-<br><br>
-<div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
+    <br>
 
-        <div class="card ">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp; The Placement Portal and our help</span></div>
-            <div class="card-block">
-                <p class="card-text">  The Office of Student Placements has a dedicated staff equipped to help executives acquaint themselves with the procedure and provide all necessary logistic support. The Placement Team of the Office will help you in an efficient and organized placement
-	                        process. I conclude by extending my cordial invitation to you to participate in the exchange of talent, hoping that this interaction will lead to a fruitful and lasting relationship...
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-1">
-    </div>
-</div>
 
-<br><br>
-{% endblock %}
+    <br><br>{% endblock %}
