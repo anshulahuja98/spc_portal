@@ -1,11 +1,16 @@
 /* YOUR CUSTOM STYLES */
+.mycarousel{
+    margin: auto;
+    width:900px;
+}
 .carousel-inner{
-  width: 100%;
-  height: 35rem;
+    border: 1px solid black;
+    width:100%;
+    height: 20rem;
 }
 .carousel-image {
-    height:35rem;
-    width: 100%;
+    height:20rem;
+    width:100%;
 }
 .custom-gradient{
     background: linear-gradient(to right, #0066cc 5%, #66ccff 100%);
@@ -19,7 +24,7 @@
   margin-left: 1rem;
   margin-top: -1rem;
   height: 2.5rem;
-  color: white;
+  color: black;
 }
 form{
   margin-left: 3rem;
@@ -37,8 +42,9 @@ form{
 .card .form-header{
   border-radius: 0.25rem;
 }
-#card{
-  border-radius: 0.25rem;
+#card {
+    border-radius: 0.25rem;
+}
 /*}*/
 /*#my-section{*/
   /*background-image: url("../../public/img/img1-cpy.webp");*/
@@ -55,4 +61,18 @@ form{
 }
 .fa{
   color: black;
+}
+.heading{
+  color:black;
+}
+/*.big{
+  font-weight: bold;
+  font-family: serif;
+}*/
+
+.h4{
+  font-weight: bold;
+}
+body{
+  margin: 0px auto;
 }
