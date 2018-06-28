@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
+<html>
 <head>
     {% block header %}
         <meta charset="utf-8">
@@ -138,10 +139,10 @@
                 </ul>
                 <ul class="nav navbar-nav nav-right">
                     <li class="nav-item hoverable">
-                        <a class="nav-link" href="/student/login">Student Login</a>
+                        <a class="nav-link" href="{% url 'student:login' %}">Student Login</a>
                     </li>
                     <li class="nav-item hoverable" style="float:right;">
-                        <a class="nav-link" href="/company/login">Company Login</a>
+                        <a class="nav-link" href="{% url 'company:login' %}">Company Login</a>
                     </li>
 
                 </ul>
@@ -236,13 +237,9 @@
 {% block body %}
 
 {% endblock %}
-
+</div>
 
 {% block footer %}
-
-
-    <!--Footer-->
-    <!--Footer-->
     <footer class="page-footer center-on-lgall-only">
         <div class="footer-copyright">
             <div class="container-fluid" style="background-color: #3f51b5;">
@@ -251,11 +248,6 @@
         </div>
         <!--/.Copyright-->
     </footer>
-    <!--/.Footer-->
-
-    <!--/.Footer-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>

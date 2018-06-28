@@ -1,32 +1,18 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <head>
-{% block header %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
-    <link href="{% static '/css/style.css' %} " rel="stylesheet">
-    <link rel="icon" href="{% static 'img/iitj.png' %}">
-    <title>Office of Student Placements, IIT Jodhpur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style type="text/css">
-        .row {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .container {
-        }
-
-        .row {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-    </style>
-{% endblock %}
+    {% block header %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
+        <link href="{% static '/css/style.css' %} " rel="stylesheet">
+        <link rel="icon" href="{% static 'img/iitj.png' %}">
+        <title>Office of Student Placements, IIT Jodhpur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% endblock %}
 </head>
 <body style="margin:0px auto ;background: gainsboro;">
 {% block heading %}
@@ -56,7 +42,7 @@
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                       <li class="nav-item hoverable">
+                    <li class="nav-item hoverable">
                         <a class="nav-link" href="/company/addJobOffer/">Add Job Offer</a>
                     </li>
                     <li class="nav-item hoverable">
