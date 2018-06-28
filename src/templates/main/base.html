@@ -72,8 +72,8 @@
                            aria-haspopup="true" aria-expanded="false">Home</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="{% url 'main:home' %}">About Us</a>
-                            <a class="dropdown-item" href="/invitation">Invitation</a>
-                            <a class="dropdown-item" href="/dir_msg">Director's Message</a>
+                            <a class="dropdown-item" href="{% url 'main:invitation' %}">Invitation</a>
+                            <a class="dropdown-item" href="{% url 'main:dir_msg' %}">Director's Message</a>
                         </div>
                     </li>
                     <li class="nav-item btn-group hoverable">
@@ -81,49 +81,49 @@
                            aria-haspopup="true" aria-expanded="false">Academics</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="{% url 'main:gradesystem' %}">Gradesystem</a>
-                            <a class="dropdown-item" href="/programs">Programmes</a>
-                            <a class="dropdown-item" href="/admissions">Admission Procedure</a>
+                            <a class="dropdown-item" href="{% url 'main:programs' %}">Programmes</a>
+                            <a class="dropdown-item" href="{% url 'main:admissions' %}">Admission Procedure</a>
                         </div>
                     </li>
                     <li class="nav-item btn-group hoverable">
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Students</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/achievements">Achievements</a>
-                            <a class="dropdown-item" href="/profile">Prospective</a>
-                            <a class="dropdown-item" href="/alumni">Alumni's Words</a>
-                            <a class="dropdown-item" href="/student_rules">Norms/Guidelines</a>
-                            <a class="dropdown-item" href="/internships">Internships</a>
+                            <a class="dropdown-item" href="{% url 'main:achievements' %}">Achievements</a>
+                            <a class="dropdown-item" href="{% url 'main:profile' %}">Prospective</a>
+                            <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a>
+                            <a class="dropdown-item" href="{% url 'main:student_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:internships' %}">Internships</a>
                         </div>
                     </li>
                     <li class="nav-item btn-group hoverable">
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Company</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/brochure">Brochure</a>
-                            <a class="dropdown-item" href="/summary">Summary</a>
-                            <a class="dropdown-item" href="/placementProcedure">Placement Procedure</a>
-                            <a class="dropdown-item" href="/company_rules">Norms/Guidelines</a>
-                            <a class="dropdown-item" href="/past_recruiters">Past Recruiters</a>
-                            <a class="dropdown-item" href="/aipc">AIPC Norms</a>
+                            <a class="dropdown-item" href="{% url 'main:brochure' %}">Brochure</a>
+                            <a class="dropdown-item" href="{% url 'main:summary' %}">Summary</a>
+                            <a class="dropdown-item" href="{% url 'main:placementProcedure' %}">Placement Procedure</a>
+                            <a class="dropdown-item" href="{% url 'main:company_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:past_recruiters' %}">Past Recruiters</a>
+                            <a class="dropdown-item" href="{% url 'main:aipc' %}">AIPC Norms</a>
                         </div>
                     </li>
                     <li class="nav-item btn-group hoverable">
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Why Recruit</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/newBreed">The New Breed</a>
+                            <a class="dropdown-item" href="{% url 'main:newBreed' %}">The New Breed</a>
                             <!--  <a class="dropdown-item" href="/coe">Centre of Excellence</a> -->
-                            <a class="dropdown-item" href="/research">R & D</a>
-                            <a class="dropdown-item" href="/facilities">Facilities</a>
+                            <a class="dropdown-item" href="{% url 'main:research' %}">R & D</a>
+                            <a class="dropdown-item" href="{% url 'main:facilities' %}">Facilities</a>
                         </div>
                     </li>
                     <li class="nav-item btn-group hoverable">
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Forms</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/jaf">JAF</a>
-                            <a class="dropdown-item" href="/iaf">IAF</a>
+                            <a class="dropdown-item" href="{% url 'main:jaf' %}">JAF</a>
+                            <a class="dropdown-item" href="{% url 'main:iaf' %}">IAF</a>
 
                         </div>
                     </li>
@@ -131,8 +131,8 @@
                         <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Contact Us</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item" href="/contacts">Contacts</a>
-                            <a class="dropdown-item" href="/reachus">Reach Us</a>
+                            <a class="dropdown-item" href="{% url 'main:contacts' %}">Contacts</a>
+                            <a class="dropdown-item" href="{% url 'main:reachus' %}">Reach Us</a>
                         </div>
                     </li>
                 </ul>
