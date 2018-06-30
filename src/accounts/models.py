@@ -11,33 +11,23 @@ class CompanyProfile(models.Model):
     # Model
     name = models.CharField(max_length=30)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    type = models.CharField(max_length=30)  # add choices
+    domain = models.CharField(max_length=30, help_text="Type of company like banking/consulting etc ")  # add choices
     url = models.URLField()
     city = models.CharField(max_length=15)
     state = models.CharField(max_length=15)
     country = models.CharField(max_length=15, choices=NATION)
-    pincode = models.CharField(max_length=15, blank=True)
+    pin_code = models.CharField(max_length=15, blank=True)
 
     def __str__(self):
-        return self.user.email
+        return self.name
 
 
 class CompanyPerson(models.Model):
     name = models.CharField(max_length=30)
-    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, related_name='persons')
+    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
     designation = models.CharField(max_length=30)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, help_text="For phone numbers outside India, please add country code")
     email = models.EmailField()
-
-
-class Resume(models.Model):
-    file = models.FileField(upload_to='resume')
-    verified = models.BooleanField(default=False)
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    @property
-    def verified_status(self):
-        return self.verified
 
 
 class StudentProfile(models.Model):
@@ -64,8 +54,7 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roll_no = models.CharField(max_length=8)
     year = models.SmallIntegerField()
-    cpi = models.FloatField()
-    placed_status = models.BooleanField(default=False)
+    gpa = models.FloatField()
     placed_company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True, blank=True)
     phone = models.CharField(max_length=15)
     parent_name = models.CharField(max_length=30)
@@ -76,7 +65,7 @@ class StudentProfile(models.Model):
     hostel_name = models.CharField(max_length=2, choices=HOSTELS, blank=True)
     room_no = models.SmallIntegerField(blank=True)
     hobbies = models.TextField()
-    pd_status = models.BooleanField(default=False)
+    physical_disability = models.BooleanField(default=False)
     nationality = models.CharField(max_length=10, choices=NATION)
     permanent_address = models.TextField()
     current_address = models.TextField()
@@ -86,12 +75,13 @@ class StudentProfile(models.Model):
     xii_year = models.SmallIntegerField()
     xii_board_name = models.CharField(max_length=30)
     xii_percentage = models.CharField(max_length=10)
-    ctc = models.IntegerField(null=True, blank=True, )
-    resume_1 = models.ForeignKey(Resume, null=True, blank=True, on_delete=models.SET_NULL, related_name='resume_1')
-    resume_2 = models.ForeignKey(Resume, null=True, blank=True, on_delete=models.SET_NULL, related_name='resume_2')
-    resume_3 = models.ForeignKey(Resume, null=True, blank=True, on_delete=models.SET_NULL, related_name='resume_3')
-    resume_4 = models.ForeignKey(Resume, null=True, blank=True, on_delete=models.SET_NULL, related_name='resume_4')
-    resume_5 = models.ForeignKey(Resume, null=True, blank=True, on_delete=models.SET_NULL, related_name='resume_5')
 
     def __str__(self):
-        return self.user.username
+        return self.user.get_full_name()
+
+
+class Resume(models.Model):
+    student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='resume')
+    is_verified = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
