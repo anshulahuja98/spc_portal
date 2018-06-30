@@ -11,4 +11,5 @@ urlpatterns = [
     path('dummy/', TemplateView.as_view(template_name="company/base.html"), name="dummy"),
     path('joboffer_form/', JobOfferFormView.as_view(), name="job-offer-form"),
     path('internoffer_form/', InternOfferFormView.as_view(), name="intern-offer-form"),
+
 ]
