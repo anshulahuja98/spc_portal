@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Permission, Group, _user_get_all_permissions, _user_has_perm, \
 # _user_has_module_perms, AbstractBaseUser, BaseUserManager
 
-from django.utils import timezone
+# from django.utils import timezone
 # from uuid import uuid4
 # from django.core.mail import send_mail
 # from django.contrib import auth

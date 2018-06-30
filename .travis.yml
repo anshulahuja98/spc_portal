@@ -7,6 +7,6 @@ install:
   - pip3 install -r requirements.txt
 script:
   - cd src
-  - flake8 .
+  - flake8 . --ignore=E501
   - python3 manage.py makemigrations
   - python3 manage.py migrate
