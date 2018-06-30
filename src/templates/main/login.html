@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block body %}
+    <div class="col-lg-3"></div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> <center>Login</center> </span></div>
+            <div class="card-block">
+                <br>
+                <form method="post">
+                    <!--Header-->
+                    {% csrf_token %}
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix" style="color: #4285F4  "></i>
+                        <input type="text" name="username" id="username" class="form-control">
+                        <label for="username">Company/Student Username</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix" style="font-size: 2.5rem; color: #4285F4   "></i>
+                        <input type="password" name="password" id="password" class="form-control">
+                        <label for="password">Password</label>
+                    </div>
+                    {% for error in form.non_field_errors %}
+                        <div class="red-text">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+{% endblock %}

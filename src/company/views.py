@@ -5,9 +5,6 @@ from accounts.models import StudentProfile
 from company.models import JobOffer
 
 
-class LoginView(DefaultLoginView):
-    template_name = 'company/login.html'
-
 # class JobOfferFormView(FormView,LoginRequiredMixin):
 #     form_class = JobOfferForm
 #
