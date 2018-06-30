@@ -2,20 +2,15 @@ from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, UpdateView, ListView, TemplateView
 from accounts.models import StudentProfile, Resume
-from company.models import JobOffer,InternOffer
+from company.models import JobOffer, InternOffer
 from django.shortcuts import get_object_or_404
-
-
-class UserObjectMixin(object):
-    def get_object(self):
-        return get_object_or_404(StudentProfile, user=self.request.user)
 
 
 class LoginView(DefaultLoginView):
     template_name = 'student/login.html'
 
 
-class DetailsView(UpdateView, LoginRequiredMixin, UserObjectMixin):
+class DetailsView(UpdateView, LoginRequiredMixin):
     # template_name = 'student/details.html'
     model = StudentProfile
     fields = '__all__'
@@ -32,6 +27,7 @@ class JobOffersListView(ListView, LoginRequiredMixin):
     def get_queryset(self):
         return self.model.objects
 
+
 class InternOffersListView(ListView, LoginRequiredMixin):
     model = InternOffer
     template_name = 'student/intern_offers.html'
@@ -41,4 +37,9 @@ class InternOffersListView(ListView, LoginRequiredMixin):
 
 
 class ResumeUploadView(UpdateView):
-    model = Resume
+    model = StudentProfile
+    template_name = 'student/resume.html'
+    fields = ('resume_1', 'resume_2', 'resume_3', 'resume_4', 'resume_5',)
+
+    def get_object(self):
+        return get_object_or_404(StudentProfile, user=self.request.user)
