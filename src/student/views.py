@@ -6,17 +6,13 @@ from company.models import JobOffer, InternOffer
 from django.shortcuts import get_object_or_404
 
 
-class LoginView(DefaultLoginView):
-    template_name = 'student/login.html'
-
-
 class DetailsView(UpdateView, LoginRequiredMixin):
     # template_name = 'student/details.html'
     model = StudentProfile
     fields = '__all__'
     template_name = 'student/details.html'
 
-    def get_object(self):
+    def get_object(self, queryset=None):
         return get_object_or_404(StudentProfile, user=self.request.user)
 
 
@@ -41,5 +37,5 @@ class ResumeUploadView(UpdateView):
     template_name = 'student/resume.html'
     fields = ('resume_1', 'resume_2', 'resume_3', 'resume_4', 'resume_5',)
 
-    def get_object(self):
+    def get_object(self, queryset=None):
         return get_object_or_404(StudentProfile, user=self.request.user)

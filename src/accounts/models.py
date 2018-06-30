@@ -212,7 +212,7 @@ class CompanyProfile(models.Model):
     )
     # Model
     name = models.CharField(max_length=30)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=30)  # add choices
     url = models.URLField()
     city = models.CharField(max_length=15)
