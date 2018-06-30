@@ -1,0 +1,36 @@
+{% extends 'student/base.html' %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Job Offers</span></div>
+                <div class="card-block">
+                    <table class="table table-striped">
+                        <thead class="lighten-4">
+                        <tr>
+                            <th class="theader">S.No</th>
+                            <th class="theader">Company Name</th>
+                            <th class="theader">Job Designation</th>
+                            <th class="theader">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for offer in job_offer_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ offer.company }}</td>
+                                <td>{{ offer.job_designation }}</td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+{% endblock %}
+

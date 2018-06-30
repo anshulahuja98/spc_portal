@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 
 app_name = 'main'
@@ -31,5 +31,7 @@ urlpatterns = [
     path('reachus/', TemplateView.as_view(template_name='main/reachus.html'), name='reachus'),
     path('invitation/', TemplateView.as_view(template_name='main/invitation.html'), name='invitation'),
     path('dir_msg/', TemplateView.as_view(template_name='main/dir_msg.html'), name='dir_msg'),
-
+    path('student/', include('student.urls')),
+    path('company/', include('company.urls'))
+    # path('accounts/',include('accounts.urls'))
 ]
