@@ -7,7 +7,6 @@ from company.models import JobOffer
 
 class LoginView(DefaultLoginView):
     template_name = 'company/login.html'
-    next_page = 'company:detail'
 
 # class JobOfferFormView(FormView,LoginRequiredMixin):
 #     form_class = JobOfferForm
