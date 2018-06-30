@@ -1,4 +1,99 @@
 {% extends 'student/base.html' %}
 {% block body %}
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;Update Details</span></div>
+                <div class="card-block">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <br>
 
+                                <p><label for="id_roll_no">Roll no:</label> <input type="text" name="roll_no"
+                                                                                   value="" maxlength="8"
+                                                                                   required id="id_roll_no"/>
+                                </p>
+                                <p><label for="id_year">Year:</label>
+                                    {{ form.year }}
+                                </p>
+                                <p><label for="id_cpi">Cpi:</label>
+                                    {{ form.cpi }}
+                                </p>
+
+                                <p><label for="id_phone">Phone:</label>
+                                    {{ form.phone }}
+                                </p>
+                                <p><label for="id_parent_name">Parent name:</label>
+                                    {{ form.parent_name }}
+                                </p>
+                                <p><label for="id_dob">Dob:</label>
+                                    {{ form.dob }}
+                                </p>
+                                <p><label for="id_category">Category:</label>
+                                    {{ form.category }}
+                                </p>
+                                <p><label for="id_blood_group">Blood group:</label>
+                                    {{ form.blood_group }}
+                                </p>
+                                <p><label for="id_jee_air">Jee air:</label>
+                                    {{ form.jee_air }}
+                                </p>
+                                <p><label for="id_hostel_name">Hostel name:</label>
+                                    {{ form.hostel_name }}
+                                </p>
+                                <p><label for="id_room_no">Room no:</label>
+                                    {{ form.room_no }}
+                                </p>
+                                <p><label for="id_hobbies">Hobbies:</label>
+                                    {{ form.hobbies }}
+                                </p>
+                                <p><label for="id_pd_status">Physical Disability:</label>
+                                    {{ form.pd_status }}
+                                </p>
+                                <p><label for="id_nationality">Nationality:</label>
+                                    {{ form.nationality }}
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+
+                                <p><label for="id_permanent_address">Permanent address:</label>
+                                    {{ form.permanent_address }}
+                                </p>
+
+                                <p><label for="id_current_address">Current address:</label>
+                                    {{ form.current_address }}
+                                </p>
+                                <p><label for="id_x_year">X year:</label>
+                                    {{ form.x_year }}
+                                </p>
+                                <p><label for="id_x_board_name">X board name:</label>
+                                    {{ form.x_board_name }}
+                                </p>
+                                <p><label for="id_x_percentage">X percentage:</label>
+                                    {{ form.x_percentage }}
+                                </p>
+                                <p><label for="id_xii_year">Xii year:</label>
+                                    {{ form.xii_year }}
+                                </p>
+                                <p><label for="id_xii_board_name">Xii board name:</label>
+                                    {{ form.xii_board_name }}
+                                </p>
+                                <p><label for="id_xii_percentage">Xii percentage:</label>
+                                    {{ form.xii_percentage }}
+                                </p>
+                            </div>
+                            {#                                {{ form.as_p }}#}
+                        </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+        </p>
+    </div>
+    <div class="col-lg-1"></div>
+    </div>
 {% endblock %}
