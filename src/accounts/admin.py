@@ -1,10 +1,12 @@
-from django.contrib.auth.forms import AdminPasswordChangeForm
+# from django.contrib.auth.forms import AdminPasswordChangeForm
 from django.contrib import admin
 # from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import Resume, StudentProfile, CompanyPerson, CompanyProfile
+from .models import StudentProfile, CompanyPerson, CompanyProfile
+
+
 # CustomUser
-from django.contrib.auth.admin import UserAdmin
-from django.utils.translation import ugettext_lazy as _
+# from django.contrib.auth.admin import UserAdmin
+# from django.utils.translation import ugettext_lazy as _
 
 
 # class ResumeInline(admin.StackedInline):

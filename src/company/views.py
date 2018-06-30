@@ -1,4 +1,3 @@
-from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, ListView
 from .forms import JobOfferForm, InternOfferForm
