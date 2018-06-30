@@ -1,7 +1,6 @@
-from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DetailView, UpdateView, ListView, TemplateView
-from accounts.models import StudentProfile, Resume
+from django.views.generic import UpdateView, ListView
+from accounts.models import StudentProfile
 from company.models import JobOffer, InternOffer
 from django.shortcuts import get_object_or_404
 
