@@ -4,6 +4,7 @@ from django.views.generic import FormView
 from .forms import JobOfferForm, InternOfferForm
 
 
+
 class LoginView(DefaultLoginView):
     template_name = 'company/login.html'
 
