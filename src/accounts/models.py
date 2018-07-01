@@ -2,37 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class CompanyProfile(models.Model):
-    # Choices
-    NATION = (
-        ('1', 'Indian'),
-        ('2', 'Other'),
-    )
-    # Model
-    name = models.CharField(max_length=30)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    domain = models.CharField(max_length=30, help_text="Type of company like banking/consulting etc ")  # add choices
-    url = models.URLField()
-    city = models.CharField(max_length=15)
-    state = models.CharField(max_length=15)
-    country = models.CharField(max_length=15, choices=NATION)
-    pin_code = models.CharField(max_length=15, blank=True)
-
-    def __str__(self):
-        return self.name
-
-
-class CompanyPerson(models.Model):
-    name = models.CharField(max_length=30)
-    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
-    designation = models.CharField(max_length=30)
-    phone = models.CharField(max_length=15, help_text="For phone numbers outside India, please add country code")
-    email = models.EmailField()
-
-    def __str__(self):
-        return "{} ({})".format(self.name, self.company.name)
-
-
 class StudentProfile(models.Model):
     # Choices
     CATEGORY = (
@@ -58,7 +27,6 @@ class StudentProfile(models.Model):
     roll_no = models.CharField(max_length=8)
     year = models.SmallIntegerField()
     gpa = models.FloatField()
-    placed_company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True, blank=True)
     phone = models.CharField(max_length=15)
     parent_name = models.CharField(max_length=30)
     dob = models.DateField()
@@ -81,6 +49,38 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+
+class CompanyProfile(models.Model):
+    # Choices
+    NATION = (
+        ('1', 'Indian'),
+        ('2', 'Other'),
+    )
+    # Model
+    name = models.CharField(max_length=30)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    domain = models.CharField(max_length=30, help_text="Type of company like banking/consulting etc ")  # add choices
+    url = models.URLField()
+    city = models.CharField(max_length=15)
+    state = models.CharField(max_length=15)
+    country = models.CharField(max_length=15, choices=NATION)
+    pin_code = models.CharField(max_length=15, blank=True)
+    job_offers = models.ManyToManyField(StudentProfile, through='company.JobOffer',
+                                        through_fields=('company', 'student'), related_name='joboffers')
+    internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
+                                               through_fields=('company', 'student'), related_name='internshipoffers')
+
+    def __str__(self):
+        return self.name
+
+
+class CompanyPerson(models.Model):
+    name = models.CharField(max_length=30)
+    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
+    designation = models.CharField(max_length=30)
+    phone = models.CharField(max_length=15, help_text="For phone numbers outside India, please add country code")
+    email = models.EmailField()
 
 
 class Resume(models.Model):

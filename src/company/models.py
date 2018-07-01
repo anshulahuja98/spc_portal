@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CompanyProfile
+from accounts.models import CompanyProfile, StudentProfile
 from student.models import Branch, Program
 
 
@@ -17,8 +17,8 @@ class BaseAdvertisement(models.Model):
     bonus = models.PositiveIntegerField(blank=True, default=0)
     bond = models.BooleanField()
     # selection process
-    eligible_branches = models.ManyToManyField(Branch)
-    eligible_programs = models.ManyToManyField(Program)
+    eligible_branches = models.ManyToManyField(Branch, default=Branch.objects.all())
+    eligible_programs = models.ManyToManyField(Program, default=Branch.objects.all())
     resume_required = models.BooleanField()
     aptitude_test_required = models.BooleanField()
     technical_test_required = models.BooleanField()
@@ -44,3 +44,28 @@ class JobAdvertisement(BaseAdvertisement):
 
 class InternAdvertisement(BaseAdvertisement):
     pass
+
+
+class BaseOffer(models.Model):
+    student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
+    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
+    is_accepted = models.BooleanField(default=False)
+
+    @property
+    def ctc(self):
+        return self.advertisement.ctc
+
+    def __str__(self):
+        return "{} ({}) - {}".format(self.student.user.get_full_name(), self.advertisement.designation,
+                                     self.company.name)
+
+    class Meta:
+        abstract = True
+
+
+class JobOffer(BaseOffer):
+    advertisement = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
+
+
+class InternshipOffer(BaseOffer):
+    advertisement = models.ForeignKey(InternAdvertisement, on_delete=models.CASCADE)
