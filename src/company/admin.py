@@ -1,16 +1,16 @@
 from django.contrib import admin
-from .models import InternOffer, JobOffer
+from .models import JobAdvertisement, InternAdvertisement
 
 
-@admin.register(JobOffer)
+@admin.register(JobAdvertisement)
 class JobOfferAdmin(admin.ModelAdmin):
     class Meta:
-        model = JobOffer
+        model = JobAdvertisement
         fields = '__all__'
 
 
-@admin.register(InternOffer)
+@admin.register(InternAdvertisement)
 class InternOfferAdmin(admin.ModelAdmin):
     class Meta:
-        model = InternOffer
+        model = InternAdvertisement
         fields = '__all__'

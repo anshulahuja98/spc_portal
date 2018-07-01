@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView
 from accounts.models import StudentProfile, Resume
-from company.models import JobOffer, InternOffer
+from company.models import JobAdvertisement, InternAdvertisement
 from django.shortcuts import get_object_or_404
 
 
@@ -16,7 +16,7 @@ class DetailsView(LoginRequiredMixin, UpdateView):
 
 
 class JobOffersListView(LoginRequiredMixin, ListView):
-    model = JobOffer
+    model = JobAdvertisement
     template_name = 'student/job_offers.html'
 
     def get_queryset(self):
@@ -24,7 +24,7 @@ class JobOffersListView(LoginRequiredMixin, ListView):
 
 
 class InternOffersListView(LoginRequiredMixin, ListView):
-    model = InternOffer
+    model = InternAdvertisement
     template_name = 'student/intern_offers.html'
 
     def get_queryset(self):
