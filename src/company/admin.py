@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import JobProfile, InternshipProfile, JobOffer, InternshipOffer
+from .models import JobProfile, InternshipProfile
 
 
 @admin.register(JobProfile)
