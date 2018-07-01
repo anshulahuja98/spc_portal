@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, ListView
 from .forms import JobOfferForm, InternOfferForm
-from company.models import JobAdvertisement, InternAdvertisement
+from company.models import JobProfile, InternshipProfile
 from django.contrib.auth.views import LoginView as DefaultLoginView
 
 
@@ -19,16 +19,16 @@ class InternOfferFormView(FormView, LoginRequiredMixin):
     template_name = 'company/internoffer_form.html'
 
 
-class JobOffersAddedListView(ListView):
-    model = JobAdvertisement
+class JobProfilesAddedListView(ListView):
+    model = JobProfile
     template_name = 'company/job_offers.html'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)
 
 
-class InternOffersAddedListView(ListView):
-    model = InternAdvertisement
+class InternProfilesAddedListView(ListView):
+    model = InternshipProfile
     template_name = 'company/intern_offers.html'
 
     def get_queryset(self):

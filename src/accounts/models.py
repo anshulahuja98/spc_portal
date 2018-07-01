@@ -71,7 +71,7 @@ class CompanyProfile(models.Model):
     pin_code = models.CharField(max_length=15, blank=True)
     job_offers = models.ManyToManyField(StudentProfile, through='company.JobOffer',
                                         through_fields=('company', 'student'), related_name='joboffers')
-    internship_offers = models.ManyToManyField(StudentProfile, through='company.InterOffer',
+    internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
                                                through_fields=('company', 'student'), related_name='internshipoffers')
 
     def __str__(self):

@@ -1,28 +1,16 @@
 from django.contrib import admin
-from .models import JobAdvertisement, InternAdvertisement, JobOffer, InterOffer
+from .models import JobProfile, InternshipProfile, JobOffer, InternshipOffer
 
 
-class JobAdvertisementInline(admin.StackedInline):
-    model = JobAdvertisement
-
-
-class InternAdvertisementInline(admin.StackedInline):
-    model = InternAdvertisement
-
-
-@admin.register(JobAdvertisement)
-class JobOfferAdmin(admin.ModelAdmin):
-    inlines = (JobAdvertisementInline,)
-
+@admin.register(JobProfile)
+class JobProfileAdmin(admin.ModelAdmin):
     class Meta:
-        model = JobOffer
+        model = JobProfile
         fields = '__all__'
 
 
-@admin.register(InternAdvertisement)
-class InternOfferAdmin(admin.ModelAdmin):
-    inlines = (InternAdvertisementInline,)
-
+@admin.register(InternshipProfile)
+class InternProfileAdmin(admin.ModelAdmin):
     class Meta:
-        model = InterOffer
+        model = InternshipProfile
         fields = '__all__'

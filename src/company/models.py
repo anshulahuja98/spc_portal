@@ -3,17 +3,17 @@ from accounts.models import CompanyProfile, StudentProfile
 from student.models import Branch, Program
 
 
-class BaseAdvertisement(models.Model):
+class BaseProfile(models.Model):
     # job prof
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
     designation = models.CharField(max_length=30)
     description = models.CharField(max_length=50)
     tentative_join_date = models.DateField()
     tentative_job_location = models.CharField(max_length=50)
-    ads = models.FileField(upload_to='ads')
+    ads = models.FileField(upload_to='ads', null=True, blank=True)
     # package details
-    ctc = models.IntegerField()
-    gross_salary = models.PositiveIntegerField()
+    ctc = models.FloatField()
+    gross_salary = models.FloatField()
     bonus = models.PositiveIntegerField(blank=True, default=0)
     bond = models.BooleanField()
     # selection process
@@ -29,7 +29,7 @@ class BaseAdvertisement(models.Model):
     min_gpa = models.FloatField()
     # logistic
     number_of_members = models.PositiveIntegerField()
-    other_details = models.TextField()
+    other_details = models.TextField(null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -38,11 +38,11 @@ class BaseAdvertisement(models.Model):
         return "{} ({})".format(self.designation, self.company.name)
 
 
-class JobAdvertisement(BaseAdvertisement):
+class JobProfile(BaseProfile):
     pass
 
 
-class InternAdvertisement(BaseAdvertisement):
+class InternshipProfile(BaseProfile):
     pass
 
 
@@ -53,10 +53,10 @@ class BaseOffer(models.Model):
 
     @property
     def ctc(self):
-        return self.advertisement.ctc
+        return self.profile.ctc
 
     def __str__(self):
-        return "{} ({}) - {}".format(self.student.user.get_full_name(), self.advertisement.designation,
+        return "{} ({}) - {}".format(self.student.user.get_full_name(), self.profile.designation,
                                      self.company.name)
 
     class Meta:
@@ -64,8 +64,8 @@ class BaseOffer(models.Model):
 
 
 class JobOffer(BaseOffer):
-    advertisement = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
+    profile = models.ForeignKey(JobProfile, on_delete=models.CASCADE)
 
 
-class InterOffer(BaseOffer):
-    advertisement = models.ForeignKey(InternAdvertisement, on_delete=models.CASCADE)
+class InternshipOffer(BaseOffer):
+    profile = models.ForeignKey(InternshipProfile, on_delete=models.CASCADE)

@@ -1,14 +1,27 @@
 from django.contrib import admin
-from .models import StudentProfile, CompanyPerson, CompanyProfile
+from company.models import JobOffer, InternshipOffer
+from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
+
+
+class JobOfferInline(admin.StackedInline):
+    model = JobOffer
+
+
+class InternOfferInline(admin.StackedInline):
+    model = InternshipOffer
 
 
 class CompanyPersonInline(admin.StackedInline):
     model = CompanyPerson
 
 
+class ResumeInline(admin.StackedInline):
+    model = Resume
+
+
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
-    # inlines = (ResumeInline,)
+    inlines = (ResumeInline,)
 
     class Meta:
         model = StudentProfile
@@ -17,7 +30,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
 
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(admin.ModelAdmin):
-    inlines = (CompanyPersonInline,)
+    inlines = (CompanyPersonInline, JobOfferInline, InternOfferInline)
 
     class Meta:
         model = CompanyProfile
