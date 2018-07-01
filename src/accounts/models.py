@@ -29,6 +29,9 @@ class CompanyPerson(models.Model):
     phone = models.CharField(max_length=15, help_text="For phone numbers outside India, please add country code")
     email = models.EmailField()
 
+    def __str__(self):
+        return "{} ({})".format(self.name, self.company.name)
+
 
 class StudentProfile(models.Model):
     # Choices
@@ -85,3 +88,6 @@ class Resume(models.Model):
     file = models.FileField(upload_to='resume')
     is_verified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student.user.get_full_name()
