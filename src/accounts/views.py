@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.shortcuts import reverse
-from django.conf import settings
 
 
 class LoginView(DefaultLoginView):

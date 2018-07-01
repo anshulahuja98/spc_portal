@@ -67,5 +67,5 @@ class JobOffer(BaseOffer):
     advertisement = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
 
 
-class InternshipOffer(BaseOffer):
+class InterOffer(BaseOffer):
     advertisement = models.ForeignKey(InternAdvertisement, on_delete=models.CASCADE)

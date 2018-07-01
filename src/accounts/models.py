@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from student.models import Branch, Program
 
 
 class StudentProfile(models.Model):
@@ -26,6 +27,8 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roll_no = models.CharField(max_length=8)
     year = models.SmallIntegerField()
+    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, null=True)
+    program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
     phone = models.CharField(max_length=15)
     parent_name = models.CharField(max_length=30)
@@ -68,7 +71,7 @@ class CompanyProfile(models.Model):
     pin_code = models.CharField(max_length=15, blank=True)
     job_offers = models.ManyToManyField(StudentProfile, through='company.JobOffer',
                                         through_fields=('company', 'student'), related_name='joboffers')
-    internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
+    internship_offers = models.ManyToManyField(StudentProfile, through='company.InterOffer',
                                                through_fields=('company', 'student'), related_name='internshipoffers')
 
     def __str__(self):
