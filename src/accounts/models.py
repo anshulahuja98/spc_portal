@@ -36,7 +36,7 @@ class StudentProfile(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY)
     blood_group = models.CharField(max_length=5)  # Choices
     jee_air = models.IntegerField()
-    hostel_name = models.CharField(max_length=2, choices=HOSTELS, blank=True)
+    hostel_name = models.CharField(max_length=2, choices=HOSTELS)
     room_no = models.SmallIntegerField()
     hobbies = models.TextField()
     physical_disability = models.BooleanField(default=False)
