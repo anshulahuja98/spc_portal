@@ -5,7 +5,6 @@ from .views import InternOfferFormView, JobOfferFormView, InternOffersAddedListV
 app_name = 'company'
 
 urlpatterns = [
-
     path('intern_offers/', InternOffersAddedListView.as_view(), name='intern-offers-added'),
     path('job_offers/', JobOffersAddedListView.as_view(), name='job-offers-added'),
     path('dummy/', TemplateView.as_view(template_name="company/base.html"), name="dummy"),

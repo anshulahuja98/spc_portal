@@ -1,7 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, ListView
 from .forms import JobOfferForm, InternOfferForm
-from .models import JobOffer, InternOffer
+from django.contrib.auth.views import LoginView as DefaultLoginView
+
+class LoginView(DefaultLoginView):
+    template_name = 'company/login.html'
 
 
 class JobOfferFormView(FormView, LoginRequiredMixin):
