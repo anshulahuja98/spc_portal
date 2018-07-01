@@ -1,14 +1,14 @@
 from django.forms import ModelForm
-from .models import JobOffer, InternOffer
+from .models import JobAdvertisement, InternAdvertisement
 
 
 class JobOfferForm(ModelForm):
     class Meta:
-        model = JobOffer
+        model = JobAdvertisement
         fields = '__all__'
 
 
 class InternOfferForm(ModelForm):
     class Meta:
-        model = InternOffer
+        model = InternAdvertisement
         fields = '__all__'
