@@ -1,15 +1,6 @@
 from django.db import models
 from accounts.models import CompanyProfile
-
-
-class Branch(models.Model):
-    name = models.CharField(max_length=60)
-    usable = models.BooleanField(default=False)
-
-
-class Program(models.Model):
-    name = models.CharField(max_length=60)
-    usable = models.BooleanField(default=False)
+from student.models import Branch, Program
 
 
 class BaseAdvertisement(models.Model):
@@ -26,8 +17,8 @@ class BaseAdvertisement(models.Model):
     bonus = models.PositiveIntegerField(blank=True, default=0)
     bond = models.BooleanField()
     # selection process
-    eligible_branches = models.ManyToManyField(Branch,default=Branch.objects.all())
-    eligible_programs = models.ManyToManyField(Program,default=Branch.objects.all())
+    eligible_branches = models.ManyToManyField(Branch)
+    eligible_programs = models.ManyToManyField(Program)
     resume_required = models.BooleanField()
     aptitude_test_required = models.BooleanField()
     technical_test_required = models.BooleanField()
