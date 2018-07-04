@@ -6,13 +6,14 @@ from django.shortcuts import get_object_or_404
 
 
 class DetailsView(LoginRequiredMixin, UpdateView):
-    # template_name = 'student/details.html'
     model = StudentProfile
-    fields = '__all__'
+    fields = ('roll_no',)
     template_name = 'student/details.html'
+    success_url = '/student/details/'
 
     def get_object(self, queryset=None):
         return get_object_or_404(StudentProfile, user=self.request.user)
+
 
 
 class JobOffersListView(LoginRequiredMixin, ListView):
