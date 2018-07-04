@@ -6,17 +6,20 @@
             <div class="card">
                 <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;Update Details</span></div>
                 <div class="card-block">
-                    <form action="" method="post">
+                    <form method="post">
                         {% csrf_token %}
                         <div class="row">
-
+{#                            {{ form.as_p }}#}
+                            <p><label for="id_roll_no">Roll no:</label> <input type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8" required id="id_roll_no" /></p>
                         </div>
-
+                        <input type="submit" value="Update">
                     </form>
                 </div>
             </div>
 
-        </div>ass="col-lg-1"></div>
+        </div>
+        <div class="col-lg-1">
+        </div>
     </div>
 
 {% endblock %}
