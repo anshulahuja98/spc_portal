@@ -13,16 +13,25 @@
                             <th class="theader">S.No</th>
                             <th class="theader">Company Name</th>
                             <th class="theader">Job Designation</th>
+                            <th class="theader">View Offer</th>
                             <th class="theader">Status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for offer in job_offer_list %}
+                        {% for ad in job_ad_list %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                <td>{{ offer.company }}</td>
-                                <td>{{ offer.job_designation }}</td>
-                                <td></td>
+                                <td>{{ ad.company }}</td>
+                                <td>{{ ad.designation }}</td>
+                                <td>
+                                    <a href="{{ ad.get_absolute_url }}">
+                                        <button class="btn btn-info btn-sm">
+                                            View Offer
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
