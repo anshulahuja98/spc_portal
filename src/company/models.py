@@ -1,10 +1,13 @@
 from django.db import models
+from uuid import uuid4
+from django.shortcuts import reverse
 from accounts.models import CompanyProfile, StudentProfile
 from student.models import Branch, Program
 
 
-class BaseProfile(models.Model):
+class BaseAdvertisement(models.Model):
     # job prof
+    id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
     designation = models.CharField(max_length=30)
     description = models.CharField(max_length=50)
@@ -37,12 +40,15 @@ class BaseProfile(models.Model):
     def __str__(self):
         return "{} ({})".format(self.designation, self.company.name)
 
+    def get_absolute_url(self):
+        return reverse("company:offer", kwargs={"id": self.id})
 
-class JobProfile(BaseProfile):
+
+class JobAdvertisement(BaseAdvertisement):
     pass
 
 
-class InternshipProfile(BaseProfile):
+class InternshipAdvertisement(BaseAdvertisement):
     pass
 
 
@@ -64,8 +70,8 @@ class BaseOffer(models.Model):
 
 
 class JobOffer(BaseOffer):
-    profile = models.ForeignKey(JobProfile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
 
 
 class InternshipOffer(BaseOffer):
-    profile = models.ForeignKey(InternshipProfile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(InternshipAdvertisement, on_delete=models.CASCADE)
