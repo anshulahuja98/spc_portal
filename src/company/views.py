@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import FormView, ListView
+from django.views.generic import FormView, ListView, DetailView
 from .forms import JobOfferForm, InternOfferForm
-from company.models import JobProfile, InternshipProfile
+from company.models import JobAdvertisement, InternshipAdvertisement, BaseAdvertisement
 from django.contrib.auth.views import LoginView as DefaultLoginView
+from django.shortcuts import get_object_or_404
 
 
 class LoginView(DefaultLoginView):
@@ -20,7 +21,7 @@ class InternOfferFormView(FormView, LoginRequiredMixin):
 
 
 class JobProfilesAddedListView(ListView):
-    model = JobProfile
+    model = JobAdvertisement
     template_name = 'company/job_offers.html'
 
     def get_queryset(self):
@@ -28,8 +29,17 @@ class JobProfilesAddedListView(ListView):
 
 
 class InternProfilesAddedListView(ListView):
-    model = InternshipProfile
+    model = InternshipAdvertisement
     template_name = 'company/intern_offers.html'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)
+
+
+class OfferView(LoginRequiredMixin, DetailView):
+    model = InternshipAdvertisement
+    template_name = 'company/offer.html'
+    context_object_name = 'ad'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(InternshipAdvertisement, id=self.kwargs.get('id'))
