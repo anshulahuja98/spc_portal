@@ -38,7 +38,8 @@ class StudentProfileAdmin(admin.ModelAdmin):
 
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(admin.ModelAdmin):
-    inlines = (CompanyPersonInline, JobOfferInline, InternOfferInline, InternshipAdvertisementInline, JobAdvertisementInline)
+    inlines = (
+        CompanyPersonInline, JobOfferInline, InternOfferInline, InternshipAdvertisementInline, JobAdvertisementInline,)
 
     class Meta:
         model = CompanyProfile

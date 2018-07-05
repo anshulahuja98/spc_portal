@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, ListView, DetailView
 from .forms import JobOfferForm, InternOfferForm
-from company.models import JobAdvertisement, InternshipAdvertisement, BaseAdvertisement
+from company.models import JobAdvertisement, InternshipAdvertisement
 from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.shortcuts import get_object_or_404
 

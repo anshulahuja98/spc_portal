@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView, ListView, DetailView, FormView
+from django.views.generic import UpdateView, ListView, FormView
 from accounts.models import StudentProfile, Resume
 from company.models import JobAdvertisement, InternshipAdvertisement
 from django.shortcuts import get_object_or_404
@@ -9,7 +9,8 @@ from accounts.forms import ResumeForm
 
 class DetailsView(LoginRequiredMixin, UpdateView):
     model = StudentProfile
-    fields = ('roll_no','branch','program','gpa','phone','parent_name','dob','category','blood_group','jee_air',)
+    fields = (
+        'roll_no', 'branch', 'program', 'gpa', 'phone', 'parent_name', 'dob', 'category', 'blood_group', 'jee_air',)
     # fields = ('roll_no',)
     # fields = '__all__'
     template_name = 'student/details.html'

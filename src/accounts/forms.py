@@ -7,5 +7,3 @@ class ResumeForm(forms.Form):
     class Meta:
         model = Resume
         fields = ('file',)
-
-
