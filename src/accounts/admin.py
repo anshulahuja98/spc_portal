@@ -15,7 +15,7 @@ class JobOfferInline(admin.StackedInline):
     model = JobOffer
 
 
-class InternOfferInline(admin.StackedInline):
+class InternshipOfferInline(admin.StackedInline):
     model = InternshipOffer
 
 
@@ -39,7 +39,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(admin.ModelAdmin):
     inlines = (
-        CompanyPersonInline, JobOfferInline, InternOfferInline, InternshipAdvertisementInline, JobAdvertisementInline,)
+        CompanyPersonInline, JobOfferInline, InternshipOfferInline, InternshipAdvertisementInline, JobAdvertisementInline,)
 
     class Meta:
         model = CompanyProfile

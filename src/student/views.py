@@ -30,7 +30,7 @@ class JobOffersListView(LoginRequiredMixin, ListView):
         return self.model.objects.filter(min_gpa__lte=profile.gpa)
 
 
-class InternOffersListView(LoginRequiredMixin, ListView):
+class InternshipOffersListView(LoginRequiredMixin, ListView):
     model = InternshipAdvertisement
     template_name = 'student/intern_offers.html'
     context_object_name = 'intern_ad_list'

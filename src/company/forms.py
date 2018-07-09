@@ -2,13 +2,13 @@ from django.forms import ModelForm
 from .models import JobAdvertisement, InternshipAdvertisement
 
 
-class JobOfferForm(ModelForm):
+class JobAdvertisementForm(ModelForm):
     class Meta:
         model = JobAdvertisement
         fields = '__all__'
 
 
-class InternOfferForm(ModelForm):
+class InternshipAdvertisementForm(ModelForm):
     class Meta:
         model = InternshipAdvertisement
         fields = '__all__'
