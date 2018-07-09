@@ -9,8 +9,114 @@
                     <form method="post">
                         {% csrf_token %}
                         <div class="row">
-{#                            {{ form.as_p }}#}
-                            <p><label for="id_roll_no">Roll no:</label> <input type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8" required id="id_roll_no" /></p>
+                            <div class="col-lg-5">
+                            <br>
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix"></i>
+                                    <label for="id_roll_no" style="font-size: medium">Roll no:</label> <input type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8" required id="id_roll_no" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix"></i>
+                                    <label for="id_program">Program:</label> <input type="text" name="program" value="{{form.program.value}}" required id="id_program">
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix"></i>
+                                    <label for="id_branch">Branch:</label> <input type="text" name="branch" value="{{form.branch.value}}" required id="id_branch">
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_gpa" style="font-size: medium">Gpa:</label> <input type="number" name="gpa" value="{{ form.gpa.value }}" step="any" required id="id_gpa" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-phone prefix"></i>
+                                    <label for="id_phone" style="font-size: medium">Phone:</label> <input type="text" name="phone" value="{{ form.phone.value}}" maxlength="11" required id="id_phone" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix"></i>
+                                    <label for="id_parent_name" style="font-size: medium">Parent name:</label> <input type="text" name="parent_name" value="{{ form.parent_name.value }}" maxlength="30" required id="id_parent_name" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-birthday-cake prefix"></i>
+                                    <label for="id_dob" style="font-size: medium">Dob:</label> <input type="text" name="dob" value="{{ form.dob.value }}" id="id_dob" required />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-tint prefix"></i>
+                                    <label for="id_blood_group" style="font-size: medium">Blood group:</label> <input type="text" name="blood_group" value="{{ form.blood_group.value }}" id="id_blood_group" maxlength="5" required />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix"></i>
+                                    <label for="id_jee_air" style="font-size: medium">Jee air:</label> <input type="number" name="jee_air" value="{{ form.jee_air.value }}" id="id_jee_air" required />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-flag prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality : {{ form.nationality }}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-5">
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_permanent_address" style="font-size: medium">Permanent address:</label> <textarea name="permanent_address" required rows="10" id="id_permanent_address" cols="40"> {{ form.permanent_address.value }}</textarea>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_current_address" style="font-size: medium">Current address:</label> <textarea name="current_address" required rows="10" id="id_current_address" cols="40"> {{ form.current_address.value }}</textarea>
+                                </div>
+
+                                <div class="md-form">
+                                    <i class="fa fa-building prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.hostel_name}}</span> <!--iska design thik karliyo, alignment-->
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-bed prefix"></i>
+                                    <label for="id_room_no" style="font-size: medium">Room No.:</label> <input type="number" name="room_no" value="{{form.room_no.value}}" required id="id_room_no">
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_year" style="font-size: medium">X year:</label> <input type="number" name="x_year" value="{{ form.x_year.value }}" required id="id_x_year" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_board" style="font-size: medium">X Board:</label> <input type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required id="id_x_board_naem" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_x_percentage" style="font-size: medium">X Percentage:</label> <input type="text" name="x_percentage" value="{{ form.x_percentage.value }}" required id="id_x_percentage" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_year" style="font-size: medium">XII year:</label> <input type="number" name="xii_year" value="{{ form.xii_year.value }}" required id="id_xii_year" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_board" style="font-size: medium">XII Board:</label> <input type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}" required id="id_xii_board_naem" />
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_xii_percentage" style="font-size: medium">XII Percentage:</label> <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}" required id="id_xii_percentage" />
+                                </div>
+                                <br>
+
+                        <!--     {{ form.as_p }} -->
+                            </div>
                         </div>
                         <input type="submit" value="Update">
                     </form>
