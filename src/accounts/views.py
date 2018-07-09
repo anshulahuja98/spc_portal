@@ -9,7 +9,7 @@ class LoginView(DefaultLoginView):
     def get_success_url(self):
         url = super().get_redirect_url()
         if hasattr(self.request.user, 'companyprofile'):
-            return url or reverse('company:dummy')
+            return url or reverse('company:job-offers-added')
         elif hasattr(self.request.user, 'studentprofile'):
             return url or reverse('student:detail')
         else:
