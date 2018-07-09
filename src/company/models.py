@@ -10,7 +10,7 @@ class BaseAdvertisement(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
     designation = models.CharField(max_length=30)
-    description = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
     tentative_join_date = models.DateField()
     tentative_job_location = models.CharField(max_length=50)
     ads = models.FileField(upload_to='ads', null=True, blank=True)

@@ -10,9 +10,10 @@ from accounts.forms import ResumeForm
 class DetailsView(LoginRequiredMixin, UpdateView):
     model = StudentProfile
     fields = (
-        'roll_no', 'branch', 'program', 'gpa', 'phone', 'parent_name', 'dob', 'category', 'blood_group', 'jee_air',)
-    # fields = ('roll_no',)
-    # fields = '__all__'
+        'roll_no', 'branch', 'program', 'gpa', 'phone', 'parent_name', 'dob', 'category', 'blood_group', 'jee_air',
+        'user', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
+        'current_address', 'permanent_address', 'nationality', 'physical_disability', 'hobbies', 'room_no',
+        'hostel_name')
     template_name = 'student/details.html'
     success_url = '/student/details/'
 
