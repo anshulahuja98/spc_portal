@@ -17,7 +17,7 @@ class BaseAdvertisement(models.Model):
     # package details
     ctc = models.FloatField()
     gross_salary = models.FloatField()
-    bonus = models.PositiveIntegerField(blank=True, default=0)
+    bonus = models.PositiveIntegerField(blank=True, default=0,null=True)
     bond = models.BooleanField()
     # selection process
     eligible_branches = models.ManyToManyField(Branch, default=Branch.objects.all())
