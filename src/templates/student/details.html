@@ -10,50 +10,80 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-5">
-                            <br>
+                                <br>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix"></i>
-                                    <label for="id_roll_no" style="font-size: medium">Roll no:</label> <input type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8" required id="id_roll_no" />
+                                    <label for="id_roll_no" style="font-size: medium">Roll no:</label> <input
+                                        type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8"
+                                        required id="id_roll_no" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-graduation-cap prefix"></i>
-                                    <label for="id_program">Program:</label> <input type="text" name="program" value="{{form.program.value}}" required id="id_program">
+                                    <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program: {{ form.program }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-graduation-cap prefix"></i>
-                                    <label for="id_branch">Branch:</label> <input type="text" name="branch" value="{{form.branch.value}}" required id="id_branch">
+                                    <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Branch: {{ form.branch }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_gpa" style="font-size: medium">Gpa:</label> <input type="number" name="gpa" value="{{ form.gpa.value }}" step="any" required id="id_gpa" />
+                                    <label for="id_gpa" style="font-size: medium">GPA:</label> <input type="number"
+                                                                                                      name="gpa"
+                                                                                                      value="{{ form.gpa.value }}"
+                                                                                                      step="any"
+                                                                                                      required
+                                                                                                      id="id_gpa"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-phone prefix"></i>
-                                    <label for="id_phone" style="font-size: medium">Phone:</label> <input type="text" name="phone" value="{{ form.phone.value}}" maxlength="11" required id="id_phone" />
+                                    <label for="id_phone" style="font-size: medium">Phone:</label> <input type="text"
+                                                                                                          name="phone"
+                                                                                                          value="{{ form.phone.value }}"
+                                                                                                          maxlength="11"
+                                                                                                          required
+                                                                                                          id="id_phone"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix"></i>
-                                    <label for="id_parent_name" style="font-size: medium">Parent name:</label> <input type="text" name="parent_name" value="{{ form.parent_name.value }}" maxlength="30" required id="id_parent_name" />
+                                    <label for="id_parent_name" style="font-size: medium">Parent name:</label> <input
+                                        type="text" name="parent_name" value="{{ form.parent_name.value }}"
+                                        maxlength="30" required id="id_parent_name"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-birthday-cake prefix"></i>
-                                    <label for="id_dob" style="font-size: medium">Dob:</label> <input type="text" name="dob" value="{{ form.dob.value }}" id="id_dob" required />
+                                    {{ form.dob }}
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-tint prefix"></i>
-                                    <label for="id_blood_group" style="font-size: medium">Blood group:</label> <input type="text" name="blood_group" value="{{ form.blood_group.value }}" id="id_blood_group" maxlength="5" required />
+                                    <label for="id_blood_group" style="font-size: medium">Blood group:</label> <input
+                                        type="text" name="blood_group" value="{{ form.blood_group.value }}"
+                                        id="id_blood_group" maxlength="5" required/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-graduation-cap prefix"></i>
-                                    <label for="id_jee_air" style="font-size: medium">Jee air:</label> <input type="number" name="jee_air" value="{{ form.jee_air.value }}" id="id_jee_air" required />
+                                    <label for="id_jee_air" style="font-size: medium">Jee air:</label> <input
+                                        type="number" name="jee_air" value="{{ form.jee_air.value }}" id="id_jee_air"
+                                        required/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-blind prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Disability : {{ form.physical_disability }}</span>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-bars prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category : {{ form.category }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -66,59 +96,85 @@
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-home prefix"></i>
-                                    <label for="id_permanent_address" style="font-size: medium">Permanent address:</label> <textarea name="permanent_address" required rows="10" id="id_permanent_address" cols="40"> {{ form.permanent_address.value }}</textarea>
+                                    <label for="id_permanent_address" style="font-size: medium">Permanent
+                                        address:</label> <textarea name="permanent_address" required rows="10"
+                                                                   id="id_permanent_address"
+                                                                   cols="40"> {{ form.permanent_address.value }}</textarea>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-home prefix"></i>
-                                    <label for="id_current_address" style="font-size: medium">Current address:</label> <textarea name="current_address" required rows="10" id="id_current_address" cols="40"> {{ form.current_address.value }}</textarea>
+                                    <label for="id_current_address" style="font-size: medium">Current address:</label>
+                                    <textarea name="current_address" required rows="10" id="id_current_address"
+                                              cols="40"> {{ form.current_address.value }}</textarea>
                                 </div>
 
                                 <div class="md-form">
                                     <i class="fa fa-building prefix" style="color:cornflowerblue"></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.hostel_name}}</span> <!--iska design thik karliyo, alignment-->
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.hostel_name }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-bed prefix"></i>
-                                    <label for="id_room_no" style="font-size: medium">Room No.:</label> <input type="number" name="room_no" value="{{form.room_no.value}}" required id="id_room_no">
+                                    <label for="id_room_no" style="font-size: medium">Room No.:</label> <input
+                                        type="number" name="room_no" value="{{ form.room_no.value }}" required
+                                        id="id_room_no">
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_year" style="font-size: medium">X year:</label> <input type="number" name="x_year" value="{{ form.x_year.value }}" required id="id_x_year" />
+                                    <label for="id_x_year" style="font-size: medium">X year:</label> <input
+                                        type="number" name="x_year" value="{{ form.x_year.value }}" required
+                                        id="id_x_year" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_board" style="font-size: medium">X Board:</label> <input type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required id="id_x_board_naem" />
+                                    <label for="id_x_board" style="font-size: medium">X Board:</label> <input
+                                        type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required
+                                        id="id_x_board_naem" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_x_percentage" style="font-size: medium">X Percentage:</label> <input type="text" name="x_percentage" value="{{ form.x_percentage.value }}" required id="id_x_percentage" />
+                                    <label for="id_x_percentage" style="font-size: medium">X Percentage:</label> <input
+                                        type="text" name="x_percentage" value="{{ form.x_percentage.value }}" required
+                                        id="id_x_percentage" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_year" style="font-size: medium">XII year:</label> <input type="number" name="xii_year" value="{{ form.xii_year.value }}" required id="id_xii_year" />
+                                    <label for="id_xii_year" style="font-size: medium">XII year:</label> <input
+                                        type="number" name="xii_year" value="{{ form.xii_year.value }}" required
+                                        id="id_xii_year" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_board" style="font-size: medium">XII Board:</label> <input type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}" required id="id_xii_board_naem" />
+                                    <label for="id_xii_board" style="font-size: medium">XII Board:</label> <input
+                                        type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}"
+                                        required id="id_xii_board_name" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_xii_percentage" style="font-size: medium">XII Percentage:</label> <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}" required id="id_xii_percentage" />
+                                    <label for="id_xii_percentage" style="font-size: medium">XII Percentage:</label>
+                                    <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}"
+                                           required id="id_xii_percentage" readonly/>
                                 </div>
                                 <br>
-
-                        <!--     {{ form.as_p }} -->
+                                <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_hobbies" style="font-size: medium">Hobbies</label>
+                                    <textarea name="hobbies" required rows="10" id="id_hobbies"
+                                              cols="40"> {{ form.hobbies.value }}</textarea>
+                                </div>
+                                <br>
                             </div>
                         </div>
-                        <input type="submit" value="Update">
+                        <center>
+                            <button class="btn btn-primary" type="submit"> Update</button>
+                        </center>
                     </form>
                 </div>
             </div>

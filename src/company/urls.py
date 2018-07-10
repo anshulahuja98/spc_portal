@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import InternshipAdvertisementFormView, JobAdvertisementFormView, InternshipProfilesAddedListView, JobProfilesAddedListView, \
+from .views import InternshipAdvertisementFormView, JobAdvertisementFormView, InternshipProfilesAddedListView, \
+    JobProfilesAddedListView, \
     OfferView
 
 app_name = 'company'
