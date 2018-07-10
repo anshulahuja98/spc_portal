@@ -3,7 +3,7 @@ from django.views.generic import FormView, ListView, DetailView
 from .forms import JobAdvertisementForm, InternshipAdvertisementForm
 from company.models import JobAdvertisement, InternshipAdvertisement
 from django.contrib.auth.views import LoginView as DefaultLoginView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
 
 
 class LoginView(DefaultLoginView):
@@ -18,6 +18,9 @@ class JobAdvertisementFormView(FormView, LoginRequiredMixin):
 class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
     form_class = InternshipAdvertisementForm
     template_name = 'company/internoffer_form.html'
+
+    def get_success_url(self):
+        return reverse('company:intern-offer-form')
 
 
 class JobProfilesAddedListView(ListView):
