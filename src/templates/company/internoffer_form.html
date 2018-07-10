@@ -6,8 +6,113 @@
             <div class="card">
                 <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Add Intern Offer</span></div>
                 <div class="card-block">
-                    {{ form.as_p }}
-
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-4">
+                        <br>
+                            <div class="md-form">
+                            <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Company : {{form.company}}</span>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-briefcase prefix" style="color: cornflowerblue"></i>
+                            <label for="id_designation" style="font-size: medium; font-weight: bold">Designation:</label> <input type="text" name="designation" maxlength="30" id="id_designation" required/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-briefcase prefix" style="color:cornflowerblue"></i>
+                            <label for="id_description" style="font-size: medium; font-weight: bold">Description:</label> <input type="text" name="description" maxlength="100" id="id_description"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-calendar prefix" style="color:cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tentative Joining Date:</span> <input type="date" name="tentative_join_date" id="id_tentative_join_date"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-map-marker prefix" style="color: cornflowerblue"></i>
+                            <label for="id_tentative_job_location" style="font-size: medium; font-weight: bold">Tentative Internship Location:</label> <input type="text" name="tentative_job_location" id="id_tentative_job_location"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-fax prefix" style="color: cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ads : </span> <input type="file" name="ads" id="id_ads" required/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-rupee prefix" style="color:cornflowerblue"></i>
+                            <label for="id_ctc" style="font-size: medium; font-weight: bold">CTC:</label> <input type="number" name="ctc" id="id_ctc" step="any"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-rupee prefix" style="color:cornflowerblue"></i>
+                            <label for="id_gross_salary" style="font-size: medium; font-weight: bold">Gross Salary:</label> <input type="number" name="gross_salary" id="id_gross_salary" required step="any"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-gift prefix" style="color:cornflowerblue"></i>
+                            <label for="id_bonus" style="font-size: medium; font-weight: bold">Bonus:</label> <input type="number" name="bonus" id="id_bonus" min="0"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                            <i class="fa fa-plus-circle" style="color:cornflowerblue; font-size:xx-large"></i>
+                            <span>&nbsp;&nbsp;&nbsp;Bond : </span><input type="checkbox" name="bond" id="id_bond"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-5">
+                            <br>
+                            <div class="md-form">
+                                <i class="fa fa-check" style="color:cornflowerblue; font-size:xx-large"></i>
+                                <span>&nbsp;&nbsp;Eligible Branches and Programs : </span><br>&nbsp;
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <select name="eligible_branches" id="id_eligible_branches" multiple="multiple">
+                                        <option value="2" selected>CSE</option>
+                                        <option value="3" selected>EE</option>
+                                        <option value="4" selected>ME</option>
+                                    </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <select name="eligible_programs" id="id_eligible_programs" multiple="multiple">
+                                        <option value="1">B.Tech</option>
+                                        <option value="2" selected>M.Tech</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                                <i class="fa fa-check prefix"></i>
+                                <input type="text" value="Selection Procedure Includes :" readonly style="font-size: larger">
+                            </div>
+                            <div class="md-form">
+                            <form>
+                            <table border="0">
+                                <tr><td><span style="font-size: large">Resume Required</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="resume_required" id="id_resume_required"/></td></tr>
+                                <tr><td><span style="font-size: large">Aptitude Test</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="aptitude_test_required" id="id_aptitude_test_required"/></td></tr>
+                                <tr><td><span style="font-size: large">Technical Test</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="technical_test_required" id="id_technical_test_required"/></td></tr>
+                                <tr><td><span style="font-size: large">Group Discussion</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="group_discussion_required" id="id_group_discussion_required"/></td></tr>
+                                <tr><td><span style="font-size: large">Technical Interview</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="technical_interview_required" id="id_technical_interview_required"/></td></tr>
+                                <tr><td><span style="font-size: large">HR Round Interview</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="hr_round_required" id="id_hr_round_required"/></td></tr>
+                                <tr><td><span style="font-size: large">Medical Test Required</span></td><td>&nbsp;:&nbsp;&nbsp;</td><td><input type="checkbox" name="medical_test_required" id="id_medical_test_required"/></td></tr>
+                            </table>
+                            </form>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                                <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                <label for="id_min_gpa" style="font-size: medium; font-weight: bold">Minimum CGPA:</label> <input type="number" name="min_gpa" step="any" required id="id_min_gpa" />
+                            </div>
+                            <br>
+                            <div class="md-form">
+                                <i class="fa fa-group prefix" style="color: cornflowerblue"></i>
+                                <label for="id_number_of_members" style="font-size: medium; font-weight: bold">Number of Members:</label> <input type="number" name="number_of_members" required id="id_min_gpa" min="0"/>
+                            </div>
+                            <br>
+                            <div class="md-form">
+                                <i class="fa fa-pencil prefix" style="color: cornflowerblue"></i>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other Details : </span> <textarea name="other_details" id="id_other_details"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-1"></div>
