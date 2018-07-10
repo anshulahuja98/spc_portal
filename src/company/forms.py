@@ -5,7 +5,7 @@ from .models import JobAdvertisement, InternshipAdvertisement
 class JobAdvertisementForm(ModelForm):
     class Meta:
         model = JobAdvertisement
-        fields = '__all__'
+        exclude = ('id',)
 
 
 class InternshipAdvertisementForm(ModelForm):

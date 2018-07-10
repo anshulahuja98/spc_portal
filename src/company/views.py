@@ -14,6 +14,19 @@ class LoginView(DefaultLoginView):
 class JobAdvertisementFormView(FormView, LoginRequiredMixin):
     form_class = JobAdvertisementForm
     template_name = 'company/joboffer_form.html'
+    success_url = '/company/job_offers/'
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def post(self, request, *args, **kwargs):
+        self.request.POST._mutable = True
+        self.request.POST.update({
+            'company': CompanyProfile.objects.get(user=self.request.user).id,
+        })
+        self.request.POST._mutable = False
+        return super().post(request, args, kwargs)
 
 
 class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
