@@ -47,17 +47,19 @@ class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
         return super().post(request, args, kwargs)
 
 
-class JobProfilesAddedListView(ListView):
+class JobAdvertisementsAddedListView(ListView):
     model = JobAdvertisement
     template_name = 'company/job_offers.html'
+    context_object_name = 'job_ad_list'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)
 
 
-class InternshipProfilesAddedListView(ListView):
+class InternshipAdvertisementAddedListView(ListView):
     model = InternshipAdvertisement
     template_name = 'company/intern_offers.html'
+    context_object_name = 'intern_ad_list'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)

@@ -37,7 +37,8 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
     context_object_name = 'intern_ad_list'
 
     def get_queryset(self):
-        return self.model.objects.all()
+        profile = get_object_or_404(StudentProfile, user=self.request.user)
+        return self.model.objects.filter(min_gpa__lte=profile.gpa)
 
 
 # class ResumeUploadView(LoginRequiredMixin, UpdateView):
