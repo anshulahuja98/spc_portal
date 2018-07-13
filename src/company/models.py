@@ -17,7 +17,7 @@ class BaseAdvertisement(models.Model):
     # package details
     ctc = models.FloatField()
     gross_salary = models.FloatField()
-    bonus = models.PositiveIntegerField(blank=True, default=0,null=True)
+    bonus = models.PositiveIntegerField(blank=True, default=0, null=True)
     bond = models.BooleanField()
     # selection process
     eligible_branches = models.ManyToManyField(Branch, default=Branch.objects.all())
@@ -40,16 +40,19 @@ class BaseAdvertisement(models.Model):
     def __str__(self):
         return "{} ({})".format(self.designation, self.company.name)
 
-    def get_absolute_url(self):
-        return reverse("company:offer", kwargs={"id": self.id})
-
 
 class JobAdvertisement(BaseAdvertisement):
     pass
 
+    def get_absolute_url(self):
+        return reverse("company:job-offer", kwargs={"id": self.id})
+
 
 class InternshipAdvertisement(BaseAdvertisement):
     pass
+
+    def get_absolute_url(self):
+        return reverse("company:internship-offer", kwargs={"id": self.id})
 
 
 class BaseOffer(models.Model):

@@ -3,7 +3,7 @@ from django.views.generic import FormView, ListView, DetailView
 from .forms import JobAdvertisementForm, InternshipAdvertisementForm
 from company.models import JobAdvertisement, InternshipAdvertisement
 from django.contrib.auth.views import LoginView as DefaultLoginView
-from django.shortcuts import get_object_or_404, reverse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from accounts.models import CompanyProfile
 
 
@@ -65,10 +65,29 @@ class InternshipAdvertisementAddedListView(ListView):
         return self.model.objects.filter(company__user=self.request.user)
 
 
-class OfferView(LoginRequiredMixin, DetailView):
+class InternshipOfferView(LoginRequiredMixin, DetailView):
     model = InternshipAdvertisement
     template_name = 'company/offer.html'
     context_object_name = 'ad'
 
     def get_object(self, queryset=None):
         return get_object_or_404(InternshipAdvertisement, id=self.kwargs.get('id'))
+
+    def get_context_data(self, **kwargs):
+        context = super(InternshipOfferView, self).get_context_data(**kwargs)
+        context['type'] = "Internship"
+        return context
+
+
+class JobOfferView(LoginRequiredMixin, DetailView):
+    model = JobAdvertisement
+    template_name = 'company/offer.html'
+    context_object_name = 'ad'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(JobAdvertisement, id=self.kwargs.get('id'))
+
+    def get_context_data(self, **kwargs):
+        context = super(JobOfferView, self).get_context_data(**kwargs)
+        context['type'] = "Job"
+        return context
