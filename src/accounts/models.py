@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from student.models import Branch, Program
+from student.models import ProgramAndBranch
 
 
 class StudentProfile(models.Model):
@@ -27,8 +27,8 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     roll_no = models.CharField(max_length=8)
     year = models.SmallIntegerField()
-    branch = models.ForeignKey(Branch, on_delete=models.SET_NULL, null=True)
-    program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
+    program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
+    # program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
     phone = models.CharField(max_length=15)
     parent_name = models.CharField(max_length=30)

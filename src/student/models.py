@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Branch(models.Model):
+class ProgramAndBranch(models.Model):
     name = models.CharField(max_length=60)
     abbreviation = models.CharField(max_length=10)
     usable = models.BooleanField(default=False)

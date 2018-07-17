@@ -1,16 +1,16 @@
 from django.contrib import admin
-from student.models import Branch, Program
+from student.models import ProgramAndBranch
 
 
-@admin.register(Branch)
-class BranchAdmin(admin.ModelAdmin):
+@admin.register(ProgramAndBranch)
+class ProgramAndBranchAdmin(admin.ModelAdmin):
     class Meta:
-        model = Branch
+        model = ProgramAndBranch
         fields = '__all__'
 
-
-@admin.register(Program)
-class ProgramAdmin(admin.ModelAdmin):
-    class Meta:
-        model = Program
-        fields = '__all__'
+#
+# @admin.register(Program)
+# class ProgramAdmin(admin.ModelAdmin):
+#     class Meta:
+#         model = Program
+#         fields = '__all__'

@@ -2,7 +2,7 @@ from django.db import models
 from uuid import uuid4
 from django.shortcuts import reverse
 from accounts.models import CompanyProfile, StudentProfile
-from student.models import Branch, Program
+from student.models import ProgramAndBranch
 
 
 class BaseAdvertisement(models.Model):
@@ -10,7 +10,7 @@ class BaseAdvertisement(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
     designation = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.TextField()
     tentative_join_date = models.DateField()
     tentative_job_location = models.CharField(max_length=50)
     ads = models.FileField(upload_to='ads', null=True, blank=True)
@@ -20,8 +20,8 @@ class BaseAdvertisement(models.Model):
     bonus = models.PositiveIntegerField(blank=True, default=0, null=True)
     bond = models.BooleanField()
     # selection process
-    eligible_branches = models.ManyToManyField(Branch, default=Branch.objects.all())
-    eligible_programs = models.ManyToManyField(Program, default=Branch.objects.all())
+    eligible_program_branch = models.ManyToManyField(ProgramAndBranch, default=ProgramAndBranch.objects.all())
+    # eligible_programs = models.ManyToManyField(Program, default=ProgramAndBranch.objects.all())
     resume_required = models.BooleanField()
     aptitude_test_required = models.BooleanField()
     technical_test_required = models.BooleanField()
