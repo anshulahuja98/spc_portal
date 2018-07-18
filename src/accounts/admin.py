@@ -43,3 +43,10 @@ class CompanyProfileAdmin(admin.ModelAdmin):
     class Meta:
         model = CompanyProfile
         fields = '__all__'
+
+
+@admin.register(Resume)
+class ResumeAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Resume
+        fields = '__all__'
