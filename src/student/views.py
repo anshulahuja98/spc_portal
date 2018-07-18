@@ -26,7 +26,7 @@ class DetailsView(LoginRequiredMixin, UpdateView):
 # class JobOffersListView(LoginRequiredMixin, ListView):
 #     model = JobAdvertisement
 #     context_object_name = 'job_ad_list'
-#     template_name = 'student/job_offers.html'
+#     template_name = 'student/offers_list.html'
 #
 #     def get_queryset(self):
 #         profile = get_object_or_404(StudentProfile, user=self.request.user)

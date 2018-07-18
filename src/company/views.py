@@ -49,8 +49,8 @@ class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
 
 class JobAdvertisementsAddedListView(ListView):
     model = JobAdvertisement
-    template_name = 'company/job_offers.html'
-    context_object_name = 'job_ad_list'
+    template_name = 'company/offers_list.html'
+    context_object_name = 'ad_list'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)
@@ -58,8 +58,8 @@ class JobAdvertisementsAddedListView(ListView):
 
 class InternshipAdvertisementAddedListView(ListView):
     model = InternshipAdvertisement
-    template_name = 'company/intern_offers.html'
-    context_object_name = 'intern_ad_list'
+    template_name = 'company/offers_list.html'
+    context_object_name = 'ad_list'
 
     def get_queryset(self):
         return self.model.objects.filter(company__user=self.request.user)

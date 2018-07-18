@@ -48,12 +48,18 @@ class JobAdvertisement(BaseAdvertisement):
     def get_absolute_url(self):
         return reverse("company:job-offer", kwargs={"id": self.id})
 
+    def get_offers(self):
+        return JobOffer.objects.filter(profile__id=self.id)
+
 
 class InternshipAdvertisement(BaseAdvertisement):
     pass
 
     def get_absolute_url(self):
         return reverse("company:internship-offer", kwargs={"id": self.id})
+
+    def get_offers(self):
+        return InternshipOffer.objects.filter(profile__id=self.id)
 
 
 class BaseOffer(models.Model):
