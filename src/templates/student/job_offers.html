@@ -31,6 +31,15 @@
                                     </a>
                                 </td>
                                 <td>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <label for="id_profile"></label>
+                                        <select name="profile" required id="id_profile" hidden>
+                                            <option value="{{ ad.id }}" selected>---------</option>
+                                        </select>
+                                        <button class="btn btn-primary btn-sm" type="submit">Apply</button>
+                                    </form>
+
                                 </td>
                             </tr>
                         {% endfor %}

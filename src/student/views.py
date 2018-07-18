@@ -2,11 +2,11 @@ from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView, FormView, CreateView, View
 from accounts.models import StudentProfile, Resume
-from company.models import JobAdvertisement, InternshipAdvertisement, InternshipOffer
+from company.models import JobAdvertisement, InternshipAdvertisement
 from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
-from .forms import InternshipOfferForm
-from django.shortcuts import reverse, HttpResponseRedirect
+from .forms import InternshipOfferForm, JobOfferForm
+from django.shortcuts import HttpResponseRedirect
 
 
 class DetailsView(LoginRequiredMixin, UpdateView):
@@ -23,14 +23,51 @@ class DetailsView(LoginRequiredMixin, UpdateView):
         return get_object_or_404(StudentProfile, user=self.request.user)
 
 
+# class JobOffersListView(LoginRequiredMixin, ListView):
+#     model = JobAdvertisement
+#     context_object_name = 'job_ad_list'
+#     template_name = 'student/job_offers.html'
+#
+#     def get_queryset(self):
+#         profile = get_object_or_404(StudentProfile, user=self.request.user)
+#         return self.model.objects.filter(min_gpa__lte=profile.gpa)
+
 class JobOffersListView(LoginRequiredMixin, ListView):
     model = JobAdvertisement
-    context_object_name = 'job_ad_list'
     template_name = 'student/job_offers.html'
+    context_object_name = 'job_ad_list'
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
         return self.model.objects.filter(min_gpa__lte=profile.gpa)
+
+
+class JobOfferApplyFormView(CreateView):
+    template_name = 'student/job_offers.html'
+    form_class = JobOfferForm
+    success_url = '/student/job_offers/'
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.success_url)
+
+    def post(self, request, *args, **kwargs):
+        self.request.POST._mutable = True
+        self.request.POST.update({
+            'student': StudentProfile.objects.get(user=self.request.user).id,
+        })
+        self.request.POST._mutable = False
+        return super().post(request, args, kwargs)
+
+
+class JobOffersView(LoginRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        view = JobOffersListView.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = JobOfferApplyFormView.as_view()
+        return view(request, *args, **kwargs)
 
 
 class InternshipOffersListView(LoginRequiredMixin, ListView):
@@ -43,7 +80,7 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
         return self.model.objects.filter(min_gpa__lte=profile.gpa)
 
 
-class InternshipOfferApplyForm(CreateView):
+class InternshipOfferApplyFormView(CreateView):
     template_name = 'student/intern_offers.html'
     form_class = InternshipOfferForm
     success_url = '/student/intern_offers/'
@@ -67,7 +104,7 @@ class InternshipOffersView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        view = InternshipOfferApplyForm.as_view()
+        view = InternshipOfferApplyFormView.as_view()
         return view(request, *args, **kwargs)
 
 

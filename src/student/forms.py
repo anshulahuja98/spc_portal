@@ -1,5 +1,4 @@
 from django.forms import ModelForm
-from django import forms
 from company.models import JobOffer, InternshipOffer
 
 
