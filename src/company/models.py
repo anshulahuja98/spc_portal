@@ -1,8 +1,9 @@
 from django.db import models
 from uuid import uuid4
 from django.shortcuts import reverse
-from accounts.models import CompanyProfile, StudentProfile
+from accounts.models import CompanyProfile, StudentProfile, Resume
 from student.models import ProgramAndBranch
+from django.db.models.signals import pre_save
 
 
 class BaseAdvertisement(models.Model):
@@ -56,16 +57,17 @@ class InternshipAdvertisement(BaseAdvertisement):
 
 
 class BaseOffer(models.Model):
-    student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
-    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
+    student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, null=True)
+    company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True)
     is_accepted = models.BooleanField(default=False)
+    resume = models.ForeignKey(Resume, on_delete=models.SET_NULL, null=True)
 
     @property
     def ctc(self):
         return self.profile.ctc
 
     def __str__(self):
-        return "{} ({}) - {}".format(self.student.user.get_full_name(), self.profile.designation,
+        return "{} ({}) - {}".format(self.student.user.username, self.profile.designation,
                                      self.company.name)
 
     class Meta:
@@ -78,3 +80,13 @@ class JobOffer(BaseOffer):
 
 class InternshipOffer(BaseOffer):
     profile = models.ForeignKey(InternshipAdvertisement, on_delete=models.CASCADE)
+
+
+def event_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.company:
+        instance.company = instance.profile.company
+
+
+pre_save.connect(event_pre_save_receiver, sender=InternshipOffer)
+
+pre_save.connect(event_pre_save_receiver, sender=JobOffer)
