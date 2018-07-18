@@ -34,8 +34,8 @@ class DetailsView(LoginRequiredMixin, UpdateView):
 
 class JobOffersListView(LoginRequiredMixin, ListView):
     model = JobAdvertisement
-    template_name = 'student/job_offers.html'
-    context_object_name = 'job_ad_list'
+    template_name = 'student/offers_list.html'
+    context_object_name = 'ad_list'
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
@@ -43,7 +43,7 @@ class JobOffersListView(LoginRequiredMixin, ListView):
 
 
 class JobOfferApplyFormView(CreateView):
-    template_name = 'student/job_offers.html'
+    template_name = 'student/offers_list.html'
     form_class = JobOfferForm
     success_url = '/student/job_offers/'
 
@@ -72,8 +72,8 @@ class JobOffersView(LoginRequiredMixin, View):
 
 class InternshipOffersListView(LoginRequiredMixin, ListView):
     model = InternshipAdvertisement
-    template_name = 'student/intern_offers.html'
-    context_object_name = 'intern_ad_list'
+    template_name = 'student/offers_list.html'
+    context_object_name = 'ad_list'
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
@@ -81,7 +81,7 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
 
 
 class InternshipOfferApplyFormView(CreateView):
-    template_name = 'student/intern_offers.html'
+    template_name = 'student/offers_list.html'
     form_class = InternshipOfferForm
     success_url = '/student/intern_offers/'
 
