@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView, FormView, CreateView, View
 from accounts.models import StudentProfile, Resume
@@ -108,17 +107,42 @@ class InternshipOffersView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
 
 
-# class ResumeUploadView(LoginRequiredMixin, UpdateView):
-#     model = Resume
-#     template_name = 'student/resume.html'
-#
-#     def get_object(self, queryset=None):
-#         return get_object_or_404(Resume, student__user=self.request.user)
-#
-
-
-class ResumeUploadView(FormView):
-    ResumeFormSet = forms.formset_factory(ResumeForm, extra=4)
-    template_name = 'student/resume.html'
-    resume_formset = ResumeFormSet(prefix='resume')
+class ResumeListView(ListView, LoginRequiredMixin):
     model = Resume
+    template_name = 'student/resume.html'
+    context_object_name = 'resume_list'
+
+    def get_object(self, queryset=None):
+        student = get_object_or_404(StudentProfile, user=self.request.user)
+        print(student)
+        return self.model.objects.filter(Resume, student=student)
+
+
+class ResumeUploadFormView(FormView, LoginRequiredMixin):
+    model = Resume
+    template_name = 'student/resume.html'
+    form_class = ResumeForm
+    success_url = '/student/resume_upload/'
+
+    def form_valid(self, form):
+        print("valid")
+
+    def form_invalid(self, form):
+        print("invalid")
+        print(form.errors)
+
+
+class ResumeView(View):
+    def get(self, request, *args, **kwargs):
+        view = ResumeListView.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = ResumeUploadFormView.as_view()
+        return view(request, *args, **kwargs)
+
+# class ResumeUploadView(FormView):
+#     ResumeFormSet = forms.formset_factory(ResumeForm, extra=4)
+#     template_name = 'student/resume.html'
+#     resume_formset = ResumeFormSet(prefix='resume')
+#     model = Resume

@@ -5,10 +5,60 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card">
-                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Job Offers</span></div>
+                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Resume Update</span></div>
                 <div class="card-block">
-                    {{ formset }}
-                    {{ form }}
+                    <table class="table table-striped">
+                        <thead class="lighten-4">
+                        <tr>
+                            <th class="theader">S.No</th>
+                            <th class="theader">Resume</th>
+                            <th class="theader">Reference Name</th>
+                            <th class="theader">Approval Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for resume in resume_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td><a href="{{ resume.file }}">
+                                    <button class=" btn btn-info">
+                                        Resume {{ forloop.counter }}
+                                    </button>
+                                </a></td>
+                                <td>{{ resume.reference }}</td>
+                                <td>
+                                    {% if resume.is_verified %}
+                                        <span class="green-text"> Approved</span>
+                                    {% else %}
+                                        <span class="red-text">Not Approved</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <br><br><br>
+                    <div align="center">
+                        <div class="" id=""><span style="font-size: 1.5rem"> &nbsp; Upload Another Resume</span></div>
+                        <br>
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="id_file">File:</label>
+                            <input type="file" name="file" required id="id_file"/>
+                            <br>
+                            <div class="md-form" style="width: 20rem;">
+                                {#                                <i class="fa fa-pencil prefix" style="color: #4285F4  "></i>#}
+                                <input type="text" name="reference" class="form-control" id="id_reference"/>
+                                <label for="username">Reference Name</label>
+                            </div>
+                            <p class="helptext" style="width: 20rem;">Enter a reference name for this resume by which
+                                you can remember the details of this particular resume</p>
+
+                            {#{{ form.as_p }}#}
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-1"></div>
