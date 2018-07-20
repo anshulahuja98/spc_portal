@@ -7,6 +7,9 @@ from django.db.models.signals import pre_save
 
 
 class BaseAdvertisement(models.Model):
+    # validity
+    expiry = models.DateTimeField(null=True, blank=True)
+    active = models.BooleanField(default=False)
     # job prof
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
