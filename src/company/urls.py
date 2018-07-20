@@ -2,6 +2,7 @@ from django.urls import path
 from .views import InternshipAdvertisementFormView, JobAdvertisementFormView, InternshipAdvertisementAddedListView, \
     JobAdvertisementsAddedListView, \
     InternshipOfferView, JobOfferView
+from accounts.views import CompanyRegisterFormView
 
 app_name = 'company'
 
@@ -11,6 +12,7 @@ urlpatterns = [
     path('joboffer_form/', JobAdvertisementFormView.as_view(), name="job-offer-form"),
     path('internoffer_form/', InternshipAdvertisementFormView.as_view(), name="intern-offer-form"),
     path('internship_offer/<uuid:id>/', InternshipOfferView.as_view(), name="internship-offer"),
-    path('job_offer/<uuid:id>/', JobOfferView.as_view(), name="job-offer")
+    path('job_offer/<uuid:id>/', JobOfferView.as_view(), name="job-offer"),
+    path('register/', CompanyRegisterFormView.as_view(), name='register'),
 
 ]

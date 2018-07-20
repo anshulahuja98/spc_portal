@@ -1,177 +1,187 @@
-{% extends 'student/base.html' %}
+{% extends base_template %}
 {% block body %}
-
     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
             <div class="card">
-                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;{{ type }}  Advertisement</span></div>
+                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;{{ type }}  Advertisement &nbsp;&nbsp;&nbsp; <i
+                        align="right" class="red-text"> Expires {{ ad.expiry }}</i></span>
+                </div>
                 <div class="card-block">
                     <div class="row">
                         <div class="col-lg-5">
                             <br>
                             <div class="md-form">
                                 <i class="fa fa-clipboard prefix"></i>
-                                <input type="text" value="{{ type }} Profile:" readonly style="font-size: x-large; font-weight: bold" />
+                                <input type="text" value="{{ type }} Profile:" readonly
+                                       style="font-size: x-large; font-weight: bold"/>
                                 <br>
                                 <br>
-
                                 <table border="0">
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td style="font-size:large">Company</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.company}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Designation</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.designation}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Description</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.description}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Joining Date</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.tentative_join_date}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Intern Location</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.tentative_job_location}}</td>
-                                </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td style="font-size:large">Company</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.company }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Designation</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.designation }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Description</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Joining Date</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.tentative_join_date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Intern Location</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.tentative_job_location }}</td>
+                                    </tr>
                                 </table>
 
                             </div>
                             <div class="md-form">
                                 <i class="fa fa-money prefix"></i>
-                                <input type="text" value="Package Details:" readonly style="font-size: x-large; font-weight: bold" />
+                                <input type="text" value="Package Details:" readonly
+                                       style="font-size: x-large; font-weight: bold"/>
                                 <br>
                                 <br>
 
                                 <table border="0">
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td style="font-size:large">CTC</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.ctc}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Gross Salary</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.gross_salary}}</td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Bonus</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.bonus}}</td>
-                                </tr>
-                                {% if ad.bond %}
-                                <tr>
-                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Bond</td>
-                                </tr>
-                                {% endif %}
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td style="font-size:large">CTC</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.ctc }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Gross Salary</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.gross_salary }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>Bonus</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td>{{ ad.bonus }}</td>
+                                    </tr>
+                                    {% if ad.bond %}
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Bond</td>
+                                        </tr>
+                                    {% endif %}
                                 </table>
                             </div>
                             <br>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-lg-5">
-                        <br>
+                            <br>
                             <div class="md-form">
                                 <i class="fa fa-check prefix"></i>
-                                <input type="text" value="Eligibility:" readonly style="font-size: x-large; font-weight: bold">
+                                <input type="text" value="Eligibility:" readonly
+                                       style="font-size: x-large; font-weight: bold">
                                 <br>
                                 <br>
                                 <form>
-                                <table border="0">
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                    <td>Eligible Branches And Programs</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.eligible_program_branch}}</td>
-                                </tr>
-{#                                <tr>#}
-{#                                 <!--   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->#}
-{#                                    <td>Eligible Branches</td>#}
-{#                                    <td>&nbsp;:&nbsp;</td>#}
-{#                                    <td>{{ad.eligible_branches}}</td>#}
-{#                                </tr>#}
-                                <tr>
-                                   <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
-                                    <td>Minimum CGPA</td>
-                                    <td>&nbsp;:&nbsp;</td>
-                                    <td>{{ad.min_gpa}}</td>
-                                </tr>
-                                </table>
+                                    <table border="0">
+                                        <tr>
+                                            <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                            <td>Eligible Branches And Programs</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.eligible_program_branch }}</td>
+                                        </tr>
+                                        {#                                <tr>#}
+                                        {#                                 <!--   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->#}
+                                        {#                                    <td>Eligible Branches</td>#}
+                                        {#                                    <td>&nbsp;:&nbsp;</td>#}
+                                        {#                                    <td>{{ad.eligible_branches}}</td>#}
+                                        {#                                </tr>#}
+                                        <tr>
+                                            <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
+                                            <td>Minimum CGPA</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.min_gpa }}</td>
+                                        </tr>
+                                    </table>
                                 </form>
                             </div>
                             <div class="md-form">
                                 <i class="fa fa-check prefix"></i>
-                                <input type="text" value="Selection Process:" readonly style="font-size: x-large; font-weight: bold">
+                                <input type="text" value="Selection Process:" readonly
+                                       style="font-size: x-large; font-weight: bold">
                                 <br>
                                 <br>
                                 <form>
-                                <table border="0">
-                                {% if ad.resume_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                    <table border="0">
+                                        {% if ad.resume_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
 
-                                    <td>Resume Required</td>
+                                                <td>Resume Required</td>
 
-                                </tr>
-                                {% endif %}
-                                {% if ad.technical_test_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.technical_test_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
 
-                                    <td>Technical Test</td>
+                                                <td>Technical Test</td>
 
-                                </tr>
-                                {% endif %}
-                                {% if ad.aptitude_test_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.aptitude_test_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
 
-                                    <td>Aptitude Test</td>
+                                                <td>Aptitude Test</td>
 
-                                </tr>
-                                {% endif %}
-                                {% if ad.group_discussion_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                    <td>Group Discussion</td>
-                                </tr>
-                                {% endif %}
-                                {% if ad.technical_interview_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                    <td>Technical Interview</td>
-                                </tr>
-                                {% endif %}
-                                {% if ad.hr_round_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                    <td>HR Round Interview</td>
-                                </tr>
-                                {% endif %}
-                                {% if ad.medical_test_required %}
-                                <tr>
-                                    <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                    <td>Medical Test</td>
-                                </tr>
-                                {% endif %}
-                                </table>
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.group_discussion_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                                <td>Group Discussion</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.technical_interview_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                                <td>Technical Interview</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.hr_round_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                                <td>HR Round Interview</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.medical_test_required %}
+                                            <tr>
+                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                                <td>Medical Test</td>
+                                            </tr>
+                                        {% endif %}
+                                        <tr>
+                                            <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
+                                            <td>Number of Rounds</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.number_of_rounds }}</td>
+                                        </tr>
+                                    </table>
                                 </form>
                             </div>
                         </div>

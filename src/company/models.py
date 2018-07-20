@@ -7,6 +7,9 @@ from django.db.models.signals import pre_save
 
 
 class BaseAdvertisement(models.Model):
+    # validity
+    expiry = models.DateTimeField(null=True, blank=True)
+    active = models.BooleanField(default=False)
     # job prof
     id = models.UUIDField(primary_key=True, default=uuid4)
     company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE)
@@ -31,6 +34,7 @@ class BaseAdvertisement(models.Model):
     hr_round_required = models.BooleanField()
     medical_test_required = models.BooleanField()
     min_gpa = models.FloatField()
+    number_of_rounds = models.PositiveSmallIntegerField()
     # logistic
     number_of_members = models.PositiveIntegerField()
     other_details = models.TextField(null=True, blank=True)

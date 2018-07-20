@@ -23,32 +23,39 @@
                             <th class="theader">Job Designation</th>
                             <th class="theader">View Offer</th>
                             <th class="theader">Status</th>
+                            <th class="theader">Expires on</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         {% for ad in ad_list %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ ad.company }}</td>
-                                <td>{{ ad.designation }}</td>
-                                <td>
-                                    <a href="{{ ad.get_absolute_url }}">
-                                        <button class="btn btn-info btn-sm">
-                                            View Offer
-                                        </button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <label for="id_profile"></label>
-                                        <select name="profile" required id="id_profile" hidden>
-                                            <option value="{{ ad.id }}" selected>---------</option>
-                                        </select>
-                                        <button class="btn btn-primary btn-sm" type="submit">Apply</button>
-                                    </form>
-                                </td>
-                            </tr>
+                            {% if ad.active %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ ad.company }}</td>
+                                    <td>{{ ad.designation }}</td>
+                                    <td>
+                                        <a href="{{ ad.get_absolute_url }}">
+                                            <button class="btn btn-info btn-sm">
+                                                View Offer
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <label for="id_profile"></label>
+                                            <select name="profile" required id="id_profile" hidden>
+                                                <option value="{{ ad.id }}" selected>---------</option>
+                                            </select>
+                                            <button class="btn btn-primary btn-sm" type="submit">Apply</button>
+                                        </form>
+                                    </td>
+                                    <td class="red-text">
+                                        {{ ad.expiry }}
+                                    </td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                         </tbody>
                     </table>

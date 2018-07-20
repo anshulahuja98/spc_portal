@@ -75,6 +75,11 @@ class InternshipOfferView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(InternshipOfferView, self).get_context_data(**kwargs)
+        if hasattr(self.request.user, 'companyprofile'):
+            context['base_template'] = 'company/base.html'
+
+        elif hasattr(self.request.user, 'studentprofile'):
+            context['base_template'] = 'student/base.html'
         context['type'] = "Internship"
         return context
 
@@ -89,5 +94,10 @@ class JobOfferView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(JobOfferView, self).get_context_data(**kwargs)
+        if hasattr(self.request.user, 'companyprofile'):
+            context['base_template'] = 'company/base.html'
+
+        elif hasattr(self.request.user, 'studentprofile'):
+            context['base_template'] = 'student/base.html'
         context['type'] = "Job"
         return context
