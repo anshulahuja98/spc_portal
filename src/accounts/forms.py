@@ -4,9 +4,11 @@ from .models import Resume
 
 
 class ResumeForm(forms.ModelForm):
+    file = forms.FileField()
+
     class Meta:
         model = Resume
-        fields = ('file', 'reference',)
+        fields = ('file', 'reference','student')
 
 
 class StudentRegisterForm(forms.ModelForm):

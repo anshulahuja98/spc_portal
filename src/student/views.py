@@ -146,11 +146,16 @@ class ResumeUploadFormView(FormView, LoginRequiredMixin):
     success_url = '/student/resume_upload/'
 
     def form_valid(self, form):
-        print("valid")
+        form.save()
+        return HttpResponseRedirect(self.success_url)
 
-    def form_invalid(self, form):
-        print("invalid")
-        print(form.errors)
+    def post(self, request, *args, **kwargs):
+        self.request.POST._mutable = True
+        self.request.POST.update({
+            'student': StudentProfile.objects.get(user=self.request.user).id,
+        })
+        self.request.POST._mutable = False
+        return super().post(request, args, kwargs)
 
 
 class ResumeView(View):
