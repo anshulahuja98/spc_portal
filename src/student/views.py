@@ -89,6 +89,11 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
         return self.model.objects.filter(min_gpa__lte=profile.gpa)
 
+    def get_context_data(self, **kwargs):
+        context = super(InternshipOffersListView, self).get_context_data(**kwargs)
+        context['form'] = InternshipOfferForm(user=self.request.user)
+        return context
+
 
 class InternshipOfferApplyFormView(CreateView):
     template_name = 'student/offers_list.html'
@@ -106,6 +111,11 @@ class InternshipOfferApplyFormView(CreateView):
         })
         self.request.POST._mutable = False
         return super().post(request, args, kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super(InternshipOfferApplyFormView, self).get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
 
 
 class InternshipOffersView(LoginRequiredMixin, View):

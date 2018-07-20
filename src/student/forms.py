@@ -17,6 +17,13 @@ class JobOfferForm(forms.ModelForm):
 
 
 class InternshipOfferForm(forms.ModelForm):
+    resume = forms.ModelChoiceField(queryset=Resume.objects.none())
+
+    def __init__(self, user, *args, **kwargs):
+        super(InternshipOfferForm, self).__init__(*args, **kwargs)
+        resumes = Resume.objects.filter(student__user=user)
+        self.fields['resume'].queryset = resumes
+
     class Meta:
         model = InternshipOffer
-        fields = ('profile', 'student',)
+        fields = ('profile', 'student', 'resume',)
