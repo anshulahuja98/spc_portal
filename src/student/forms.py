@@ -4,11 +4,11 @@ from accounts.models import Resume
 
 
 class JobOfferForm(forms.ModelForm):
-    resume = forms.ModelChoiceField(queryset=Resume.objects.none())
+    resume = forms.ModelChoiceField(queryset=Resume.objects.none(), empty_label='Select Resume')
 
     def __init__(self, user, *args, **kwargs):
         super(JobOfferForm, self).__init__(*args, **kwargs)
-        resumes = Resume.objects.filter(student__user=user)
+        resumes = Resume.objects.filter(student__user=user, is_verified=True)
         self.fields['resume'].queryset = resumes
 
     class Meta:
@@ -17,11 +17,11 @@ class JobOfferForm(forms.ModelForm):
 
 
 class InternshipOfferForm(forms.ModelForm):
-    resume = forms.ModelChoiceField(queryset=Resume.objects.none())
+    resume = forms.ModelChoiceField(queryset=Resume.objects.none(), empty_label='Select Resume')
 
     def __init__(self, user, *args, **kwargs):
         super(InternshipOfferForm, self).__init__(*args, **kwargs)
-        resumes = Resume.objects.filter(student__user=user)
+        resumes = Resume.objects.filter(student__user=user, is_verified=True)
         self.fields['resume'].queryset = resumes
 
     class Meta:

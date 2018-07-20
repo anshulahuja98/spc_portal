@@ -8,7 +8,7 @@ class ResumeForm(forms.ModelForm):
 
     class Meta:
         model = Resume
-        fields = ('file', 'reference','student')
+        fields = ('file', 'reference', 'student')
 
 
 class StudentRegisterForm(forms.ModelForm):
