@@ -41,8 +41,11 @@
                                     {{ ad.get_offers.count }} Applicant(s) (Click to View)
                                 </td>
                             </tr>
-                            {% if ad.get_offers != 0 %}
-                                <table class="table table-striped" id='{{ ad.id }}' style="display: none; width: 80%;" align="center">
+
+                           {% if ad.get_offers != 0 %}
+                           <tr>
+                            <td colspan="5">
+                                <table class="table table-bordered" id='{{ ad.id }}' style="display: none; width: 60%;" align="center">
                                     <thead class="lighten-4">
                                     <tr>
                                         <th class="theader">S.No</th>
@@ -66,7 +69,10 @@
                                     {% endfor %}
                                     </tbody>
                                 </table>
+                                </td>
+                                </tr>
                             {% endif %}
+
                         {% endfor %}
                         </tbody>
                     </table>
@@ -75,6 +81,7 @@
             <div class="col-lg-1"></div>
         </div>
     </div>
+
     <script type="text/javascript">
         var ad_id;
 
