@@ -31,15 +31,6 @@ class DetailsView(LoginRequiredMixin, UpdateView):
 #         profile = get_object_or_404(StudentProfile, user=self.request.user)
 #         return self.model.objects.filter(min_gpa__lte=profile.gpa)
 
-class JobOffersListView(LoginRequiredMixin, ListView):
-    model = JobAdvertisement
-    template_name = 'student/offers_list.html'
-    context_object_name = 'ad_list'
-
-    def get_queryset(self):
-        profile = get_object_or_404(StudentProfile, user=self.request.user)
-        return self.model.objects.filter(min_gpa__lte=profile.gpa)
-
 
 class JobOfferApplyFormView(CreateView):
     template_name = 'student/offers_list.html'
@@ -57,6 +48,26 @@ class JobOfferApplyFormView(CreateView):
         })
         self.request.POST._mutable = False
         return super().post(request, args, kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super(JobOfferApplyFormView, self).get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs
+
+
+class JobOffersListView(LoginRequiredMixin, ListView):
+    model = JobAdvertisement
+    template_name = 'student/offers_list.html'
+    context_object_name = 'ad_list'
+
+    def get_queryset(self):
+        profile = get_object_or_404(StudentProfile, user=self.request.user)
+        return self.model.objects.filter(min_gpa__lte=profile.gpa)
+
+    def get_context_data(self, **kwargs):
+        context = super(JobOffersListView, self).get_context_data(**kwargs)
+        context['form'] = JobOfferForm(user=self.request.user)
+        return context
 
 
 class JobOffersView(LoginRequiredMixin, View):

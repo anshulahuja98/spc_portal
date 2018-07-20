@@ -1,14 +1,22 @@
-from django.forms import ModelForm
+from django import forms
 from company.models import JobOffer, InternshipOffer
+from accounts.models import Resume
 
 
-class JobOfferForm(ModelForm):
+class JobOfferForm(forms.ModelForm):
+    resume = forms.ModelChoiceField(queryset=Resume.objects.none())
+
+    def __init__(self, user, *args, **kwargs):
+        super(JobOfferForm, self).__init__(*args, **kwargs)
+        resumes = Resume.objects.filter(student__user=user)
+        self.fields['resume'].queryset = resumes
+
     class Meta:
         model = JobOffer
-        fields = ('profile', 'student')
+        fields = ('profile', 'student', 'resume',)
 
 
-class InternshipOfferForm(ModelForm):
+class InternshipOfferForm(forms.ModelForm):
     class Meta:
         model = InternshipOffer
         fields = ('profile', 'student',)

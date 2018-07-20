@@ -95,4 +95,4 @@ class Resume(models.Model):
                                  help_text="Enter a reference name for this resume by which you can remember the details of this particular resume")
 
     def __str__(self):
-        return self.student.user.get_full_name()
+        return self.reference
