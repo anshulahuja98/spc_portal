@@ -137,86 +137,19 @@
         </div>
     </nav>
     <br>
-    <!--<marquee scrollamount="5">NEWS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span >New Chairman Appointed &nbsp;<span
-                     class="badge indigo">New</span></span> &nbsp;&nbsp;&nbsp;&nbsp; <span>Formation of New Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span >Introduction Session for Freshmen Year&nbsp;&nbsp;&nbsp;<span
-                     class="badge indigo">New</span></span></marquee>-->
-
-
-
     <br><br>
     <div class="row">
     <div class="col-lg-2" id="past_recruiters">
+
         <center><h3>Past Recruiters</h3></center>
         <br>
         <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
                  onmouseout="this.start();">
+            {% for company in companies %}
+                <br>
+                <img class="d-block w-100" style="margin-top:60px;" src="{% static company %}">
+            {% endfor %}
             <br>
-            <img class="d-block w-100" style="margin-top:60px;" src="/public/img/c12.jpg">
-            <br>
-            <img class="d-b lock w-100" src="/public/img/c3.jpg">
-            <br>
-            <img class="d-block w-100" src="/public/img/barclays.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/capgemini.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/gojek.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/goldman sachs.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/microsoft.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/morgan stanley.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/mahindra.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/tata motors.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/volovo eicher.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/maruti suzuki.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/tvs motors.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/L&t.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/BPCL.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/HPCL.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/coal india.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/isro.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/finisar.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/intel.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/yodlee.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/direct-i.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/DRDO.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/havells.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/JSW.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/TCS.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/HCL.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/samsung.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/cognizant.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/nbc.jpeg">
-            <br>
-            <img class="d-block w-100" src="/public/img/arm.png">
-            <br>
-            <img class="d-block w-100" src="/public/img/NI.gif">
-            <br>
-            <img class="d-block w-100" src="/public/img/trident.jpg">
         </marquee>
     </div>
 

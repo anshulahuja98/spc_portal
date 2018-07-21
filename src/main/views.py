@@ -9,4 +9,7 @@ class HomepageView(TemplateView):
         carousel = os.listdir("staticfiles/img/homepage-carousel")
         carousel = ['img/homepage-carousel/' + image for image in carousel]
         context['carousel'] = carousel
+        companies = os.listdir("staticfiles/img/company-logo")
+        companies = ['img/company-logo/' + image for image in companies]
+        context['companies'] = companies
         return context
