@@ -17,12 +17,14 @@ from django.urls import path, include
 from django.contrib import admin
 from accounts.views import LoginView
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
-    path('admin/', admin.site.urls),
-    path('company/', include('company.urls')),
-    path('student/', include('student.urls')),
-    path('', include('main.urls')),
-]
+                  path('login/', LoginView.as_view(), name='login'),
+                  path('logout/', LogoutView.as_view(), name='logout'),
+                  path('admin/', admin.site.urls),
+                  path('company/', include('company.urls')),
+                  path('student/', include('student.urls')),
+                  path('', include('main.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

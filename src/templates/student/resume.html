@@ -20,7 +20,7 @@
                         {% for resume in resume_list %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                <td><a href="{{ resume.file }}">
+                                <td><a href="{{ resume.file.url }}" target="_blank">
                                     <button class=" btn btn-info">
                                         Resume {{ forloop.counter }}
                                     </button>
