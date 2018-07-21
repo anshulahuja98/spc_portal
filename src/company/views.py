@@ -2,16 +2,21 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, ListView, DetailView
 from .forms import JobAdvertisementForm, InternshipAdvertisementForm
 from company.models import JobAdvertisement, InternshipAdvertisement
-from django.contrib.auth.views import LoginView as DefaultLoginView
 from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from accounts.models import CompanyProfile
 
 
-class LoginView(DefaultLoginView):
-    template_name = 'company/login.html'
+class CompanyProfileRequiredMixin(LoginRequiredMixin):
+    """Verify that the current user is authenticated."""
+
+    def dispatch(self, request, *args, **kwargs):
+        if hasattr(request.user, 'companyprofile'):
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return self.handle_no_permission()
 
 
-class JobAdvertisementFormView(FormView, LoginRequiredMixin):
+class JobAdvertisementFormView(CompanyProfileRequiredMixin, FormView):
     form_class = JobAdvertisementForm
     template_name = 'company/joboffer_form.html'
     success_url = '/company/job_offers/'
@@ -29,7 +34,7 @@ class JobAdvertisementFormView(FormView, LoginRequiredMixin):
         return super().post(request, args, kwargs)
 
 
-class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
+class InternshipAdvertisementFormView(CompanyProfileRequiredMixin, FormView):
     form_class = InternshipAdvertisementForm
     template_name = 'company/internoffer_form.html'
     success_url = '/company/intern_offers/'
@@ -47,7 +52,7 @@ class InternshipAdvertisementFormView(FormView, LoginRequiredMixin):
         return super().post(request, args, kwargs)
 
 
-class JobAdvertisementsAddedListView(ListView):
+class JobAdvertisementsAddedListView(CompanyProfileRequiredMixin, ListView):
     model = JobAdvertisement
     template_name = 'company/offers_list.html'
     context_object_name = 'ad_list'
@@ -65,7 +70,7 @@ class InternshipAdvertisementAddedListView(ListView):
         return self.model.objects.filter(company__user=self.request.user)
 
 
-class InternshipOfferView(LoginRequiredMixin, DetailView):
+class InternshipOfferView(CompanyProfileRequiredMixin, DetailView):
     model = InternshipAdvertisement
     template_name = 'company/offer.html'
     context_object_name = 'ad'
@@ -84,7 +89,7 @@ class InternshipOfferView(LoginRequiredMixin, DetailView):
         return context
 
 
-class JobOfferView(LoginRequiredMixin, DetailView):
+class JobOfferView(CompanyProfileRequiredMixin, DetailView):
     model = JobAdvertisement
     template_name = 'company/offer.html'
     context_object_name = 'ad'
