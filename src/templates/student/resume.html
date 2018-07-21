@@ -9,6 +9,7 @@
                 <div class="card-block">
                     <table class="table table-striped" style="border:1rem;">
                         <thead class="lighten-4">
+                        <tr>You can upload a maximum of 5 Resume</tr>
                         <tr>
                             <th class="theader">S.No</th>
                             <th class="theader">Resume</th>
@@ -38,36 +39,38 @@
                         </tbody>
                     </table>
 
-                    <br><br><br>
+                    <br><br>
+                    {% if resume_list.count < 5 %}
+                        <form method="post" id="new_resume_upload" enctype=multipart/form-data>
+                            {% csrf_token %}
+                            <hr>
+                            <h2 style="font-weight: normal">Upload Another Resume:</h2>
+                            <hr>
 
-                    <form method="post" id="new_resume_upload" enctype=multipart/form-data>
-                        {% csrf_token %}
-                        <hr>
-                        <h2 style="font-weight: normal">Upload Another Resume:</h2>
-                        <hr>
-
-                        <!-- One "tab" for each step in the form: -->
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-4">File:
-                                <p><input type="file" name="file" required id="id_file"
-                                          style="padding: 10px;width: 100%;font-size: 17px"/></p>
+                            <!-- One "tab" for each step in the form: -->
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-4">File:
+                                    <p><input type="file" name="file" required id="id_file"
+                                              style="padding: 10px;width: 100%;font-size: 17px"/></p>
+                                </div>
+                                <div class="col-lg-1" style="text-align: right"><br><i class="fa fa-pencil"
+                                                                                       style="font-size: 2rem;"></i>
+                                </div>
+                                <div class="col-lg-6" style="text-align: left">Reference Name:
+                                    <p><input placeholder="Reference Name" name="reference" class="form-control"
+                                              id="id_reference" oninput="this.className=''"
+                                              style="border: 1px solid #aaaaaa;padding: 10px;width: 100%;font-size: 17px"/>
+                                    </p>
+                                    <p>Enter a reference name for this resume by which
+                                        you can remember the details of this particular resume</p>
+                                </div>
+                                <div class="col-lg-10" style="text-align: center">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
                             </div>
-                            <div class="col-lg-1" style="text-align: right"><br><i class="fa fa-pencil"
-                                                                                   style="font-size: 2rem;"></i></div>
-                            <div class="col-lg-6" style="text-align: left">Reference Name:
-                                <p><input placeholder="Reference Name" name="reference" class="form-control"
-                                          id="id_reference" oninput="this.className=''"
-                                          style="border: 1px solid #aaaaaa;padding: 10px;width: 100%;font-size: 17px"/>
-                                </p>
-                                <p>Enter a reference name for this resume by which
-                                    you can remember the details of this particular resume</p>
-                            </div>
-                            <div class="col-lg-10" style="text-align: center">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
