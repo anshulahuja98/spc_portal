@@ -4,11 +4,11 @@ from django.views.generic import TemplateView
 app_name = 'main'
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='main/index.html'), name='home'),
     path('gradesystem/', TemplateView.as_view(template_name='main/gradesystem.html'), name='gradesystem'),
     path('programs/', TemplateView.as_view(template_name='main/programs.html'), name='programs'),
     path('rules/', TemplateView.as_view(template_name='main/rules.html'), name='rules'),
     path('placementProcedure/', TemplateView.as_view(template_name='main/placementprocedure.html'),
+    path('', HomepageView.as_view(template_name='main/index.html'), name='home'),
          name='placementProcedure'),
     path('newBreed/', TemplateView.as_view(template_name='main/newbreed.html'), name='newBreed'),
     path('coe/', TemplateView.as_view(template_name='main/coe.html'), name='coe'),
