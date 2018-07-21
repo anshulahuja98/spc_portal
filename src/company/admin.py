@@ -4,6 +4,10 @@ from .models import JobAdvertisement, InternshipAdvertisement, InternshipOffer, 
 
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(admin.ModelAdmin):
+    list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
+    list_filter = ['company', 'active', ]
+    ordering = ['company']
+
     class Meta:
         model = JobAdvertisement
         fields = '__all__'
@@ -11,6 +15,10 @@ class JobAdvertisementAdmin(admin.ModelAdmin):
 
 @admin.register(InternshipAdvertisement)
 class InternshipAdvertisementAdmin(admin.ModelAdmin):
+    list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
+    list_filter = ['company', 'active', ]
+    ordering = ['company']
+
     class Meta:
         model = InternshipAdvertisement
         fields = '__all__'
