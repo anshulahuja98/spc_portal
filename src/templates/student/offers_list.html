@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                         {% for ad in ad_list %}
-                            {% if ad.active %}
+                            {% if ad.active and ad not in applied_ad_list %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ ad.company }}</td>
@@ -57,6 +57,26 @@
                                     </td>
                                 </tr>
                             {% endif %}
+                        {% endfor %}
+                        {% for ad in applied_ad_list %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ ad.company }}</td>
+                                <td>{{ ad.designation }}</td>
+                                <td>
+                                    <a href="{{ ad.get_absolute_url }}">
+                                        <button class="btn btn-info btn-sm">
+                                            View Offer
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="green-text">Applied</span>
+                                </td>
+                                <td class="red-text">
+                                    {{ ad.expiry }}
+                                </td>
+                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>

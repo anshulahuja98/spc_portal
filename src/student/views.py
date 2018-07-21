@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView, FormView, CreateView, View
 from accounts.models import StudentProfile, Resume
-from company.models import JobAdvertisement, InternshipAdvertisement
+from company.models import JobAdvertisement, InternshipAdvertisement, JobOffer, InternshipOffer
 from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
 from .forms import InternshipOfferForm, JobOfferForm
@@ -67,7 +67,12 @@ class JobOffersListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(JobOffersListView, self).get_context_data(**kwargs)
         context['form'] = JobOfferForm(user=self.request.user)
+        context['applied_ad_list'] = self.get_applied_ad_list()
         return context
+
+    def get_applied_ad_list(self):
+        return JobAdvertisement.objects.filter(
+            id__in=JobOffer.objects.filter(student__user=self.request.user).values_list('profile'))
 
 
 class JobOffersView(LoginRequiredMixin, View):
@@ -92,7 +97,12 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(InternshipOffersListView, self).get_context_data(**kwargs)
         context['form'] = InternshipOfferForm(user=self.request.user)
+        context['applied_ad_list'] = self.get_applied_ad_list()
         return context
+
+    def get_applied_ad_list(self):
+        return InternshipAdvertisement.objects.filter(
+            id__in=InternshipOffer.objects.filter(student__user=self.request.user).values_list('profile'))
 
 
 class InternshipOfferApplyFormView(CreateView):
