@@ -26,6 +26,10 @@ class InternshipAdvertisementAdmin(admin.ModelAdmin):
 
 @admin.register(InternshipOffer)
 class InternshipOfferAdmin(admin.ModelAdmin):
+    list_display = ['student', 'company', 'profile', 'is_accepted', ]
+    list_filter = ['company', 'is_accepted', 'student']
+    ordering = ['student']
+
     class Meta:
         model = InternshipOffer
         fields = '__all__'
@@ -33,6 +37,10 @@ class InternshipOfferAdmin(admin.ModelAdmin):
 
 @admin.register(JobOffer)
 class JobOfferAdmin(admin.ModelAdmin):
+    list_display = ['student', 'company', 'profile', 'is_accepted', ]
+    list_filter = ['company', 'is_accepted', 'student']
+    ordering = ['student']
+
     class Meta:
         model = JobOffer
         fields = '__all__'
