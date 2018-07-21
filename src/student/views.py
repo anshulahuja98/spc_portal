@@ -8,7 +8,17 @@ from .forms import InternshipOfferForm, JobOfferForm
 from django.shortcuts import HttpResponseRedirect
 
 
-class DetailsView(LoginRequiredMixin, UpdateView):
+class StudentProfileRequiredMixin(LoginRequiredMixin):
+    """Verify that the current user is authenticated."""
+
+    def dispatch(self, request, *args, **kwargs):
+        if hasattr(request.user, 'studentprofile'):
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return self.handle_no_permission()
+
+
+class DetailsView(StudentProfileRequiredMixin, UpdateView):
     model = StudentProfile
     fields = (
         'roll_no', 'program_branch', 'gpa', 'phone', 'parent_name', 'dob', 'category', 'blood_group', 'jee_air',
@@ -22,17 +32,7 @@ class DetailsView(LoginRequiredMixin, UpdateView):
         return get_object_or_404(StudentProfile, user=self.request.user)
 
 
-# class JobOffersListView(LoginRequiredMixin, ListView):
-#     model = JobAdvertisement
-#     context_object_name = 'job_ad_list'
-#     template_name = 'student/offers_list.html'
-#
-#     def get_queryset(self):
-#         profile = get_object_or_404(StudentProfile, user=self.request.user)
-#         return self.model.objects.filter(min_gpa__lte=profile.gpa)
-
-
-class JobOfferApplyFormView(CreateView):
+class JobOfferApplyFormView(StudentProfileRequiredMixin, CreateView):
     template_name = 'student/offers_list.html'
     form_class = JobOfferForm
     success_url = '/student/job_offers/'
@@ -55,7 +55,7 @@ class JobOfferApplyFormView(CreateView):
         return kwargs
 
 
-class JobOffersListView(LoginRequiredMixin, ListView):
+class JobOffersListView(StudentProfileRequiredMixin, ListView):
     model = JobAdvertisement
     template_name = 'student/offers_list.html'
     context_object_name = 'ad_list'
@@ -75,7 +75,7 @@ class JobOffersListView(LoginRequiredMixin, ListView):
             id__in=JobOffer.objects.filter(student__user=self.request.user).values_list('profile'))
 
 
-class JobOffersView(LoginRequiredMixin, View):
+class JobOffersView(StudentProfileRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         view = JobOffersListView.as_view()
         return view(request, *args, **kwargs)
@@ -85,7 +85,7 @@ class JobOffersView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
 
 
-class InternshipOffersListView(LoginRequiredMixin, ListView):
+class InternshipOffersListView(StudentProfileRequiredMixin, ListView):
     model = InternshipAdvertisement
     template_name = 'student/offers_list.html'
     context_object_name = 'ad_list'
@@ -105,7 +105,7 @@ class InternshipOffersListView(LoginRequiredMixin, ListView):
             id__in=InternshipOffer.objects.filter(student__user=self.request.user).values_list('profile'))
 
 
-class InternshipOfferApplyFormView(CreateView):
+class InternshipOfferApplyFormView(StudentProfileRequiredMixin, CreateView):
     template_name = 'student/offers_list.html'
     form_class = InternshipOfferForm
     success_url = '/student/intern_offers/'
@@ -128,7 +128,7 @@ class InternshipOfferApplyFormView(CreateView):
         return kwargs
 
 
-class InternshipOffersView(LoginRequiredMixin, View):
+class InternshipOffersView(StudentProfileRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         view = InternshipOffersListView.as_view()
         return view(request, *args, **kwargs)
@@ -138,7 +138,7 @@ class InternshipOffersView(LoginRequiredMixin, View):
         return view(request, *args, **kwargs)
 
 
-class ResumeListView(ListView, LoginRequiredMixin):
+class ResumeListView(StudentProfileRequiredMixin, ListView):
     model = Resume
     template_name = 'student/resume.html'
     context_object_name = 'resume_list'
@@ -149,7 +149,7 @@ class ResumeListView(ListView, LoginRequiredMixin):
         return self.model.objects.filter(Resume, student=student)
 
 
-class ResumeUploadFormView(FormView, LoginRequiredMixin):
+class ResumeUploadFormView(StudentProfileRequiredMixin, FormView):
     model = Resume
     template_name = 'student/resume.html'
     form_class = ResumeForm
@@ -168,7 +168,7 @@ class ResumeUploadFormView(FormView, LoginRequiredMixin):
         return super().post(request, args, kwargs)
 
 
-class ResumeView(View):
+class ResumeView(StudentProfileRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         view = ResumeListView.as_view()
         return view(request, *args, **kwargs)
@@ -176,9 +176,3 @@ class ResumeView(View):
     def post(self, request, *args, **kwargs):
         view = ResumeUploadFormView.as_view()
         return view(request, *args, **kwargs)
-
-# class ResumeUploadView(FormView):
-#     ResumeFormSet = forms.formset_factory(ResumeForm, extra=4)
-#     template_name = 'student/resume.html'
-#     resume_formset = ResumeFormSet(prefix='resume')
-#     model = Resume
