@@ -30,6 +30,9 @@ class ResumeInline(admin.StackedInline):
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
     inlines = (ResumeInline,)
+    list_display = ['__str__', 'roll_no', 'program_branch', 'year']
+    list_filter = ['program_branch', 'year']
+    ordering = ['roll_no', ]
 
     class Meta:
         model = StudentProfile
@@ -39,6 +42,8 @@ class StudentProfileAdmin(admin.ModelAdmin):
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(admin.ModelAdmin):
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
+    list_display = ['name', 'domain', 'url', ]
+    list_filter = ['domain', ]
 
     class Meta:
         model = CompanyProfile
@@ -47,6 +52,9 @@ class CompanyProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
+    list_display = ['student', 'is_verified', ]
+    list_filter = ['student', ]
+
     class Meta:
         model = Resume
         fields = '__all__'
