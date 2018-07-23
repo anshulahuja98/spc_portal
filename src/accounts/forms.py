@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from .models import Resume
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm
-from .models import CompanyProfile
+from .models import CompanyProfile, StudentProfile
+from student.models import ProgramAndBranch
 
 
 class ResumeForm(forms.ModelForm):
@@ -14,10 +15,51 @@ class ResumeForm(forms.ModelForm):
         fields = ('file', 'reference', 'student')
 
 
-class StudentRegisterForm(forms.ModelForm):
+class StudentRegisterForm(UserCreationForm):
+    PROGRAM_BRANCH = [(i.abbreviation, i.name) for i in ProgramAndBranch.objects.all()]
+    password1 = forms.CharField(
+        label='Password',
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    password2 = forms.CharField(
+        label='Password confirmation',
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text='Enter the same password as before, for verification.',
+    )
+    username = forms.EmailField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'email', 'maxlength': '254'}),
+        help_text="This Email ID will be your username")
+
+    roll_no = forms.CharField(max_length=8)
+    year = forms.IntegerField(max_value=5, help_text="Enter value between 1-5, the current year of your degree")
+    program_branch = forms.ChoiceField(choices=ProgramAndBranch.objects.all().values_list('abbreviation', 'name'))
+    gpa = forms.FloatField(max_value=10.00)
+    phone = forms.CharField(max_length=15)
+    parent_name = forms.CharField(max_length=30)
+    dob = forms.DateField()
+    category = forms.ChoiceField(choices=StudentProfile.CATEGORY)
+    blood_group = forms.CharField(max_length=5)
+    jee_air = forms.IntegerField()
+    hostel_name = forms.ChoiceField(choices=StudentProfile.HOSTELS)
+    room_no = forms.IntegerField(max_value=300)
+    hobbies = forms.CharField(widget=forms.Textarea)
+    physical_disability = forms.BooleanField(required=False)
+    nationality = forms.ChoiceField(choices=StudentProfile.NATION)
+    permanent_address = forms.CharField(widget=forms.Textarea)
+    current_address = forms.CharField(widget=forms.Textarea)
+    x_year = forms.IntegerField(max_value=2050, min_value=2010)
+    x_board_name = forms.CharField(max_length=30)
+    x_percentage = forms.CharField(max_length=10)
+    xii_year = forms.IntegerField(max_value=2050, min_value=2010)
+    xii_board_name = forms.CharField(max_length=30)
+    xii_percentage = forms.CharField(max_length=10)
+
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password', 'email']
+        fields = ['username', 'first_name', 'last_name', 'password1', 'password2', 'email']
 
 
 class CompanyRegisterForm(UserCreationForm):
