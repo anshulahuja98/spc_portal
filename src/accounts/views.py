@@ -51,5 +51,7 @@ class CompanyRegisterFormView(CreateView):
     @staticmethod
     def create_profile(user=None, **kwargs):
         # Creates a new UserProfile object after successful creation of User object
-        userprofile = CompanyProfile.objects.create(user=user, )
+        userprofile = CompanyProfile.objects.create(user=user, name=kwargs['name'], domain=kwargs['domain'],
+                                                    url=kwargs['url'], city=kwargs['city'], state=kwargs['state'],
+                                                    country=kwargs['country'], pin_code=kwargs['pin_code'])
         userprofile.save()

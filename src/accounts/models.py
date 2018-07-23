@@ -61,14 +61,14 @@ class CompanyProfile(models.Model):
         ('2', 'Other'),
     )
     # Model
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50, help_text="Name of the company")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     domain = models.CharField(max_length=30, help_text="Type of company like banking/consulting etc ")  # add choices
     url = models.URLField()
     city = models.CharField(max_length=15)
     state = models.CharField(max_length=15)
     country = models.CharField(max_length=15, choices=NATION)
-    pin_code = models.CharField(max_length=15, blank=True)
+    pin_code = models.CharField(max_length=10, blank=True)
     job_offers = models.ManyToManyField(StudentProfile, through='company.JobOffer',
                                         through_fields=('company', 'student'), related_name='joboffers')
     internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
