@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
+from django.db.models.signals import pre_save
 
 
 class StudentProfile(models.Model):
@@ -96,3 +97,11 @@ class Resume(models.Model):
 
     def __str__(self):
         return self.reference
+
+
+def event_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.roll_no:
+        instance.roll_no = instance.user.username
+
+
+pre_save.connect(event_pre_save_receiver, sender=StudentProfile)

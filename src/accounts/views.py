@@ -35,7 +35,6 @@ class StudentRegisterFormView(CreateView):
     def create_profile(user=None, **kwargs):
         # Creates a new UserProfile object after successful creation of User object
         userprofile = StudentProfile.objects.create(user=user,
-                                                    roll_no=kwargs['roll_no'],
                                                     year=kwargs['year'],
                                                     program_branch=ProgramAndBranch.objects.get(
                                                         abbreviation=kwargs['program_branch']),
