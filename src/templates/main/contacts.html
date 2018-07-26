@@ -1,230 +1,444 @@
-{% extends 'main/base.html' %}
 {% load staticfiles %}
-{% block body %}
-<br><br>
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
+        <link href="{% static '/css/style.css' %} " rel="stylesheet">
+        <link rel="icon" href="{% static 'img/iitj.png' %}">
+        <title>Office of Student Placements, IIT Jodhpur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin:0px auto ;">
+<div class="main-heading">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
+                <a class="thumbnail pull-left">
+                    &nbsp &nbsp
+                    <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
+                         style="height:5rem; width:auto;">
+                </a>
+                <div class="media-body" style="margin-left:10px; margin-top: 10px;">
+                    <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem">IITJ Homesite</a>
+                    <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
+                                                                       style="color: black;">Office of Student
+                        Placements</a></h4>
+                    <p class="pull-right" style="margin-right: 2rem">
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        &nbsp; &nbsp;
+                        &nbsp;
+
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </p>
+                    <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark" style="background-color: #3f51b5;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseEx12"
+                    aria-controls="collapseEx12" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapseEx12">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Home</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:home' %}">About Us</a>
+                            <a class="dropdown-item" href="{% url 'main:invitation' %}">Invitation</a>
+                            <a class="dropdown-item" href="{% url 'main:dir_msg' %}">Director's Message</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Academics</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:gradesystem' %}">Gradesystem</a>
+                            <a class="dropdown-item" href="{% url 'main:programs' %}">Programmes</a>
+                            <a class="dropdown-item" href="{% url 'main:admissions' %}">Admission Procedure</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Students</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:achievements' %}">Achievements</a>
+                            <a class="dropdown-item" href="{% url 'main:profile' %}">Prospective</a>
+                            <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a>
+                            <a class="dropdown-item" href="{% url 'main:student_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:internships' %}">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Company</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:brochure' %}">Brochure</a>
+                            <a class="dropdown-item" href="{% url 'main:summary' %}">Summary</a>
+                            <a class="dropdown-item" href="{% url 'main:placementProcedure' %}">Placement Procedure</a>
+                            <a class="dropdown-item" href="{% url 'main:company_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:past_recruiters' %}">Past Recruiters</a>
+                            <a class="dropdown-item" href="{% url 'main:aipc' %}">AIPC Norms</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Why Recruit</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:newBreed' %}">The New Breed</a>
+                            <!--  <a class="dropdown-item" href="/coe">Centre of Excellence</a> -->
+                            <a class="dropdown-item" href="{% url 'main:research' %}">R & D</a>
+                            <a class="dropdown-item" href="{% url 'main:facilities' %}">Facilities</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Forms</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:jaf' %}">JAF</a>
+                            <a class="dropdown-item" href="{% url 'main:iaf' %}">IAF</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:contacts' %}">Contacts</a>
+                            <a class="dropdown-item" href="{% url 'main:reachus' %}">Reach Us</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav nav-right">
+                    <li class="nav-item hoverable">
+                        <a class="nav-link" href="{% url 'login' %}">Student Login</a>
+                    </li>
+                    <li class="nav-item hoverable" style="float:right;">
+                        <a class="nav-link" href="{% url 'login' %}">Company Login</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6">
+            <h4><b>Indian Institute of Technology Jodhpur</b></h4>NH 65 Nagaur Road<br>Karwar 342037<br>Jodhpur District<br><br>
+        </div>
+        <div class="col-lg-5"><b>Contact: </b><br><br><i class="fa fa-phone"></i>&nbsp; +91 291 2801154 </span><br><i class="fa fa-phone"></i>&nbsp; +91 291 2801153 </span><br><i class="fa fa-envelope"></i>&nbsp; placement@iitj.ac.in</span><br></div>
+    </div>
+    <br>
+    <div class="body-header text-center text-black"><span style="font-size: 1.75rem"> &nbsp; Placement Team</span></div>
+<hr style="width: 25rem;">
+
 <div class="row">
 
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:2rem;">
+        <br>
 
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card custom-gradient" id="my-card"><span style="font-size: 1.5rem"> &nbsp;  Office of Student Placements</span></div>
-            <div class="card-block">
-           <p class="section-description" id="section-description">
-         <div class="row" style="margin-left: 2rem;">
-         <!--<div class="col-lg-3"></div>-->
-         <div class="col-md-5" style="text-align: center;" >
-           <a style="font-size: 1.5rem;">
-            <i class="fa fa-map-marker" style="font-size: 1.75rem;"></i><br>Indian Institute Of Technology Jodhpur<br>N.H.65, Nagaur Road, Karwar<br>Jodhpur - 342037<br>Rajasthan, India
-           </a>
-           <a href="mailto:placement@iitj.ac.in" style="font-size: 1.25rem;">
-                 <br><br>
-            <i class="fa fa-envelope" style="font-size: 1.5rem;"></i><br> placement@iitj.ac.in
-           </a>
-           <br>
-           <br>
-           <a style="font-size: 1.25rem;">
-            <i class="fa fa-phone "  style="font-size: 1.5rem; "></i></><br>(0291) 2449094
-           </a>
-           <br>
-           <br>
-           <a style="font-size: 1.25rem;">
-            <i class="fa fa-fax" style="font-size: 1.5rem;"></i><br>(0291) 2516823
-           </a>
-
-         </div>
-         <br>
-         <br>
-         <!--<div class="col-md-7"><br>-->
-
-            <!--<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7142.949809630953!2d73.115224!3d26.4726499!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1514970049428" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
-
-         <!--</div>-->
-                    <div class="col-md-7">
-<div id="map-container" class="z-depth-1-half map-container" data-adapt-container-width="true"
-                 style="height: 400px"></div>
-                        </div>
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyCsG0_QqelLeHfcgxNPeqKiMnHS7ZyTUQM"></script>
-
-<script>
-    function init_map() {
-
-        var var_location = new google.maps.LatLng(26.475280, 73.114761);
-
-        var var_mapoptions = {
-            center: var_location,
-            zoom: 14
-        };
-
-        var var_marker = new google.maps.Marker({
-            position: var_location,
-            map: var_map,
-            title: "IIT Jodhpur"
-        });
-
-        var var_map = new google.maps.Map(document.getElementById("map-container"),
-            var_mapoptions);
-
-        var_marker.setMap(var_map);
-    }
-
-    google.maps.event.addDomListener(window, 'load', init_map);
-</script>
-          <br>
-         </div>
-         <hr>
-          <br>
-
-        </p>
-
-        <!--Grid row-->
-        <div class="row mb-lg-4 center-on-small-only">
-
-            <!--Grid column-->
-
-            <div class="col-lg-6 col-md-12 mb-r">
-
-                <div class="col-md-6 float-left">
-                    <div class="avatar">
-                        <img src="{% static 'img/manikandan.jpg'%}" class="rounded z-depth-1" id="contactimg" style="height: 13rem;
-                        width: 13rem;
-                        border-radius: 29rem;">
-
-                    </div>
-                </div>
-
-                <div class="col-md-6 float-right">
-                    <h4>
-                        <br>
-                        <strong> Dr. Manikandan Paranjothy</strong>
-                    </h4>
-                    <h5 class="font-bold  mb-4">Chairman</h5>
-
-                    <a style="font-size: 1.25rem;">
-                        <i class="fa fa-phone "> +91 291 244 9082</i>
-                    </a>
-
-                    <br>
-                    <br>
-
-                    <a style="font-size: 1.25rem;" href="mailto:pmanikandan@iitj.ac.in">
-                        <i class="fa fa-envelope"> &nbsp;pmanikandan@iitj.ac.in </i>
-                    </a>
-                </div>
-
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Chairman</b><br> Office of Student Placements
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-           <div class="col-lg-6 col-md-12 mb-r">
-
-                <div class="col-md-6 float-left">
-                    <div class="avatar">
-                        <img src="{% static 'img/gurpreetkaur.jpg'%}" class="rounded z-depth-1" id="contactimg" style="height: 13rem;
-                        width: 13rem;
-                        border-radius: 29rem;">
-                    </div>
-                </div>
-
-                <div class="col-md-6 float-right">
-                    <h4>
-                        <br> <strong>  Gurpreet Kaur</strong>
-                    </h4>
-                    <h5 class="font-bold  mb-4">Placement Officer</h5>
-
-                    <a style="font-size: 1.25rem;">
-                        <i class="fa fa-phone "> +91 291 2449084</i>
-                    </a>
-
-                    <br>
-                    <br>
-
-                    <a style="font-size: 1.25rem;" href="mailto:gurpreetkaur@iitj.ac.in">
-                        <i class="fa fa-envelope"> &nbsp;gurpreetkaur@iitj.ac.in</i>
-                    </a>
-                </div>
-
+            <div class="card-body">
+                <img src="../public/img/sandipmurarka.jpg" alt="Prof. Sandip Murarka" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
             </div>
-
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Prof. Sandip Murarka</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; sandipmurarka@iitj.ac.in</span><br>
+                <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 0291 2801310</span><br><span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 291 2801153</span></p>
+            </div>
         </div>
-        <!--Grid row-->
-<hr>
-        <!--Grid row-->
-        <div class="row center-on-small-only">
-
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-r contact-card">
-
-                <div class="col-md-6 float-left">
-                    <div class="avatar">
-                        <img src="{% static 'img/mahak.jpg'%}" class="rounded z-depth-1" id="contactimg" style="height: 13rem;
-                        width: 13rem;
-                        border-radius: 29rem;">
-                    </div>
-                </div>
-
-                <div class="col-md-6 float-right">
-                    <h4>
-                        <br> <strong>Mahak Jain </strong>
-                    </h4>
-                    <h5 class="font-bold  mb-4">Student Coordinator</h5>
-
-                    <a style="font-size: 1.25rem;">
-                        <i class="fa fa-phone "> +91 7073175124</i>
-                    </a>
-
-                    <br>
-                    <br>
-
-                    <a style="font-size: 1.25rem;" href="mailto:jain.1@iitj.ac.in">
-                        <i class="fa fa-envelope"> &nbsp;jain.1@iitj.ac.in</i>
-                    </a>
-                </div>
-
+    </div>
+    </div>
+<div class="row">
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Placement Officer</b><br> Office of Student Placements
             </div>
-
-
-            <!--Grid column-->
-
-            <!--Grid column-->
-             <div class="col-lg-6 col-md-12 mb-r contact-card">
-
-                <div class="col-md-6 float-left">
-                    <div class="avatar">
-                        <img src="{% static 'img/gattani.jpg'%}" class="rounded z-depth-1" id="contact" style="height: 13rem;
-                        width: 13rem;
-                        border-radius: 29rem;">
-                    </div>
-                </div>
-
-                <div class="col-md-6 float-right">
-                    <h4>
-                        <br>   <strong>  Tejas Gattani</strong>
-                    </h4>
-                    <h5 class="font-bold  mb-4">Student Coordinator</h5>
-
-                    <a style="font-size: 1.25rem;">
-                        <i class="fa fa-phone "> +91 9834942557</i>
-                    </a>
-
-                    <br>
-                    <br>
-
-                    <a style="font-size: 1.25rem;" href="mailto:gattani.1@iitj.ac.in">
-                        <i class="fa fa-envelope"> &nbsp;gattani.1@iitj.ac.in</i>
-                    </a>
-                </div>
-
+            <div class="card-body">
+                <img src="../public/img/gurpreetkaur.jpg" alt="Gurpreet Kaur" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
             </div>
-
-        </div>
-            <!--Grid column-->
-
-        </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Gurpreet Kaur</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; gurpreetkaur@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 291 2801154 </span></p>
             </div>
-          </div>
         </div>
-   <div class="col-lg-0.5"></div>
+    </div>
+</div>
+<br>
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span style="font-size: 1.75rem"> &nbsp; STUDENT HEADS</span></div>
+<hr style="width: 25rem;">
+<div class="row">
 
-      <br>
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Student Co-ordinator</b><br> Office of Student Placements
+            </div>
+            <div class="card-body">
+                <img src="../public/img/gattani.jpg" alt="Tejas Gattani" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Tejas Gattani</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; gattani.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 9834942557</span></p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-lg-1"></div>-->
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Student Co-ordinator</b><br> Office of Student Placements
+            </div>
+            <div class="card-body">
+                <img src="../public/img/mahak.jpg" alt="Mahak Jain" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Mahak Jain</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; jain.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7073175124 </span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span style="font-size: 1.75rem"> &nbsp; DEPARTMENTWISE HEADS</span></div>
+<hr style="width: 25rem;"> -->
+<div class="row">
 
-{% endblock %}
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center" style="width: 17rem;">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Department Head</b><br> CSE
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Mohit Mehta</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; mehta.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7062101158</span></p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-lg-1"></div>-->
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Department Head</b><br> EE
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Akshat Shrivastava</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; shrivastava.2@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 8251904511 </span></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Department Head</b><br> ME
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Kartik Ramachandurani</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; ramachandurani.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 8919509980 </span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center" style="width: 17rem;">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Internship Head</b><br> CSE
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Abhishek Sah</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; sah.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7357277925</span></p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-lg-1"></div>-->
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center" style="width: 17rem;">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Internship Head</b><br> ME
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Neelansh Kamboj</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; kamboj.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 9588091595 </span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span style="font-size: 1.75rem"> &nbsp; WEB DEVELOPMENT TEAM</span></div>
+<hr style="width: 25rem;">
+<div class="row">
+
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Web Development team</b><br> Office of Student Placements
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Abhishek Sah</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; sah.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7357277925</span></p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-lg-1"></div>-->
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom: 1.5rem;">
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Web Development team</b><br> Office of Student Placements
+            </div>
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Bhargav Kansagara</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; kansagara.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7990715094 </span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span style="font-size: 1.75rem"> &nbsp; TEAM MEMBERS</span></div>
+<hr style="width: 25rem;">
+<div class="row">
+
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Team Member</b><br> Office of Student Placements
+            </div><!--
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>-->
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Suchi Jain</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; jain.8@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 8982223084</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Team Member</b><br> Office of Student Placements
+            </div><!--
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>-->
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Rahul Jindal</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; jindal.1@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 9983781589</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Team Member</b><br> Office of Student Placements
+            </div><!--
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>-->
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Nikhil Srivastava</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; srivastava.6@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 7990715094</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2.5" style="margin: auto;margin-bottom:1.5rem;">
+        <br>
+        <div class="card text-center">
+            <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp; <b>Team Member</b><br> Office of Student Placements
+            </div><!--
+            <div class="card-body">
+                <img src="../public/img/blank-person.jpg" alt="" style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            </div>-->
+            <div class="card-footer text-muted">
+                <span style="color: black; font-size: 1.35rem"><b>Srijan Agarwal</b></span>
+                <br><br>
+                <p class="text-left"><span style="color: black"><i class="fa fa-envelope"></i>&nbsp; agarwal.4@iitj.ac.in</span><br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; +91 9634049732</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<footer class="footer-basic-centered">
+
+            <p class="footer-logos" style="color: white; font-size: 2rem;">
+
+				<a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
+				|
+				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
+				|
+				<a href="#"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
+
+			</p>
+
+			<p class="footer-company-name">Designed & Maintained by Office of Student Placcements, IIT Jodhpur</p>
+
+</footer>
+<script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static '/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
+ </body>
+ </html>

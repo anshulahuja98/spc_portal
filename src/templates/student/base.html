@@ -59,7 +59,7 @@
     </div>
 {% endblock %}
 {% block navbar %}
-    <nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+    <nav class="navbar navbar-toggleable-md navbar-dark">
         <div class="container">
             <div class=" navbar-collapse" id="collapseEx12">
                 <ul class="navbar-nav mr-auto">
@@ -93,14 +93,22 @@
 
 
 {% block footer %}
-    <footer class="page-footer center-on-lgall-only">
-        <div class="footer-copyright">
-            <div class="container-fluid" style="background-color: #3f51b5;">
-                Designed & Maintained by Office of Student Placements IIT, Jodhpur
-            </div>
-        </div>
-        <!--/.Copyright-->
-    </footer>
+<br>
+    <footer class="footer-basic-centered">
+
+            <p class="footer-logos" style="color: white; font-size: 2rem;">
+
+				<a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
+				|
+				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
+				|
+				<a href="#"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
+
+			</p>
+
+			<p class="footer-company-name">Designed & Maintained by Office of Student Placcements, IIT Jodhpur</p>
+
+	</footer>
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
@@ -110,6 +118,5 @@
     <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
 
 {% endblock %}
-</div>
 </body>
 </html>

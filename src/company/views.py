@@ -70,7 +70,7 @@ class InternshipAdvertisementAddedListView(ListView):
         return self.model.objects.filter(company__user=self.request.user)
 
 
-class InternshipOfferView(CompanyProfileRequiredMixin, DetailView):
+class InternshipOfferView(LoginRequiredMixin, DetailView):
     model = InternshipAdvertisement
     template_name = 'company/offer.html'
     context_object_name = 'ad'
@@ -89,7 +89,7 @@ class InternshipOfferView(CompanyProfileRequiredMixin, DetailView):
         return context
 
 
-class JobOfferView(CompanyProfileRequiredMixin, DetailView):
+class JobOfferView(LoginRequiredMixin, DetailView):
     model = JobAdvertisement
     template_name = 'company/offer.html'
     context_object_name = 'ad'

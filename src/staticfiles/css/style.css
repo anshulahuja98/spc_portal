@@ -76,3 +76,36 @@ form{
 body{
   margin: 0px auto;
 }
+
+nav{
+    background-color: #3f51b5;
+}
+.footer-basic-centered{
+	background-color: #3f51b5;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	font: normal 1rem sans-serif;
+	padding: 0.5rem;
+    position: relative;
+
+}
+
+.footer-basic-centered .footer-company-name{
+	color:  #ffffff;
+	font-size: 14px;
+	margin: 0;
+}
+
+.footer-basic-centered .footer-logos a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 2px;
+
+	font-size: 25px;
+	color: #ffffff;
+	text-align: center;
+    padding-top: 15px;
+}
