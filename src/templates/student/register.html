@@ -1,14 +1,201 @@
 {% extends 'main/base.html' %}
 {% block body %}
-    <div class="col-lg-10">
+    <div class="col-lg-8">
         <div class="card">
             <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Student Registration</span></div>
             <div class="card-block">
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-9">
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                            <label for="id_username" style="font-size: medium">Username:</label>
+                            <input type="text" name="username" placeholder="Enter your Roll number, this will be used to login" maxlength="8" required id="id_username" /> <span class="helptext"></span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                            <label for="id_first_name" style="font-size: medium">First name:</label>
+                            <input type="text" name="first_name" maxlength="30" id="id_first_name" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                            <label for="id_last_name" style="font-size: medium">Last name:</label>
+                            <input type="text" name="last_name" maxlength="150" id="id_last_name" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
+                            <label for="id_password1" style="font-size: medium">Password:</label>
+                            <input type="password" name="password1" class="form-control" required id="id_password1" />
+
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
+                            <label for="id_password2" style="font-size: medium">Password confirmation:</label>
+                            <input type="password" name="password2" class="form-control" required id="id_password2" />
+                            <p>
+                                <ul>
+                                    <li style="font-size: small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your password can&#39;t be too similar to your other personal information.</li>
+                                    <li style="font-size: small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your password must contain at least 8 characters.</li>
+                                    <li style="font-size: small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your password can&#39;t be a commonly used password.</li>
+                                    <li style="font-size: small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your password can&#39;t be entirely numeric.</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix" style="color: cornflowerblue"></i>
+                            <label for="id_email" style="font-size: medium">Email address:</label>
+                            <input type="email" name="email" maxlength="254" id="id_email" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
+                            <label for="id_year" style="font-size: medium">Year:</label>
+                            <input type="number" name="year" placeholder="Enter Year of your Degree" max="5" required id="id_year" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program branch: {{ form.program_branch }}</span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                            <label for="id_gpa" style="font-size: medium">GPA:</label>
+                            <input type="number" name="gpa" max="10.0" step="any" required id="id_gpa" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-phone prefix" style="color: cornflowerblue"></i>
+                            <label for="id_phone" style="font-size: medium">Phone:</label>
+                            <input type="text" name="phone" maxlength="15" required id="id_phone" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                             <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                             <label for="id_parent_name" style="font-size: medium">Parent name:</label>
+                             <input type="text" name="parent_name" maxlength="30" required id="id_parent_name" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-birthday-cake prefix" style="color: cornflowerblue"></i>
+                            <label for="id_dob">Dob:</label>
+                            {{ form.dob }}
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-bars prefix" style="color:cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category : {{ form.category }}</span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-tint prefix" style="color: cornflowerblue"></i>
+                                    <label for="id_blood_group" style="font-size: medium">Blood group:</label>
+                                    <input type="text" name="blood_group" maxlength="5" required id="id_blood_group" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
+                                    <label for="id_jee_air" style="font-size: medium">Jee air:</label>
+                                    <input type="number" name="jee_air" required id="id_jee_air" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-building prefix" style="color: cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hostel Name: {{ form.hostel_name }}</span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-bed prefix" style="color: cornflowerblue"></i>
+                            <label for="id_room_no" style="font-size: medium">Room no:</label>
+                            <input type="number" name="room_no" max="300" required id="id_room_no" />
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-pencil prefix" style="color: cornflowerblue"></i>
+                            <label for="id_hobbies">Hobbies:</label>
+                            <textarea name="hobbies" cols="40" rows="10" required id="id_hobbies"></textarea>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                            <i class="fa fa-blind prefix" style="color: cornflowerblue"></i>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Disability : {{ form.physical_disability }}</span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-flag prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality : {{ form.nationality }}</span>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_permanent_address" style="font-size: medium">Permanent address:</label>
+                                        <textarea name="permanent_address" cols="40" rows="10" required id="id_permanent_address"></textarea>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_current_address" style="font-size: medium">Current address:</label>
+                                    <textarea name="current_address" required rows="10" id="id_current_address"
+                                              cols="40"></textarea>
+                        </div>
+                        <br>
+                        <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_year" style="font-size: medium">X year:</label> <input
+                                        type="number" name="x_year" required
+                                        id="id_x_year"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_board" style="font-size: medium">X Board:</label> <input
+                                        type="text" name="x_board_name" required
+                                        id="id_x_board_name"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_x_percentage" style="font-size: medium">X Percentage:</label> <input
+                                        type="text" name="x_percentage" required
+                                        id="id_x_percentage"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_year" style="font-size: medium">XII year:</label> <input
+                                        type="number" name="xii_year" required
+                                        id="id_xii_year"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_board" style="font-size: medium">XII Board:</label> <input
+                                        type="text" name="xii_board_name"
+                                        required id="id_xii_board_name"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                    <label for="id_xii_percentage" style="font-size: medium">XII Percentage:</label>
+                                    <input type="text" name="xii_percentage"
+                                           required id="id_xii_percentage" />
+                                </div>
+                                <br>
+
                     {{ form.errors }}
+                    <div style="text-align: center">
                     <button class="btn btn-primary" type="submit">Register</button>
+                    </div>
+                    </div>
+                    </div>
                 </form>
             </div>
         </div>

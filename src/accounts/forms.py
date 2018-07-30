@@ -16,9 +16,6 @@ class ResumeForm(forms.ModelForm):
 
 
 class StudentRegisterForm(UserCreationForm):
-    def get_program_branch_list(self):
-        return ProgramAndBranch.objects.values_list('abbreviation', 'name')
-
     password1 = forms.CharField(
         label='Password',
         strip=False,
@@ -33,7 +30,7 @@ class StudentRegisterForm(UserCreationForm):
     )
     username = forms.CharField(max_length=8, help_text="Enter your Roll number, this will be used to login")
     year = forms.IntegerField(max_value=5, help_text="Enter value between 1-5, the current year of your degree")
-    program_branch = forms.ChoiceField(choices=get_program_branch_list)
+    program_branch = forms.ChoiceField(choices=ProgramAndBranch.objects.values_list('abbreviation', 'name'))
     gpa = forms.FloatField(max_value=10.00)
     phone = forms.CharField(max_length=15)
     parent_name = forms.CharField(max_length=30)
