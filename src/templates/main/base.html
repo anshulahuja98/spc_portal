@@ -17,8 +17,7 @@
     {% endblock %}
 </head>
 <body style="margin:0px auto ;">
-<div id="container">
-<div id="header">
+<div class="container-fluid">
 <div class="main-heading">
     <div class="row">
         <div class="col-md-12">
@@ -139,8 +138,6 @@
         </div>
     </nav>
     <br>
-    </div>
-   <div id="body">
     <br><br>
     <div class="row">
     <div class="col-lg-2" id="past_recruiters">
@@ -162,10 +159,10 @@
 
 {% endblock %}
 </div>
-</div>
+
 {% block footer %}
 <br>
-    <div class="footer-basic-centered" id="footer">
+    <footer class="footer-basic-centered">
 
             <p class="footer-logos" style="color: white; font-size: 2rem;">
 
@@ -179,7 +176,7 @@
 
 			<p class="footer-company-name">Designed & Maintained by Office of Student Placcements, IIT Jodhpur</p>
 
-	</div>
+	</footer>
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
@@ -189,6 +186,7 @@
     <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
 
 {% endblock %}
+</div>
 </div>
 </body>
 </html>

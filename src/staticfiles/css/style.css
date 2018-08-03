@@ -77,30 +77,21 @@ body{
   margin: 0px auto;
 }
 
-html, body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-#container{
-    min-height: 100%;
-    position: relative;
-}
 nav{
     background-color: #3f51b5;
 }
-#footer{
-
+.footer-basic-centered{
 	background-color: #3f51b5;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
-    bottom: 0;
 	text-align: center;
 	font: normal 1rem sans-serif;
 	padding: 0.5rem;
     position: relative;
+
 }
+
 .footer-basic-centered .footer-company-name{
 	color:  #ffffff;
 	font-size: 14px;
