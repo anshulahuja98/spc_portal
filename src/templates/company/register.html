@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% block body %}
+<div class="col-lg-1"></div>
     <div class="col-lg-10">
         <div class="card">
             <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Company Registration</span></div>
@@ -82,12 +83,14 @@
 
                     {{ form.errors }}
 
-                    <button class="btn btn-primary" type="submit">Register</button>
+                    <button class="btn btn-primary" style="align: center" type="submit">Register</button>
                     </div>
                 </div>
                 </form>
             </div>
         </div>
+    <div class="col-lg-1"></div>
+
     </div>
-    </div>
+
 {% endblock %}

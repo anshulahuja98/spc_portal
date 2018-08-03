@@ -140,6 +140,7 @@
     <br>
     <br><br>
     <div class="row">
+    {% if not 'register' in request.path  %}
     <div class="col-lg-2" id="past_recruiters">
 
         <center><h3>Past Recruiters</h3></center>
@@ -153,6 +154,8 @@
             <br>
         </marquee>
     </div>
+    {% endif %}
+
 
 {% endblock %}
 {% block body %}
