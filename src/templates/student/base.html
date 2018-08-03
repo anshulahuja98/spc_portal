@@ -31,86 +31,92 @@
 <body style="margin:0px auto ;background: white;">
 <div class="container-fluid">
 
-{% block heading %}
-    <div class="main-heading">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
-                    <a class="thumbnail pull-left">
-                        &nbsp &nbsp
-                        <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
-                             style="height:5rem; width:auto;">
-                    </a>
-                    <div class="media-body" style="margin-left:10px; margin-top: 10px;">
-                        <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem">IITJ Homesite</a>
-                        <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
-                                                                           style="color: black;">Office of Student
-                            Placements</a></h4>
-                        <p class="pull-right" style="margin-right: 2rem">
-                            <a href=""><i class="fa fa-facebook"></i></a>
-                            &nbsp; &nbsp;
-                            &nbsp
-                            <a href=""><i class="fa fa-linkedin"></i></a>
-                        </p>
-                        <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
-                        <br>
+    {% block heading %}
+        <div class="main-heading">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="media"
+                         style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
+                        <a class="thumbnail pull-left">
+                            &nbsp &nbsp
+                            <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
+                                 style="height:5rem; width:auto;">
+                        </a>
+                        <div class="media-body" style="margin-left:10px; margin-top: 10px;">
+                            <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem">IITJ
+                                Homesite</a>
+                            <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
+                                                                               style="color: black;">Office of Student
+                                Placements</a></h4>
+                            <p class="pull-right" style="margin-right: 2rem">
+                                <a href=""><i class="fa fa-facebook"></i></a>
+                                &nbsp; &nbsp;
+                                &nbsp
+                                <a href=""><i class="fa fa-linkedin"></i></a>
+                            </p>
+                            <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
+                            <br>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-{% endblock %}
-{% block navbar %}
-    <nav class="navbar navbar-toggleable-md navbar-dark">
-        <div class="container">
-            <div class=" navbar-collapse" id="collapseEx12">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'student:resume_upload' %}">Upload Resume</a>
-                    </li>
-                    <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'student:detail' %}">Edit Personal Details</a>
-                    </li>
-                    <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
-                    </li>
-                    <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav nav-right">
-                    <li class="nav-item hoverable" style="float:right;">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
+    {% endblock %}
+    {% block navbar %}
+        <nav class="navbar navbar-toggleable-md navbar-dark">
+            <div class="container">
+                <div class=" navbar-collapse" id="collapseEx12">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item hoverable">
+                            <a class="nav-link" href="{% url 'student:resume_upload' %}">Upload Resume</a>
+                        </li>
+                        <li class="nav-item hoverable">
+                            <a class="nav-link" href="{% url 'student:detail' %}">Edit Personal Details</a>
+                        </li>
+                        {% if request.user.username.2 == '6' %}
+                            <li class="nav-item hoverable">
+                                <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
+                            </li>
+                        {% elif request.user.username.2 == '5' %}
+                            <li class="nav-item hoverable">
+                                <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="nav navbar-nav nav-right">
+                        <li class="nav-item hoverable" style="float:right;">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <br><br>
-{% endblock %}
-{% block body %}
+        </nav>
+        <br><br>
+    {% endblock %}
+    {% block body %}
 
-{% endblock %}
+    {% endblock %}
 
 </div>
 {% block footer %}
-<br>
+    <br>
     <footer class="footer-basic-centered">
 
-            <p class="footer-logos" style="color: white; font-size: 2rem;">
+        <p class="footer-logos" style="color: white; font-size: 2rem;">
 
-				<a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
-				|
-				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
-				|
-				<a href="#"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
+            <a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
+            |
+            <a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i
+                    class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
+            |
+            <a href="#"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
 
-			</p>
+        </p>
 
-			<p class="footer-company-name">Designed & Maintained by Office of Student Placcements, IIT Jodhpur</p>
+        <p class="footer-company-name">Designed & Maintained by Office of Student Placcements, IIT Jodhpur</p>
 
-	</footer>
+    </footer>
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
