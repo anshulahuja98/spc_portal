@@ -4,9 +4,10 @@ from django.views.generic import CreateView
 from .forms import StudentRegisterForm, CompanyRegisterForm
 from accounts.models import StudentProfile, CompanyProfile
 from student.models import ProgramAndBranch
+from main.views import HomepageView
 
 
-class LoginView(DefaultLoginView):
+class LoginView(DefaultLoginView, HomepageView):
     template_name = 'main/login.html'
     redirect_authenticated_user = True
 
