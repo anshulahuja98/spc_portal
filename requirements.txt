@@ -3,3 +3,4 @@ flake8
 django_heroku
 gunicorn
 django-decouple==2.1
+psycopg2
