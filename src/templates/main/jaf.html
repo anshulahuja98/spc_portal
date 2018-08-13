@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
+{% load staticfiles %}
 {% block body %}
     <div class="col-lg-10">
         <div class="card">
             <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Job Application Form</span></div>
             <div class="card-block">
                 <p class="card-text">
-                    <a href="../public/Job-Announcement-Form.docx" download>Click Here</a> to download the job Annoncement Form (JAF).
+                    <a href="{% static 'Job-Announcement-Form.docx' %}" download>Click Here</a> to download the job Annoncement Form (JAF).
                 </p>
             </div>
         </div>
