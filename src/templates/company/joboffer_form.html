@@ -5,9 +5,15 @@
         <div class="col-lg-10">
             <form method="post">
                 {% csrf_token %}
+
                 <div class="card">
                     <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Add Job Offer</span></div>
                     <div class="card-block">
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                        {% endfor %}
                         <div class="row">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-4">
