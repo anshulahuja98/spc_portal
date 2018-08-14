@@ -48,7 +48,7 @@ class StudentRegisterFormView(CreateView):
                                                     jee_air=kwargs['jee_air'],
                                                     hostel_name=kwargs['hostel_name'],
                                                     room_no=kwargs['room_no'],
-                                                    hobbies=kwargs['hobbies'],
+                                                    # hobbies=kwargs['hobbies'],
                                                     physical_disability=kwargs['physical_disability'],
                                                     nationality=kwargs['nationality'],
                                                     permanent_address=kwargs['permanent_address'],

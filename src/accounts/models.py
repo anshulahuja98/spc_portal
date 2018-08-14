@@ -39,7 +39,7 @@ class StudentProfile(models.Model):
     jee_air = models.IntegerField()
     hostel_name = models.CharField(max_length=2, choices=HOSTELS)
     room_no = models.SmallIntegerField()
-    hobbies = models.TextField()
+    hobbies = models.TextField(blank=True, null=True)
     physical_disability = models.BooleanField(default=False)
     nationality = models.CharField(max_length=10, choices=NATION)
     permanent_address = models.TextField()
