@@ -1,35 +1,68 @@
 {% extends 'student/base.html' %}
 {% block body %}
     <div>
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <div class="card">
-                <div class="card" id="my-card"><span
-                        style="font-size: 1.5rem"> &nbsp;
-                    {% if request.path == "/student/intern_offers/" %}
-                        Intern
-                    {% elif request.path == "/student/job_offers/" %}
-                        Job
-                    {% endif %}
-                    Offers
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card" id="my-card"><span
+                            style="font-size: 1.5rem"> &nbsp;
+                        {% if request.path == "/student/intern_offers/" %}
+                            Intern
+                        {% elif request.path == "/student/job_offers/" %}
+                            Job
+                        {% endif %}
+                        Offers
                 </span></div>
-                <div class="card-block">
-                    <table class="table table-striped">
-                        <thead class="lighten-4">
-                        <tr>
-                            <th class="theader">S.No</th>
-                            <th class="theader">Company Name</th>
-                            <th class="theader">Job Designation</th>
-                            <th class="theader">View Offer</th>
-                            <th class="theader">Status</th>
-                            <th class="theader">Expires on</th>
+                    <div class="card-block">
+                        <table class="table table-striped">
+                            <thead class="lighten-4">
+                            <tr>
+                                <th class="theader">S.No</th>
+                                <th class="theader">Company Name</th>
+                                <th class="theader">Job Designation</th>
+                                <th class="theader">View Offer</th>
+                                <th class="theader">Status</th>
+                                <th class="theader">Expires on</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for ad in ad_list %}
-                            {% if ad.active and ad not in applied_ad_list %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ad in ad_list %}
+                                {% if ad.active and ad not in applied_ad_list %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ ad.company }}</td>
+                                        <td>{{ ad.designation }}</td>
+                                        <td>
+                                            <a href="{{ ad.get_absolute_url }}">
+                                                <button class="btn btn-info btn-sm">
+                                                    View Offer
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {% if request.user.is_active %}
+                                                <form method="post">
+                                                    {% csrf_token %}
+                                                    <label for="id_profile"></label>
+                                                    <select name="profile" required id="id_profile" hidden>
+                                                        <option value="{{ ad.id }}" selected>---------</option>
+                                                    </select>
+                                                    <button class="btn btn-info btn-sm" type="submit">Apply</button>
+                                                    {{ form.resume }}
+                                                </form>
+                                            {% else %}
+                                                You have already been placed, you cannot apply now.
+                                            {% endif %}
+                                        </td>
+                                        <td class="red-text">
+                                            {{ ad.expiry }}
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            {% for ad in applied_ad_list %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ ad.company }}</td>
@@ -42,49 +75,20 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <form method="post">
-                                            {% csrf_token %}
-                                            <label for="id_profile"></label>
-                                            <select name="profile" required id="id_profile" hidden>
-                                                <option value="{{ ad.id }}" selected>---------</option>
-                                            </select>
-                                            <button class="btn btn-info btn-sm" type="submit">Apply</button>
-                                            {{ form.resume }}
-                                        </form>
+                                        <div class="green-text" align="center">Applied</div>
                                     </td>
                                     <td class="red-text">
                                         {{ ad.expiry }}
                                     </td>
                                 </tr>
-                            {% endif %}
-                        {% endfor %}
-                        {% for ad in applied_ad_list %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ ad.company }}</td>
-                                <td>{{ ad.designation }}</td>
-                                <td>
-                                    <a href="{{ ad.get_absolute_url }}">
-                                        <button class="btn btn-info btn-sm">
-                                            View Offer
-                                        </button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <div class="green-text" align="center">Applied</div>
-                                </td>
-                                <td class="red-text">
-                                    {{ ad.expiry }}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-1"></div>
         </div>
-        <div class="col-lg-1"></div>
-    </div>
     </div>
     </div>
 {% endblock %}
