@@ -73,6 +73,11 @@
                                     <span>&nbsp;&nbsp;&nbsp;Bond : </span><input type="checkbox" name="bond"
                                                                                  id="id_bond"/>
                                 </div>
+                                <div class="md-form">
+
+                                    <i class="fa fa-plus-circle" style="color:cornflowerblue; font-size:xx-large"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;Bond Details : {{ form.bond_details }}</span>
+                                </div>
                             </div>
                             <div class="col-lg-1"></div>
                             <div class="col-lg-5">
@@ -84,7 +89,7 @@
 
                                         {{ form.eligible_program_branch }}
                                         <br>
-                                                                                <span class="green-text">Press Ctrl and click to select</span>
+                                        <span class="green-text">Press Ctrl and click to select</span>
 
                                     </div>
                                 </div>
@@ -102,6 +107,27 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td><span style="font-size: large">Resume Shortlist Criteria</span></td>
+                                            <td>&nbsp;:&nbsp;&nbsp;</td>
+                                            <td>{{ form.resume_shortlist_criteria }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="font-size: large">Number of Technical Tests</span></td>
+                                            <td>&nbsp;:&nbsp;&nbsp;</td>
+                                            <td>{{ form.number_of_technical_tests }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="font-size: large">Number of Technical Interview</span></td>
+                                            <td>&nbsp;:&nbsp;&nbsp;</td>
+                                            <td>{{ form.number_of_technical_interviews }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span style="font-size: large">Number of HR Round Interview</span></td>
+                                            <td>&nbsp;:&nbsp;&nbsp;</td>
+                                            <td>{{ form.number_of_hr_rounds }}</td>
+                                        </tr>
+                                        <tr>
                                             <td><span style="font-size: large">Aptitude Test</span></td>
                                             <td>&nbsp;:&nbsp;&nbsp;</td>
                                             <td><input type="checkbox" name="aptitude_test_required"
@@ -113,24 +139,15 @@
                                             <td><input type="checkbox" name="technical_test_required"
                                                        id="id_technical_test_required"/></td>
                                         </tr>
+
                                         <tr>
                                             <td><span style="font-size: large">Group Discussion</span></td>
                                             <td>&nbsp;:&nbsp;&nbsp;</td>
                                             <td><input type="checkbox" name="group_discussion_required"
                                                        id="id_group_discussion_required"/></td>
                                         </tr>
-                                        <tr>
-                                            <td><span style="font-size: large">Technical Interview</span></td>
-                                            <td>&nbsp;:&nbsp;&nbsp;</td>
-                                            <td><input type="checkbox" name="technical_interview_required"
-                                                       id="id_technical_interview_required"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span style="font-size: large">HR Round Interview</span></td>
-                                            <td>&nbsp;:&nbsp;&nbsp;</td>
-                                            <td><input type="checkbox" name="hr_round_required"
-                                                       id="id_hr_round_required"/></td>
-                                        </tr>
+
+
                                         <tr>
                                             <td><span style="font-size: large">Medical Test Required</span></td>
                                             <td>&nbsp;:&nbsp;&nbsp;</td>
@@ -140,13 +157,6 @@
                                     </table>
                                 </div>
                                 <br>
-                                <div class="md-form">
-                                    <i class="fa fa-bars prefix" style="color: cornflowerblue"></i>
-                                    <label for="id_number_of_rounds" style="font-size: medium; font-weight: bold">Number
-                                        of Rounds</label>
-                                    <input type="number" name="number_of_rounds" step="any" required
-                                           id="number_of_rounds"/>
-                                </div>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                     <label for="id_min_gpa" style="font-size: medium; font-weight: bold">Minimum

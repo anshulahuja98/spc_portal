@@ -83,6 +83,12 @@
                                             <td>Bond</td>
                                         </tr>
                                     {% endif %}
+                                    {% if ad.bond_details %}
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>Bond Details: <span class="red-text"> {{ ad.bond_details }}</span></td>
+                                        </tr>
+                                    {% endif %}
                                 </table>
                             </div>
                             <br>
@@ -99,7 +105,6 @@
                                 <form>
                                     <table border="0">
                                         <tr>
-                                            <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
                                             <td>Eligible Branches And Programs</td>
                                             <td>&nbsp;:&nbsp;</td>
                                             <td>
@@ -108,12 +113,6 @@
                                                 {% endfor %}
                                             </td>
                                         </tr>
-                                        {#                                <tr>#}
-                                        {#                                 <!--   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->#}
-                                        {#                                    <td>Eligible Branches</td>#}
-                                        {#                                    <td>&nbsp;:&nbsp;</td>#}
-                                        {#                                    <td>{{ad.eligible_branches}}</td>#}
-                                        {#                                </tr>#}
                                         <tr>
                                             <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
                                             <td>Minimum CGPA</td>
@@ -133,58 +132,53 @@
                                     <table border="0">
                                         {% if ad.resume_required %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-
                                                 <td>Resume Shortlist</td>
-
                                             </tr>
                                         {% endif %}
-                                        {% if ad.technical_test_required %}
+                                        {% if ad.resume_shortlist_criteria %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-
-                                                <td>Technical Test</td>
-
+                                                <td>Resume Shortlist Criteria: <span
+                                                        class="red-text"> {{ ad.resume_shortlist_criteria }}</span></td>
                                             </tr>
                                         {% endif %}
+
                                         {% if ad.aptitude_test_required %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-
                                                 <td>Aptitude Test</td>
-
                                             </tr>
                                         {% endif %}
                                         {% if ad.group_discussion_required %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
                                                 <td>Group Discussion</td>
                                             </tr>
                                         {% endif %}
-                                        {% if ad.technical_interview_required %}
+
+                                        {% if ad.number_of_technical_tests %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                                <td>Technical Interview</td>
+                                                <td>Number of Technical Test: <span
+                                                        class="red-text"> {{ ad.number_of_technical_tests }}</span></td>
                                             </tr>
                                         {% endif %}
-                                        {% if ad.hr_round_required %}
+
+                                        {% if ad.number_of_technical_interviews %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-                                                <td>HR Round Interview</td>
+                                                <td>Number of Technical
+                                                    Interview: <span
+                                                            class="red-text"> {{ ad.number_of_technical_interviews }} </span>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if ad.number_of_hr_rounds %}
+                                            <tr>
+                                                <td>Number of HR Round Interview: <span
+                                                        class="red-text">  {{ ad.number_of_hr_rounds }} </span></td>
                                             </tr>
                                         {% endif %}
                                         {% if ad.medical_test_required %}
                                             <tr>
-                                                <!--<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
                                                 <td>Medical Test</td>
                                             </tr>
                                         {% endif %}
-                                        <tr>
-                                            <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
-                                            <td>Number of Rounds</td>
-                                            <td>&nbsp;:&nbsp;</td>
-                                            <td>{{ ad.number_of_rounds }}</td>
-                                        </tr>
                                     </table>
                                 </form>
                             </div>
