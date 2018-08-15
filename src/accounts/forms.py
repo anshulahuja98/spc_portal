@@ -40,7 +40,7 @@ class StudentRegisterForm(UserCreationForm):
     jee_air = forms.IntegerField()
     hostel_name = forms.ChoiceField(choices=StudentProfile.HOSTELS)
     room_no = forms.IntegerField(max_value=300)
-    hobbies = forms.CharField(widget=forms.Textarea)
+    # hobbies = forms.CharField(widget=forms.Textarea)
     physical_disability = forms.BooleanField(required=False)
     nationality = forms.ChoiceField(choices=StudentProfile.NATION)
     permanent_address = forms.CharField(widget=forms.Textarea)
