@@ -20,6 +20,10 @@ from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_title = 'SPC Administration'
+admin.site.site_header = 'SPC Administration'
+admin.site.index_title = 'Admin Panel'
+
 urlpatterns = [
                   path('login/', LoginView.as_view(), name='login'),
                   path('logout/', LogoutView.as_view(), name='logout'),
