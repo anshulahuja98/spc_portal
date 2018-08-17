@@ -2,11 +2,16 @@ from django.contrib import admin
 from .models import JobAdvertisement, InternshipAdvertisement, InternshipOffer, JobOffer
 
 
+def make_active(modeladmin, request, queryset):
+    queryset.update(active=True)
+
+
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(admin.ModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
+    actions = [make_active]
 
     class Meta:
         model = JobAdvertisement
@@ -18,6 +23,7 @@ class InternshipAdvertisementAdmin(admin.ModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
+    actions = [make_active]
 
     class Meta:
         model = InternshipAdvertisement
