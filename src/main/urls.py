@@ -32,5 +32,7 @@ urlpatterns = [
     path('invitation/', HomepageView.as_view(template_name='main/invitation.html'), name='invitation'),
     path('dir_msg/', HomepageView.as_view(template_name='main/dir_msg.html'), name='dir_msg'),
     path('student/', include('student.urls')),
-    path('company/', include('company.urls'))
+    path('company/', include('company.urls')),
+    path('tutorial_student/', HomepageView.as_view(template_name='main/tutorial-student.html'), name='tutorial_student'),
+    path('tutorial_company/', HomepageView.as_view(template_name='main/tutorial-company.html'), name='tutorial_company')
 ]
