@@ -9,7 +9,10 @@ def get_zipped_resumes(modeladmin, request, queryset):
     if queryset.count() != 1:
         modeladmin.message_user(request, "Can not export more than one object to zip at once.")
         return
-    offers = JobOffer.objects.filter(profile__in=queryset).all()
+    if modeladmin.model is JobAdvertisement:
+        offers = JobOffer.objects.filter(profile__in=queryset).all()
+    elif modeladmin.model is InternshipAdvertisement:
+        offers = InternshipOffer.objects.filter(profile__in=queryset).all()
     if not offers.count():
         modeladmin.message_user(request, "No offers exist for this advertisement")
         return
@@ -22,7 +25,6 @@ def get_zipped_resumes(modeladmin, request, queryset):
         zip.write(offer.resume.file.path, basename(offer.resume.file.path))
 
     zip.close()
-    print(zip)
     url = "/media/" + zip_path
     return HttpResponseRedirect(url)
 
