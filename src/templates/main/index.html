@@ -1,16 +1,21 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
 {% block body %}
-
-
+    <style type="">
+        @media only screen and (max-width: 768px) {
+            #carousel-example-1z {
+                display: none !important;
+            }
+        }
+    </style>
     <div class="col-lg-10">
         <div class="row">
             <div class="col-lg-9">
                 <!--Carousel Wrapper-->
-                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel"
+                     style="display: ">
                     <!--Indicators-->
                     <ol class="carousel-indicators">
-                        {#                        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>#}
                         {% for image in carousel %}
                             <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
                                     {% if forloop.counter == 1 %} class="active"{% endif %}></li>
@@ -41,14 +46,15 @@
                 </div>
                 <!--/.Carousel Wrapper-->
             </div>
+            <br>
             <div class="col-lg-3">
                 <br>
                 <div class="card">
                     <div class="card" id="my-card"><h4>&nbsp Recent News</h4></div>
                     <div class="card-block">
                         <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
-                          <p class="d-block w-100">1. New job opening in Placement office for staff positions.
-                                    <a href="{% static 'IITJ_RD_2018-19_10.pdf' %}">Read More</a></p>
+                        <p class="d-block w-100">1. New job opening in Placement office for staff positions.
+                            <a href="{% static 'IITJ_RD_2018-19_10.pdf' %}">Read More</a></p>
                         <!-- </marquee> -->
                     </div>
                 </div>
