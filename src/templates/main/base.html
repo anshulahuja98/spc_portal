@@ -16,177 +16,172 @@
 
     {% endblock %}
 </head>
-<body style="margin:0px auto ;>
+<body style="margin:0px auto ;">
 <div class="container-fluid">
-    <div class="main-heading">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
-                    <a class="thumbnail pull-left">
-                        &nbsp &nbsp
-                        <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
-                             style="height:5rem; width:auto;">
-                    </a>
-                    <div class="media-body" style="margin-left:10px; margin-top: 10px;">
-                        <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem">IIT Jodhpur &nbsp;
-                            <i class="fa fa-external-link"></i></a>
-                        <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
-                                                                           style="color: black;">Office of Student
-                            Placements</a></h4>
-                        <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
-                        <br>
-                    </div>
+<div class="main-heading">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
+                <a class="thumbnail pull-left">
+                    &nbsp &nbsp
+                    <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
+                         style="height:5rem; width:auto;">
+                </a>
+                <div class="media-body" style="margin-left:10px; margin-top: 10px;">
+                    <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem">IIT Jodhpur &nbsp; <i class="fa fa-external-link"></i></a>
+                    <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
+                                                                       style="color: black;">Office of Student
+                        Placements</a></h4>
+                    <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
-    {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark" style="background-color: #3f51b5;">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseEx12"
-                        aria-controls="collapseEx12" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+</div>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark" style="background-color: #3f51b5;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseEx12"
+                    aria-controls="collapseEx12" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="collapseEx12">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-home"></i> Home </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:home' %}">About Us</a>
-                                <a class="dropdown-item" href="{% url 'main:invitation' %}">Invitation</a>
-                                <a class="dropdown-item" href="{% url 'main:dir_msg' %}">Director's Message</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Academics</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:gradesystem' %}">Gradesystem</a>
-                                <a class="dropdown-item" href="{% url 'main:programs' %}">Programmes</a>
-                                <a class="dropdown-item" href="{% url 'main:admissions' %}">Admission Procedure</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Students</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:achievements' %}">Achievements</a>
-                                <a class="dropdown-item" href="{% url 'main:profile' %}">Prospective</a>
-                                <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a>
-                                <a class="dropdown-item" href="{% url 'main:student_rules' %}">Norms/Guidelines</a>
-                                <a class="dropdown-item" href="{% url 'main:internships' %}">Internships</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-industry"></i> Company</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:brochure' %}">Brochure</a>
-                                <a class="dropdown-item" href="{% url 'main:summary' %}">Summary</a>
-                                <a class="dropdown-item" href="{% url 'main:placementProcedure' %}">Placement
-                                    Procedure</a>
-                                <a class="dropdown-item" href="{% url 'main:company_rules' %}">Norms/Guidelines</a>
-                                <a class="dropdown-item" href="{% url 'main:past_recruiters' %}">Past Recruiters</a>
-                                <a class="dropdown-item" href="{% url 'main:aipc' %}">AIPC Norms</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-question-circle"></i> Why
-                                Recruit</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:newBreed' %}">The New Breed</a>
-                                <!--  <a class="dropdown-item" href="/coe">Centre of Excellence</a> -->
-                                <a class="dropdown-item" href="{% url 'main:research' %}">R & D</a>
-                                <a class="dropdown-item" href="{% url 'main:facilities' %}">Facilities</a>
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="	fa fa-file-pdf-o"></i> Forms</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:jaf' %}">JAF</a>
-                                <a class="dropdown-item" href="{% url 'main:iaf' %}">IAF</a>
+            <div class="collapse navbar-collapse" id="collapseEx12">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Home</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:home' %}">About Us</a>
+                            <a class="dropdown-item" href="{% url 'main:invitation' %}">Invitation</a>
+                            <a class="dropdown-item" href="{% url 'main:dir_msg' %}">Director's Message</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Academics</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:gradesystem' %}">Gradesystem</a>
+                            <a class="dropdown-item" href="{% url 'main:programs' %}">Programmes</a>
+                            <a class="dropdown-item" href="{% url 'main:admissions' %}">Admission Procedure</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Students</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:achievements' %}">Achievements</a>
+                            <a class="dropdown-item" href="{% url 'main:profile' %}">Prospective</a>
+                            <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a>
+                            <a class="dropdown-item" href="{% url 'main:student_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:internships' %}">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Company</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:brochure' %}">Brochure</a>
+                            <a class="dropdown-item" href="{% url 'main:summary' %}">Summary</a>
+                            <a class="dropdown-item" href="{% url 'main:placementProcedure' %}">Placement Procedure</a>
+                            <a class="dropdown-item" href="{% url 'main:company_rules' %}">Norms/Guidelines</a>
+                            <a class="dropdown-item" href="{% url 'main:past_recruiters' %}">Past Recruiters</a>
+                            <a class="dropdown-item" href="{% url 'main:aipc' %}">AIPC Norms</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Why Recruit</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:newBreed' %}">The New Breed</a>
+                            <!--  <a class="dropdown-item" href="/coe">Centre of Excellence</a> -->
+                            <a class="dropdown-item" href="{% url 'main:research' %}">R & D</a>
+                            <a class="dropdown-item" href="{% url 'main:facilities' %}">Facilities</a>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Forms</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:jaf' %}">JAF</a>
+                            <a class="dropdown-item" href="{% url 'main:iaf' %}">IAF</a>
 
-                            </div>
-                        </li>
-                        <li class="nav-item btn-group hoverable">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-phone"></i> Contact Us</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="{% url 'main:contacts' %}">Contacts</a>
-                                <a class="dropdown-item" href="{% url 'main:reachus' %}">Reach Us</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav nav-right">
-                        <li class="nav-item hoverable">
-                            <a class="nav-link" href="{% url 'login' %}"> <i class="fa fa-lock"> </i> Student Login</a>
-                        </li>
-                        <li class="nav-item hoverable" style="float:right;">
-                            <a class="nav-link" href="{% url 'login' %}"> <i class="fa fa-lock"> </i> Company Login</a>
-                        </li>
+                        </div>
+                    </li>
+                    <li class="nav-item btn-group hoverable">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{% url 'main:contacts' %}">Contacts</a>
+                            <a class="dropdown-item" href="{% url 'main:reachus' %}">Reach Us</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav nav-right">
+                    <li class="nav-item hoverable">
+                        <a class="nav-link" href="{% url 'login' %}">Student Login</a>
+                    </li>
+                    <li class="nav-item hoverable" style="float:right;">
+                        <a class="nav-link" href="{% url 'login' %}">Company Login</a>
+                    </li>
 
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </nav>
-        <br>
-        <br><br>
-        <div class="row">
-        {% if not 'register' in request.path and not 'contacts' in request.path %}
-            <div class="col-lg-2" id="past_recruiters">
+        </div>
+    </nav>
+    <br>
+    <br><br>
+    <div class="row">
+    {% if not 'register' in request.path and not 'contacts' in request.path %}
+    <div class="col-lg-2" id="past_recruiters">
 
-                <center><h3>Past Recruiters</h3></center>
+        <center><h3>Past Recruiters</h3></center>
+        <br>
+        <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
+                 onmouseout="this.start();">
+            {% for company in companies %}
                 <br>
-                <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
-                         onmouseout="this.start();">
-                    {% for company in companies %}
-                        <br>
-                        <img class="d-block w-100" style="margin-top:60px;" src="{% static company %}">
-                    {% endfor %}
-                    <br>
-                </marquee>
-            </div>
-        {% endif %}
-
-
-    {% endblock %}
-    {% block body %}
-
-    {% endblock %}
+                <img class="d-block w-100" style="margin-top:60px;" src="{% static company %}">
+            {% endfor %}
+            <br>
+        </marquee>
     </div>
+    {% endif %}
 
-    {% block footer %}
-        <br>
-        <footer class="footer-basic-centered">
+
+{% endblock %}
+{% block body %}
+
+{% endblock %}
+</div>
+
+{% block footer %}
+<br>
+    <footer class="footer-basic-centered">
 
             <p class="footer-logos" style="color: white; font-size: 2rem;">
 
-                <a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
-                |
-                <a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i
-                        class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
-                |
-                <a href="https://github.com/anshulahuja98/spc_portal"><i class="fa fa-github"
-                                                                         style="color: #FFFFFF"></i></a>
+				<a href="https://www.facebook.com/SPC.IITJ/"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
+				|
+				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
+				|
+				<a href="https://github.com/anshulahuja98/spc_portal"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
 
-            </p>
+			</p>
 
-            <p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
+			<p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
 
-        </footer>
-        <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="{% static '/js/bootstrap.min.js' %}"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
+	</footer>
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static '/js/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
 
-    {% endblock %}
+{% endblock %}
 </div>
 </div>
 </body>
