@@ -6,7 +6,7 @@
             #carousel-example-1z {
                 display: none !important;
             }
-	    #carousel-example-2z {
+	    #testimonials {
                 display: none !important;
             }
         }
@@ -125,7 +125,7 @@
     <br>
     <div class="col-lg-1"></div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-10" id="testimonials" style="display:">
     <br><br>
         <div class="col-md-12" align=center style="padding:12px;padding-top:0px;">
 	   <center><h1 style="font-family:'lato', sans-serif !important;font-weight:700;line-height:1.1;text-decoration: underline">Alumni's Words</h1></center>
@@ -137,7 +137,9 @@
                     <ol class="carousel-indicators">
                         <li data-target="#carousel-example-2z" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-example-2z" data-slide-to="1" class="active"></li>
-                <!--        <li data-target="#carousel-example-2z" data-slide-to="2" class="active"></li> -->
+                        <li data-target="#carousel-example-2z" data-slide-to="2" class="active"></li>
+                        <li data-target="#carousel-example-2z" data-slide-to="3" class="active"></li>
+                        <li data-target="#carousel-example-2z" data-slide-to="4" class="active"></li>
                     </ol>
                     <!--/.Indicators-->
                     <!--Slides-->
@@ -167,16 +169,40 @@ Although I wasn't a Computer Science grad I could still make it to one of the to
                                 <p style="text-align: left;">Shubham Talbar <br>Technology Analyst <br>Morgan Stanley</p>
                             </div>
                         </div>
-                        <!--Third slide
+                        <!--Third slide -->
                         <div class="carousel-item">
                             <div class="col-lg-8">
-                             <p style="padding: 1rem;padding-top: 2rem;">I had a complete makeover of personality over the 4 years I spent at IIT Jodhpur. The campus provided great environment for studies and research, accompanied by highly experienced faculty who ensured students have in-depth knowledge of the subject. This learner centric environment motivated us to pursue our dreams freely and got us up to date with industry standards. The Placement Cell here is extremely hard working who helps us students to develop professionalism, proper work ethics and provides us with infinite opportunities to choose our future domain from. I am proud to be part of such an Institution and I am thankful to IIT Jodhpur for making us who we are!</p>
+                             <p style="padding: 1rem;padding-top: 2rem;">The 4 years at IITJ played the crucial role in my academic, professional or personal growth. Speaking about the placements, I got the internship at Morgan Stanley on the very first day of the session. I was a part of the OSP team and have personally experienced the kind of hard work that the team put in to ensure that all the students get the best. I got a PPO from Morgan Stanley so did not sit for the placement session. But, kudos to the entire team that we got the best stats for the CSE so far. I wish the whole team best of luck for the coming sessions.</p>
                             </div>
                             <div class="col-lg-2">
-                                <img src="{% static 'img/contacts/sandipmurarka.jpg' %}" alt="" style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
-                                <p style="text-align: center;">Chairman IITJ SPC Board</p>
+                                <img src="{% static 'img/contacts/mohit-mehta.jpg' %}" alt="" style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                                <p style="text-align: center;">Mohit Mehta <br>Technology Analyst <br>Morgan Stanley</p>
                             </div>
-                        </div> -->
+                        </div>
+                        <!-- Fourth Slide -->
+                        <div class="carousel-item">
+                            <div class="col-lg-8">
+                             <p style="padding: 1rem;padding-top: 2rem;">My journey at IIT Jodhpur has been an enriching and memorable experience. It taught me all the necessary skills and provided opportunities to not only build a successful career but also to progress well ahead in life. An important part of it was due to the efforts of the Office of Student Placements, who worked selflessly and efficiently to provide awesome work opportunities to the students.
+
+I got selected for a two-month summer internship at D.E. Shaw India Private Limited during my third year. The placements team had ensured that the whole process was smooth for the candidates and the interviewers. I finally got a pre-placement offer from the company after the internship and I finally joined it after my graduation.
+
+A big thanks to the Office of Student Placements for their tireless efforts and I hope it gets even better over the years to come.</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <img src="{% static 'img/contacts/archil-srivastava.jpg' %}" alt="" style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                                <p style="text-align: center;">Archil Srivastava <br> Software Engineer <br>D.E. Shaw</p>
+                            </div>
+                        </div>
+                        <!-- Fifth Slide -->
+                        <div class="carousel-item">
+                            <div class="col-lg-8">
+                             <p style="padding: 1rem;padding-top: 2rem;">My journey of IIT Jodhpur was highly enriching. It has given me tremendous insight and clarity about my both personal and professional interest. Being a part of institute's first batch of Industry Immersion Program (IIP), I got the opportunity to spend my 3 summers at Tata Power.  and learn about the functioning of Industry. It was an enriching experience as I could apply the acquired practical knowledge in class and improve my understanding of the subject. OSP plays a pivotal role in helping students getting placed in a suitable company and making the placement process hassle free for both students and companies. I am grateful to OSP members for their sincere effort and dedication.</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <img src="{% static 'img/contacts/akshat-srivastava.jpg' %}" alt="" style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                                <p style="text-align: center;">Akshat Shrivastava <br>Finisar Ind.</p>
+                            </div>
+                        </div>
                     </div>
 
                     <a class="carousel-control-prev" href="#carousel-example-2z" role="button" data-slide="prev">
