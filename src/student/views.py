@@ -145,10 +145,9 @@ class ResumeListView(StudentProfileRequiredMixin, ListView):
     template_name = 'student/resume.html'
     context_object_name = 'resume_list'
 
-    def get_object(self, queryset=None):
-        student = get_object_or_404(StudentProfile, user=self.request.user)
-        print(student)
-        return self.model.objects.filter(Resume, student=student)
+    def get_queryset(self):
+        profile = get_object_or_404(StudentProfile, user=self.request.user)
+        return self.model.objects.filter(student=profile)
 
 
 class ResumeUploadFormView(StudentProfileRequiredMixin, FormView):
