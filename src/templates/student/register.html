@@ -21,8 +21,8 @@
                             <div class="md-form">
                                 <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                 <label for="id_username" style="font-size: medium">Username:</label>
-                                <input type="text" name="username"
-                                       placeholder="Enter your Roll number, this will be used to login" maxlength="8"
+                                <input pattern='[A-Z][0-9]{2}[A-Z]{2}[0-9]{3}' type="text" name="username"
+                                       placeholder="Enter your Roll number(in correct format), this will be used to login eg. B17CS006" maxlength="8"
                                        required id="id_username"/> <span class="helptext"></span>
                             </div>
                             <br>
@@ -79,7 +79,8 @@
                             <div class="md-form">
                                 <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                 <label for="id_year" style="font-size: medium">Year:</label>
-                                <input type="number" name="year" placeholder="Enter Current Year of your Degree " max="7"
+                                <input type="number" name="year" placeholder="Enter Current Year of your Degree "
+                                       max="7"
                                        required id="id_year"/>
                             </div>
                             <br>
@@ -141,12 +142,12 @@
                                 <label for="id_room_no" style="font-size: medium">Room no:</label>
                                 <input type="number" name="room_no" max="300" required id="id_room_no"/>
                             </div>
-{#                            <br>#}
-{#                            <div class="md-form">#}
-{#                                <i class="fa fa-pencil prefix" style="color: cornflowerblue"></i>#}
-{#                                <label for="id_hobbies">Hobbies:</label>#}
-{#                                <textarea name="hobbies" cols="40" rows="10" required id="id_hobbies"></textarea>#}
-{#                            </div>#}
+                            {#                            <br>#}
+                            {#                            <div class="md-form">#}
+                            {#                                <i class="fa fa-pencil prefix" style="color: cornflowerblue"></i>#}
+                            {#                                <label for="id_hobbies">Hobbies:</label>#}
+                            {#                                <textarea name="hobbies" cols="40" rows="10" required id="id_hobbies"></textarea>#}
+                            {#                            </div>#}
                             <br>
                             <div class="md-form">
                                 <i class="fa fa-blind prefix" style="color: cornflowerblue"></i>
