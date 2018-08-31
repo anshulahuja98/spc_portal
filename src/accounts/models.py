@@ -96,7 +96,10 @@ class Resume(models.Model):
                                  help_text="Enter a reference name for this resume by which you can remember the details of this particular resume")
 
     def __str__(self):
-        return self.reference
+        if not self.reference:
+            return "No reference"
+        else:
+            return self.reference
 
 
 def event_pre_save_receiver(sender, instance, *args, **kwargs):
