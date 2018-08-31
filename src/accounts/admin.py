@@ -33,6 +33,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'roll_no', 'program_branch', 'year']
     list_filter = ['program_branch', 'year']
     ordering = ['roll_no', ]
+    search_fields = ['roll_no', 'user__first_name', 'user__last_name']
 
     class Meta:
         model = StudentProfile
@@ -44,6 +45,7 @@ class CompanyProfileAdmin(admin.ModelAdmin):
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', ]
     list_filter = ['domain', ]
+    search_fields = ['name', 'user__username']
 
     class Meta:
         model = CompanyProfile
@@ -53,7 +55,8 @@ class CompanyProfileAdmin(admin.ModelAdmin):
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
     list_display = ['student', 'is_verified', ]
-    list_filter = ['student', ]
+    search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
+    list_filter = ['is_verified']
 
     class Meta:
         model = Resume
