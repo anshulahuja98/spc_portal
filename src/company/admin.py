@@ -38,6 +38,7 @@ class JobAdvertisementAdmin(admin.ModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
+    search_fields = ['company__name', ]
     actions = [get_zipped_resumes, make_active]
 
     class Meta:
@@ -50,6 +51,7 @@ class InternshipAdvertisementAdmin(admin.ModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
+    search_fields = ['company__name', ]
     actions = [get_zipped_resumes, make_active]
 
     class Meta:
@@ -60,8 +62,10 @@ class InternshipAdvertisementAdmin(admin.ModelAdmin):
 @admin.register(InternshipOffer)
 class InternshipOfferAdmin(admin.ModelAdmin):
     list_display = ['student', 'company', 'profile', 'is_accepted', ]
-    list_filter = ['company', 'is_accepted', 'student']
+    list_filter = ['company', 'is_accepted', ]
     ordering = ['student']
+    search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
+                     'student__user__last_name', ]
 
     class Meta:
         model = InternshipOffer
@@ -71,8 +75,10 @@ class InternshipOfferAdmin(admin.ModelAdmin):
 @admin.register(JobOffer)
 class JobOfferAdmin(admin.ModelAdmin):
     list_display = ['student', 'company', 'profile', 'is_accepted', ]
-    list_filter = ['company', 'is_accepted', 'student']
+    list_filter = ['company', 'is_accepted', ]
     ordering = ['student']
+    search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
+                     'student__user__last_name', ]
 
     class Meta:
         model = JobOffer
