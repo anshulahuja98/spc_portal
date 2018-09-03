@@ -51,6 +51,8 @@ class StudentProfile(models.Model):
     xii_year = models.SmallIntegerField()
     xii_board_name = models.CharField(max_length=30)
     xii_percentage = models.CharField(max_length=10)
+    banned = models.BooleanField(default=False)
+    placed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.get_full_name()

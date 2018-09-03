@@ -69,6 +69,7 @@ class JobOffersListView(StudentProfileRequiredMixin, ListView):
         context = super(JobOffersListView, self).get_context_data(**kwargs)
         context['form'] = JobOfferForm(user=self.request.user)
         context['applied_ad_list'] = self.get_applied_ad_list()
+        context['userprofile'] = StudentProfile.objects.get(user=self.request.user)
         return context
 
     def get_applied_ad_list(self):
@@ -100,6 +101,7 @@ class InternshipOffersListView(StudentProfileRequiredMixin, ListView):
         context = super(InternshipOffersListView, self).get_context_data(**kwargs)
         context['form'] = InternshipOfferForm(user=self.request.user)
         context['applied_ad_list'] = self.get_applied_ad_list()
+        context['userprofile'] = StudentProfile.objects.get(user=self.request.user)
         return context
 
     def get_applied_ad_list(self):

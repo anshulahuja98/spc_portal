@@ -42,7 +42,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            {% if request.user.is_active %}
+                                            {% if not userprofile.banned and not userprofile.placed %}
                                                 <form method="post">
                                                     {% csrf_token %}
                                                     <label for="id_profile"></label>
@@ -52,8 +52,10 @@
                                                     <button class="btn btn-info btn-sm" type="submit">Apply</button>
                                                     {{ form.resume }}
                                                 </form>
+                                            {% elif request.user.banned %}
+                                                make You have already been placed, you cannot apply now.
                                             {% else %}
-                                                You have already been placed, you cannot apply now.
+                                                You are banned from the placement procedure
                                             {% endif %}
                                         </td>
                                         <td class="red-text">
