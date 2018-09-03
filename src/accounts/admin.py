@@ -28,8 +28,7 @@ class ResumeInline(admin.StackedInline):
 
 
 def approve_resumes(modeladmin, request, queryset):
-    for query in queryset:
-        queryset.update(is_verified=True)
+    queryset.update(is_verified=True)
 
 
 def ban(modeladmin, request, queryset):
