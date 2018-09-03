@@ -32,6 +32,14 @@ def approve_resumes(modeladmin, request, queryset):
         queryset.update(is_verified=True)
 
 
+def ban(modeladmin, request, queryset):
+    queryset.update(banned=True)
+
+
+def mark_placed(modeladmin, request, queryset):
+    queryset.update(placed=True)
+
+
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
     inlines = (ResumeInline,)
@@ -39,6 +47,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
     list_filter = ['program_branch', 'year']
     ordering = ['roll_no', ]
     search_fields = ['roll_no', 'user__first_name', 'user__last_name']
+    actions = [ban, mark_placed]
 
     class Meta:
         model = StudentProfile
