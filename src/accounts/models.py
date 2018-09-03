@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
 from django.db.models.signals import pre_save
+import random
 
 
 class StudentProfile(models.Model):
@@ -108,3 +109,13 @@ def event_pre_save_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(event_pre_save_receiver, sender=StudentProfile)
+
+
+def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
+    if instance.student.user.first_name not in instance.file.name or instance.student.user.last_name not in instance.file.name or instance.student.user.username not in instance.file.name or 'IITJodhpur.pdf' not in instance.file.name:
+        instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name + '_' + instance.student.user.username + '_' + str(
+            random.randint(
+                1, 10001)) + '_' + 'IITJodhpur.pdf'
+
+
+pre_save.connect(event_pre_save_receiver_resume, sender=Resume)
