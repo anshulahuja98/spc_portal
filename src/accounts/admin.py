@@ -27,6 +27,11 @@ class ResumeInline(admin.StackedInline):
     model = Resume
 
 
+def approve_resumes(modeladmin, request, queryset):
+    for query in queryset:
+        queryset.update(is_verified=True)
+
+
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
     inlines = (ResumeInline,)
@@ -57,6 +62,7 @@ class ResumeAdmin(admin.ModelAdmin):
     list_display = ['student', 'is_verified', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified']
+    actions = [approve_resumes, ]
 
     class Meta:
         model = Resume
