@@ -46,22 +46,8 @@
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <label for="id_parent_name" style="font-size: medium">Parent name:</label> <input
-                                        type="text" name="parent_name" value="{{ form.parent_name.value }}"
-                                        maxlength="30" required id="id_parent_name"/>
-                                </div>
-                                <br>
-                                <div class="md-form">
                                     <i class="fa fa-birthday-cake prefix"></i>
                                     {{ form.dob }}
-                                </div>
-                                <br>
-                                <div class="md-form">
-                                    <i class="fa fa-tint prefix"></i>
-                                    <label for="id_blood_group" style="font-size: medium">Blood group:</label> <input
-                                        type="text" name="blood_group" value="{{ form.blood_group.value }}"
-                                        id="id_blood_group" maxlength="5" required/>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -102,18 +88,6 @@
                                     <label for="id_current_address" style="font-size: medium">Current address:</label>
                                     <textarea name="current_address" required rows="10" id="id_current_address"
                                               cols="40"> {{ form.current_address.value }}</textarea>
-                                </div>
-
-                                <div class="md-form">
-                                    <i class="fa fa-building prefix" style="color:cornflowerblue"></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.hostel_name }}</span>
-                                </div>
-                                <br>
-                                <div class="md-form">
-                                    <i class="fa fa-bed prefix"></i>
-                                    <label for="id_room_no" style="font-size: medium">Room No.:</label> <input
-                                        type="number" name="room_no" value="{{ form.room_no.value }}" required
-                                        id="id_room_no">
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -156,13 +130,6 @@
                                     <label for="id_xii_percentage" style="font-size: medium">XII Percentage/CGPA:</label>
                                     <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}"
                                            required id="id_xii_percentage" readonly/>
-                                </div>
-                                <br>
-                                <div class="md-form">
-                                    <i class="fa fa-home prefix"></i>
-                                    <label for="id_hobbies" style="font-size: medium">Hobbies</label>
-                                    <textarea name="hobbies" required rows="10" id="id_hobbies"
-                                              cols="40"> {{ form.hobbies.value }}</textarea>
                                 </div>
                                 <br>
                             </div>

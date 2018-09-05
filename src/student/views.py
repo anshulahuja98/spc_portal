@@ -21,10 +21,10 @@ class StudentProfileRequiredMixin(LoginRequiredMixin):
 class DetailsView(StudentProfileRequiredMixin, UpdateView):
     model = StudentProfile
     fields = (
-        'roll_no', 'program_branch', 'gpa', 'phone', 'parent_name', 'dob', 'category', 'blood_group', 'jee_air',
+        'roll_no', 'program_branch', 'gpa', 'phone', 'dob', 'category', 'jee_air',
         'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
-        'current_address', 'permanent_address', 'nationality', 'physical_disability', 'hobbies', 'room_no',
-        'hostel_name')
+        'current_address', 'permanent_address', 'nationality', 'physical_disability',
+        )
     template_name = 'student/details.html'
     success_url = '/student/details/'
 

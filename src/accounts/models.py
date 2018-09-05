@@ -13,12 +13,6 @@ class StudentProfile(models.Model):
         ('3', 'SC'),
         ('4', 'ST'),
     )
-    HOSTELS = (
-        ('1', 'B1'),
-        ('2', 'B2'),
-        ('3', 'G6'),
-        ('4', 'G5'),
-    )
     NATION = (
         ('1', 'Indian'),
         ('2', 'Other'),
@@ -33,14 +27,9 @@ class StudentProfile(models.Model):
     # program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
     phone = models.CharField(max_length=15)
-    parent_name = models.CharField(max_length=30)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)
-    blood_group = models.CharField(max_length=5)  # Choices
     jee_air = models.IntegerField()
-    hostel_name = models.CharField(max_length=2, choices=HOSTELS)
-    room_no = models.SmallIntegerField()
-    hobbies = models.TextField(blank=True, null=True)
     physical_disability = models.BooleanField(default=False)
     nationality = models.CharField(max_length=10, choices=NATION)
     permanent_address = models.TextField()
