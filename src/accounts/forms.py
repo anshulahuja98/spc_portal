@@ -28,7 +28,7 @@ class StudentRegisterForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         help_text='Enter the same password as before, for verification.',
     )
-    username = forms.CharField(max_length=8, help_text="Enter your Roll number, this will be used to login")
+    username = forms.CharField(max_length=9, help_text="Enter your Roll number, this will be used to login")
     year = forms.IntegerField(max_value=5, help_text="Enter value between 1-5, the current year of your degree")
     program_branch = forms.ChoiceField(choices=ProgramAndBranch.objects.values_list('abbreviation', 'name'))
     gpa = forms.FloatField(max_value=10.00)
@@ -41,11 +41,11 @@ class StudentRegisterForm(UserCreationForm):
     permanent_address = forms.CharField(widget=forms.Textarea)
     current_address = forms.CharField(widget=forms.Textarea)
     x_year = forms.IntegerField(max_value=2050, min_value=2010)
-    x_board_name = forms.CharField(max_length=30)
+    x_board_name = forms.CharField(max_length=100)
     x_percentage = forms.CharField(max_length=10)
     xii_year = forms.IntegerField(max_value=2050, min_value=2010)
-    xii_board_name = forms.CharField(max_length=30)
-    xii_percentage = forms.CharField(max_length=10)
+    xii_board_name = forms.CharField(max_length=100)
+    xii_percentage = forms.CharField(max_length=16)
 
     class Meta:
         model = User

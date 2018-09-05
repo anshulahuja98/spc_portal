@@ -21,7 +21,7 @@ class StudentProfile(models.Model):
 
     # Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    roll_no = models.CharField(max_length=8)
+    roll_no = models.CharField(max_length=9)
     year = models.SmallIntegerField()
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     # program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
@@ -35,10 +35,10 @@ class StudentProfile(models.Model):
     permanent_address = models.TextField()
     current_address = models.TextField()
     x_year = models.SmallIntegerField()
-    x_board_name = models.CharField(max_length=30)
+    x_board_name = models.CharField(max_length=100)
     x_percentage = models.CharField(max_length=10)
     xii_year = models.SmallIntegerField()
-    xii_board_name = models.CharField(max_length=30)
+    xii_board_name = models.CharField(max_length=100)
     xii_percentage = models.CharField(max_length=10)
     banned = models.BooleanField(default=False)
     placed = models.BooleanField(default=False)
