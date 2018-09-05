@@ -17,6 +17,8 @@ class LoginView(DefaultLoginView, HomepageView):
             return url or reverse('company:job-offers-added')
         elif hasattr(self.request.user, 'studentprofile'):
             return url or reverse('student:detail')
+        elif self.request.user.is_staff:
+            return url or '/admin'
         else:
             return url
 
