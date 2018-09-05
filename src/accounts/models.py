@@ -29,7 +29,7 @@ class StudentProfile(models.Model):
     phone = models.CharField(max_length=15)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)
-    jee_air = models.IntegerField()
+    jee_air = models.IntegerField(null=True, blank=True)
     physical_disability = models.BooleanField(default=False)
     nationality = models.CharField(max_length=10, choices=NATION)
     permanent_address = models.TextField()

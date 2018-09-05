@@ -35,7 +35,7 @@ class StudentRegisterForm(UserCreationForm):
     phone = forms.CharField(max_length=15)
     dob = forms.DateField()
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY)
-    jee_air = forms.IntegerField()
+    jee_air = forms.IntegerField(required=False)
     physical_disability = forms.BooleanField(required=False)
     nationality = forms.ChoiceField(choices=StudentProfile.NATION)
     permanent_address = forms.CharField(widget=forms.Textarea)
