@@ -21,7 +21,7 @@ class StudentProfile(models.Model):
 
     # Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    roll_no = models.CharField(max_length=9)
+    roll_no = models.CharField(max_length=11)
     year = models.SmallIntegerField()
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     # program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
