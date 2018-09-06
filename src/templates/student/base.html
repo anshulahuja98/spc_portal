@@ -43,7 +43,8 @@
                                  style="height:5rem; width:auto;">
                         </a>
                         <div class="media-body" style="margin-left:10px; margin-top: 10px;">
-                            <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem" target="_blank">IIT Jodhpur
+                            <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem"
+                               target="_blank">IIT Jodhpur
                                 &nbsp; <i class="fa fa-external-link"></i></a>
                             <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
                                                                                style="color: black;">Office of Student
@@ -67,11 +68,41 @@
                         <li class="nav-item hoverable">
                             <a class="nav-link" href="{% url 'student:detail' %}">Edit Personal Details</a>
                         </li>
-                        {% if request.user.username.2 == '6' or request.user.username.0 == 'M' or request.user.username == 'P' %}
+                        {#                    BTech#}
+                        {% if  request.user.username.0 == 'B' %}
+                            {% if request.user.username.2 == '6' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
+                                </li>
+                            {% elif request.user.username.2 <= '5' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                        {#                        Mtech#}
+                        {% if  request.user.username.0 == 'M' %}
+                            {% if request.user.username.2 == '8' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
+                                </li>
+                            {% elif request.user.username.2 <= '7' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+
+                        {#PHD#}
+                        {% if  request.user.username.0 == 'P' %}
                             <li class="nav-item hoverable">
                                 <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
                             </li>
-                        {% elif request.user.username.2 == '5' or request.user.username.0 == 'M' or request.user.username == 'P' %}
+                            <li class="nav-item hoverable">
+                                <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                            </li>
+                        {% endif %}
+                        {% if  request.user.username.0 == 'U' %}
                             <li class="nav-item hoverable">
                                 <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
                             </li>
@@ -99,13 +130,14 @@
 
         <p class="footer-logos" style="color: white; font-size: 2rem;">
 
-            <a href="https://www.facebook.com/SPC.IITJ/" target="_blank"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
+            <a href="https://www.facebook.com/SPC.IITJ/" target="_blank"><i class="fa fa-facebook"
+                                                                            style="color: #FFFFFF"></i></a>
             |
             <a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/" target="_blank"><i
                     class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
             |
             <a href="https://github.com/anshulahuja98/spc_portal" target="_blank"><i class="fa fa-github"
-                                                                     style="color: #FFFFFF"></i></a>
+                                                                                     style="color: #FFFFFF"></i></a>
 
         </p>
 
