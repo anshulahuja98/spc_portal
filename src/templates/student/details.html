@@ -22,6 +22,7 @@
                                     <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
                                     <span>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program: {{ studentprofile.program_branch.name }}</span>
+                                    
                                 </div>
                                 <br>
                                 <br>
@@ -53,9 +54,8 @@
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-graduation-cap prefix"></i>
-                                    <label for="id_jee_air" style="font-size: medium">Jee air:</label> <input
-                                        type="number" name="jee_air" value="{{ form.jee_air.value }}" id="id_jee_air"
-                                        required/>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JEE AIR: {{ studentprofile.jee_air }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -107,7 +107,8 @@
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_x_percentage" style="font-size: medium">Class X Percentage/CGPA:</label>
+                                    <label for="id_x_percentage" style="font-size: medium">Class X
+                                        Percentage/CGPA:</label>
                                     <input
                                             type="text" name="x_percentage" value="{{ form.x_percentage.value }}"
                                             required
