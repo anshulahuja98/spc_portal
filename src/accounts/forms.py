@@ -40,10 +40,10 @@ class StudentRegisterForm(UserCreationForm):
     nationality = forms.ChoiceField(choices=StudentProfile.NATION)
     permanent_address = forms.CharField(widget=forms.Textarea)
     current_address = forms.CharField(widget=forms.Textarea)
-    x_year = forms.IntegerField(max_value=2050, min_value=2000)
+    x_year = forms.IntegerField(max_value=2050, min_value=1980)
     x_board_name = forms.CharField(max_length=100)
     x_percentage = forms.CharField(max_length=10)
-    xii_year = forms.IntegerField(max_value=2050, min_value=2000)
+    xii_year = forms.IntegerField(max_value=2050, min_value=1980)
     xii_board_name = forms.CharField(max_length=100)
     xii_percentage = forms.CharField(max_length=16)
 
