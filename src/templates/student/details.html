@@ -21,7 +21,7 @@
                                 <div class="md-form">
                                     <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
                                     <span>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program: {{ form.program_branch }}</span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program: {{ studentprofile.program_branch.name }}</span>
                                 </div>
                                 <br>
                                 <br>
@@ -32,7 +32,8 @@
                                                                                                       value="{{ form.gpa.value }}"
                                                                                                       step="any"
                                                                                                       required
-                                                                                                      id="id_gpa" readonly/>
+                                                                                                      id="id_gpa"
+                                                                                                      readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -92,42 +93,45 @@
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_year" style="font-size: medium">X year:</label> <input
+                                    <label for="id_x_year" style="font-size: medium">Class X year:</label> <input
                                         type="number" name="x_year" value="{{ form.x_year.value }}" required
                                         id="id_x_year" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_board" style="font-size: medium">X Board:</label> <input
+                                    <label for="id_x_board" style="font-size: medium">Class X Board:</label> <input
                                         type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required
                                         id="id_x_board_naem" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_x_percentage" style="font-size: medium">X Percentage/CGPA:</label> <input
-                                        type="text" name="x_percentage" value="{{ form.x_percentage.value }}" required
-                                        id="id_x_percentage" readonly/>
+                                    <label for="id_x_percentage" style="font-size: medium">Class X Percentage/CGPA:</label>
+                                    <input
+                                            type="text" name="x_percentage" value="{{ form.x_percentage.value }}"
+                                            required
+                                            id="id_x_percentage" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_year" style="font-size: medium">XII year:</label> <input
+                                    <label for="id_xii_year" style="font-size: medium">Class XII year:</label> <input
                                         type="number" name="xii_year" value="{{ form.xii_year.value }}" required
                                         id="id_xii_year" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_board" style="font-size: medium">XII Board:</label> <input
+                                    <label for="id_xii_board" style="font-size: medium">Class XII Board:</label> <input
                                         type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}"
                                         required id="id_xii_board_name" readonly/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix"></i>
-                                    <label for="id_xii_percentage" style="font-size: medium">XII Percentage/CGPA:</label>
+                                    <label for="id_xii_percentage" style="font-size: medium">Class XII
+                                        Percentage/CGPA:</label>
                                     <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}"
                                            required id="id_xii_percentage" readonly/>
                                 </div>
