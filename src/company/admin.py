@@ -3,6 +3,8 @@ from .models import JobAdvertisement, InternshipAdvertisement, InternshipOffer, 
 from django.shortcuts import HttpResponseRedirect
 from zipfile import ZipFile
 from os.path import basename
+from import_export.admin import ImportExportActionModelAdmin
+from .resources import JobOfferResource, InternshipOfferResource
 
 
 def get_zipped_resumes(modeladmin, request, queryset):
@@ -34,7 +36,7 @@ def make_active(modeladmin, request, queryset):
 
 
 @admin.register(JobAdvertisement)
-class JobAdvertisementAdmin(admin.ModelAdmin):
+class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
@@ -47,7 +49,7 @@ class JobAdvertisementAdmin(admin.ModelAdmin):
 
 
 @admin.register(InternshipAdvertisement)
-class InternshipAdvertisementAdmin(admin.ModelAdmin):
+class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
     list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
@@ -60,9 +62,10 @@ class InternshipAdvertisementAdmin(admin.ModelAdmin):
 
 
 @admin.register(InternshipOffer)
-class InternshipOfferAdmin(admin.ModelAdmin):
+class InternshipOfferAdmin(ImportExportActionModelAdmin):
+    resource_class = InternshipOfferResource
     list_display = ['student', 'company', 'profile', 'is_accepted', ]
-    list_filter = ['company', 'is_accepted', ]
+    list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
@@ -73,9 +76,10 @@ class InternshipOfferAdmin(admin.ModelAdmin):
 
 
 @admin.register(JobOffer)
-class JobOfferAdmin(admin.ModelAdmin):
+class JobOfferAdmin(ImportExportActionModelAdmin):
+    resource_class = JobOfferResource
     list_display = ['student', 'company', 'profile', 'is_accepted', ]
-    list_filter = ['company', 'is_accepted', ]
+    list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
