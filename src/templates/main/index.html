@@ -10,6 +10,9 @@
                 display: none !important;
             }
         }
+        body{
+            overflow-x: hidden;
+        }
     </style>
     <div class="col-lg-10">
         <div class="row">
@@ -220,5 +223,11 @@ A big thanks to the Office of Student Placements for their tireless efforts and 
         </div>
     </div>
 
-</div>
-    <br>{% endblock %}
+    <br>
+<script type="text/javascript">
+    var scrollEventHandler = function() {
+        window.scroll(0, window.pageYOffset)
+    }
+    window.addEventListener("scroll", scrollEventHandler, false);
+</script>
+{% endblock %}
