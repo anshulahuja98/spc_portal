@@ -84,7 +84,7 @@ class Resume(models.Model):
     file = models.FileField(upload_to='resume')
     is_verified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
-    reference = models.CharField(max_length=20, null=True, blank=True,
+    reference = models.CharField(max_length=200, null=True, blank=True,
                                  help_text="Enter a reference name for this resume by which you can remember the details of this particular resume")
 
     def __str__(self):
