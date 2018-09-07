@@ -4,3 +4,4 @@ django_heroku
 gunicorn
 django-decouple==2.1
 psycopg2
+django-import-export
