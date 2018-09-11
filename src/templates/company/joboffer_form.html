@@ -58,14 +58,13 @@
                                 <div class="md-form">
                                     <i class="fa fa-rupee prefix" style="color:cornflowerblue"></i>
                                     <label for="id_gross_salary" style="font-size: medium; font-weight: bold">Gross
-                                        Salary:</label> <input type="number" name="gross_salary" id="id_gross_salary"
-                                                               required step="any"/>
+                                        Salary:</label> <input type="number" name="gross_salary" id="id_gross_salary" step="any"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-gift prefix" style="color:cornflowerblue"></i>
                                     <label for="id_bonus" style="font-size: medium; font-weight: bold">Bonus:</label>
-                                    <input type="number" name="bonus" id="id_bonus" min="0"/>
+                                    <input type="text" name="bonus" id="id_bonus"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -133,12 +132,6 @@
                                             <td><input type="checkbox" name="aptitude_test_required"
                                                        id="id_aptitude_test_required"/></td>
                                         </tr>
-                                        <tr>
-                                            <td><span style="font-size: large">Technical Test</span></td>
-                                            <td>&nbsp;:&nbsp;&nbsp;</td>
-                                            <td><input type="checkbox" name="technical_test_required"
-                                                       id="id_technical_test_required"/></td>
-                                        </tr>
 
                                         <tr>
                                             <td><span style="font-size: large">Group Discussion</span></td>
@@ -172,14 +165,14 @@
                                     <i class="fa fa-group prefix" style="color: cornflowerblue"></i>
                                     <label for="id_number_of_members" style="font-size: medium; font-weight: bold">Number
                                         of
-                                        Members:</label> <input type="number" name="number_of_members" required
+                                        Members:</label> <input type="number" name="number_of_members"
                                                                 id="id_min_gpa" min="0"/>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-pencil prefix" style="color: cornflowerblue"></i>
                                     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other Details : </span>
-                                    <textarea name="other_details" id="id_other_details" required></textarea>
+                                    <textarea name="other_details" id="id_other_details"></textarea>
                                 </div>
                             </div>
                         </div>
