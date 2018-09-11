@@ -57,7 +57,6 @@ class CompanyRegisterForm(UserCreationForm):
         label='Password',
         strip=False,
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        help_text=password_validation.password_validators_help_text_html(),
     )
     password2 = forms.CharField(
         label='Password confirmation',
@@ -69,12 +68,12 @@ class CompanyRegisterForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'email', 'maxlength': '254'}),
         help_text="This Email ID will be your username")
     name = forms.CharField(max_length=50, help_text="Name of the company")
-    domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ")
-    url = forms.CharField()
-    city = forms.CharField(max_length=15)
-    state = forms.CharField(max_length=15)
+    domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ", required=False)
+    url = forms.CharField(required=False)
+    city = forms.CharField(max_length=15, required=False)
+    state = forms.CharField(max_length=15, required=False)
     country = forms.ChoiceField(choices=CompanyProfile.NATION)
-    pin_code = forms.CharField(max_length=10)
+    pin_code = forms.CharField(max_length=10, required=False)
 
     class Meta:
         model = User
