@@ -57,6 +57,7 @@ class CompanyRegisterForm(UserCreationForm):
         label='Password',
         strip=False,
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        help_text=password_validation.password_validators_help_text_html(),
     )
     password2 = forms.CharField(
         label='Password confirmation',
