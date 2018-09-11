@@ -9,7 +9,7 @@
                 </div>
                 <div class="card-block">
                     <div class="row">
-                        <div class="col-lg-5">
+                        <div class="col-lg-6">
                             <br>
                             <div class="md-form">
                                 <i class="fa fa-clipboard prefix"></i>
@@ -17,34 +17,34 @@
                                        style="font-size: x-large; font-weight: bold"/>
                                 <br>
                                 <br>
-                                <table border="0">
-                                    <tr>
+                                <table border="0" cellpadding="5px">
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large">Company</td>
+                                        <td style="font-size:large;font-weight: bold;">Company</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.company }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Designation</td>
+                                        <td style="font-size:large;font-weight: bold;">Designation</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.designation }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Description</td>
+                                        <td style="font-size:large;font-weight: bold;">Description</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.description }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Joining Date</td>
+                                        <td style="font-size:large;font-weight: bold;">Joining Date</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.tentative_join_date }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Intern Location</td>
+                                        <td style="font-size:large;font-weight: bold;">Job Location</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.tentative_job_location }}</td>
                                     </tr>
@@ -59,41 +59,43 @@
                                 <br>
 
                                 <table border="0">
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large">CTC</td>
+                                        <td style="font-size:large;font-weight: bold;">CTC</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.ctc }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Gross Salary</td>
+                                        <td style="font-size:large;font-weight: bold;">Gross Salary</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.gross_salary }}</td>
                                     </tr>
-                                    <tr>
+                                    <tr valign="top">
                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>Bonus</td>
+                                        <td style="font-size:large;font-weight: bold;">Bonus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.bonus }}</td>
                                     </tr>
                                     {% if ad.bond %}
-                                        <tr>
+                                        <tr valign="top">
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                            <td>Bond</td>
+                                            <td style="font-size:large;font-weight: bold;">Bond</td>
                                         </tr>
                                     {% endif %}
                                     {% if ad.bond_details %}
-                                        <tr>
+                                        <tr valign="top">
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                            <td>Bond Details: <span class="red-text"> {{ ad.bond_details }}</span></td>
+                                            <td style="font-size:large;font-weight: bold;">Bond Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td><span class="red-text" style="font-weight: bold"> {{ ad.bond_details }}</span></td>
                                         </tr>
                                     {% endif %}
                                 </table>
                             </div>
                             <br>
                         </div>
-                        <div class="col-lg-1"></div>
+                        <!--<div class="col-lg-1"></div>-->
                         <div class="col-lg-5">
                             <br>
                             <div class="md-form">
@@ -104,19 +106,19 @@
                                 <br>
                                 <form>
                                     <table border="0">
-                                        <tr>
-                                            <td>Eligible Branches And Programs</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                        <tr valign="top">
+                                            <td style="font-size:large;font-weight: bold;">Eligible Branches And Programs</td>
+                                            <td>: </td>
                                             <td>
                                                 {% for program_branch in  ad.eligible_program_branch.values %}
                                                     {{ program_branch.abbreviation }}<br>
                                                 {% endfor %}
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr valign="top">
                                             <!-- <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
-                                            <td>Minimum CGPA</td>
-                                            <td>&nbsp;:&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Minimum CGPA</td>
+                                            <td>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <td>{{ ad.min_gpa }}</td>
                                         </tr>
                                     </table>
@@ -156,7 +158,7 @@
                                         {% if ad.number_of_technical_tests %}
                                             <tr>
                                                 <td>Number of Technical Test: <span
-                                                        class="red-text"> {{ ad.number_of_technical_tests }}</span></td>
+                                                        class="red-text" style="font-weight: bold"> {{ ad.number_of_technical_tests }}</span></td>
                                             </tr>
                                         {% endif %}
 
@@ -164,14 +166,14 @@
                                             <tr>
                                                 <td>Number of Technical
                                                     Interview: <span
-                                                            class="red-text"> {{ ad.number_of_technical_interviews }} </span>
+                                                            class="red-text" style="font-weight: bold"> {{ ad.number_of_technical_interviews }} </span>
                                                 </td>
                                             </tr>
                                         {% endif %}
                                         {% if ad.number_of_hr_rounds %}
                                             <tr>
                                                 <td>Number of HR Round Interview: <span
-                                                        class="red-text">  {{ ad.number_of_hr_rounds }} </span></td>
+                                                        class="red-text" style="font-weight: bold">  {{ ad.number_of_hr_rounds }} </span></td>
                                             </tr>
                                         {% endif %}
                                         {% if ad.medical_test_required %}
