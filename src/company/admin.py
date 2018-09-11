@@ -37,7 +37,7 @@ def make_active(modeladmin, request, queryset):
 
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(ImportExportActionModelAdmin):
-    list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
+    list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
     search_fields = ['company__name', ]
@@ -50,7 +50,7 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
 
 @admin.register(InternshipAdvertisement)
 class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
-    list_display = ['company', 'designation', 'ctc', 'active', 'expiry', ]
+    list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
     search_fields = ['company__name', ]
