@@ -57,7 +57,7 @@ class CompanyProfile(models.Model):
     name = models.CharField(max_length=50, help_text="Name of the company")
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     domain = models.CharField(max_length=30, help_text="Type of company like banking/consulting etc ")  # add choices
-    url = models.URLField()
+    url = models.CharField(max_length=100)
     city = models.CharField(max_length=15)
     state = models.CharField(max_length=15)
     country = models.CharField(max_length=15, choices=NATION)

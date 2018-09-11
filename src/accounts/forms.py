@@ -70,7 +70,7 @@ class CompanyRegisterForm(UserCreationForm):
         help_text="This Email ID will be your username")
     name = forms.CharField(max_length=50, help_text="Name of the company")
     domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ")
-    url = forms.URLField()
+    url = forms.CharField()
     city = forms.CharField(max_length=15)
     state = forms.CharField(max_length=15)
     country = forms.ChoiceField(choices=CompanyProfile.NATION)
