@@ -20,8 +20,8 @@ class BaseAdvertisement(models.Model):
     ads = models.FileField(upload_to='ads', null=True, blank=True)
     # package details
     ctc = models.FloatField()
-    gross_salary = models.FloatField()
-    bonus = models.PositiveIntegerField(blank=True, default=0, null=True)
+    gross_salary = models.FloatField(null=True, blank=True)
+    bonus = models.CharField(blank=True, null=True, max_length=100)
     bond = models.BooleanField()
     bond_details = models.TextField(blank=True, null=True)
     # selection process
@@ -35,7 +35,7 @@ class BaseAdvertisement(models.Model):
     number_of_hr_rounds = models.PositiveSmallIntegerField(default=0)
     medical_test_required = models.BooleanField()
     min_gpa = models.FloatField()
-    number_of_members = models.PositiveIntegerField()
+    number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
 
     class Meta:
