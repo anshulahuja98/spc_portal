@@ -11,4 +11,4 @@ class JobAdvertisementForm(ModelForm):
 class InternshipAdvertisementForm(ModelForm):
     class Meta:
         model = InternshipAdvertisement
-        exclude = ('id',)
+        exclude = ('id', 'gross_salary',)
