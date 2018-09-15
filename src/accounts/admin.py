@@ -31,6 +31,10 @@ def approve_resumes(modeladmin, request, queryset):
     queryset.update(is_verified=True)
 
 
+def unapprove_resumes(modeladmin, request, queryset):
+    queryset.update(is_verified=False)
+
+
 def ban(modeladmin, request, queryset):
     queryset.update(banned=True)
 
@@ -70,7 +74,7 @@ class ResumeAdmin(admin.ModelAdmin):
     list_display = ['student', 'is_verified', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified']
-    actions = [approve_resumes, ]
+    actions = [approve_resumes, unapprove_resumes]
 
     class Meta:
         model = Resume
