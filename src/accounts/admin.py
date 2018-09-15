@@ -71,10 +71,14 @@ class CompanyProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
-    list_display = ['student', 'is_verified', ]
+    ordering = ['student', ]
+    list_display = ['get_roll_no', 'student', 'file', 'is_verified', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified']
     actions = [approve_resumes, unapprove_resumes]
+
+    def get_roll_no(self, instance):
+        return instance.student.roll_no
 
     class Meta:
         model = Resume
