@@ -64,8 +64,8 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
 @admin.register(InternshipOffer)
 class InternshipOfferAdmin(ImportExportActionModelAdmin):
     resource_class = InternshipOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', ]
-    list_filter = ['company', 'is_accepted', 'profile']
+    list_display = ['student', 'company', 'profile', 'is_accepted', 'resume__file', ]
+    list_filter = ['company', 'is_accepted', 'profile', ]
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
@@ -78,7 +78,7 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
 @admin.register(JobOffer)
 class JobOfferAdmin(ImportExportActionModelAdmin):
     resource_class = JobOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', ]
+    list_display = ['student', 'company', 'profile', 'is_accepted', 'resume__file', ]
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
