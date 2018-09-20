@@ -72,6 +72,10 @@ class BaseOfferResource(resources.ModelResource):
     class Meta:
         abstract = True
         fields = ('company',)
+        export_order = (
+            'company', 'designation', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'phone', 'category',
+            'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
+            'nationality', 'current_address', 'permanent_address', 'physical_disability')
 
 
 class JobOfferResource(BaseOfferResource):
