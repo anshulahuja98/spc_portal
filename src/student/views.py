@@ -24,7 +24,7 @@ class DetailsView(StudentProfileRequiredMixin, UpdateView):
         'roll_no', 'program_branch', 'gpa', 'phone', 'dob', 'category', 'jee_air',
         'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
         'current_address', 'permanent_address', 'nationality', 'physical_disability',
-        )
+    )
     template_name = 'student/details.html'
     success_url = '/student/details/'
 
@@ -62,8 +62,13 @@ class JobOffersListView(StudentProfileRequiredMixin, ListView):
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
-        return self.model.objects.filter(min_gpa__lte=profile.gpa,
-                                         eligible_program_branch__name__contains=profile.program_branch.name)
+        username = self.request.user.username
+        if username[0] is 'M' and username[2] is '8':
+            return self.model.objects.filter(
+                eligible_program_branch__name__contains=profile.program_branch.name)
+        else:
+            return self.model.objects.filter(min_gpa__lte=profile.gpa,
+                                             eligible_program_branch__name__contains=profile.program_branch.name)
 
     def get_context_data(self, **kwargs):
         context = super(JobOffersListView, self).get_context_data(**kwargs)
@@ -94,8 +99,12 @@ class InternshipOffersListView(StudentProfileRequiredMixin, ListView):
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
-        return self.model.objects.filter(min_gpa__lte=profile.gpa,
-                                         eligible_program_branch__name__contains=profile.program_branch.name)
+        if username[0] is 'M' and username[2] is '8':
+            return self.model.objects.filter(
+                eligible_program_branch__name__contains=profile.program_branch.name)
+        else:
+            return self.model.objects.filter(min_gpa__lte=profile.gpa,
+                                             eligible_program_branch__name__contains=profile.program_branch.name)
 
     def get_context_data(self, **kwargs):
         context = super(InternshipOffersListView, self).get_context_data(**kwargs)
