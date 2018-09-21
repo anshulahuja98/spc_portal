@@ -62,13 +62,8 @@ class JobOffersListView(StudentProfileRequiredMixin, ListView):
 
     def get_queryset(self):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
-        username = self.request.user.username
-        if username[0] is 'M' and username[2] is '8':
-            return self.model.objects.filter(
-                eligible_program_branch__name__contains=profile.program_branch.name)
-        else:
-            return self.model.objects.filter(min_gpa__lte=profile.gpa,
-                                             eligible_program_branch__name__contains=profile.program_branch.name)
+        return self.model.objects.filter(
+            eligible_program_branch__name__contains=profile.program_branch.name)
 
     def get_context_data(self, **kwargs):
         context = super(JobOffersListView, self).get_context_data(**kwargs)
