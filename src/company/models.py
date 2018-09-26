@@ -82,6 +82,12 @@ class BaseOffer(models.Model):
     class Meta:
         abstract = True
 
+    def get_file(self):
+        if self.resume and self.resume.file:
+            return self.resume.file
+        else:
+            return 'None'
+
 
 class JobOffer(BaseOffer):
     profile = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
