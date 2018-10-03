@@ -1,6 +1,8 @@
 from django.contrib import admin
 from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement
 from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
+from .resources import CompanyProfileResource, StudentProfileResource
+from import_export.admin import ImportExportActionModelAdmin
 
 
 class JobAdvertisementInline(admin.StackedInline):
@@ -58,7 +60,8 @@ class StudentProfileAdmin(admin.ModelAdmin):
 
 
 @admin.register(CompanyProfile)
-class CompanyProfileAdmin(admin.ModelAdmin):
+class CompanyProfileAdmin(ImportExportActionModelAdmin):
+    resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', ]
     list_filter = ['domain', ]
