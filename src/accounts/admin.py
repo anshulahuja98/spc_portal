@@ -46,7 +46,8 @@ def mark_placed(modeladmin, request, queryset):
 
 
 @admin.register(StudentProfile)
-class StudentProfileAdmin(admin.ModelAdmin):
+class StudentProfileAdmin(ImportExportActionModelAdmin):
+    resource_class = StudentProfileResource
     inlines = (ResumeInline,)
     list_display = ['__str__', 'roll_no', 'program_branch', 'year']
     list_filter = ['program_branch', 'year']
