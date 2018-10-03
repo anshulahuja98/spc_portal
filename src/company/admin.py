@@ -4,7 +4,8 @@ from django.shortcuts import HttpResponseRedirect
 from zipfile import ZipFile
 from os.path import basename
 from import_export.admin import ImportExportActionModelAdmin
-from .resources import JobOfferResource, InternshipOfferResource
+from .resources import JobOfferResource, InternshipOfferResource, JobAdvertisementResource, \
+    InternshipAdvertisementResource
 
 
 def get_zipped_resumes(modeladmin, request, queryset):
@@ -37,6 +38,7 @@ def make_active(modeladmin, request, queryset):
 
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(ImportExportActionModelAdmin):
+    resource_class = JobAdvertisementResource
     list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']
@@ -50,6 +52,7 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
 
 @admin.register(InternshipAdvertisement)
 class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
+    resource_class = InternshipAdvertisementResource
     list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', ]
     list_filter = ['company', 'active', ]
     ordering = ['company']

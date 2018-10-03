@@ -1,6 +1,8 @@
 from import_export import resources
 from import_export.fields import Field
-from company.models import JobOffer, InternshipOffer
+from import_export.widgets import ManyToManyWidget
+from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement
+from student.models import ProgramAndBranch
 
 
 class BaseOfferResource(resources.ModelResource):
@@ -86,3 +88,36 @@ class JobOfferResource(BaseOfferResource):
 class InternshipOfferResource(BaseOfferResource):
     class Meta:
         model = InternshipOffer
+
+
+class BaseAdvertisementResource(resources.ModelResource):
+    eligible_program_branch = Field(attribute='eligible_program_branch',
+                                    widget=ManyToManyWidget(ProgramAndBranch, field='name'))
+
+    class Meta:
+        abstract = True
+        fields = (
+            'company', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
+            'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
+            'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
+            'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
+            'medical_test_required',
+            'min_gpa', 'number_of_members', 'other_details',)
+
+        export_order = (
+            'company', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
+            'tentative_job_location', 'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
+            'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
+            'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
+            'medical_test_required',
+            'number_of_members', 'other_details',)
+
+
+class JobAdvertisementResource(BaseAdvertisementResource):
+    class Meta:
+        model = JobAdvertisement
+
+
+class InternshipAdvertisementResource(BaseAdvertisementResource):
+    class Meta:
+        model = InternshipAdvertisement
