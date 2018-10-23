@@ -70,14 +70,17 @@ class BaseOfferResource(resources.ModelResource):
         column_name='Nationality',
         attribute='student__get_nationality_display',
     )
+    ctc = Field(
+        column_name='CTC',
+        attribute='profile__ctc')
 
     class Meta:
         abstract = True
-        fields = ('company',)
+        fields = ('company', 'is_accepted',)
         export_order = (
             'company', 'designation', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'phone', 'category',
             'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
-            'nationality', 'current_address', 'permanent_address', 'physical_disability')
+            'nationality', 'current_address', 'permanent_address', 'physical_disability', 'ctc')
 
 
 class JobOfferResource(BaseOfferResource):
