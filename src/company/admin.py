@@ -36,6 +36,10 @@ def make_active(modeladmin, request, queryset):
     queryset.update(active=True)
 
 
+def mark_placed(modeladmin, request, queryset):
+    queryset.update(is_accepted=True)
+
+
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     resource_class = JobAdvertisementResource
@@ -72,6 +76,7 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
+    actions = [mark_placed]
 
     class Meta:
         model = InternshipOffer
@@ -86,6 +91,7 @@ class JobOfferAdmin(ImportExportActionModelAdmin):
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
+    actions = [mark_placed]
 
     class Meta:
         model = JobOffer
