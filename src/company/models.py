@@ -69,6 +69,7 @@ class BaseOffer(models.Model):
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, null=True)
     company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True)
     is_accepted = models.BooleanField(default=False)
+    ppo = models.BooleanField(default=False)
     resume = models.ForeignKey(Resume, on_delete=models.SET_NULL, null=True)
 
     @property
@@ -100,6 +101,8 @@ class InternshipOffer(BaseOffer):
 def event_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.company:
         instance.company = instance.profile.company
+    if instance.ppo and not instance.is_accepted:
+        instance.is_accepted = True
 
 
 pre_save.connect(event_pre_save_receiver, sender=InternshipOffer)
