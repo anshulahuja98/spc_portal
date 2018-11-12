@@ -48,6 +48,19 @@
                                         <td>&nbsp;:&nbsp;</td>
                                         <td>{{ ad.tentative_job_location }}</td>
                                     </tr>
+                                    {% if ad.ads %}
+                                    <tr valign="top">
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td style="font-size:large;font-weight: bold;">Offer File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>&nbsp;:&nbsp;</td>
+                                        <td><a href="{{ ad.ads.url }}" target="_blank">
+
+                                            <button class=" btn btn-info btn-sm">
+                                                {{ ad.designation }}
+                                            </button>
+                                        </a></td>
+                                    </tr>
+                                    {% endif %}
                                 </table>
 
                             </div>
@@ -181,6 +194,7 @@
                                                 <td>Medical Test</td>
                                             </tr>
                                         {% endif %}
+
                                     </table>
                                 </form>
                             </div>
