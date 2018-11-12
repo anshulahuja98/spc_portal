@@ -29,42 +29,6 @@
                             </thead>
                             <tbody>
                             {% for ad in ad_list %}
-                                {% if ad not in applied_ad_list %}
-                                    <tr>
-                                        <td>{{ forloop.counter }}</td>
-                                        <td>{{ ad.company }}</td>
-                                        <td>{{ ad.designation }}</td>
-                                        <td>
-                                            <a href="{{ ad.get_absolute_url }}">
-                                                <button class="btn btn-info btn-sm">
-                                                    View Offer
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            {% if not userprofile.banned and not userprofile.placed %}
-                                                <form method="post">
-                                                    {% csrf_token %}
-                                                    <label for="id_profile"></label>
-                                                    <select name="profile" required id="id_profile" hidden>
-                                                        <option value="{{ ad.id }}" selected>---------</option>
-                                                    </select>
-                                                    <button class="btn btn-info btn-sm" type="submit">Apply</button>
-                                                    {{ form.resume }}
-                                                </form>
-                                            {% elif request.user.banned %}
-                                                make You have already been placed, you cannot apply now.
-                                            {% else %}
-                                                You are banned from the placement procedure
-                                            {% endif %}
-                                        </td>
-                                        <td class="red-text">
-                                            {{ ad.expiry }}
-                                        </td>
-                                    </tr>
-                                {% endif %}
-                            {% endfor %}
-                            {% for ad in applied_ad_list %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ ad.company }}</td>
@@ -77,10 +41,57 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <div class="green-text" align="center">Applied</div>
+                                        {% if not userprofile.banned and not userprofile.placed %}
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <label for="id_profile"></label>
+                                                <select name="profile" required id="id_profile" hidden>
+                                                    <option value="{{ ad.id }}" selected>---------</option>
+                                                </select>
+                                                <button class="btn btn-info btn-sm" type="submit">Apply</button>
+                                                {{ form.resume }}
+                                            </form>
+                                        {% elif request.user.banned %}
+                                            You have already been placed, you cannot apply now.
+                                        {% else %}
+                                            You are banned from the placement procedure
+                                        {% endif %}
                                     </td>
                                     <td class="red-text">
                                         {{ ad.expiry }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <br>
+                                <td colspan="6" align="center" class="green-text h4-responsive">
+                                  - - Applied Offers - -
+                                </td>
+                            </tr>
+                            {% for ad in applied_offer_list %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ ad.profile.company }}</td>
+                                    <td>{{ ad.profile.designation }}</td>
+                                    <td>
+                                        <a href="{{ ad.profile.get_absolute_url }}">
+                                            <button class="btn btn-info btn-sm">
+                                                View Offer
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {% if ad.is_accepted %}
+                                            <span class="green-text">Congratulations you have been accepted!</span>
+                                            {% else %}
+                                            <div class="green-text" align="center">Applied with <a
+                                                href="{{ ad.resume.file.url }}">Resume</a></div>
+                                        {% endif %}
+
+                                    </td>
+                                    <td class="red-text">
+                                        {{ ad.profile.expiry }}
                                     </td>
                                 </tr>
                             {% endfor %}

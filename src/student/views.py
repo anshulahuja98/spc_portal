@@ -64,18 +64,21 @@ class JobOffersListView(StudentProfileRequiredMixin, ListView):
         profile = get_object_or_404(StudentProfile, user=self.request.user)
         return self.model.objects.filter(min_gpa__lte=profile.gpa,
                                          eligible_program_branch__name__contains=profile.program_branch.name,
-                                         active=True)
+                                         active=True).difference(self.get_applied_ad_list())
 
     def get_context_data(self, **kwargs):
         context = super(JobOffersListView, self).get_context_data(**kwargs)
         context['form'] = JobOfferForm(user=self.request.user)
-        context['applied_ad_list'] = self.get_applied_ad_list()
+        context['applied_offer_list'] = self.get_applied_offer_list()
         context['userprofile'] = StudentProfile.objects.get(user=self.request.user)
         return context
 
     def get_applied_ad_list(self):
         return JobAdvertisement.objects.filter(
             id__in=JobOffer.objects.filter(student__user=self.request.user).values_list('profile'))
+
+    def get_applied_offer_list(self):
+        return JobOffer.objects.filter(student__user=self.request.user)
 
 
 class JobOffersView(StudentProfileRequiredMixin, View):
@@ -98,22 +101,26 @@ class InternshipOffersListView(StudentProfileRequiredMixin, ListView):
         username = self.request.user.username
         if username[0] is 'M' and username[2] is '8':
             return self.model.objects.filter(
-                eligible_program_branch__name__contains=profile.program_branch.name, active=True)
+                eligible_program_branch__name__contains=profile.program_branch.name,
+                active=True).difference(self.get_applied_ad_list())
         else:
             return self.model.objects.filter(min_gpa__lte=profile.gpa,
                                              eligible_program_branch__name__contains=profile.program_branch.name,
-                                             active=True)
+                                             active=True).difference(self.get_applied_ad_list())
 
     def get_context_data(self, **kwargs):
         context = super(InternshipOffersListView, self).get_context_data(**kwargs)
         context['form'] = InternshipOfferForm(user=self.request.user)
-        context['applied_ad_list'] = self.get_applied_ad_list()
+        context['applied_offer_list'] = self.get_applied_offer_list()
         context['userprofile'] = StudentProfile.objects.get(user=self.request.user)
         return context
 
     def get_applied_ad_list(self):
         return InternshipAdvertisement.objects.filter(
             id__in=InternshipOffer.objects.filter(student__user=self.request.user).values_list('profile'))
+
+    def get_applied_offer_list(self):
+        return InternshipOffer.objects.filter(student__user=self.request.user)
 
 
 class InternshipOfferApplyFormView(StudentProfileRequiredMixin, CreateView):
