@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                             {% for ad in ad_list %}
-                                {% if ad.active and ad not in applied_ad_list %}
+                                {% if ad not in applied_ad_list %}
                                     <tr>
                                         <td>{{ forloop.counter }}</td>
                                         <td>{{ ad.company }}</td>
