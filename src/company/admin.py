@@ -36,6 +36,10 @@ def make_active(modeladmin, request, queryset):
     queryset.update(active=True)
 
 
+def make_inactive(modeladmin, request, queryset):
+    queryset.update(active=False)
+
+
 def mark_placed(modeladmin, request, queryset):
     queryset.update(is_accepted=True)
 
@@ -52,7 +56,7 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     list_filter = ['company', 'active', ]
     ordering = ['company']
     search_fields = ['company__name', ]
-    actions = [get_zipped_resumes, make_active]
+    actions = [get_zipped_resumes, make_active, make_inactive]
 
     class Meta:
         model = JobAdvertisement
@@ -66,7 +70,7 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
     list_filter = ['company', 'active', ]
     ordering = ['company']
     search_fields = ['company__name', ]
-    actions = [get_zipped_resumes, make_active]
+    actions = [get_zipped_resumes, make_active, make_inactive]
 
     class Meta:
         model = InternshipAdvertisement
