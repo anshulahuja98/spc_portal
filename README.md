@@ -29,9 +29,13 @@ Procedure:
     ```
 - Make database migrations
     ```
-    python manage.py makemigrations
-    python manage.py migrate
+    python3 manage.py makemigrations student
+    python3 manage.py migrate student
+    python3 manage.py makemigrations
+    python3 manage.py migrate
     ```
+>In case of any issues in running migrations, comment out this [line](https://github.com/anshulahuja98/spc_portal/blob/03a89e9982487fef71f422d400d4e39daf5b5f2f/src/accounts/forms.py#L33) and the do the above steps then uncomment it and repeat.    
+
 - Create a superuser
     ```
     python manage.py createsuperuser
@@ -40,3 +44,4 @@ Procedure:
     ```
     python manage.py runserver
     ```
+    
