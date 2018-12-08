@@ -21,6 +21,9 @@ class BaseOfferResource(resources.ModelResource):
     email = Field(
         column_name='Email ID',
         attribute='student__user__email')
+    dob = Field(
+        column_name='DOB(YYYY-MM-DD)',
+        attribute='student__dob')
     year = Field(
         column_name='Current year of study',
         attribute='student__year')
@@ -78,7 +81,7 @@ class BaseOfferResource(resources.ModelResource):
         abstract = True
         fields = ('company', 'is_accepted', 'ppo',)
         export_order = (
-            'company', 'designation', 'roll_no', 'name', 'email', 'year', 'program_branch', 'gpa', 'phone', 'category',
+            'company', 'designation', 'roll_no', 'name', 'email','dob', 'year', 'program_branch', 'gpa', 'phone', 'category',
             'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
             'nationality', 'current_address', 'permanent_address', 'physical_disability', 'ctc')
 
