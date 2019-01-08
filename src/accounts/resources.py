@@ -30,10 +30,10 @@ class StudentProfileResource(resources.ModelResource):
     class Meta:
         model = StudentProfile
         fields = (
-            'user__first_name', 'user__last_name', 'roll_no', 'year', 'gpa', 'phone', 'dob',
+            'user__first_name', 'user__last_name', 'roll_no', 'year', 'gpa', 'ug_gpa', 'phone', 'dob',
             'jee_air', 'physical_disability', 'permanent_address', 'current_address', 'x_year',
             'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage', 'banned')
         export_order = (
-            'user__first_name', 'user__last_name', 'roll_no', 'program_branch', 'year', 'gpa', 'phone', 'dob',
+            'user__first_name', 'user__last_name', 'roll_no', 'program_branch', 'year', 'gpa', 'ug_gpa', 'phone', 'dob',
             'jee_air', 'category', 'physical_disability', 'permanent_address', 'current_address', 'x_year',
             'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage', 'banned', 'nationality')

@@ -42,6 +42,7 @@ class StudentRegisterFormView(CreateView):
                                                     program_branch=ProgramAndBranch.objects.get(
                                                         abbreviation=kwargs['program_branch']),
                                                     gpa=kwargs['gpa'],
+                                                    ug_gpa=kwargs['ug_gpa'],
                                                     phone=kwargs['phone'],
                                                     dob=kwargs['dob'],
                                                     category=kwargs['category'],

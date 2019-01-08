@@ -32,6 +32,7 @@ class StudentRegisterForm(UserCreationForm):
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree")
     program_branch = forms.ChoiceField(choices=ProgramAndBranch.objects.values_list('abbreviation', 'name'))
     gpa = forms.FloatField(max_value=10.00)
+    ug_gpa = forms.FloatField(max_value=10.00, required=False)
     phone = forms.CharField(max_length=15)
     dob = forms.DateField()
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY)

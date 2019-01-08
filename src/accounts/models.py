@@ -26,6 +26,7 @@ class StudentProfile(models.Model):
     program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
     # program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
     gpa = models.FloatField()
+    ug_gpa = models.FloatField(null=True, blank=True)
     phone = models.CharField(max_length=15)
     dob = models.DateField()
     category = models.CharField(max_length=10, choices=CATEGORY)

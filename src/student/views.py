@@ -21,7 +21,7 @@ class StudentProfileRequiredMixin(LoginRequiredMixin):
 class DetailsView(StudentProfileRequiredMixin, UpdateView):
     model = StudentProfile
     fields = (
-        'roll_no', 'program_branch', 'gpa', 'phone', 'dob', 'category', 'jee_air',
+        'roll_no', 'program_branch', 'gpa', 'ug_gpa', 'phone', 'dob', 'category', 'jee_air',
         'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
         'current_address', 'permanent_address', 'nationality', 'physical_disability',
     )
