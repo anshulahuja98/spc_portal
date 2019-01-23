@@ -1,117 +1,197 @@
 /* YOUR CUSTOM STYLES */
 
-.carousel-inner2{
-    border: 1px solid black;
-    width:100%;
+
+body {
+    margin: 0px auto;
+    background-color: white;
+    padding: 2% 5%;
+    padding-bottom: 0;
+}
+
+nav {
+    background-color: darkred;
+}
+
+.media {
+    margin: 0 auto 0 auto;
+}
+
+.logo {
+    height: 5rem;
+    width: auto;
+}
+
+.media-body {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.media-body .pull-right a{
+    margin: 0.5rem;
+    color: darkred;
+}
+
+.heading {
+    color: #000;
+}
+.heading a{
+    text-decoration: none;
+    color: #000;
+}
+
+.pull-right{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.login-block{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: right;
+    font-size: large;
+}
+.login-block:hover{
+    font-size: x-large;
+}
+
+marquee img {
+    margin-top: 60px;
+}
+
+.footer-logos {
+    color: white;
+    font-size: 2rem;
+}
+
+.carousel-inner2 {
+    width: 100%;
     height: 20rem;
 }
-.mycarousel{
+
+.mycarousel {
     margin: auto;
-    width:900px;
+    width: 900px;
 }
-.carousel-inner{
+
+.carousel-inner {
     border: 1px solid black;
-    width:100%;
+    width: 100%;
     height: 20rem;
 }
+
 .carousel-image {
-    height:20rem;
-    width:100%;
+    height: 20rem;
+    width: 100%;
 }
-.custom-gradient{
+
+.custom-gradient {
     background: linear-gradient(to right, #0066cc 5%, #66ccff 100%);
 }
-.logo{
-  height: 6rem;
-  width: auto;
+
+.logo {
+    height: 6rem;
+    width: auto;
 }
-#my-card{
-  margin-right: 1rem;
-  margin-left: 1rem;
-  margin-top: -1rem;
-  height: 2.5rem;
-  color: black;
+
+.my-card {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-top: -1rem;
+    height: 2.5rem;
+    color: black;
 }
-form{
-  margin-left: 3rem;
-  margin-right: 3rem;
+
+form {
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
-.blue-gradient{
-  background: linear-gradient(40deg, #45cafc, #303f9f);
+
+.blue-gradient {
+    background: linear-gradient(40deg, #45cafc, #303f9f);
 }
-#form-header{
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-top: -30px;
-  margin-bottom: 3rem;
+
+#form-header {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: -30px;
+    margin-bottom: 3rem;
 }
-.card .form-header{
-  border-radius: 0.25rem;
+
+.card .form-header {
+    border-radius: 0.25rem;
 }
+
 #card {
     border-radius: 0.25rem;
 }
+
 /*}*/
 /*#my-section{*/
-  /*background-image: url("../../public/img/img1-cpy.webp");*/
-  /*background-size: 100% 100%;*/
-  /*background-repeat: no-repeat;*/
+/*background-image: url("../../public/img/img1-cpy.webp");*/
+/*background-size: 100% 100%;*/
+/*background-repeat: no-repeat;*/
 /*}*/
-@media only screen and (max-width: 768px){
-  #my-section{
-    background-attachment: fixed;
-  }
+@media only screen and (max-width: 768px) {
+    #my-section {
+        background-attachment: fixed;
+    }
 }
-#section-description{
-  color: black;
+
+#section-description {
+    color: black;
 }
-.fa{
-  color: cornflowerblue;
+
+.fa {
+    color: #FFFFFF;
+    /*color: cornflowerblue;*/
 }
-.heading{
-  color:black;
+
+.heading {
+    color: black;
 }
+
 /*.big{
   font-weight: bold;
   font-family: serif;
 }*/
 
-.h4{
-  font-weight: bold;
-}
-body{
-  margin: 0px auto;
+.h4 {
+    font-weight: bold;
 }
 
-nav{
-    background-color: #3f51b5;
-}
-.footer-basic-centered{
-	background-color: #3f51b5;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: center;
-	font: normal 1rem sans-serif;
-	padding: 0.5rem;
+
+.footer-basic-centered {
+    background-color: darkred;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font: normal 1rem sans-serif;
+    padding: 1%;
+    padding-bottom: 2%;
     position: relative;
 
 }
 
-.footer-basic-centered .footer-company-name{
-	color:  #ffffff;
-	font-size: 14px;
-	margin: 0;
+.footer-basic-centered .footer-company-name {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
 }
 
-.footer-basic-centered .footer-logos a{
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	border-radius: 2px;
+.footer-basic-centered .footer-logos a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
 
-	font-size: 25px;
-	color: #ffffff;
-	text-align: center;
+    font-size: 25px;
+    color: #ffffff;
+    text-align: center;
     padding-top: 15px;
+}
+
+#testimonials{
+    padding: 3%;
 }

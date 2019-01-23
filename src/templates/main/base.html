@@ -3,44 +3,52 @@
 <html>
 <head>
     {% block header %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-        <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
-        <link href="{% static '/css/style.css' %} " rel="stylesheet">
-        <link rel="icon" href="{% static 'img/iitj.png' %}">
-        <title>Office of Student Placements, IIT Jodhpur</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/style.css' %} " rel="stylesheet">
+    <link rel="icon" href="{% static 'img/iitj.png' %}">
+    <title>Office of Student Placements, IIT Jodhpur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     {% endblock %}
 </head>
-<body style="margin:0px auto ; background-color: #e8f5e9">
+<body>
 <div class="container-fluid">
-<div class="main-heading">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
-                <a class="thumbnail pull-left">
-                    &nbsp &nbsp
-                    <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
-                         style="height:5rem; width:auto;">
-                </a>
-                <div class="media-body" style="margin-left:10px; margin-top: 10px;">
-                    <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem" target="_blank">IIT Jodhpur &nbsp; <i class="fa fa-external-link"></i></a>
-                    <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
-                                                                       style="color: black;"  >Office of Student
-                        Placements</a></h4>
-                    <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
-                    <br>
+    <div class="main-heading">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="media">
+                    <a class="thumbnail pull-left">
+                        &nbsp &nbsp
+                        <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo">
+                    </a>
+                    <div class="media-body pt-1 pl-3">
+                        <div class="pull-right py-1">
+                            <div class="login-block">
+                                <a class="my-auto" href="{% url 'login' %}">Recruiter Login</a>
+                            </div>
+                            <div class="login-block">
+                                <a class="my-auto" href="{% url 'login' %}">Student Login</a>
+                            </div>
+                        </div>
+                        <h2 class="heading">
+                            <a href="http://spc.iitj.ac.in/">
+                                Office of Student Placements
+                            </a>
+                        </h2>
+                        <h4 class="heading">Indian Institute of Technology Jodhpur</h4>
+                        <br>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark" style="background-color: #3f51b5;">
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseEx12"
                     aria-controls="collapseEx12" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +82,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="{% url 'main:achievements' %}">Achievements</a>
                             <a class="dropdown-item" href="{% url 'main:profile' %}">Prospective</a>
-                           <!-- <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a> -->
+                            <!-- <a class="dropdown-item" href="{% url 'main:alumni' %}">Alumni's Words</a> -->
                             <a class="dropdown-item" href="{% url 'main:student_rules' %}">Norms/Guidelines</a>
                             <a class="dropdown-item" href="{% url 'main:internships' %}">Internships</a>
                         </div>
@@ -111,12 +119,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav nav-right">
-                    <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'login' %}">Student Login</a>
-                    </li>
-                    <li class="nav-item hoverable" style="float:right;">
-                        <a class="nav-link" href="{% url 'login' %}">Recruiter Login</a>
-                    </li>
+
 
                 </ul>
             </div>
@@ -125,46 +128,46 @@
     <br>
     <br><br>
     <div class="row">
-    {% if not 'register' in request.path and not 'contacts' in request.path %}
-    <div class="col-lg-2" id="past_recruiters">
+        {% if not 'register' in request.path and not 'contacts' in request.path %}
+        <div class="col-lg-2" id="past_recruiters">
 
-        <center><h3>Past Recruiters</h3></center>
-        <br>
-        <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
-                 onmouseout="this.start();">
-            {% for company in companies %}
-                <br>
-                <img class="d-block w-100" style="margin-top:60px;" src="{% static company %}">
-            {% endfor %}
+            <center><h3>Past Recruiters</h3></center>
             <br>
-        </marquee>
+            <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
+                     onmouseout="this.start();">
+                {% for company in companies %}
+                <br>
+                <img class="d-block w-100" src="{% static company %}">
+                {% endfor %}
+                <br>
+            </marquee>
+        </div>
+        {% endif %}
+
+
+        {% endblock %}
+        {% block body %}
+
+        {% endblock %}
     </div>
-    {% endif %}
 
-
-{% endblock %}
-{% block body %}
-
-{% endblock %}
-</div>
-
-{% block footer %}
-<br>
+    {% block footer %}
+    <br>
     <footer class="footer-basic-centered">
+        <p class="footer-logos">
+            <a href="https://www.facebook.com/SPC.IITJ/" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/" target="_blank">
+                <i class="fa fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/anshulahuja98/spc_portal" target="_blank">
+                <i class="fa fa-github"></i>
+            </a>
+        </p>
+        <p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
 
-            <p class="footer-logos" style="color: white; font-size: 2rem;">
-
-				<a href="https://www.facebook.com/SPC.IITJ/" target="_blank"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
-				|
-				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/" target="_blank"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
-				|
-				<a href="https://github.com/anshulahuja98/spc_portal" target="_blank"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
-
-			</p>
-
-			<p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
-
-	</footer>
+    </footer>
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{% static '/js/tether.min.js' %}"></script>
@@ -173,7 +176,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{% static '/js/mdb.min.js' %}"></script>
 
-{% endblock %}
+    {% endblock %}
 </div>
 </div>
 </body>
