@@ -17,66 +17,72 @@
         overflow-x: hidden;
     }
 </style>
-    <div class="row" style="padding-right: 10px; padding-left: 10px;">
-        <div class="col-lg-9">
-            <!--Carousel Wrapper-->
-            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel"
-                 style="display: ">
-                <!--Indicators-->
-                <ol class="carousel-indicators carousel-indicators-numbers">
-                    {% for image in carousel %}
-                    <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
-                        {% if forloop.counter == 1 %} class="active" {% endif %}></li>
-                    {% endfor %}
-                </ol>
-                <!--/.Indicators-->
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-                    <!--First slide-->
-                    {% for image in carousel %}
-                    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-                        <img class="d-block w-100" style="width: 2%; height: 28rem" src="{% static image %}"
-                             alt="">
-                    </div>
-                    {% endfor %}
+<div class="row" style="padding-right: 10px; padding-left: 10px;">
+    <div class="col-lg-9">
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel"
+             style="display: ">
+            <!--Indicators-->
+            <ol class="carousel-indicators carousel-indicators-numbers">
+                {% for image in carousel %}
+                <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.counter == 1 %} class="active" {% endif %}></li>
+                {% endfor %}
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                {% for image in carousel %}
+                <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{% static image %}"
+                         alt="">
                 </div>
-                <!--/.Slides-->
-                <!--Controls-->
-                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                <!--/.Controls-->
+                {% endfor %}
             </div>
-            <!--/.Carousel Wrapper-->
+            <!--/.Slides-->
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
         </div>
+        <!--/.Carousel Wrapper-->
+    </div>
+    <br>
+    <div class="col-lg-3">
         <br>
-        <div class="col-lg-3">
-            <br>
-            <div class="card" style="background-color: #edd9c0;">
-                <div class="card my-card"><h4 style="color: white">&nbsp Recent News</h4></div>
-                <div class="card-block" style="overflow-y: auto;height: 23rem;">
-                    <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
-                    <p class="d-block w-100"> 1. OSP conducted resume verification of all students appearing for campus
-                        placements.
-                        <br><br> 2. OSP organized training workshop on resume building, Group Discussions and one-to-one
-                        mock interviews for students appearing for campus placements.
-                        <br></p>
-                    <!-- </marquee> -->
-                </div>
+        <div class="card" style="background-color: #edd9c0;">
+            <div class="card my-card"><h4 style="color: white">&nbsp Recent News</h4></div>
+            <div class="card-block" style="overflow-y: auto;height: 23rem;">
+                <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
+                <p class="d-block w-100">
+                    1. New job opening in Placement office for staff positions.
+                    <a href="{% static 'IITJ_RD_2018-19_28.pdf' %}">Read More</a>
+                    <br><br>
+                    2. OSP conducted resume verification of all students appearing for campus
+                    placements.
+                    <br>3. OSP organized training workshop on resume building, Group Discussions and one-to-one
+                    mock interviews for students appearing for campus placements.
+
+
+                </p>
+                <!-- </marquee> -->
             </div>
         </div>
     </div>
-    <br><br>
+</div>
+<br><br>
 
 
-         <div id="container">
+<div id="container">
     <div class="row" style="padding-right: 10px; padding-left: 10px;">
-                {% if not 'register' in request.path and not 'contacts' in request.path %}
+        {% if not 'register' in request.path and not 'contacts' in request.path %}
 
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
@@ -135,18 +141,21 @@
         </div>
     </div>
 
-<div>
-    <hr/>
+    <div>
+        <hr/>
 
-</div>
-<br>
+    </div>
+    <br>
 
 
-
-             <div class="col-lg-12" id="testimonials">
+    <div class="col-lg-12" id="testimonials">
 
         <div class="col-md-12" align=center style="padding:12px;padding-top:0px;">
-            <center><h2><b><mark><font color="white"> <u>Alumni's &nbsp Words</u></font></mark></b></h2></center>
+            <center>
+                <h2><b>
+                    <mark><font color="white"> <u>Alumni's &nbsp Words</u></font></mark>
+                </b></h2>
+            </center>
         </div>
 
         <div id="carousel-example-2z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -277,14 +286,10 @@
     </div>
 
 
-
-
-
-
-<script type="text/javascript">
-    var scrollEventHandler = function () {
-        window.scroll(0, window.pageYOffset)
-    }
-    window.addEventListener("scroll", scrollEventHandler, false);
-</script>
-{% endblock %}
+    <script type="text/javascript">
+        var scrollEventHandler = function () {
+            window.scroll(0, window.pageYOffset)
+        }
+        window.addEventListener("scroll", scrollEventHandler, false);
+    </script>
+    {% endblock %}
