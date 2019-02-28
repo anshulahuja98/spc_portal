@@ -1,8 +1,14 @@
 {% extends 'main/base.html' %}
 {% block body %}
+<div class="row">
+    <div class="col-lg-2">
+        {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+
+    </div>
     <div class="col-lg-10">
         <div class="card">
-            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Grade Policy</span></div>
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Grade Policy</span></div>
             <div class="card-block">
                 <p class="card-text">
                 <p> The evaluation system in the Institute is based on the Cumulative Grade Point Average (CGPA)
@@ -44,8 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-1">
-    </div>
-    </div>
+</div>
+
 
 {% endblock %}

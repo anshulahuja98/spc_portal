@@ -1,15 +1,20 @@
 {% extends 'main/base.html' %}
 {% block body %}
+<div class="row">
+    <div class="col-lg-2">
+                    {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+    </div>
     <div class="col-lg-10">
         <div class="card">
-          <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Rules and Regulations</span></div>
+          <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Rules and Regulations</span></div>
             <div class="card-block">
 
 
                   <br>
                   <p class="text"> Following are norms for students to register with Office of Students Placement (OSP), IIT Jodhpur, for participating in the placement and internship activities facilitated by the Institute.   </p>
                   <br>
-                  <h4 class="h4">Placement</h4>
+                <h4 class="h4"><font color="black">Placement</font></h4>
                   <p class="card-text">
                     <ol>
                       <li> If a Student registers to interview with a company, it is mandatory for the Student to participate in the entire process starting from presentation by the company to the interview.</li>
@@ -24,7 +29,7 @@
 
                 <br>
 
-                  <h4 class="h4">Internships</h4>
+                <h4 class="h4"><font color="black">Internships</font></h4>
                   <p class="card-text">
                     <ol>
                     <li> It is suggested for a Student to accept an internship offer made by a company. A Student, who is offered an internship by a company, is out of the internship process irrespective of whether the Student accepts the internship or not.</li>
@@ -34,7 +39,7 @@
 
                 <br>
 
-                  <h4 class="h4">General</h4>
+                <h4 class="h4"><font color="black">General</font></h4>
                   <p class="card-text">
                     <ol>
                     <li> Office of Students Placement only assists students in the placement process, and does not take responsibility of placing students.</li>

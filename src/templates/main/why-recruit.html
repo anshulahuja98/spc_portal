@@ -1,8 +1,13 @@
 {% extends 'main/base.html' %}
-{% block body %}
+{% block body %}\
+<div class="row">
+    <div class="col-lg-2">
+                    {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+    </div>
     <div class="col-lg-10">
         <div class="card">
-            <div class="card" id="my-card"><span style="font-size: 1.5rem">&nbsp; Why Recruit?</span></div>
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem">&nbsp; Why Recruit?</span></div>
             <div class="card-block">
                 <b>Institute Level Projects</b>
                 <p>Students get an early exposure to industry through a variety of institute level projects

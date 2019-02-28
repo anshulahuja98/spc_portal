@@ -1,9 +1,10 @@
 {% extends 'main/base.html' %}
 {% block body %}
+<div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
         <div class="card">
-            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Student Registration</span></div>
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Student Registration</span></div>
             <div class="card-block">
                 <form method="post">
                     {% csrf_token %}
@@ -312,6 +313,7 @@
     </div>
     </div>
     <div class="col-lg-1"></div>
+
 
     </div>
     <script type="text/javascript">
