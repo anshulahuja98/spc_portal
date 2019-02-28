@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
 {% block body %}
+
 <style type="">
     @media only screen and (max-width: 768px) {
         #carousel-example-1z {
@@ -16,14 +17,13 @@
         overflow-x: hidden;
     }
 </style>
-<div class="col-lg-10">
-    <div class="row">
+    <div class="row" style="padding-right: 10px; padding-left: 10px;">
         <div class="col-lg-9">
             <!--Carousel Wrapper-->
             <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel"
                  style="display: ">
                 <!--Indicators-->
-                <ol class="carousel-indicators">
+                <ol class="carousel-indicators carousel-indicators-numbers">
                     {% for image in carousel %}
                     <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
                         {% if forloop.counter == 1 %} class="active" {% endif %}></li>
@@ -35,7 +35,7 @@
                     <!--First slide-->
                     {% for image in carousel %}
                     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-                        <img class="d-block w-100" style="width: 2%;height: 2%" src="{% static image %}"
+                        <img class="d-block w-100" style="width: 2%; height: 28rem" src="{% static image %}"
                              alt="">
                     </div>
                     {% endfor %}
@@ -57,9 +57,9 @@
         <br>
         <div class="col-lg-3">
             <br>
-            <div class="card">
-                <div class="card my-card"><h4>&nbsp Recent News</h4></div>
-                <div class="card-block" style="overflow-y: scroll;height: 17rem;">
+            <div class="card" style="background-color: #edd9c0;">
+                <div class="card my-card"><h4 style="color: white">&nbsp Recent News</h4></div>
+                <div class="card-block" style="overflow-y: auto;height: 23rem;">
                     <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
                     <p class="d-block w-100"> 1. OSP conducted resume verification of all students appearing for campus
                         placements.
@@ -72,10 +72,21 @@
         </div>
     </div>
     <br><br>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card my-card"><span style="font-size: 1.5rem"> &nbsp; About Us</span></div>
+
+
+         <div id="container">
+    <div class="row" style="padding-right: 10px; padding-left: 10px;">
+                {% if not 'register' in request.path and not 'contacts' in request.path %}
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+        </div>
+        {% endif %}
+
+
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="card" style="background-color: #edd9c0;">
+                <div class="card my-card"><h4 style="color: white"> &nbsp; About Us</h4></div>
                 <div class="card-block" align="justify">
                     <p class="card-text"> Welcome to the <b>Student Placement Website of IIT Jodhpur!</b>
                         <br><br>
@@ -116,29 +127,26 @@
                         equipment.<br><br>
                         We extend a cordial invitation to you to participate in Campus Placement Drive for the
                         season 2018-19 and hope that you will find the best talent you were looking for.
-                        <br>
+                        <br><br>
                     </p>
 
                 </div>
             </div>
         </div>
     </div>
-</div>
-<br>
-<br>
+
 <div>
     <hr/>
-    <br>
-</div>
-<div class="row">
-    <br>
 
-    <div class="col-lg-12" id="testimonials">
-        <br><br>
+</div>
+<br>
+
+
+
+             <div class="col-lg-12" id="testimonials">
+
         <div class="col-md-12" align=center style="padding:12px;padding-top:0px;">
-            <center><h1
-                    style="font-family:'lato', sans-serif !important;font-weight:700;line-height:1.1;text-decoration: underline">
-                Alumni's Words</h1></center>
+            <center><h2><b><mark><font color="white"> <u>Alumni's &nbsp Words</u></font></mark></b></h2></center>
         </div>
 
         <div id="carousel-example-2z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -158,7 +166,7 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <div class="carousel-inner2" style="background-color: #FCE9DB" role="listbox">
+            <div class="carousel-inner anim" style="background-color: #edd9c0; height: inherit;" role="listbox">
                 <!--First slide-->
                 <div class="carousel-item active">
                     <div class="col-lg-8">
@@ -172,7 +180,7 @@
                             to be part of such an Institution and I am thankful to IIT Jodhpur for making us who we
                             are!</p>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-4">
                         <img src="{% static 'img/contacts/tejas_gattani.jpg' %}" alt=""
                              style="width: 12rem;height: auto;text-align: center; padding-top: 2rem;">
                         <br><br>
@@ -267,9 +275,12 @@
         </div>
 
     </div>
-</div>
 
-<br>
+
+
+
+
+
 <script type="text/javascript">
     var scrollEventHandler = function () {
         window.scroll(0, window.pageYOffset)
