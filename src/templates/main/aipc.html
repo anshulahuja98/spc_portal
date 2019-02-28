@@ -1,60 +1,102 @@
 {% extends 'main/base.html' %}
 {% block body %}
-<div class="col-lg-10">
-        <div class="card">
-          <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;AIPC Guidelines </span></div>
-            <div class="card-block">
-                  <br>
-                <p class="text" style="text-align: center; text-decoration: underline;font-size: larger"><b>Important Guidelines by the AIPC (All IIT's Placement Committee) to the Recruiters</b></p>
-                <p style="text-align: center; font-size: large"><b>In order to have a mutual benefit and to have a long term association, the AIPC has indicated the following guidelines to the recruiters. All the recruiters are requested to kindly stick to these positively to have a smooth placement process.</b></p>
-                  <p class="card-text" >
-                      <span style="font-size: large;"><b>Pre Placement:</b></span>
-                    <ol>
-                        <li>  <b>PPOs:</b> In order to have a mutual benefit, it is highly desirable that the status of the PPOs be informed by the last week of August. This is for students selected for intern through on campus internship hiring process by the recruiters and after successful completion of the internship.</li><br>
-                        <li> <b>Short listing as well as selection criteria: </b>If a company has any reservation to shortlist / accepts students with arrears/backlogs, the company needs to inform the same in advance in the job notification form. The company should clearly spell these criterions in the job notification form such as: active/ cleared backlogs, year gap, bond, medical fitness parameters etc.
-                        </li>
-                        <br>
+<div class="row">
+    <div class="col-lg-2">
+        {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
 
-                        <li> <b>Requirement on bond:</b> If the policy of a company requires signing a bond as part of the joining, it is highly desirable to specify clearly at the time of registration (on the registration portal in the JNF). </li><br>
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;AIPC Guidelines</span></div>
+          <div class="card-block">
+                <br>
+                <p class="text" style="text-align: center; text-decoration: underline;font-size: larger"><b>Important
+                    Guidelines by the AIPC (All IIT's Placement Committee) to the Recruiters</b></p>
+                <p style="text-align: center; font-size: large"><b>In order to have a mutual benefit and to have a long
+                    term association, the AIPC has indicated the following guidelines to the recruiters. All the
+                    recruiters are requested to kindly stick to these positively to have a smooth placement process.</b>
+                </p>
+                <p class="card-text">
+                    <span style="font-size: large;"><b>Pre Placement:</b></span>
+                <ol>
+                    <li><b>PPOs:</b> In order to have a mutual benefit, it is highly desirable that the status of the
+                        PPOs be informed by the last week of August. This is for students selected for intern through on
+                        campus internship hiring process by the recruiters and after successful completion of the
+                        internship.
+                    </li>
+                    <br>
+                    <li><b>Short listing as well as selection criteria: </b>If a company has any reservation to
+                        shortlist / accepts students with arrears/backlogs, the company needs to inform the same in
+                        advance in the job notification form. The company should clearly spell these criterions in the
+                        job notification form such as: active/ cleared backlogs, year gap, bond, medical fitness
+                        parameters etc.
+                    </li>
+                    <br>
 
-                        <li> <b>Representation during the Pre-assessment tests:</b> At least one representative from the company and/ or on behalf of the company should be present in the campus during pre-assessment tests.</li><br>
+                    <li><b>Requirement on bond:</b> If the policy of a company requires signing a bond as part of the
+                        joining, it is highly desirable to specify clearly at the time of registration (on the
+                        registration portal in the JNF).
+                    </li>
+                    <br>
 
-                        <li> <b>Medical tests and Visa:</b> Regarding medical tests and visa delay issues, it will be beneficial that the recruiter informs students in advance through Placement/CDC/CCD office. </li><br>
+                    <li><b>Representation during the Pre-assessment tests:</b> At least one representative from the
+                        company and/ or on behalf of the company should be present in the campus during pre-assessment
+                        tests.
+                    </li>
+                    <br>
 
-                        <li><b>Time duration:</b> The maximum time for any pre-assessment test (online or off-line) is 90 minutes. Under certain exceptional cases another 30 minutes may be considered. For a single company, a student can appear for personal interview for a maximum of two hours which must include multiple sessions along with break in between and no single session can go beyond 45 minutes. </li></br>
+                    <li><b>Medical tests and Visa:</b> Regarding medical tests and visa delay issues, it will be
+                        beneficial that the recruiter informs students in advance through Placement/CDC/CCD office.
+                    </li>
+                    <br>
 
-                        <li>The placement test should be held on campus under the supervision of respective placement office. Generic tests like hackathon, code challenge, case competition, buddy session etc. will not be recognized as placement process and a company cannot recruit through these means as a part of official campus placement.</li><br>
+                    <li><b>Time duration:</b> The maximum time for any pre-assessment test (online or off-line) is 90
+                        minutes. Under certain exceptional cases another 30 minutes may be considered. For a single
+                        company, a student can appear for personal interview for a maximum of two hours which must
+                        include multiple sessions along with break in between and no single session can go beyond 45
+                        minutes.
+                    </li>
+                    </br>
+
+                    <li>The placement test should be held on campus under the supervision of respective placement
+                        office. Generic tests like hackathon, code challenge, case competition, buddy session etc. will
+                        not be recognized as placement process and a company cannot recruit through these means as a
+                        part of official campus placement.
+                    </li>
+                    <br>
 
                 </ol>
                 <br>
                 <span style="font-size: large"><b>Post –Placement: </b></span>
                 <ol type="a">
-                <li> <b>Key information on the offers made:</b>
-                 If a company makes offers during the placement session, the following key information may be provided along with the offer letter:<br>
-                <ol type="1">
-                    <li>The details on the salary structure (including take-home salary) based on the   CTC </li>
+                    <li><b>Key information on the offers made:</b>
+                        If a company makes offers during the placement session, the following key information may be
+                        provided along with the offer letter:<br>
+                        <ol type="1">
+                            <li>The details on the salary structure (including take-home salary) based on the CTC</li>
 
-                    <li>Joining location</li>
+                            <li>Joining location</li>
 
-                    <li>Date of Joining </li>
+                            <li>Date of Joining</li>
 
-                </ol>
+                        </ol>
+                        <br>
+                        The offer letters should preferably be provided within two months from the date of final
+                        interview. All the offers must be sent to the concerned Placement office. <br><br>
+                        All communications related to recruitment process shall be routed through the
+                        concerned placement office.
+                    </li>
                     <br>
-                    The offer letters should preferably be provided within two months from the date of final
-interview. All the offers must be sent to the concerned Placement office. <br><br>
-All communications related to recruitment process shall be routed through the
-concerned placement office.
-                </li><br>
                 </ol>
-                  </p>
+                </p>
 
                 <br><br>
 
 
             </div>
         </div>
-      </div>
     </div>
+</div>
 
 
 {% endblock %}

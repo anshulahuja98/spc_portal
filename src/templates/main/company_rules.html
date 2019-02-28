@@ -1,32 +1,61 @@
 {% extends 'main/base.html' %}
 {% block body %}
-    <div class="col-lg-10">
-        <div class="card">
-          <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Rules and Regulations</span></div>
-            <div class="card-block">
-                  <br>
-                  <p class="text"> The companies invited for the campus placement are required to follow the following procedures in the Institute:</p>
-                  <h4 class="h4"> Norms for Companies</h4>
-                  <p class="card-text" >
-                    <ol>
-                        <li>Companies are expected to provide the detailed information in the Job Application Form (JAF) and Internship Announcement Form (IAF) and are encouraged to conduct a Pre-Placement Talk (PPT) to maintain transparency on every aspect.</li>
-                        <li>The company will be allotted slots and dates for conducting the Pre-Placement Talk, Written Test and Online Test, with a request to confirm the same by a specific date. On failing to do so, the allotted slot may be given to other companies on their request. Request for any change in the slot will be entertained subject to its availability.</li>
-                        <li> The companies shall visit the campus on scheduled dates and conduct the Written Test, Online Test, Group Discussion and Interview as part of their selection procedure during the slot assigned to them. It is important to adhere to given time slots, since, on the same date, another company may be scheduled before/after your slot and any shift is bound to cause inconvenience to the said company as well as others.<br></li>
-                        <li> The expected time period for each interview round shall not exceed 1.5 hours per student during the interview process to ensure smooth flow of placement activity. Noncompliance of extending the interview timings may lead to a strict action.</li>
-                        <li> The student shall be eligible to sit in all the companies invited in a single day, but can select only one offer.</li>
-                        <li> The results shall be declared at the end of the placement procedure to the Placement Officer.</li>
-                        <li> The companies are required to issue an Letter of Intent or a formal mail to Placement Officer regarding the selection of the candidates immediately after announcement of results.</li>
-                        <li> The company is required to send offer letters to Office of Student Placement, who will hand it over to the concerned students. Such letters are expected to reach the Office of Student Placements before March 2017.</li>
-                        <li> Companies hiring for summer internship are required to give the information about the Pre Placement Offers to the Placement Officer before the beginning of the Placement Season.</li>
-                        <li> To expedite the process of Medical Test, results shall be declared as early as possible.</li>
-                    </ol>
-                  </p>
+<div class="row">
+    <div class="col-lg-2">
+                    {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
 
-                <br><br>
-
-
-            </div>
-        </div>
-      </div>
     </div>
+<div class="col-lg-10">
+    <div class="card">
+        <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Rules and Regulations</span></div>
+        <div class="card-block">
+            <br>
+            <p class="text"> The companies invited for the campus placement are required to follow the following
+                procedures in the Institute:</p>
+            <h4 class="h4"> Norms for Companies</h4>
+            <p class="card-text">
+            <ol>
+                <li>Companies are expected to provide the detailed information in the Job Application Form (JAF) and
+                    Internship Announcement Form (IAF) and are encouraged to conduct a Pre-Placement Talk (PPT) to
+                    maintain transparency on every aspect.
+                </li>
+                <li>The company will be allotted slots and dates for conducting the Pre-Placement Talk, Written Test and
+                    Online Test, with a request to confirm the same by a specific date. On failing to do so, the
+                    allotted slot may be given to other companies on their request. Request for any change in the slot
+                    will be entertained subject to its availability.
+                </li>
+                <li> The companies shall visit the campus on scheduled dates and conduct the Written Test, Online Test,
+                    Group Discussion and Interview as part of their selection procedure during the slot assigned to
+                    them. It is important to adhere to given time slots, since, on the same date, another company may be
+                    scheduled before/after your slot and any shift is bound to cause inconvenience to the said company
+                    as well as others.<br></li>
+                <li> The expected time period for each interview round shall not exceed 1.5 hours per student during the
+                    interview process to ensure smooth flow of placement activity. Noncompliance of extending the
+                    interview timings may lead to a strict action.
+                </li>
+                <li> The student shall be eligible to sit in all the companies invited in a single day, but can select
+                    only one offer.
+                </li>
+                <li> The results shall be declared at the end of the placement procedure to the Placement Officer.</li>
+                <li> The companies are required to issue an Letter of Intent or a formal mail to Placement Officer
+                    regarding the selection of the candidates immediately after announcement of results.
+                </li>
+                <li> The company is required to send offer letters to Office of Student Placement, who will hand it over
+                    to the concerned students. Such letters are expected to reach the Office of Student Placements
+                    before March 2017.
+                </li>
+                <li> Companies hiring for summer internship are required to give the information about the Pre Placement
+                    Offers to the Placement Officer before the beginning of the Placement Season.
+                </li>
+                <li> To expedite the process of Medical Test, results shall be declared as early as possible.</li>
+            </ol>
+            </p>
+
+            <br><br>
+
+
+        </div>
+    </div>
+</div>
+</div>
 {% endblock %}

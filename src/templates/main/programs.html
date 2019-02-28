@@ -1,13 +1,19 @@
 {% extends 'main/base.html' %}
 {% block body %}
+<div class="row">
+    <div class="col-lg-2">
+        {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+
+    </div>
     <div class="col-lg-10">
         <div class="card">
-            <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Programs</span></div>
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Programs</span></div>
             <div class="card-block">
                 <ul>
                     <li class="heading_merge">
                         <br>
-                        <h4 class="h4" style="font-weight: bold;"> B.Tech</h4>
+                        <h4 class="h4" style="font-weight: bold; color: black;"> B.Tech</h4>
                         <p class="card-text">
                             The Institute offers the following Bachelor of Technology (B.Tech.) Programs:<br/>
                             1. B.Tech. (<a href="http://iitj.ac.in/department/index.php?id=cse">Computer Science &
@@ -53,8 +59,10 @@
                             The Institute offers the following Doctorate of Philosophy (Ph.D.) Programs:<br/>
                             1. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=cse">Computer Science &
                             Engineering</a>)<br/>
-                            2. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical Engineering</a>)<br/>
-                            3. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical Engineering</a>)<br/>
+                            2. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=ee">Electrical
+                            Engineering</a>)<br/>
+                            3. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=me">Mechanical
+                            Engineering</a>)<br/>
                             4. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=biology">Bioscience and
                             Bioengineering</a>)<br/>
                             5. Ph.D. (<a href="http://iitj.ac.in/department/index.php?id=chemistry">Chemistry</a>)<br/>
@@ -79,5 +87,5 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 {% endblock %}
