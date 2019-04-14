@@ -25,7 +25,7 @@ class BaseAdvertisement(models.Model):
     bond = models.BooleanField()
     bond_details = models.TextField(blank=True, null=True)
     # selection process
-    eligible_program_branch = models.ManyToManyField(ProgramAndBranch, default=ProgramAndBranch.objects.all())
+    eligible_program_branch = models.ManyToManyField(ProgramAndBranch)
     resume_required = models.BooleanField()
     resume_shortlist_criteria = models.TextField(null=True, blank=True)
     aptitude_test_required = models.BooleanField()
