@@ -3,7 +3,6 @@ from django.shortcuts import reverse
 from django.views.generic import CreateView
 from .forms import StudentRegisterForm, CompanyRegisterForm
 from accounts.models import StudentProfile, CompanyProfile
-from student.models import ProgramAndBranch
 from main.views import HomepageView
 
 

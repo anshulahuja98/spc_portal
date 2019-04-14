@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 from decouple import config
+
 CORS_REPLACE_HTTPS_REFERER = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -103,7 +104,7 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
-        # 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     # },
     # {
     #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',

@@ -81,7 +81,8 @@ class BaseOfferResource(resources.ModelResource):
         abstract = True
         fields = ('company', 'is_accepted', 'ppo',)
         export_order = (
-            'company', 'designation', 'roll_no', 'name', 'email','dob', 'year', 'program_branch', 'gpa', 'phone', 'category',
+            'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa', 'phone',
+            'category',
             'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
             'nationality', 'current_address', 'permanent_address', 'physical_disability', 'ctc')
 
