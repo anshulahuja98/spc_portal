@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+import django
 from decouple import config
 
 CORS_REPLACE_HTTPS_REFERER = True
@@ -153,3 +153,4 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/media/'
+django.setup()
