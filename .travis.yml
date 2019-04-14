@@ -8,6 +8,7 @@ install:
 script:
   - cd src
   - flake8 .
+  - python3 manage.py collectstatic
   - python3 manage.py makemigrations student
   - python3 manage.py migrate student
   - python3 manage.py makemigrations

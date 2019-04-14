@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import django
 from decouple import config
+import time
 
 CORS_REPLACE_HTTPS_REFERER = True
 
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'company.apps.CompanyConfig',
     'main.apps.MainConfig',
     # 'import_export'
-
 ]
 
 MIDDLEWARE = [
@@ -154,3 +153,5 @@ LOGOUT_REDIRECT_URL = '/login/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/media/'
 # django.setup()
+
+time.sleep(5)
