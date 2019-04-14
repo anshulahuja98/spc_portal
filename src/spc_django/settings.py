@@ -39,11 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'import_export',
     'student.apps.StudentConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
-    'main.apps.MainConfig'
+    'main.apps.MainConfig',
+    'import_export'
 
 ]
 
@@ -153,4 +153,4 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '')
 MEDIA_URL = '/media/'
-django.setup()
+# django.setup()
