@@ -30,7 +30,7 @@ class StudentRegisterForm(UserCreationForm):
     )
     username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login")
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree")
-    program_branch = forms.ChoiceField(choices=ProgramAndBranch.objects.values_list('abbreviation', 'name'))
+    program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all())
     gpa = forms.FloatField(max_value=10.00)
     ug_gpa = forms.FloatField(max_value=10.00, required=False)
     phone = forms.CharField(max_length=15)
