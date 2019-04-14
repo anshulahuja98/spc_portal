@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
     'main.apps.MainConfig',
-    'import_export'
+    # 'import_export'
 
 ]
 
