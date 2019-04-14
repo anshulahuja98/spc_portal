@@ -1,4 +1,4 @@
-# SPC Portal ![Status active](https://img.shields.io/badge/Status-active%20development-2eb3c1.svg) ![Django 2.0.5](https://img.shields.io/badge/Django-2.0.5-green.svg) ![Python 3.6](https://img.shields.io/badge/Python-3.6-blue.svg)
+# SPC Portal ![Build](https://travis-ci.org/anshulahuja98/spc_portal.svg?branch=master)  ![Django 2.0.5](https://img.shields.io/badge/Django-2.0.5-green.svg) ![Python 3.6](https://img.shields.io/badge/Python-3.6-blue.svg)
 
 ## A portal for handling Student Placements
 
