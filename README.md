@@ -27,6 +27,10 @@ Procedure:
     ```
     pip install -r requirements.txt
     ```
+- Copy .env file
+   ```
+   cp .env.example .env
+   ```
 - Make database migrations
     ```
     python3 manage.py makemigrations student
