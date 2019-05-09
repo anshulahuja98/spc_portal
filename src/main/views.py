@@ -1,7 +1,7 @@
-from django.views.generic import TemplateView,ListView
+from django.views.generic import TemplateView
 import os
-from .models import nEws
-from django.shortcuts import render
+from .models import News
+
 
 class HomepageView(TemplateView):
 
@@ -16,10 +16,5 @@ class HomepageView(TemplateView):
         companies = os.listdir("staticfiles/img/company-logo")
         companies = ['img/company-logo/' + image for image in companies]
         context['companies'] = companies
-        context['objt']= nEws.objects.filter(do_show=True).order_by('order_no')
+        context['news_list'] = News.objects.filter(active=True).order_by('order_no')
         return context
-
-'''def home(request):
-    obj = nEws.objects.all()
-    return render(request,"templates/main/index.html", {'objt':obj} )'''
-
