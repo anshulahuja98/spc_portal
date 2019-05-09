@@ -62,14 +62,17 @@
             <div class="card-block" style="overflow-y: auto;height: 23rem;">
                 <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
                 <p class="d-block w-100">
-                    {% if objt %}
-                    {% for obj in objt %}
-                    {{ forloop.counter }}. {{ obj.content }}
-                    {% if obj.document %}
-                    <a href="{{ obj.document }}">Read More</a>
-                    {% endif %}
-                    <br><br>
-                    {% endfor %}
+                    {% if news_list %}
+                        {% for news in news_list %}
+                        {{ forloop.counter }}. {{ news.content }} 
+                            {% if news.document %}
+                                <a href="{{ news.document.url }}">Read More </a>
+                            {% endif %}
+                            {% if news.link %}
+                                <a href="{{ news.link }}">Link</a>
+                            {% endif %}
+                        <br><br>
+                        {% endfor %}
                     {% endif %}
                 </p>
                 <!-- </marquee> -->
