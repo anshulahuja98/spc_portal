@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 import os
+from .models import News
 
 
 class HomepageView(TemplateView):
@@ -15,4 +16,5 @@ class HomepageView(TemplateView):
         companies = os.listdir("staticfiles/img/company-logo")
         companies = ['img/company-logo/' + image for image in companies]
         context['companies'] = companies
+        context['news_list'] = News.objects.filter(active=True).order_by('order_no')
         return context
