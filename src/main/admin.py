@@ -1,7 +1,14 @@
 from django.contrib import admin
-from .models import nEws
+from import_export.admin import ImportExportActionModelAdmin
+from .models import News
 
-class News(admin.ModelAdmin):
-    list_display=('order_no','content','do_show','document')
 
-admin.site.register(nEws,News)
+@admin.register(News)
+class NewsAdmin(ImportExportActionModelAdmin):
+    list_display = ['title', 'active', 'order_no', 'document', 'content', 'link', ]
+    list_filter = ['active', ]
+    ordering = ['order_no']
+
+    class Meta:
+        model = News
+        fields = '__all__'
