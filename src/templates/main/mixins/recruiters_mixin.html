@@ -2,16 +2,22 @@
 <div id="past_recruiters">
     <center>
         <h4><b>
-            <mark><font color="white"> Past &nbsp Recruiters</font></mark>
-        </b></h4>
+                <mark>
+                    <font color="white"> Past &nbsp Recruiters</font>
+                </mark>
+            </b></h4>
     </center>
     <br>
     <div class="marquee_spc">
         <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
-                 onmouseout="this.start();">
+            onmouseout="this.start();">
             {% for company in companies %}
             <br>
-            <img class="d-block w-100" src="{% static company %}">
+                {% if company.company_logo %}
+                    <img class="d-block w-100" src="{{ company.company_logo.url }} " alt="{{ company.company_name }}">
+                {% elif company.company_name %}
+                    {{ company.company_name }}
+                {% endif %}
             {% endfor %}
             <br>
         </marquee>
