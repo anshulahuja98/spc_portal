@@ -1,0 +1,301 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<style type="">
+    @media only screen and (max-width: 768px) {
+        #carousel-example-1z {
+            display: none !important;
+        }
+
+        #testimonials {
+            display: none !important;
+        }
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+</style>
+<div class="row" style="padding-right: 10px; padding-left: 10px;">
+    <div class="col-lg-9">
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel"
+             style="display: ">
+            <!--Indicators-->
+            <ol class="carousel-indicators carousel-indicators-numbers">
+                {% for image in carousel %}
+                <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.counter == 1 %} class="active" {% endif %}></li>
+                {% endfor %}
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                {% for image in carousel %}
+                <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{{ carousel.image_carousel.url }}"
+                         alt="">
+                </div>
+                {% endfor %}
+            </div>
+            <!--/.Slides-->
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+        </div>
+        <!--/.Carousel Wrapper-->
+    </div>
+    <br>
+    <div class="col-lg-3">
+        <br>
+        <div class="card" style="background-color: #edd9c0;">
+            <div class="card my-card"><h4 style="color: white">&nbsp Recent News</h4></div>
+            <div class="card-block" style="overflow-y: auto;height: 23rem;">
+                <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
+                <p class="d-block w-100">
+
+                    1. New job opening in Placement office for staff positions.
+                    <a href="{% static 'IITJ_RD_2019-20_02.pdf' %}">Read More</a>
+                    <br><br>
+                    2. Conducted Soft Skill Training session by Mr. Ranjan Kumar Majumder and Dr. Konica Paul
+                    Chakraborty.
+                    <br><br>
+                    3. Conducted New student team interviews.
+                    <br><br>
+                    4. Conducted Learning by Sharing Session to be taken by those who have been placed this year in
+                    reputed companies or selected in top Universities for higher studies.
+                    <br><br>
+                    5. OSP conducted Career Planning session by Prof. Kaushtabh Mohanty (Previous Placement Chairman at
+                    IITG and AIPC Convener) and Prof Debasis Deb (Previous Placement Chairman at IIT KGP).
+                    <br>
+                </p>
+                <!-- </marquee> -->
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+<div id="container">
+    <div class="row" style="padding-right: 10px; padding-left: 10px;">
+        {% if not 'register' in request.path and not 'contacts' in request.path %}
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+        </div>
+        {% endif %}
+
+
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="card" style="background-color: #edd9c0;">
+                <div class="card my-card"><h4 style="color: white"> &nbsp; About Us</h4></div>
+                <div class="card-block" align="justify">
+                    <p class="card-text"> Welcome to the <b>Student Placement Website of IIT Jodhpur!</b>
+                        <br><br>
+                        Founded in 2008, IIT Jodhpur has emerged in developing a distinct culture of
+                        engineering and science education and other areas of scholarship, to best fulfill the
+                        current and emerging needs of the changing Indian Society. IIT Jodhpur close
+                        association with leading industries and research institutes effectively helps student
+                        gain
+                        hands on experience and solve technical challenges. As on date, the Institute has 848
+                        students spread across 555 B.Tech. students, 56 M.Tech. students, 71 M.Sc. students and
+                        166 Ph.D. students pursuing various academic programs Also, this year we have upcoming
+                        Department of Metallurgical and Material Engineering, which offers courses in M.Tech.
+                        and Ph.D. The department teaching, research and consulting activities will cover a broad
+                        spectrum of material science and industrial metallurgy. IIT Jodhpur is also making
+                        research in addressing national needs especially those leading to the development of
+                        technology for diagnostic and treatment by medical professionals with its new Department
+                        of Biological Science and Bioengineering which is planned towards Biological science,
+                        medical science, technology and their interfaces. The department will offer a wide range
+                        of courses from foundation level to advanced level in the said domains for the various
+                        degree programs. Hands-on learning will be emphasized using state-of-the-art centralized
+                        research facilities.<br><br>
+                        IIT Jodhpur has moved to its sprawling 852 acre residential Permanent Campus on
+                        National Highway 65 (NNE of Jodhpur towards Nagaur). The Permanent Campus is
+                        meticulously planned and envisioned to stand as a symbol of academics - simple, but
+                        deep.<br><br>
+                        IIT Jodhpur promotes technology thought and action. It is on the mission to prepare
+                        competent technology graduates. We, the office of student placement aims to create an
+                        encouraging atmosphere for students by providing them ample reminders to build
+                        competencies in sync with their dream career , thereby ensuring their smooth landing in
+                        the professional world. Also, it will sensitize students in best possible way by
+                        promoting
+                        them to take responsibility for their own career decision and prepare them for the
+                        industry. Thus, it will provide services and resources that assist the students in their
+                        ongoing efforts of competence developing, career planning and employer searching.
+                        Office of student placement had a dedicated workforce of students and volunteer
+                        students, who are equipped to help guests visiting from the Employer organization
+                        acquaint themselves with the placement procedure and provide necessary logistic
+                        equipment.<br><br>
+                        We extend a cordial invitation to you to participate in Campus Placement Drive for the
+                        season 2018-19 and hope that you will find the best talent you were looking for.
+                        <br><br>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <hr/>
+
+    </div>
+    <br>
+
+
+    <div class="col-lg-12" id="testimonials">
+
+        <div class="col-md-12" align=center style="padding:12px;padding-top:0px;">
+            <center>
+                <h2><b>
+                    <mark><font color="white"> <u>Alumni's &nbsp Words</u></font></mark>
+                </b></h2>
+            </center>
+        </div>
+
+        <div id="carousel-example-2z" class="carousel slide carousel-fade" data-ride="carousel">
+            <!--Indicators-->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-2z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-2z" data-slide-to="1" class="active"></li>
+                <li data-target="#carousel-example-2z" data-slide-to="2" class="active"></li>
+                <li data-target="#carousel-example-2z" data-slide-to="3" class="active"></li>
+                <li data-target="#carousel-example-2z" data-slide-to="4" class="active"></li>
+            </ol>
+            <!--/.Indicators-->
+            <!--Slides-->
+
+
+            <a class="carousel-control-prev" href="#carousel-example-2z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <div class="carousel-inner anim" style="background-color: #edd9c0; height: inherit;" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                    <div class="col-lg-8">
+                        <p style="padding: 1rem;padding-top: 2rem;">I had a complete makeover of personality over the 4
+                            years I spent at IIT Jodhpur. The campus provided great environment for studies and
+                            research, accompanied by highly experienced faculty members who ensured that students have
+                            in-depth knowledge of the subject. This learner centric environment motivated us to pursue
+                            our dreams freely and got us up to date with industry standards. The Placement Cell here is
+                            extremely hard working and assisted students in developing professionalism and proper work
+                            ethics. The OSP provided various opportunities to choose our future domain from. I am proud
+                            to be part of such an Institution and I am thankful to IIT Jodhpur for making us who we
+                            are!</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static 'img/contacts/tejas_gattani.jpg' %}" alt=""
+                             style="width: 12rem;height: auto;text-align: center; padding-top: 2rem;">
+                        <br><br>
+
+                        <p style="text-align: left;">Tejas Gattani <br> Crisil India Pvt. Ltd.</p>
+
+                    </div>
+                </div>
+                <!--Second slide-->
+                <div class="carousel-item">
+                    <div class="col-lg-8">
+                        <p style="padding: 1rem;padding-top: 2rem;">Office of Students' Placement (OSP) provides you the
+                            right direction and support to achieve your goals. While you prepare for your placements,
+                            along with hard work having an effective competence in interview skills plays a vital role,
+                            OSP helps you just with that.
+                            Although I wasn't a Computer Science grad I could still make it to one of the top hiring
+                            firms on campus. If you're ready to work hard and have faith in yourself, OSP team will make
+                            you placed.</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{% static 'img/contacts/shubham_talbar.jpg' %}" alt=""
+                             style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                        <br><br>
+                        <p style="text-align: left;">Shubham Talbar <br>Technology Analyst <br>Morgan Stanley</p>
+                    </div>
+                </div>
+                <!--Third slide -->
+                <div class="carousel-item">
+                    <div class="col-lg-8">
+                        <p style="padding: 1rem;padding-top: 2rem;">The 4 years at IITJ played the crucial role in my
+                            academic, professional or personal growth. Speaking about the placements, I got the
+                            internship at Morgan Stanley on the very first day of the session. I was a part of the OSP
+                            team and have personally experienced the kind of hard work that the team put in to ensure
+                            that all the students get the best. I got a PPO from Morgan Stanley so did not sit for the
+                            placement session. But, kudos to the entire team that we got the best stats for the CSE so
+                            far. I wish the whole team best of luck for the coming sessions.</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{% static 'img/contacts/mohit-mehta.jpg' %}" alt=""
+                             style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                        <p style="text-align: center;">Mohit Mehta <br>Technology Analyst <br>Morgan Stanley</p>
+                    </div>
+                </div>
+                <!-- Fourth Slide -->
+                <div class="carousel-item">
+                    <div class="col-lg-8">
+                        <p style="padding: 1rem;padding-top: 2rem;">My journey at IIT Jodhpur has been an enriching and
+                            memorable experience. It taught me all the necessary skills and provided opportunities to
+                            not only build a successful career but also to progress well ahead in life. An important
+                            part of it was due to the efforts of the Office of Student Placements, who worked selflessly
+                            and efficiently to provide awesome work opportunities to the students.
+
+                            I got selected for a two-month summer internship at D.E. Shaw India Private Limited during
+                            my third year. The placements team had ensured that the whole process was smooth for the
+                            candidates and the interviewers. I finally got a pre-placement offer from the company after
+                            the internship and I finally joined it after my graduation.
+
+                            A big thanks to the Office of Student Placements for their tireless efforts and I hope it
+                            gets even better over the years to come.</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{% static 'img/contacts/archil-srivastava.jpg' %}" alt=""
+                             style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                        <p style="text-align: center;">Archil Srivastava <br> Software Engineer <br>D.E. Shaw</p>
+                    </div>
+                </div>
+                <!-- Fifth Slide -->
+                <div class="carousel-item">
+                    <div class="col-lg-8">
+                        <p style="padding: 1rem;padding-top: 2rem;">My journey of IIT Jodhpur was highly enriching. It
+                            has given me tremendous insight and clarity about my both personal and professional
+                            interest. Being a part of institute's first batch of Industry Immersion Program (IIP), I got
+                            the opportunity to spend my 3 summers at Tata Power. and learn about the functioning of
+                            Industry. It was an enriching experience as I could apply the acquired practical knowledge
+                            in class and improve my understanding of the subject. OSP plays a pivotal role in helping
+                            students getting placed in a suitable company and making the placement process hassle free
+                            for both students and companies. I am grateful to OSP members for their sincere effort and
+                            dedication.</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <img src="{% static 'img/contacts/akshat-srivastava.jpg' %}" alt=""
+                             style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
+                        <p style="text-align: center;">Akshat Shrivastava <br>Finisar Ind.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-next" href="#carousel-example-2z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var scrollEventHandler = function () {
+            window.scroll(0, window.pageYOffset)
+        }
+        window.addEventListener("scroll", scrollEventHandler, false);
+    </script>
+    {% endblock %}
