@@ -14,6 +14,7 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+
 class PastRecruiters(models.Model):
     company_order_no = models.PositiveIntegerField(default=64)
     company_name = models.CharField(max_length=64)
