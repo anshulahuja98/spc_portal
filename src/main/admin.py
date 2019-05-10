@@ -9,3 +9,4 @@ class HomeImageCarouselAdmin(admin.ModelAdmin):
     class Meta:
         model = HomeImageCarousel
         fields = '__all__'
+        

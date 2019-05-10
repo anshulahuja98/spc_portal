@@ -18,3 +18,4 @@ class HomepageView(TemplateView):
         companies = ['img/company-logo/' + image for image in companies]
         context['companies'] = companies
         return context
+        
