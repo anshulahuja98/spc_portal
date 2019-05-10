@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
-    'carousel.apps.CarouselConfig',
     'main.apps.MainConfig'
 
 ]
