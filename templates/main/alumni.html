@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-2">
+                    {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+    </div>
+<div class="col-lg-10">
+    <div class="card">
+        <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Alumni's Words</span></div>
+        <div class="card-block">
+            <p class="card-text">
+                To be updated...
+            </p>
+        </div>
+    </div>
+
+</div>
+</div>
+{% endblock %}

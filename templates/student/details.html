@@ -1,0 +1,166 @@
+{% extends 'student/base.html' %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;Update Details</span></div>
+                <div class="card-block">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-user prefix"></i>
+                                    <label for="id_roll_no" style="font-size: medium">Roll no:</label> <input
+                                        type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8"
+                                        required id="id_roll_no" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Program: {{ studentprofile.program_branch.name }}</span>
+                                    
+                                </div>
+                                <br>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_gpa" style="font-size: medium">GPA:</label> <input type="number"
+                                                                                                      name="gpa"
+                                                                                                      value="{{ form.gpa.value }}"
+                                                                                                      step="any"
+                                                                                                      required
+                                                                                                      id="id_gpa"
+                                                                                                      readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_ug_gpa" style="font-size: medium">U.G. GPA:</label> <input type="number"
+                                                                                                      name="ug_gpa"
+                                                                                                      value="{{ form.ug_gpa.value }}"
+                                                                                                      step="any"
+                                                                                                      required
+                                                                                                      id="id_ug_gpa"
+                                                                                                      readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-phone prefix"></i>
+                                    <label for="id_phone" style="font-size: medium">Phone:</label> <input type="text"
+                                                                                                          name="phone"
+                                                                                                          value="{{ form.phone.value }}"
+                                                                                                          maxlength="11"
+                                                                                                          required
+                                                                                                          id="id_phone"/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-birthday-cake prefix"></i>
+                                    {{ form.dob }}
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix"></i>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JEE AIR: {{ studentprofile.jee_air }}</span>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-blind prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Disability : {{ form.physical_disability }}</span>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-bars prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category : {{ form.category }}</span>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-flag prefix" style="color:cornflowerblue"></i>
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality : {{ form.nationality }}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-5">
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_permanent_address" style="font-size: medium">Permanent
+                                        address:</label> <textarea name="permanent_address" required rows="10"
+                                                                   id="id_permanent_address"
+                                                                   cols="40"> {{ form.permanent_address.value }}</textarea>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-home prefix"></i>
+                                    <label for="id_current_address" style="font-size: medium">Current address:</label>
+                                    <textarea name="current_address" required rows="10" id="id_current_address"
+                                              cols="40"> {{ form.current_address.value }}</textarea>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_year" style="font-size: medium">Class X year:</label> <input
+                                        type="number" name="x_year" value="{{ form.x_year.value }}" required
+                                        id="id_x_year" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_x_board" style="font-size: medium">Class X Board:</label> <input
+                                        type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required
+                                        id="id_x_board_naem" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_x_percentage" style="font-size: medium">Class X
+                                        Percentage/CGPA:</label>
+                                    <input
+                                            type="text" name="x_percentage" value="{{ form.x_percentage.value }}"
+                                            required
+                                            id="id_x_percentage" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_year" style="font-size: medium">Class XII year:</label> <input
+                                        type="number" name="xii_year" value="{{ form.xii_year.value }}" required
+                                        id="id_xii_year" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-calendar prefix"></i>
+                                    <label for="id_xii_board" style="font-size: medium">Class XII Board:</label> <input
+                                        type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}"
+                                        required id="id_xii_board_name" readonly/>
+                                </div>
+                                <br>
+                                <div class="md-form">
+                                    <i class="fa fa-percent prefix"></i>
+                                    <label for="id_xii_percentage" style="font-size: medium">Class XII
+                                        Percentage/CGPA:</label>
+                                    <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}"
+                                           required id="id_xii_percentage" readonly/>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <center>
+                            <button class="btn btn-primary" type="submit"> Update</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

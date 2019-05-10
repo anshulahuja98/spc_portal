@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-2">
+                    {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Placement Procedure</span></div>
+          <div class="card-block">
+            <p class="card-text">
+                        <ol>
+                            <li> Companies participating in Annual Placement Meet at IIT Jodhpur will be required to register at the Office of Student Placements (OSP) website (http://osp.iitj.ac.in) or fill out the JAF (Job Announcement Form) and send a soft copy of the same to the Placement Team.</li>
+
+                            <li>The OSP will verify the information provided by the company, following which a login ID and a password for the online OSP Portal will be provided to the companies.</li>
+
+                            <li>Online account will help companies to view the profiles of the students applying for placements in that particular company, upload PPT slides, float common notices etc.</li>
+
+                            <li> The dates of the Pre Placement Talks (PPT) will be decided with the mutual consent of OSP and the Organisation.</li>
+
+                            <li>  Based on the PPT and profile of the job, students will be asked to apply for the job.</li>
+
+                            <li> Placement Session starts in the month of October. Early recruitment offers will be entertained based on the students' response for the same.</li>
+
+                            <li> A suitable date and time slot will be provided to the company based on criteria like:</li>
+
+                          <ol type="a">
+                            <li >Student Preference</li>
+                            <li>The Job Profile</li>
+                            <li>Pay Package offered</li>
+                            <li>The growth prospects</li>
+                          </ol>
+                            <li> The company/organisation is required to furnish the results by the end of the day of recruitment.</li>
+
+                            <li> According to the placement policy, if a student is selected in a company, he/she will not be allowed to appear for any other company.</li>
+
+                            <li>For any more information or queries, Student representatives or Assistant Placement Officer should be contacted.</li>
+
+                        </ol>
+                    </p>
+              </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-2">
+
+        {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+
+    </div>
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Admission Procedure</span></div>
+            <div class="card-block">
+                <p class="card-text">
+                    <b>B.Tech</b><br>
+                    Admissions to B.Tech. Programs are made once a year (in July) through the all-India level Joint
+                    Entrance
+                    Examination (JEE) conducted by IITs. The procedures and other requirements for admission are
+                    specified
+                    in the JEE Information Brochure brought out every year. <a
+                        href="http://iitj.ac.in/admission/btech.php?id=eligibility">Read More</a><br><br>
+                    <b>M.Tech</b><br>
+                    The eligibility criteria prescribed below are the absolute minimum. The Admissions Committee may
+                    prescribe requirements over and above these.<br>
+                <table class="table">
+                    <tr>
+                        <th>Qualifying Degree</th>
+                        <th>Marks obtained in Qualifying Degree</th>
+                        <th>Other Requirements</th>
+                    <tr>
+                    <tr>
+                        <td>B.Tech.,B.E. or B.Sc. (Engineering)</td>
+                        <td>At least 60% marks or At least 6.5/10 Cumulative Performance Index (CPI) or Cumulative Grade
+                            Point Average (CGPA)
+                        </td>
+                        <td>Valid GATE score</td>
+                    </tr>
+                    <tr>
+                        <td>M.Sc. in Sciences</td>
+                        <td>At least 70% marks or At least 7/10 Cumulative Performance Index (CPI) or Cumulative Grade
+                            Point
+                            Average (CGPA)
+                        </td>
+                        <td>Valid GATE score</td>
+                    </tr>
+                    <tr>
+                        <td>B.Tech. from any of the IITs</td>
+                        <td>CPI or CGPA 8/10 or above</td>
+                        <td>The requirement of valid GATE score is exempted</td>
+                    </tr>
+
+                </table>
+                <a href="http://iitj.ac.in/admission/mtech.php?id=eligibility">Read More</a><br><br>
+                <b>M.Sc.</b><br>
+                Admissions to M.Sc Programs are made once a year (in July) through the all-India level Joint Admission
+                Test
+                for Masters (JAM) conducted by IITs. The eligibility criteria prescribed below are the absolute minimum.
+                However, the procedures and other requirements for admission are specified in the JAM Information
+                Brochure
+                brought out every year. <a href="http://iitj.ac.in/admission/msc.php?id=eligibility"> Read
+                More</a><br><br><br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class="row">
+        <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;Recruiter Tutorial</span></div>
+            <div class="card-block">
+                <p class="card-text">
+                    <h3>For Companies</h3><br>
+                    <h4><b style="text-decoration: underline">Step 1:</b></h4><ol type="1"><li> <p style="font-size: large">Click on Company Registration link given in the Login Page.</p></li></ol>
+                    <img src="{% static 'img/company-tutorial/register.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 2:</b></h4><ol type="1"><li> <p style="font-size: large">Fill Out the following Registration Page that opens up.</p></li></ol>
+                    <img src="{% static 'img/company-tutorial/registration-form-1.png' %}" alt="">
+                    <br>
+                    <img src="{% static 'img/company-tutorial/registration-form-2.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 3:</b></h4><ol type="1"><li> <p style="font-size: large">One Can create a Job/Internship offer by clicking on the "Add Job/Intern Offer" tab on the navbar.</p></li></ol>
+                    <img src="{% static 'img/company-tutorial/create-offer.png' %}" alt="">
+                    <br>
+                    <p style="font-size: large">One can also specify the Selection Criteria and Procedure for the offer in the form itself.</p>
+                    <img src="{% static 'img/company-tutorial/create-offer-selection-criteria.png' %}" alt="">
+                    <br>
+                    <img src="{% static 'img/company-tutorial/create-offer-final.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 4:</b></h4><ol type="1"><li> <p style="font-size: large">One Can View the job/Intern Offers created by cliking on "View Job/Intern offer" tab on the Navbar.</p></li>
+                    <li> <p style="font-size: large">One can also see the number of Applicants on the particular offer and also their Resumes.</p> </li>
+                    </ol>
+                    <img src="{% static 'img/company-tutorial/job-offers+applicants.png' %}" alt="">
+                    <br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-1">
+    </div>
+</div>
+{% endblock %}

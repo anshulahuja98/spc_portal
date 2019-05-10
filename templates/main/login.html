@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> <center>Login</center> </span></div>
+            <div class="card-block">
+                <br>
+                <form method="post">
+                    <!--Header-->
+                    {% csrf_token %}
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix" style="color: #4285F4  "></i>
+                        <input type="text" name="username" id="username" class="form-control">
+                        <label for="username">Recruiter Email/Student Username</label>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix" style="font-size: 2.5rem; color: #4285F4   "></i>
+                        <input type="password" name="password" id="password" class="form-control">
+                        <label for="password">Password</label>
+                    </div>
+                    {% for error in form.non_field_errors %}
+                    <div class="red-text">
+                        {{ error }}
+                    </div>
+                    {% endfor %}
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                    <br>
+                    <div align="right">
+                        <a href=" {% url 'student:register' %}" align=" right" class="blue-text"> Students Register
+                            here</a>
+                        <br>
+                        <a href=" {% url 'company:register' %}" align=" right" class="blue-text"> Recruiters Register
+                            here</a>
+                        <br>
+                        <br>
+                        <a href=" {% url 'main:tutorial_company' %}" align=" right" class="blue-text"> Tutorial for
+                            Recruiters</a>
+                        <br>
+                        <a href=" {% url 'main:tutorial_student' %}" align=" right" class="blue-text"> Tutorial for
+                            Students</a>
+                    </div>
+                    <div style="text-align: right">
+                        <a href="{% url 'password_reset' %}" style="color: #4381B8">
+                            Forgot Password?
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+{% endblock %}

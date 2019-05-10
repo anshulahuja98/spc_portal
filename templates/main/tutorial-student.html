@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp;Student Tutorial for Website</span></div>
+            <div class="card-block">
+                <p class="card-text">
+                    <h3>For Students</h3><br>
+                    <h4><b style="text-decoration: underline">Step 1:</b></h4><ol type="1"><li>  <p style="font-size: large">Click on Student Registration link given in the Login Page.</p></li></ol>
+                    <img src="{% static 'img/students-tutorial/register.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 2:</b></h4><ol type="1"><li> <p style="font-size: large">Fill Out the following Registration Page that opens up.</p></li></ol>
+                    <img src="{% static 'img/students-tutorial/registration-form-1.png' %}" alt="">
+                    <br>
+                    <img src="{% static 'img/students-tutorial/registration-form-3.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 3:</b></h4><ol type="1"><li> <p style="font-size: large">One can upload the Resumes by clicking on the "Upload Resume" tab in the navbar.</p></li></ol>
+                    <img src="{% static 'img/students-tutorial/upload-resume.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 4:</b></h4><ol type="1"><li> <p style="font-size: large">Also one can check the status of the Resume, whether it is approved or not in "Upload Resume" tab itself.</p></li></ol>
+                    <img src="{% static 'img/students-tutorial/resume-approved.png' %}" alt="">
+                    <br>
+                    <h4><b style="text-decoration: underline">Step 5:</b></h4><ol type="1"><li> <p style="font-size: large">One can view the job/internship offers which are active and can also apply for the same from "View Offers" tab.</p></li></ol>
+                    <img src="{% static 'img/students-tutorial/apply-for-offer.png' %}" alt="">
+                    <br>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-1">
+    </div>
+</div>
+{% endblock %}

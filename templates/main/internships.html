@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-lg-2">
+            {% include 'main/mixins/recruiters_mixin.html' with companies=companies %}
+    </div>
+    <div class="col-lg-10">
+        <div class="card">
+            <div class="my-card" id="my-card"><span style="font-size: 1.5rem"> &nbsp; Internships</span></div>
+            <div class="card-block">
+                <p class="card-text">
+                    The students are given an opportunity to experience real-world problems to which they must apply fundamental academic and interpersonal skills. During Internship students learn about the vast opportunities available for them to make a positive impact with limited time and resources. The Internship encourages learning from interaction with the seniors from different disciplines and backgrounds and from eminent institutes across the country. Internship provide opportunities to learn new ideas and gain new interests in their field and guide towards career path. This can also help in laying strong foundation of a very productive academic culture which can be beneficial for a students. The Internship companies are usually invited from January onwards but there is no restriction inviting a company for conducting the interview in Internships unlike placements wherein it starts from October onwards. The duration of the Internship procedure is 2 months beginning from the mid of May to mid of July.
+                    <br><br>
+                    <b>Benefits of Internship</b>
+                    <br>
+Provides opportunity to get exposure to:
+<ol>
+                    <li>	Face real time problems and find ways to solve the same</li>
+<li>	Understand work ethics and culture.</li>
+<li>	Gain practical exposure in their respective fields</li>
+</ol>
+</p>
+            </div>
+        </div>
+
+            </div>
+    <div class="col-lg-1">
+    </div>
+</div>
+{% endblock %}
