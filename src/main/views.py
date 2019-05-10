@@ -13,10 +13,8 @@ class HomepageView(TemplateView):
         print(carousel)
         carousel = ['/' + image for image in carousel]
         context['carousel'] = carousel
-        context['carousel'] = HomeImageCarousel.objects.filter(active=True).order_by('image_no') 
+        context['carousel'] = HomeImageCarousel.objects.filter(active=True).order_by('image_no')
         companies = os.listdir("staticfiles/img/company-logo")
         companies = ['img/company-logo/' + image for image in companies]
         context['companies'] = companies
         return context
-
-    

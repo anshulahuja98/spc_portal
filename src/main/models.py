@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class HomeImageCarousel(models.Model):
     image_no = models.PositiveIntegerField(default=64)
     image_title = models.CharField(default="image", max_length=64)
@@ -8,6 +9,5 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.image_title
-
-     #def save_post(self):
-      #   self.save()
+    # def save_post(self):
+    #   self.save()
