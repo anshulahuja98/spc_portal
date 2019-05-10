@@ -161,23 +161,7 @@
     </nav>
     <br>
 
-<!--
-    <div class="row">
-        {% if not 'register' in request.path and not 'contacts' in request.path %}
-        <div class="col-lg-2" id="past_recruiters">
 
-            <center><h3>Past Recruiters</h3></center>
-            <br>
-            <marquee BEHAVIOR="alternate" direction="up" HEIGHT=600 scrollamount="4" onmouseover="this.stop();"
-                     onmouseout="this.start();">
-                {% for company in companies %}
-                <br>
-                <img class="d-block w-100" src="{% static company %}">
-                {% endfor %}
-                <br>
-            </marquee>
-        </div>
-        {% endif %}--->
 
 
         {% endblock %}
