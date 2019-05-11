@@ -35,7 +35,7 @@
                 <!--First slide-->
                 {% for image in carousel %}
                 <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{{ image.image_carousel.url }}"
+                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{{ image.image.url }}"
                          alt="">
                 </div>
                 {% endfor %}

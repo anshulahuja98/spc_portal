@@ -4,7 +4,7 @@ from .models import HomeImageCarousel
 
 @admin.register(HomeImageCarousel)
 class HomeImageCarouselAdmin(admin.ModelAdmin):
-    list_display = ['image_title', 'image_no', 'active', ]
+    list_display = ['title', 'ordering', 'active', ]
 
     class Meta:
         model = HomeImageCarousel
