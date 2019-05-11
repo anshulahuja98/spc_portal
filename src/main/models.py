@@ -9,3 +9,15 @@ class PastRecruiters(models.Model):
 
     def __str__(self):
         return self.company_name
+
+class Testimonial(models.Model):
+    student_name = models.CharField(max_length=64)
+    company_working = models.CharField(max_length=64)
+    post_working = models.CharField(max_length=64)
+    alumni_word = models.TextField(null=True)
+    student_image = models.ImageField(upload_to='testimonial', null=False)
+    active = models.BooleanField(default=False)
+    ranking = models.PositiveSmallIntegerField(default=512)
+
+    def __str__(self):
+        return self.student_name
