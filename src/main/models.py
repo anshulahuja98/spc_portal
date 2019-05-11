@@ -9,5 +9,3 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.image_title
-    # def save_post(self):
-    #   self.save()
