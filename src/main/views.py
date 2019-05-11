@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 import os
 from .models import PastRecruiters
-from .models import Testimonial
+from .models import AlumniTestimonial
 
 
 class HomepageView(TemplateView):
@@ -13,5 +13,5 @@ class HomepageView(TemplateView):
         carousel = ['img/homepage-carousel/' + image for image in carousel]
         context['carousel'] = carousel
         context['companies'] = PastRecruiters.objects.filter(active=True).order_by('company_order_no')
-        context['testimonial_list'] = Testimonial.objects.filter(active='True').order_by('ranking')
+        context['testimonial_list'] = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
         return context

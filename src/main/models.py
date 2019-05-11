@@ -10,14 +10,14 @@ class PastRecruiters(models.Model):
     def __str__(self):
         return self.company_name
 
-class Testimonial(models.Model):
-    student_name = models.CharField(max_length=64)
+class AlumniTestimonial(models.Model):
+    alumni_name = models.CharField(max_length=64)
     company_working = models.CharField(max_length=64)
-    post_working = models.CharField(max_length=64)
-    alumni_word = models.TextField(null=True)
-    student_image = models.ImageField(upload_to='testimonial', null=False)
-    active = models.BooleanField(default=False)
+    designation = models.CharField(max_length=64 , null=True)
+    testimonial = models.TextField(null=False)
+    alumni_image = models.ImageField(upload_to='testimonial')
+    active = models.BooleanField(default=True)
     ranking = models.PositiveSmallIntegerField(default=512)
 
     def __str__(self):
-        return self.student_name
+        return self.alumni_name

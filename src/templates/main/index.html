@@ -139,8 +139,6 @@
                         equipment.<br><br>
                         We extend a cordial invitation to you to participate in Campus Placement Drive for the
                         season 2018-19 and hope that you will find the best talent you were looking for.
-                        {% if testimonial_list %} {% for Testimonial in testimonial_list %}
-                        {{Testimonial.student_name}} {% endfor %} {% endif %}
                         <br><br>
                     </p>
 
@@ -170,7 +168,7 @@
         <div id="carousel-example-2z" class="carousel slide carousel-fade" data-ride="carousel">
             <!--Indicators-->
             <ol class="carousel-indicators">
-                {% if testimonial_list %} {% for Testimonial in testimonial_list %}
+                {% if testimonial_list %} {% for AlumniTestimonial in testimonial_list %}
                 <li data-target="#carousel-example-2z" data-slide-to="{{forloop.counter0}}" class="active"></li>
                 {% endfor %}{% endif %}
             </ol>
@@ -184,19 +182,19 @@
             </a>
             <div class="carousel-inner anim" style="background-color: #edd9c0; height: inherit;" role="listbox">
 
-                {% if testimonial_list %} {% for Testimonial in testimonial_list %}
+                {% if testimonial_list %} {% for AlumniTestimonial in testimonial_list %}
 
 
 
                 <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                     <div class="col-lg-8">
-                        <p style="padding: 1rem;padding-top: 2rem;">{{ Testimonial.alumni_word }}</p>
+                        <p style="padding: 1rem;padding-top: 2rem;">{{ AlumniTestimonial.testimonial }}</p>
                     </div>
                     <div class="col-lg-2">
-                        <img src="{{ Testimonial.student_image.url }}" alt=""
+                        <img src="{{ AlumniTestimonial.alumni_image.url }}" alt=""
                              style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
-                        <p style="text-align: center;">{{ Testimonial.student_name }}
-                             <br>{{ Testimonial.post_working }}<br>{{ Testimonial.company_working }}</p>
+                        <p style="text-align: center;">{{ AlumniTestimonial.alumni_name }}
+                             <br>{{ AlumniTestimonial.designation }}<br>{{ AlumniTestimonial.company_working }}</p>
                     </div>
                 </div>
               {% endfor %}
