@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 import os
-from .models import News, PastRecruiters , AlumniTestimonial
+from .models import News, PastRecruiters, AlumniTestimonial
 
 
 class HomepageView(TemplateView):

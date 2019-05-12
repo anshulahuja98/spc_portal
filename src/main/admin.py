@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportActionModelAdmin
-from .models import News, PastRecruiters , AlumniTestimonial
+from .models import News, PastRecruiters, AlumniTestimonial
 
 
 @admin.register(News)
@@ -11,7 +11,6 @@ class NewsAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = News
-
 
 
 @admin.register(PastRecruiters)
@@ -28,7 +27,7 @@ class PastRecruitersAdmin(admin.ModelAdmin):
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ['ranking', 'alumni_name', 'active', ]
     list_filter = ['active', ]
-    ordering = ['ranking' ,]
+    ordering = ['ranking', ]
 
     class Meta:
         model = AlumniTestimonial
