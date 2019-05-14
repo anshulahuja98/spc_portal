@@ -1,5 +1,18 @@
 from django.contrib import admin
-from .models import PastRecruiters, CoreTeamContacts, Volunteers
+from .models import PastRecruiters, CoreTeamContacts, Volunteers, News
+from import_export.admin import ImportExportActionModelAdmin
+
+
+
+@admin.register(News)
+class NewsAdmin(ImportExportActionModelAdmin):
+    list_display = ['order_no', 'title', 'active', ]
+    list_filter = ['active', ]
+    ordering = ['order_no']
+
+    class Meta:
+        model = News
+
 
 
 @admin.register(PastRecruiters)
