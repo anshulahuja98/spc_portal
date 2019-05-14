@@ -67,6 +67,7 @@ class CompanyProfile(models.Model):
                                         through_fields=('company', 'student'), related_name='joboffers')
     internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
                                                through_fields=('company', 'student'), related_name='internshipoffers')
+    contact = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
         return self.name
