@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PastRecruiters, CoreTeamContacts, Volunteers, News
+from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -23,6 +23,7 @@ class PastRecruitersAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
+
 @admin.register(CoreTeamContacts)
 class CoreTeamContactsAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'designation', 'active', ]
@@ -41,4 +42,15 @@ class VolunteersAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Volunteers
+        fields = '__all__'
+
+ 
+@admin.register(AlumniTestimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ['ranking', 'alumni_name', 'active', ]
+    list_filter = ['active', ]
+    ordering = ['ranking', ]
+
+    class Meta:
+        model = AlumniTestimonial
         fields = '__all__'
