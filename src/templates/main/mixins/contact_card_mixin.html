@@ -1,0 +1,41 @@
+<div class="col-lg-4" style="margin: auto;margin-bottom: 2.5rem; ">
+    <div class="card text-center " style= "margin-right: 6rem; margin-left: 6rem;">
+        <div class="card-header" style="font-size: 1.15rem"><i class="fa fa-star-o"></i> &nbsp;
+            <b> {% if contact.designation == '5' %}
+                    {{contact.get_designation_display}}</b><br>{{contact.program_branch}}
+                {% else %}
+                    {{contact.get_designation_display}}</b><br>{{contact.sub_designation}}
+                {% endif %}                                  
+                                                
+        </div>
+        <div class="card-body">
+            {% if contact.profile_image %}
+                <img src="{{ contact.profile_image.url }}" alt="{{contact.user.get_full_name}}"
+                    style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.5rem">
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+            <span style="color: black; font-size: 1.35rem"><b>{{contact.user.get_full_name}}</b></span>
+            <br><br>
+            <p class="text-left">
+                {% if contact.user.email %}
+                    <span style="color: black"><i class="fa fa-envelope"></i>&nbsp; {{contact.user.email}}</span>
+                {% endif %}
+                {% if contact.phone %}
+                    <br>
+                    <span style="color: black"><i class="fa fa-phone"></i>&nbsp; {{contact.phone}}</span>
+                {% endif %}
+                {% if contact.github_link %}
+                    <br>
+                    <span style="color: black"><a href="{{contact.link}}" target="_blank"> 
+                        <i class="fa fa-github" style="font-size: 1.5rem;"></i>&nbsp; github@{{contact.user.first_name}}</a></span>
+                {% endif %}
+                {% if contact.linkedin_link %}
+                    <br>
+                    <span style="color: black"><a href="{{contact.linkedin_link}}" target="_blank"> 
+                        <i class="fa fa-linkedin" style="font-size: 1.5rem;"></i>&nbsp; linkedin@{{contact.user.first_name}}</a></span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
