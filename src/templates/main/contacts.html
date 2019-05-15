@@ -20,7 +20,7 @@
 <div class="row">
     {% for contact in contacts %}
         {% if contact.designation == '1' or contact.designation == '2' or  contact.designation == '3'%}    
-            {% include 'main/contact.html' %}
+            {% include 'main/mixins/contact_card_mixin.html' %}
         {% endif %}
     {% endfor %}
 </div>
@@ -29,7 +29,7 @@
     <div class="row">
         {% for contact in contacts %}
             {% if  contact.designation == '4' %}    
-                {% include 'main/contact.html' %}
+                {% include 'main/mixins/contact_card_mixin.html' %}
             {% endif %}
         {% endfor %}
     </div>
@@ -38,7 +38,7 @@
     <div class="row">
             {% for contact in contacts %}
                 {% if contact.designation == '5'%}    
-                    {% include 'main/contact.html' %}
+                    {% include 'main/mixins/contact_card_mixin.html' %}
                 {% endif %}
             {% endfor %}
     </div>
@@ -51,7 +51,7 @@
     
     {% for contact in contacts %}
         {% if contact.designation == '6'  %}
-            {% include 'main/contact.html' %}
+            {% include 'main/mixins/contact_card_mixin.html' %}
         {% endif %}
     {% endfor %}
 </div>
@@ -62,7 +62,7 @@
 <div class="row">
 {% for contact in contacts %}
     {% if contact.designation == '7'  %}
-        {% include 'main/contact.html' %}
+        {% include 'main/mixins/contact_card_mixin.html' %}
     {% endif %}
 {%endfor%}
 </div>
