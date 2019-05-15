@@ -23,7 +23,6 @@ class PastRecruitersAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
-
 @admin.register(CoreTeamContacts)
 class CoreTeamContactsAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'designation', 'active', ]
@@ -44,7 +43,7 @@ class VolunteersAdmin(admin.ModelAdmin):
         model = Volunteers
         fields = '__all__'
 
- 
+
 @admin.register(AlumniTestimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ['ranking', 'alumni_name', 'active', ]
