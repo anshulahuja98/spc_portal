@@ -3,7 +3,6 @@ from .models import PastRecruiters, CoreTeamContacts, Volunteers, News
 from import_export.admin import ImportExportActionModelAdmin
 
 
-
 @admin.register(News)
 class NewsAdmin(ImportExportActionModelAdmin):
     list_display = ['order_no', 'title', 'active', ]
@@ -12,7 +11,6 @@ class NewsAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = News
-
 
 
 @admin.register(PastRecruiters)
