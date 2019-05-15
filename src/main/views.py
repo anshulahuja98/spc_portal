@@ -3,7 +3,6 @@ import os
 from .models import PastRecruiters, CoreTeamContacts, Volunteers, News
 
 
-
 class HomepageView(TemplateView):
 
     def get_context_data(self, **kwargs):
