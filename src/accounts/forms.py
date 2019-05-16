@@ -76,6 +76,7 @@ class CompanyRegisterForm(UserCreationForm):
     state = forms.CharField(max_length=15, required=False)
     country = forms.ChoiceField(choices=CompanyProfile.NATION)
     pin_code = forms.CharField(max_length=10, required=False)
+    contact = forms.CharField(max_length=20, required=True)
 
     class Meta:
         model = User
