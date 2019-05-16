@@ -11,4 +11,7 @@ class HomepageView(TemplateView):
         context['carousel'] = HomeImageCarousel.objects.filter(active=True).order_by('ordering')
         context['news_list'] = News.objects.filter(active=True).order_by('order_no')
         context['companies'] = PastRecruiters.objects.filter(active=True).order_by('company_order_no')
+        context['contacts'] = CoreTeamContacts.objects.filter(active=True).order_by('order_no')
+        context['volunteers'] = Volunteers.objects.filter(active=True).order_by('order_no')
+        context['testimonial_list'] = AlumniTestimonial.objects.filter(active='True').order_by('ranking')
         return context

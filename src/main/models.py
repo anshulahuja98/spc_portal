@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from student.models import ProgramAndBranch
+import re
 
 
 class News(models.Model):
@@ -32,3 +35,64 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.title
+
+class CoreTeamContacts(models.Model):
+    DESIGNATION_CHOICES = (
+        ('1', 'Chairman'),
+        ('2', 'Placement Officer'),
+        ('3', 'Project Superintendent'),
+        ('4', 'Student Co-ordinator'),
+        ('5', 'Department Representative'),
+        ('6', 'Team Member'),
+        ('7', 'Web Development Team'),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
+    sub_designation = models.CharField(max_length=64, default='Office of Student Placement')
+    program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True)
+    phone = models.CharField(max_length=16, blank=True, null=True)
+    github_link = models.URLField(blank=True, null=True)
+    linkedin_link = models.URLField(blank=True, null=True)
+    profile_image = models.ImageField(upload_to='contacts', blank=True, null=True)
+    active = models.BooleanField(default=True)
+    order_no = models.PositiveIntegerField(default=64)
+
+    def get_github_username(self):
+        x = re.split("https://github.com/", str(self.github_link))
+        return x[1]
+
+    def get_linkedin_username(self):
+        x = re.split("https://www.linkedin.com/in/", str(self.linkedin_link))
+        return x[1]
+
+    def __str__(self):
+        return self.user.get_full_name()
+
+
+class Volunteers(models.Model):
+    YEAR_CHOICES = (
+        ('1', 'Sophmore Year'),
+        ('2', 'Postgraduation'),
+    )
+
+    name = models.CharField(max_length=64)
+    year = models.CharField(max_length=64, choices=YEAR_CHOICES, null=True)
+    program_branch = models.ForeignKey(ProgramAndBranch, on_delete=models.SET_NULL, null=True, blank=True)
+    active = models.BooleanField(default=True)
+    order_no = models.PositiveIntegerField(default=64)
+
+    def __str__(self):
+        return self.name
+
+
+class AlumniTestimonial(models.Model):
+    alumni_name = models.CharField(max_length=64)
+    company_working = models.CharField(max_length=64)
+    designation = models.CharField(max_length=64, null=True)
+    testimonial = models.TextField(null=False)
+    alumni_image = models.ImageField(upload_to='alumni-testimonial')
+    active = models.BooleanField(default=True)
+    ranking = models.PositiveSmallIntegerField(default=512)
+
+    def __str__(self):
+        return self.alumni_name
