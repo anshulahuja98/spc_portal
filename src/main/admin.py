@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial
+from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -52,4 +52,14 @@ class TestimonialAdmin(admin.ModelAdmin):
 
     class Meta:
         model = AlumniTestimonial
+        fields = '__all__'
+
+
+@admin.register(HomeImageCarousel)
+class HomeImageCarouselAdmin(admin.ModelAdmin):
+    list_display = ['title', 'ordering', 'active', ]
+    ordering = ['ordering', ]
+
+    class Meta:
+        model = HomeImageCarousel
         fields = '__all__'
