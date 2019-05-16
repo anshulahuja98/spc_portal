@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportActionModelAdmin
-from .models import News, PastRecruiters
+from .models import News, PastRecruiters, HomeImageCarousel
 
 
 @admin.register(News)
@@ -20,4 +20,12 @@ class PastRecruitersAdmin(admin.ModelAdmin):
 
     class Meta:
         model = PastRecruiters
+        fields = '__all__'
+
+@admin.register(HomeImageCarousel)
+class HomeImageCarouselAdmin(admin.ModelAdmin):
+    list_display = ['title', 'ordering', 'active', ]
+
+    class Meta:
+        model = HomeImageCarousel
         fields = '__all__'
