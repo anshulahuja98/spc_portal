@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
+import re
 
 
 class News(models.Model):
@@ -47,6 +48,14 @@ class CoreTeamContacts(models.Model):
     profile_image = models.ImageField(upload_to='contacts', blank=True, null=True)
     active = models.BooleanField(default=True)
     order_no = models.PositiveIntegerField(default=64)
+
+    def get_github_username(self):
+        x = re.split("https://github.com/", str(self.github_link))
+        return x[1]
+
+    def get_linkedin_username(self):
+        x = re.split("https://www.linkedin.com/in/", str(self.linkedin_link))
+        return x[1]
 
     def __str__(self):
         return self.user.get_full_name()

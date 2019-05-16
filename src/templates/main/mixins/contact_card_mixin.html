@@ -25,15 +25,15 @@
                     <br>
                     <span style="color: black"><i class="fa fa-phone"></i>&nbsp; {{contact.phone}}</span>
                 {% endif %}
-                {% if contact.github_link %}
+                {% if contact.github_link and contact.get_github_username %}
                     <br>
-                    <span style="color: black"><a href="{{contact.link}}" target="_blank"> 
-                        <i class="fa fa-github" style="font-size: 1.5rem;"></i>&nbsp; github@{{contact.user.first_name}}</a></span>
+                    <span style="color: black"><a href="{{contact.github_link}}" target="_blank"> 
+                        <i class="fa fa-github" style="font-size: 1.5rem;"></i>&nbsp; github@{{contact.get_github_username}}</a></span>
                 {% endif %}
-                {% if contact.linkedin_link %}
+                {% if contact.linkedin_link and contact.get_linkedin_username %}
                     <br>
                     <span style="color: black"><a href="{{contact.linkedin_link}}" target="_blank"> 
-                        <i class="fa fa-linkedin" style="font-size: 1.5rem;"></i>&nbsp; linkedin@{{contact.user.first_name}}</a></span>
+                        <i class="fa fa-linkedin" style="font-size: 1.5rem;"></i>&nbsp; linkedin@{{contact.get_linkedin_username}}</a></span>
                 {% endif %}
             </p>
         </div>
