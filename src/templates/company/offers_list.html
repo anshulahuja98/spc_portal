@@ -14,69 +14,71 @@
                     Offers
                 </span></div>
                 <div class="card-block">
-                    <table class="table table-striped">
-                        <thead class="lighten-4">
-                        <tr>
-                            <th class="theader">S.No</th>
-                            <th class="theader">Job Designation</th>
-                            <th class="theader">Job Description</th>
-                            <th class="theader">View Offer</th>
-                            <th class="theader">Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for ad in ad_list %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="lighten-4">
                             <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ ad.designation }}</td>
-                                <td>{{ ad.description }}</td>
-                                <td>
-                                    <a href="{{ ad.get_absolute_url }}">
-                                        <button class="btn btn-info btn-sm">
-                                            View Offer
-                                        </button>
-                                    </a>
-                                </td>
-                                <td onclick="toggleOffers('{{ ad.id }}')" style="color: green">
-                                    {{ ad.get_offers.count }} Applicant(s) (Click to View)
-                                </td>
+                                <th class="theader">S.No</th>
+                                <th class="theader">Job Designation</th>
+                                <th class="theader">Job Description</th>
+                                <th class="theader">View Offer</th>
+                                <th class="theader">Status</th>
                             </tr>
-
-                            {% if ad.get_offers != 0 %}
+                            </thead>
+                            <tbody>
+                            {% for ad in ad_list %}
                                 <tr>
-                                    <td colspan="5">
-                                        <table class="table table-bordered" id='{{ ad.id }}'
-                                               style="display: none; width: 60%;" align="center">
-                                            <thead class="lighten-4">
-                                            <tr>
-                                                <th class="theader">S.No</th>
-                                                <th class="theader">Roll Number</th>
-                                                <th class="theader">Name</th>
-                                                <th class="theader">Resume</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for offer in ad.get_offers %}
-                                                <tr>
-                                                    <td>{{ forloop.counter }}</td>
-                                                    <td>{{ offer.student.user.username }}</td>
-                                                    <td>{{ offer.student.user.get_full_name }}</td>
-                                                    <td>
-                                                        <a href="{{ offer.resume.file.url }}" target="_blank">
-                                                            <button class="btn btn-info btn-sm">Resume</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ ad.designation }}</td>
+                                    <td>{{ ad.description }}</td>
+                                    <td>
+                                        <a href="{{ ad.get_absolute_url }}">
+                                            <button class="btn btn-info btn-sm">
+                                                View Offer
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td onclick="toggleOffers('{{ ad.id }}')" style="color: green">
+                                        {{ ad.get_offers.count }} Applicant(s) (Click to View)
                                     </td>
                                 </tr>
-                            {% endif %}
 
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% if ad.get_offers != 0 %}
+                                    <tr>
+                                        <td colspan="5">
+                                            <table class="table table-bordered" id='{{ ad.id }}'
+                                                style="display: none; width: 60%;" align="center">
+                                                <thead class="lighten-4">
+                                                <tr>
+                                                    <th class="theader">S.No</th>
+                                                    <th class="theader">Roll Number</th>
+                                                    <th class="theader">Name</th>
+                                                    <th class="theader">Resume</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for offer in ad.get_offers %}
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>{{ offer.student.user.username }}</td>
+                                                        <td>{{ offer.student.user.get_full_name }}</td>
+                                                        <td>
+                                                            <a href="{{ offer.resume.file.url }}" target="_blank">
+                                                                <button class="btn btn-info btn-sm">Resume</button>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                {% endif %}
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-1"></div>
