@@ -34,9 +34,10 @@ class CoreTeamContacts(models.Model):
         ('2', 'Placement Officer'),
         ('3', 'Project Superintendent'),
         ('4', 'Student Co-ordinator'),
-        ('5', 'Department Representative'),
+        ('5', 'Departmental Representative'),
         ('6', 'Team Member'),
         ('7', 'Web Development Team'),
+        ('8', 'Internship Co-ordinator')
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
@@ -63,8 +64,9 @@ class CoreTeamContacts(models.Model):
 
 class Volunteers(models.Model):
     YEAR_CHOICES = (
-        ('1', 'Sophmore Year'),
+        ('1', 'UG Sophmore Year'),
         ('2', 'Postgraduation'),
+        ('3', 'UG 3rd Year')
     )
 
     name = models.CharField(max_length=64)
