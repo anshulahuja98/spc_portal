@@ -35,7 +35,7 @@
                 <!--First slide-->
                 {% for image in carousel %}
                 <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{% static image %}"
+                    <img class="d-block w-100" style="width: 2%; height: 28rem" src="{{ image.image.url }}"
                          alt="">
                 </div>
                 {% endfor %}
@@ -64,7 +64,7 @@
                 <p class="d-block w-100">
                     {% if news_list %}
                         {% for news in news_list %}
-                        {{ forloop.counter }}. {{ news.content }} 
+                        {{ forloop.counter }}. {{ news.content }}
                             {% if news.document %}
                                 <a href="{{ news.document.url }}">{{ news.file_title }} </a>
                             {% endif %}
