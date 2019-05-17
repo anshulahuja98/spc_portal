@@ -26,7 +26,7 @@
             <ol class="carousel-indicators carousel-indicators-numbers">
                 {% for image in carousel %}
                 <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
-                    {% if forloop.counter== 1 %} class="active" {% endif %}></li>
+                    {% if forloop.counter == 1 %} class="active" {% endif %}></li>
                 {% endfor %}
             </ol>
             <!--/.Indicators-->
@@ -63,16 +63,16 @@
                 <!-- <marquee direction="up" HEIGHT=250 scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();"> -->
                 <p class="d-block w-100">
                     {% if news_list %}
-                    {% for news in news_list %}
-                    {{ forloop.counter }}. {{ news.content }}
-                    {% if news.document %}
-                    <a href="{{ news.document.url }}">{{ news.file_title }} </a>
-                    {% endif %}
-                    {% if news.link %}
-                    <a href="{{ news.link }}">{{ news.link_title }}</a>
-                    {% endif %}
-                    <br><br>
-                    {% endfor %}
+                        {% for news in news_list %}
+                        {{ forloop.counter }}. {{ news.content }}
+                            {% if news.document %}
+                                <a href="{{ news.document.url }}">{{ news.file_title }} </a>
+                            {% endif %}
+                            {% if news.link %}
+                                <a href="{{ news.link }}">{{ news.link_title }}</a>
+                            {% endif %}
+                        <br><br>
+                        {% endfor %}
                     {% endif %}
                 </p>
                 <!-- </marquee> -->
@@ -182,6 +182,7 @@
                 {% if testimonial_list %} {% for alumni_testimonial in testimonial_list %}
 
 
+
                 <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                     <div class="col-lg-8">
                         <p style="padding: 1rem;padding-top: 2rem;">{{ alumni_testimonial.testimonial }}</p>
@@ -190,11 +191,11 @@
                         <img src="{{ alumni_testimonial.alumni_image.url }}" alt=""
                              style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
                         <p style="text-align: center;">{{ alumni_testimonial.alumni_name }}
-                            <br>{{ alumni_testimonial.designation }}<br>{{ alumni_testimonial.company_working }}</p>
+                             <br>{{ alumni_testimonial.designation }}<br>{{ alumni_testimonial.company_working }}</p>
                     </div>
                 </div>
-                {% endfor %}
-                {% endif %}
+              {% endfor %}
+              {% endif %}
 
             </div>
             <a class="carousel-control-next" href="#carousel-example-2z" role="button" data-slide="next">
