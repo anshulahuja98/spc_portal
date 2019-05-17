@@ -14,10 +14,10 @@
         placement@iitj.ac.in</span><br></div>
 </div>
 
-<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
-        style="font-size: 1.75rem"> &nbsp; PLACEMENT TEAM </span></div>
-<hr style="width: 25rem;">
-<div class="row">
+    <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
+            style="font-size: 1.75rem"> &nbsp; PLACEMENT TEAM </span></div>
+    <hr style="width: 25rem;">
+<div class="row" style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
     {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3'%}
     {% include 'main/mixins/contact_card_mixin.html' %}
@@ -26,7 +26,8 @@
 </div>
 <br>
 <hr style="width: 25rem;">
-<div class="row">
+
+<div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
     {% if contact.designation == '4' %}
     {% include 'main/mixins/contact_card_mixin.html' %}
@@ -40,7 +41,7 @@
 </div>
 <br>
 <hr style="width: 25rem;">
-<div class="row">
+<div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
     {% if contact.designation == '5'%}
     {% include 'main/mixins/contact_card_mixin.html' %}
@@ -52,8 +53,7 @@
         style="font-size: 1.75rem"> &nbsp; CORE TEAM MEMBERS</span></div>
 <hr style="width: 25rem;">
 
-<div class="row ">
-
+<div class="row " style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
     {% if contact.designation == '6' %}
     {% include 'main/mixins/contact_card_mixin.html' %}
@@ -64,10 +64,11 @@
 <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
         style="font-size: 1.75rem"> &nbsp; WEB DEVELOPMENT TEAM</span></div>
 <hr style="width: 25rem;">
-<div class="row">
+<div class="row" style="margin-left: 0.02rem; margin-right: 0.02rem">
     {% for contact in contacts %}
     {% if contact.designation == '7' %}
     {% include 'main/mixins/contact_card_mixin.html' %}
+
     {% endif %}
     {% endfor %}
 </div>
