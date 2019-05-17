@@ -17,51 +17,53 @@
                                        style="font-size: x-large; font-weight: bold"/>
                                 <br>
                                 <br>
-                                <table border="0" cellpadding="5px">
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Company</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td>{{ ad.company }}</td>
-                                    </tr>
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Designation</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td>{{ ad.designation }}</td>
-                                    </tr>
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Description</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td>{{ ad.description }}</td>
-                                    </tr>
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Joining Date</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td>{{ ad.tentative_join_date }}</td>
-                                    </tr>
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Job Location</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td>{{ ad.tentative_job_location }}</td>
-                                    </tr>
-                                    {% if ad.ads %}
-                                    <tr valign="top">
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td style="font-size:large;font-weight: bold;">Offer File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>&nbsp;:&nbsp;</td>
-                                        <td><a href="{{ ad.ads.url }}" target="_blank">
+                                <div class="table-responsive" style="white-space: normal;">
+                                    <table border="0" cellpadding="5px">
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Company</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.company }}</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Designation</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.designation }}</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Description</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.description }}</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Joining Date</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.tentative_join_date }}</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Job Location</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td>{{ ad.tentative_job_location }}</td>
+                                        </tr>
+                                        {% if ad.ads %}
+                                        <tr valign="top">
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td style="font-size:large;font-weight: bold;">Offer File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>&nbsp;:&nbsp;</td>
+                                            <td><a href="{{ ad.ads.url }}" target="_blank">
 
-                                            <button class=" btn btn-info btn-sm">
-                                                {{ ad.designation }}
-                                            </button>
-                                        </a></td>
-                                    </tr>
-                                    {% endif %}
-                                </table>
+                                                <button class=" btn btn-info btn-sm">
+                                                    {{ ad.designation }}
+                                                </button>
+                                            </a></td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
 
                             </div>
                             <div class="md-form">
