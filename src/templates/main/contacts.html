@@ -19,77 +19,94 @@
     <hr style="width: 25rem;">
 <div class="row" style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
-        {% if contact.designation == '1' or contact.designation == '2' or  contact.designation == '3'%}    
-            {% include 'main/mixins/contact_card_mixin.html' %}
-        {% endif %}
+    {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3'%}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
     {% endfor %}
 </div>
 <br>
 <hr style="width: 25rem;">
-    <div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
-        {% for contact in contacts %}
-            {% if  contact.designation == '4' %}    
-                {% include 'main/mixins/contact_card_mixin.html' %}
-            {% endif %}
-        {% endfor %}
-    </div>
-    <br>
-    <hr style="width: 25rem;">
-    <div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
-            {% for contact in contacts %}
-                {% if contact.designation == '5'%}    
-                    {% include 'main/mixins/contact_card_mixin.html' %}
-                {% endif %}
-            {% endfor %}
-    </div>
-        
+
+<div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
+    {% for contact in contacts %}
+    {% if contact.designation == '4' %}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
+    {% endfor %}
+    {% for contact in contacts %}
+    {% if contact.designation == '8' %}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
+    {% endfor %}
+</div>
+<br>
+<hr style="width: 25rem;">
+<div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
+    {% for contact in contacts %}
+    {% if contact.designation == '5'%}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
+    {% endfor %}
+</div>
+
 <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
         style="font-size: 1.75rem"> &nbsp; CORE TEAM MEMBERS</span></div>
 <hr style="width: 25rem;">
 
 <div class="row " style="margin-left: 0.15rem; margin-right: 0.15rem">
-    
     {% for contact in contacts %}
-        {% if contact.designation == '6'  %}
-            {% include 'main/mixins/contact_card_mixin.html' %}
-        {% endif %}
+    {% if contact.designation == '6' %}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
     {% endfor %}
 </div>
-    <br>    
-    <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
-            style="font-size: 1.75rem"> &nbsp; WEB DEVELOPMENT TEAM</span></div>
-    <hr style="width: 25rem;">
+<br>
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
+        style="font-size: 1.75rem"> &nbsp; WEB DEVELOPMENT TEAM</span></div>
+<hr style="width: 25rem;">
 <div class="row" style="margin-left: 0.02rem; margin-right: 0.02rem">
-{% for contact in contacts %}
-    {% if contact.designation == '7'  %}
-        {% include 'main/mixins/contact_card_mixin.html' %}
+    {% for contact in contacts %}
+    {% if contact.designation == '7' %}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+
     {% endif %}
-{%endfor%}
+    {% endfor %}
 </div>
-    <br>
-    <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
-            style="font-size: 1.75rem"> &nbsp; Volunteers</span></div>
-    <hr style="width: 25rem;">
-    <div class="row">
-        <div class="col-lg-6" align="center" style="font-size: 1.2rem">
-            <b> Sophomore Year Undergrads</b>
-            <br>
-            {% for volunteer in volunteers %}
-                {% if volunteer.year == '1'  %}
-                      {{volunteer.name}}({{volunteer.program_branch}}) <br>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="col-lg-6" align="center" style="font-size: 1.2rem">
-            <b> Post Graduation</b>
-            <br>
-            {% for volunteer in volunteers %}
-                {% if volunteer.year == '2'  %}        
-                    {{volunteer.name}}({{volunteer.program_branch}}) <br>
-                {% endif %}
-            {% endfor %}
-        </div>
+<br>
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
+        style="font-size: 1.75rem"> &nbsp; Volunteers</span></div>
+<hr style="width: 25rem;">
+<div class="row">
+    <div class="col-lg-4" align="center" style="font-size: 1.2rem">
+        <b> Sophomore Year Undergrads</b>
+        <br>
+        {% for volunteer in volunteers %}
+        {% if volunteer.year == '1' %}
+        {{volunteer.name}}({{volunteer.program_branch}}) <br>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-lg-4" align="center" style="font-size: 1.2rem">
+        <b> Post Graduation</b>
+        <br>
+        {% for volunteer in volunteers %}
+        {% if volunteer.year == '2' %}
+        {{volunteer.name}}({{volunteer.program_branch}}) <br>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-lg-4" align="center" style="font-size: 1.2rem">
+        <b> 3rd Year Undergrads</b>
+        <br>
+        {% for volunteer in volunteers %}
+        {% if volunteer.year == '3' %}
+        {{volunteer.name}}({{volunteer.program_branch}}) <br>
+        {% endif %}
+        {% endfor %}
+    </div>
+
     <div class="row">
     </div>
     <br>
+</div>
 {% endblock %}
