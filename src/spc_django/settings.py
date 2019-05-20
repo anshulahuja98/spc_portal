@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
+    'crispy_forms',
     'main.apps.MainConfig'
 
 ]
@@ -145,6 +146,8 @@ EMAIL_USE_SSL = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_URL = '/static/'
 

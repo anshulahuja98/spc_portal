@@ -1,5 +1,6 @@
 from django.contrib.auth.views import LoginView as DefaultLoginView
-from django.shortcuts import reverse
+from django.http import HttpResponse
+from django.shortcuts import reverse, render
 from django.views.generic import CreateView
 from .forms import StudentRegisterForm, CompanyRegisterForm
 from accounts.models import StudentProfile, CompanyProfile
@@ -33,6 +34,21 @@ class StudentRegisterFormView(CreateView):
         StudentRegisterFormView.create_profile(user, **form.cleaned_data)
         return super(StudentRegisterFormView, self).form_valid(form)
 
+    def std_image_view(self, request):
+
+        if request.method == 'POST':
+            form = StudentRegisterForm(request.POST, request.FILES)
+
+            if form.is_valid():
+                form.save()
+                return super(StudentRegisterFormView, self).form_valid(form)
+        else:
+            form = StudentRegisterForm()
+        return render(request, 'std_image_form.html', {'form': form})
+
+    def success(request):
+        return HttpResponse('successfuly uploaded')
+
     @staticmethod
     def create_profile(user=None, **kwargs):
         # Creates a new UserProfile object after successful creation of User object
@@ -54,8 +70,10 @@ class StudentRegisterFormView(CreateView):
                                                     x_percentage=kwargs['x_percentage'],
                                                     xii_year=kwargs['xii_year'],
                                                     xii_board_name=kwargs['xii_board_name'],
-                                                    xii_percentage=kwargs['xii_percentage'], )
+                                                    xii_percentage=kwargs['xii_percentage'],
+                                                     std_image=kwargs['std_image'])
         userprofile.save()
+
 
 
 class CompanyRegisterFormView(CreateView):
