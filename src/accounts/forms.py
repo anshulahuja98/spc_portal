@@ -1,14 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
-from import_export.formats.base_formats import HTML
-
 from .models import Resume
 from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 
 
 class ResumeForm(forms.ModelForm):
@@ -33,7 +29,7 @@ class StudentRegisterForm(UserCreationForm):
         help_text='Enter the same password as before, for verification.',
     )
     username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
-                               label= "Username")
+                               label="Username")
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
                               label="Current Year Of Degree")
     program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all(), label="Program Branch")
@@ -54,7 +50,6 @@ class StudentRegisterForm(UserCreationForm):
     xii_board_name = forms.CharField(max_length=100, label="12th Board Name")
     xii_percentage = forms.CharField(max_length=16, label="12th Percentage")
     std_image = forms.ImageField(required=True, label="Upload your image")
-
 
     class Meta:
         model = User

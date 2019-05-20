@@ -71,9 +71,8 @@ class StudentRegisterFormView(CreateView):
                                                     xii_year=kwargs['xii_year'],
                                                     xii_board_name=kwargs['xii_board_name'],
                                                     xii_percentage=kwargs['xii_percentage'],
-                                                     std_image=kwargs['std_image'])
+                                                    std_image=kwargs['std_image'])
         userprofile.save()
-
 
 
 class CompanyRegisterFormView(CreateView):
@@ -93,5 +92,5 @@ class CompanyRegisterFormView(CreateView):
         userprofile = CompanyProfile.objects.create(user=user, name=kwargs['name'], domain=kwargs['domain'],
                                                     url=kwargs['url'], city=kwargs['city'], state=kwargs['state'],
                                                     country=kwargs['country'], pin_code=kwargs['pin_code'],
-                                                    contact=kwargs['contact'],)
+                                                    contact=kwargs['contact'], )
         userprofile.save()
