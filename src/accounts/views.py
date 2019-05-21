@@ -1,6 +1,5 @@
 from django.contrib.auth.views import LoginView as DefaultLoginView
-from django.http import HttpResponse
-from django.shortcuts import reverse, render
+from django.shortcuts import reverse
 from django.views.generic import CreateView
 from .forms import StudentRegisterForm, CompanyRegisterForm
 from accounts.models import StudentProfile, CompanyProfile
@@ -33,21 +32,6 @@ class StudentRegisterFormView(CreateView):
         user = form.save()
         StudentRegisterFormView.create_profile(user, **form.cleaned_data)
         return super(StudentRegisterFormView, self).form_valid(form)
-
-    def std_image_view(self, request):
-
-        if request.method == 'POST':
-            form = StudentRegisterForm(request.POST, request.FILES)
-
-            if form.is_valid():
-                form.save()
-                return super(StudentRegisterFormView, self).form_valid(form)
-        else:
-            form = StudentRegisterForm()
-        return render(request, 'std_image_form.html', {'form': form})
-
-    def success(request):
-        return HttpResponse('successfuly uploaded')
 
     @staticmethod
     def create_profile(user=None, **kwargs):

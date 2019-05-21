@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
-    'main.apps.MainConfig',
+    'main.apps.MainConfig'
 
 ]
 

@@ -5,6 +5,7 @@ from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
+from django.core.validators import RegexValidator
 
 
 class ResumeForm(forms.ModelForm):
@@ -29,7 +30,11 @@ class StudentRegisterForm(UserCreationForm):
         help_text='Enter the same password as before, for verification.',
     )
     username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
-                               label="Username")
+                               label="Username",
+                               validators=
+                               [RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
+                                               "Enter your Roll number(in correct format like eg. B17CS006 ). "
+                                               "This will be used to login ")], required=True)
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
                               label="Current Year Of Degree")
     program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all(), label="Program Branch")
@@ -80,7 +85,7 @@ class CompanyRegisterForm(UserCreationForm):
     state = forms.CharField(max_length=15, required=False, label="State")
     country = forms.ChoiceField(choices=CompanyProfile.NATION, label="Country")
     pin_code = forms.CharField(max_length=10, required=False, label="Pin Code")
-    contact = forms.CharField(max_length=10, required=True, label="Contact Number")
+    contact = forms.CharField(max_length=20, required=True, label="Contact Number")
 
     class Meta:
         model = User
