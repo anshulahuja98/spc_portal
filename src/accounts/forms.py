@@ -31,8 +31,8 @@ class StudentRegisterForm(UserCreationForm):
     )
     username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
                                label="Username",
-                               validators=
-                               [RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
+                               validators=[RegexValidator(
+                                   r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
                                                "Enter your Roll number(in correct format like eg. B17CS006 ). "
                                                "This will be used to login ")], required=True)
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
