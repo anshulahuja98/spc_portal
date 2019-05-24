@@ -24,31 +24,36 @@
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.username }}
-                                        <label id="id_username" for="id_username" >{{ form.username.label }}</label>
+                                        <label id="{{ form.username.id_for_label }}"
+                                               for="{{ form.username.id_for_label }}" >{{ form.username.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.first_name }}
-                                        <label id="id_first_name" for="id_first_name" >{{ form.first_name.label }}</label>
+                                        <label id="{{ form.first_name.id_for_label }}"
+                                               for="{{ form.first_name.id_for_label }}" >{{ form.first_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.last_name }}
-                                        <label id="id_last_name" for="id_last_name" >{{ form.last_name.label }}</label>
+                                        <label id="{{ form.last_name.id_for_label }}"
+                                               for="{{ form.last_name.id_for_label }}" >{{ form.last_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                         {{ form.password1 }}
-                                        <label id="id_password1" for="id_password1" >{{ form.password1.label }}</label>
+                                        <label id="{{ form.password1.id_for_label }}"
+                                               for="{{ form.password1.id_for_label }}" >{{ form.password1.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                         {{ form.password2 }}
-                                        <label id="id_password2", for="id_password2" >{{ form.password2.label }}</label>
+                                        <label id="{{ form.password2.id_for_label }}"
+                                               for="{{ form.password2.id_for_label }}" >{{ form.password2.label }}</label>
                                 </div>
                                 <ul>
                                         <li style="font-size: small">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your
@@ -68,13 +73,15 @@
                                 <div class="md-form">
                                     <i class="fa fa-envelope prefix" style="color: cornflowerblue"></i>
                                         {{ form.email }}
-                                        <label id="id_email" for="id_email">{{ form.email.label }}</label>
+                                        <label id="{{ form.email.id_for_label }}"
+                                               for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.year }}
-                                        <label id="id_year" for="id_year">{{ form.year.label }}</label>
+                                        <label id="{{ form.year.id_for_label }}"
+                                               for="{{ form.year.id_for_label }}">{{ form.year.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -90,7 +97,8 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.gpa }}
-                                        <label id="id_gpa" for="id_gpa" >{{ form.gpa.label }}</label>
+                                        <label id="{{ form.gpa.id_for_label }}"
+                                               for="{{ form.gpa.id_for_label }}" >{{ form.gpa.label }}</label>
                                 </div>
                                 <br>
                                 <div class="red-text">
@@ -100,19 +108,22 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.ug_gpa }}
-                                        <label id="id_ug_gpa" for="id_ug_gpa" >{{ form.ug_gpa.label }}</label>
+                                        <label id="{{ form.ug_gpa.id_for_label }}"
+                                               for="{{ form.ug_gpa.id_for_label }}" >{{ form.ug_gpa.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-phone prefix" style="color: cornflowerblue"></i>
                                         {{ form.phone }}
-                                        <label id="id_phone" for="id_phone" >{{ form.phone.label }}</label>
+                                        <label id="{{ form.phone.id_for_label }}"
+                                               for="{{ form.phone.id_for_label }}" >{{ form.phone.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-birthday-cake prefix" style="color: cornflowerblue"></i>
                                         {{ form.dob }}
-                                        <label id="id_dob" for="id_dob" >{{ form.dob.label }}</label>
+                                        <label id="{{ form.dob.id_for_label }}"
+                                               for="{{ form.dob.id_for_label }}" >{{ form.dob.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -125,7 +136,8 @@
                                 <div class="md-form">
                                     <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
                                         {{ form.jee_air }}
-                                        <label id="id_jee_air" for="id_jee_air" >{{ form.jee_air.label }}</label>
+                                        <label id="{{ form.jee_air.id_for_label }}"
+                                               for="{{ form.jee_air.id_for_label }}" >{{ form.jee_air.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -143,49 +155,57 @@
                                 <div class="md-form">
                                     <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
                                         {{ form.permanent_address }}
-                                        <label id="id_permanent_address" for="id_permanent_address" >{{ form.permanent_address.label }}</label>
+                                        <label id="{{ form.permanent_address.id_for_label }}"
+                                               for="{{ form.permanent_address.id_for_label }}" >{{ form.permanent_address.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
                                         {{ form.current_address }}
-                                        <label id="id_current_address" for="id_current_address" >{{ form.current_address.label }}</label>
+                                        <label id="{{ form.current_address.id_for_label }}"
+                                               for="{{ form.current_address.id_for_label }}"" >{{ form.current_address.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_year }}
-                                        <label id="id_x_year" for="id_x_year" >{{ form.x_year.label }}</label>
+                                        <label id="{{ form.x_year.id_for_label }}"
+                                               for="{{ form.x_year.id_for_label }}" >{{ form.x_year.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_board_name }}
-                                        <label id="id_x_board_name" for="id_x_board_name" >{{ form.x_board_name.label }}</label>
+                                        <label id="{{ form.x_board_name.id_for_label }}"
+                                               for="{{ form.x_board_name.id_for_label }}" >{{ form.x_board_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_percentage }}
-                                        <label id="id_x_percentage" for="id_x_percentage" >{{ form.x_percentage.label }}</label>
+                                        <label id="{{ form.x_percentage.id_for_label }}"
+                                               for="{{ form.x_percentage.id_for_label }}" >{{ form.x_percentage.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_year }}
-                                        <label id="id_xii_year" for="id_xii_year" >{{ form.xii_year.label }}</label>
+                                        <label id="{{ form.xii_year.id_for_label }}"
+                                               for="{{ form.xii_year.id_for_label }}" >{{ form.xii_year.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_board_name }}
-                                        <label id="id_xii_board_name" for="id_xii_board_name" >{{ form.xii_board_name.label }}</label>
+                                        <label id="{{ form.xii_board_name.id_for_label }}"
+                                               for="{{ form.xii_board_name.id_for_label }}" >{{ form.xii_board_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_percentage }}
-                                        <label id="id_xii_percentage" for="id_xii_percentage" >{{ form.xii_percentage.label }}</label>
+                                        <label id="{{ form.xii_percentage.id_for_label }}"
+                                               for="{{ form.xii_percentage.id_for_label }}" >{{ form.xii_percentage.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
