@@ -141,7 +141,7 @@ EMAIL_PORT = '465'
 EMAIL_HOST_USER = config('EMAIL_ID')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
-TO_EMAIL = config('TO_EMAIL_ID')
+SPC_EMAIL = config('SPC_EMAIL_ID')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
