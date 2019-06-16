@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel
+from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel, NavBarOptions, NavBarSubOptions
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -62,4 +62,25 @@ class HomeImageCarouselAdmin(admin.ModelAdmin):
 
     class Meta:
         model = HomeImageCarousel
+        fields = '__all__'
+
+
+@admin.register(NavBarOptions)
+class NavBarOptionsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'active']
+    list_filter = ['active', ]
+    search_fields = ['title', ]
+
+    class Meta:
+        model = NavBarOptions
+        fields = '__all__'
+
+
+@admin.register(NavBarSubOptions)
+class NavBarSubOptionsAdmin(admin.ModelAdmin):
+    list_display = ['title', ]
+    search_fields = ['title', ]
+
+    class Meta:
+        model = NavBarSubOptions
         fields = '__all__'
