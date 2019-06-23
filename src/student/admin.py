@@ -1,5 +1,5 @@
 from django.contrib import admin
-from student.models import ProgramAndBranch
+from student.models import ProgramAndBranch, ProgramEmailId
 
 
 @admin.register(ProgramAndBranch)
@@ -8,9 +8,11 @@ class ProgramAndBranchAdmin(admin.ModelAdmin):
         model = ProgramAndBranch
         fields = '__all__'
 
-#
-# @admin.register(Program)
-# class ProgramAdmin(admin.ModelAdmin):
-#     class Meta:
-#         model = Program
-#         fields = '__all__'
+
+@admin.register(ProgramEmailId)
+class ProgramEmailIdAdmin(admin.ModelAdmin):
+    list_display = ['email', 'program', 'year']
+
+    class Meta:
+        model = ProgramEmailId
+        fields = '__all__'
