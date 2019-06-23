@@ -2,7 +2,7 @@ from django.db import models
 from uuid import uuid4
 from django.shortcuts import reverse
 from accounts.models import CompanyProfile, StudentProfile, Resume
-from student.models import ProgramAndBranch
+from student.models import ProgramAndBranch, ProgramEmailId
 from django.db.models.signals import pre_save
 
 
@@ -37,6 +37,9 @@ class BaseAdvertisement(models.Model):
     min_gpa = models.FloatField()
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
+    # Email id for programs
+    email_ids = models.ManyToManyField(ProgramEmailId, blank=True)
+    email_sent = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
