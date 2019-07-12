@@ -38,7 +38,6 @@ class BaseAdvertisement(models.Model):
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
 
-
     class Meta:
         abstract = True
 

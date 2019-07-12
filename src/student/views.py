@@ -6,8 +6,6 @@ from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
 from .forms import InternshipOfferForm, JobOfferForm
 from django.shortcuts import HttpResponseRedirect
-from django.utils import timezone
-from datetime import date
 
 
 class StudentProfileRequiredMixin(LoginRequiredMixin):

@@ -83,7 +83,7 @@ class CompanyPerson(models.Model):
 
 class Resume(models.Model):
 
-    YEAR_CHOICES = (('1','2019-20'),('2','2018-19'),('3','2017-18'))
+    YEAR_CHOICES = (('1', '2019-20'), ('2', '2018-19'), ('3', '2017-18'))
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
     file = models.FileField(upload_to='resume')
     is_verified = models.BooleanField(default=False)

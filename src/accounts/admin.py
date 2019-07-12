@@ -3,7 +3,6 @@ from company.models import JobOffer, InternshipOffer, JobAdvertisement, Internsh
 from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
 from .resources import CompanyProfileResource, StudentProfileResource
 from import_export.admin import ImportExportActionModelAdmin
-from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 
 
 class JobAdvertisementInline(admin.StackedInline):
