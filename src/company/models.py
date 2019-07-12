@@ -38,6 +38,7 @@ class BaseAdvertisement(models.Model):
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
 
+
     class Meta:
         abstract = True
 
@@ -71,6 +72,7 @@ class BaseOffer(models.Model):
     is_accepted = models.BooleanField(default=False)
     ppo = models.BooleanField(default=False)
     resume = models.ForeignKey(Resume, on_delete=models.SET_NULL, null=True)
+    date_time = models.DateField(auto_created=True)
 
     @property
     def ctc(self):
@@ -78,7 +80,7 @@ class BaseOffer(models.Model):
 
     def __str__(self):
         return "{} ({}) - {}".format(self.student.user.username, self.profile.designation,
-                                     self.company.name)
+                                     self.company.name, self.date_time)
 
     class Meta:
         abstract = True

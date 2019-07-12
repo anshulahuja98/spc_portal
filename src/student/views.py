@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
 from .forms import InternshipOfferForm, JobOfferForm
 from django.shortcuts import HttpResponseRedirect
+from django.utils import timezone
+from datetime import date
 
 
 class StudentProfileRequiredMixin(LoginRequiredMixin):
@@ -186,6 +188,7 @@ class ResumeUploadFormView(StudentProfileRequiredMixin, FormView):
 
 
 class ResumeView(StudentProfileRequiredMixin, View):
+
     def get(self, request, *args, **kwargs):
         view = ResumeListView.as_view()
         return view(request, *args, **kwargs)

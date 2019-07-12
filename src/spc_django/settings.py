@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
-    'main.apps.MainConfig'
+    'main.apps.MainConfig',
+    'rangefilter'
 
 ]
 
@@ -151,5 +152,5 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

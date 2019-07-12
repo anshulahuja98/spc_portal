@@ -3,6 +3,7 @@ from company.models import JobOffer, InternshipOffer, JobAdvertisement, Internsh
 from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
 from .resources import CompanyProfileResource, StudentProfileResource
 from import_export.admin import ImportExportActionModelAdmin
+from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 
 
 class JobAdvertisementInline(admin.StackedInline):
@@ -78,8 +79,10 @@ class ResumeAdmin(admin.ModelAdmin):
     ordering = ['student', ]
     list_display = ['get_roll_no', 'student', 'file', 'is_verified', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
-    list_filter = ['is_verified']
+    # list_filter = ['is_verified', 'timestamp']
     actions = [approve_resumes, unapprove_resumes]
+    # date_hierarchy = 'timestamp'
+    list_filter = ['session']
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
