@@ -89,8 +89,6 @@ class Resume(models.Model):
     is_verified = models.BooleanField(default=False)
     session = models.CharField(choices=YEAR_CHOICES, blank=False, max_length=20, null=False)
     timestamp = models.DateField(auto_now_add=True, null=False)
-    date_from = models.DateField()
-    date_to = models.DateField()
     reference = models.CharField(max_length=200, null=True, blank=True,
                                  help_text="Enter a reference name for this resume by which you can remember the details of this particular resume")
 
