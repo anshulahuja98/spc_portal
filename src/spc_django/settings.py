@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
     'main.apps.MainConfig',
-    'rangefilter'
-
 ]
 
 MIDDLEWARE = [
