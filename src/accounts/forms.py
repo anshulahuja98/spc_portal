@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
 from django.core.validators import RegexValidator
-from bootstrap_datepicker.widgets import DatePicker
 
 
 class ResumeForm(forms.ModelForm):
@@ -44,12 +43,7 @@ class StudentRegisterForm(UserCreationForm):
     gpa = forms.FloatField(max_value=10.00, label="GPA")
     ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA")
     phone = forms.CharField(max_length=15, label="Phone")
-    dob = forms.CharField(
-           widget=forms.TextInput(
-               attrs={'class': 'datepicker',
-                   'data-date-format': 'yyyy-mm-dd',
-                   'placeholder': 'YYYY-MM-DD'
-                   }))
+    dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget())
     email = forms.EmailField(required=True)
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
     jee_air = forms.IntegerField(required=False, label="JEE AIR")
@@ -67,7 +61,7 @@ class StudentRegisterForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if email.endswith('@iitj.ac.in') == False:
+        if email.endswith('@iitj.ac.in') is False:
             raise forms.ValidationError("Enter the IITJ email id.")
         return email
 
@@ -84,7 +78,6 @@ class StudentRegisterForm(UserCreationForm):
             'last_name',
             'email',
         )
-
 
 
 class CompanyRegisterForm(UserCreationForm):
