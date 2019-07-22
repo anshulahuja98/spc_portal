@@ -43,6 +43,7 @@ class StudentProfile(models.Model):
     xii_percentage = models.CharField(max_length=10)
     banned = models.BooleanField(default=False)
     placed = models.BooleanField(default=False)
+    std_image = models.ImageField(default='default.jpg', upload_to='student_images')
 
     def __str__(self):
         return self.user.get_full_name()
