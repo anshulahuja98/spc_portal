@@ -5,7 +5,7 @@
  A portal for handling Student Placements
 
 ### Installation:
-Requirements:
+Requirements:   
 - Python 3.6 runtime
 - Django 2.0.5
 - Other dependencies in `requirements.txt`
@@ -37,8 +37,6 @@ Procedure:
     python3 manage.py makemigrations
     python3 manage.py migrate
     ```
->In case of any issues in running migrations, comment out this [line](https://github.com/anshulahuja98/spc_portal/blob/03a89e9982487fef71f422d400d4e39daf5b5f2f/src/accounts/forms.py#L33) and the do the above steps then uncomment it and repeat.    
-
 - Create a superuser
     ```
     python manage.py createsuperuser
