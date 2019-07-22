@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
 from django.core.validators import RegexValidator
+from bootstrap_datepicker.widgets import DatePicker
 
 
 class ResumeForm(forms.ModelForm):
@@ -43,7 +44,13 @@ class StudentRegisterForm(UserCreationForm):
     gpa = forms.FloatField(max_value=10.00, label="GPA")
     ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA")
     phone = forms.CharField(max_length=15, label="Phone")
-    dob = forms.DateField(label="Date Of Birth")
+    dob = forms.CharField(
+           widget=forms.TextInput(
+               attrs={'class': 'datepicker',
+                   'data-date-format': 'yyyy-mm-dd',
+                   'placeholder': 'YYYY-MM-DD'
+                   }))
+    email = forms.EmailField(required=True)
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
     jee_air = forms.IntegerField(required=False, label="JEE AIR")
     physical_disability = forms.BooleanField(required=False, label="Physical Disability")
@@ -58,9 +65,26 @@ class StudentRegisterForm(UserCreationForm):
     xii_percentage = forms.CharField(max_length=16, label="12th Percentage")
     std_image = forms.ImageField(required=True, label="Upload your image")
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if email.endswith('@iitj.ac.in') == False:
+            raise forms.ValidationError("Enter the IITJ email id.")
+        return email
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.Meta.required:
+            self.fields[field].required = True
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password1', 'password2', 'email']
+        required = (
+            'last_name',
+            'email',
+        )
+
 
 
 class CompanyRegisterForm(UserCreationForm):
