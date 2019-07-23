@@ -138,10 +138,12 @@ SERVER_EMAIL = config('EMAIL_ID')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = config('EMAIL_ID')
+EMAIL_HOST_USER = config('EMAIL_ID')  # For Forgot Password Email
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
-SPC_EMAIL = config('SPC_EMAIL_ID')
+SPC_EMAIL = config('SPC_EMAIL_ID')  # For Sending other Details
+SPC_EMAIL_PASSWORD = config('SPC_EMAIL_PASSWORD')
+RECIPIENT_EMAILS = config('RECIPIENT_EMAIL').split(',')  # For getting the details of the company that registered
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
