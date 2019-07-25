@@ -37,6 +37,7 @@ class BaseAdvertisement(models.Model):
     min_gpa = models.FloatField()
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
+    creation_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -71,6 +72,7 @@ class BaseOffer(models.Model):
     is_accepted = models.BooleanField(default=False)
     ppo = models.BooleanField(default=False)
     resume = models.ForeignKey(Resume, on_delete=models.SET_NULL, null=True)
+    application_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     @property
     def ctc(self):
