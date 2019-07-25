@@ -43,7 +43,7 @@ class StudentRegisterForm(UserCreationForm):
     gpa = forms.FloatField(max_value=10.00, label="GPA")
     ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA")
     phone = forms.CharField(max_length=15, label="Phone")
-    dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget(years=range(1960,2020)))
+    dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget(years=range(1960, 2020)))
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
     jee_air = forms.IntegerField(required=False, label="JEE AIR")
     physical_disability = forms.BooleanField(required=False, label="Physical Disability")

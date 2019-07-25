@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
 from django.db.models.signals import pre_save
 import random
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -50,14 +50,18 @@ class StudentProfile(models.Model):
     std_image = models.ImageField(default='default.jpg', upload_to='student_images')
 
     def student_register_email(self):
-        subject = "Registered with SPC"
-        from_email = settings.EMAIL_HOST_USER
-        to_email = [self.user.email, ]
-        html_content = render_to_string("accounts/student_register_email.html", {'username': self.user.username, 'email': self.user.email})
-        text_content = strip_tags(html_content)
-        message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email)
-        message.attach_alternative(html_content, "text/html")
-        message.send()
+        from_email = settings.SPC_EMAIL
+        with get_connection(
+            username=from_email,
+            password=settings.SPC_EMAIL_PASSWORD
+        ) as connection:
+            subject = "Registered with SPC"
+            to_email = [self.user.email, ]
+            html_content = render_to_string("accounts/student_register_email.html", {'username': self.user.username, 'email': self.user.email})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
 
     def __str__(self):
         return self.user.get_full_name()
@@ -88,27 +92,35 @@ class CompanyProfile(models.Model):
         return self.name
 
     def company_register_email(self):
-        subject = "Registered with SPC"
-        from_email = settings.EMAIL_HOST_USER
-        to_email = [self.user.username, ]
-        html_content = render_to_string("accounts/company_register_email.html", {'username': self.user.username})
-        text_content = strip_tags(html_content)
-        message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email)
-        message.attach_alternative(html_content, "text/html")
-        message.send()
+        from_email = settings.SPC_EMAIL
+        with get_connection(
+            username=from_email,
+            password=settings.SPC_EMAIL_PASSWORD
+        ) as connection:
+            subject = "Registered with SPC"
+            to_email = [self.user.username, ]
+            html_content = render_to_string("accounts/company_register_email.html", {'username': self.user.username})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
 
     def company_details_email(self):
-        subject = "Company Registered with SPC"
-        from_email = settings.EMAIL_HOST_USER
-        to_email = [settings.SPC_EMAIL, ]
-        html_content = render_to_string("accounts/company_details_email.html", {'name': self.name, 'email': self.user.username,
-                                                                                'domain': self.domain, 'url': self.url,
-                                                                                'city': self.city, 'state': self.state,
-                                                                                'contact': self.contact})
-        text_content = strip_tags(html_content)
-        message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email)
-        message.attach_alternative(html_content, "text/html")
-        message.send()
+        from_email = settings.SPC_EMAIL
+        with get_connection(
+            username=from_email,
+            password=settings.SPC_EMAIL_PASSWORD
+        ) as connection:
+            subject = "Company Registered with SPC"
+            to_email = settings.RECIPIENT_EMAILS
+            html_content = render_to_string("accounts/company_details_email.html", {'name': self.name, 'email': self.user.username,
+                                                                                    'domain': self.domain, 'url': self.url,
+                                                                                    'city': self.city, 'state': self.state,
+                                                                                    'contact': self.contact})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
 
 
 class CompanyPerson(models.Model):
