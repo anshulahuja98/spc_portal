@@ -162,6 +162,8 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
             '_' + 'IITJodhpur.pdf'
+    if not instance.reference:
+        instance.reference = instance.file.name
 
 
 pre_save.connect(event_pre_save_receiver_resume, sender=Resume)
