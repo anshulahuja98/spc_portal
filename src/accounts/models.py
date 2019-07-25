@@ -156,20 +156,9 @@ class Resume(models.Model):
 def event_pre_save_receiver_student(sender, instance, *args, **kwargs):
     if not instance.roll_no:
         instance.roll_no = instance.user.username
-    if instance._state.adding:
-        instance.student_register_email()
 
 
 pre_save.connect(event_pre_save_receiver_student, sender=StudentProfile)
-
-
-def event_pre_save_receiver_company(sender, instance, *args, **kwargs):
-    if instance._state.adding:
-        instance.company_register_email()
-        instance.company_details_email()
-
-
-pre_save.connect(event_pre_save_receiver_company, sender=CompanyProfile)
 
 
 def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
@@ -179,8 +168,8 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
             'IITJodhpur.pdf' not in instance.file.name \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
-                             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
-                             '_' + 'IITJodhpur.pdf'
+            + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
+            '_' + 'IITJodhpur.pdf'
     if not instance.reference:
         instance.reference = instance.file.name
 
