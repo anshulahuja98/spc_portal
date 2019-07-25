@@ -48,19 +48,21 @@ class StudentProfile(models.Model):
     banned = models.BooleanField(default=False)
     placed = models.BooleanField(default=False)
     std_image = models.ImageField(default='default.jpg', upload_to='student_images')
-    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True,null=True)
+    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def student_register_email(self):
         from_email = settings.SPC_EMAIL
         with get_connection(
-            username=from_email,
-            password=settings.SPC_EMAIL_PASSWORD
+                username=from_email,
+                password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
             subject = "Registered with SPC"
             to_email = [self.user.email, ]
-            html_content = render_to_string("accounts/student_register_email.html", {'username': self.user.username, 'email': self.user.email})
+            html_content = render_to_string("accounts/student_register_email.html",
+                                            {'username': self.user.username, 'email': self.user.email})
             text_content = strip_tags(html_content)
-            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
 
@@ -88,7 +90,7 @@ class CompanyProfile(models.Model):
     internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
                                                through_fields=('company', 'student'), related_name='internshipoffers')
     contact = models.CharField(max_length=20)
-    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True,null=True)
+    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -96,31 +98,34 @@ class CompanyProfile(models.Model):
     def company_register_email(self):
         from_email = settings.SPC_EMAIL
         with get_connection(
-            username=from_email,
-            password=settings.SPC_EMAIL_PASSWORD
+                username=from_email,
+                password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
             subject = "Registered with SPC"
             to_email = [self.user.username, ]
             html_content = render_to_string("accounts/company_register_email.html", {'username': self.user.username})
             text_content = strip_tags(html_content)
-            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
 
     def company_details_email(self):
         from_email = settings.SPC_EMAIL
         with get_connection(
-            username=from_email,
-            password=settings.SPC_EMAIL_PASSWORD
+                username=from_email,
+                password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
             subject = "Company Registered with SPC"
             to_email = settings.RECIPIENT_EMAILS
-            html_content = render_to_string("accounts/company_details_email.html", {'name': self.name, 'email': self.user.username,
-                                                                                    'domain': self.domain, 'url': self.url,
-                                                                                    'city': self.city, 'state': self.state,
-                                                                                    'contact': self.contact})
+            html_content = render_to_string("accounts/company_details_email.html",
+                                            {'name': self.name, 'email': self.user.username,
+                                             'domain': self.domain, 'url': self.url,
+                                             'city': self.city, 'state': self.state,
+                                             'contact': self.contact})
             text_content = strip_tags(html_content)
-            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
 
@@ -174,8 +179,8 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
             'IITJodhpur.pdf' not in instance.file.name \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
-            + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
-            '_' + 'IITJodhpur.pdf'
+                             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
+                             '_' + 'IITJodhpur.pdf'
     if not instance.reference:
         instance.reference = instance.file.name
 
