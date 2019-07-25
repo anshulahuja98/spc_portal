@@ -48,6 +48,7 @@ class StudentProfile(models.Model):
     banned = models.BooleanField(default=False)
     placed = models.BooleanField(default=False)
     std_image = models.ImageField(default='default.jpg', upload_to='student_images')
+    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True,null=True)
 
     def student_register_email(self):
         from_email = settings.SPC_EMAIL
@@ -87,6 +88,7 @@ class CompanyProfile(models.Model):
     internship_offers = models.ManyToManyField(StudentProfile, through='company.InternshipOffer',
                                                through_fields=('company', 'student'), related_name='internshipoffers')
     contact = models.CharField(max_length=20)
+    registration_timestamp = models.DateTimeField(auto_now_add=True, blank=True,null=True)
 
     def __str__(self):
         return self.name

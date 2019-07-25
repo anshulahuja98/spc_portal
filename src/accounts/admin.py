@@ -47,6 +47,7 @@ def mark_placed(modeladmin, request, queryset):
 
 @admin.register(StudentProfile)
 class StudentProfileAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['registration_timestamp', ]
     resource_class = StudentProfileResource
     inlines = (ResumeInline,)
     list_display = ['__str__', 'roll_no', 'program_branch', 'year']
@@ -62,6 +63,7 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
 
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['registration_timestamp', ]
     resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', ]
