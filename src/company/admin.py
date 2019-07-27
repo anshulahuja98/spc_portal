@@ -6,7 +6,7 @@ from os.path import basename
 from import_export.admin import ImportExportActionModelAdmin
 from .resources import JobOfferResource, InternshipOfferResource, JobAdvertisementResource, \
     InternshipAdvertisementResource
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -57,38 +57,42 @@ def send_email(self, request, obj, subject):
     if "_sendemail" in request.POST:
         obj.email_sent = True
         obj.save()
-        from_email = settings.EMAIL_HOST_USER
-        to_email = []
-        for email_id in obj.email_ids.all():
-            to_email.append(email_id.email)
-        html_content = render_to_string("company/ad_email.html", {'subject': subject,
-                                                                  'company': obj.company,
-                                                                  'designation': obj.designation,
-                                                                  'description': obj.description,
-                                                                  'tentative_join_date': obj.tentative_join_date,
-                                                                  'tentative_job_location': obj.tentative_job_location,
-                                                                  'ads': obj.ads.url,
-                                                                  'ctc': obj.ctc,
-                                                                  'gross_salary': obj.gross_salary,
-                                                                  'bonus': obj.bonus,
-                                                                  'bond': obj.bond,
-                                                                  'bond_details': obj.bond_details,
-                                                                  'resume_required': obj.resume_required,
-                                                                  'resume_shortlist_criteria': obj.resume_shortlist_criteria,
-                                                                  'aptitude_test_required': obj.aptitude_test_required,
-                                                                  'group_discussion_required': obj.group_discussion_required,
-                                                                  'number_of_technical_interviews': obj.number_of_technical_interviews,
-                                                                  'number_of_technical_tests': obj.number_of_technical_tests,
-                                                                  'number_of_hr_rounds': obj.number_of_hr_rounds,
-                                                                  'medical_test_required': obj.medical_test_required,
-                                                                  'min_gpa': obj.min_gpa,
-                                                                  'number_of_members': obj.number_of_members,
-                                                                  'other_details': obj.other_details,
-                                                                  'expiry': obj.expiry})
-        text_content = strip_tags(html_content)
-        message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email)
-        message.attach_alternative(html_content, "text/html")
-        message.send()
+        from_email = settings.SPC_EMAIL
+        with get_connection(
+            username=from_email,
+            password=settings.SPC_EMAIL_PASSWORD
+        ) as connection:
+            to_email = []
+            for email_id in obj.email_ids.all():
+                to_email.append(email_id.email)
+            html_content = render_to_string("company/ad_email.html", {'subject': subject,
+                                                                      'company': obj.company,
+                                                                      'designation': obj.designation,
+                                                                      'description': obj.description,
+                                                                      'tentative_join_date': obj.tentative_join_date,
+                                                                      'tentative_job_location': obj.tentative_job_location,
+                                                                      'ads': obj.ads.url if obj.ads else False,
+                                                                      'ctc': obj.ctc,
+                                                                      'gross_salary': obj.gross_salary,
+                                                                      'bonus': obj.bonus,
+                                                                      'bond': obj.bond,
+                                                                      'bond_details': obj.bond_details,
+                                                                      'resume_required': obj.resume_required,
+                                                                      'resume_shortlist_criteria': obj.resume_shortlist_criteria,
+                                                                      'aptitude_test_required': obj.aptitude_test_required,
+                                                                      'group_discussion_required': obj.group_discussion_required,
+                                                                      'number_of_technical_interviews': obj.number_of_technical_interviews,
+                                                                      'number_of_technical_tests': obj.number_of_technical_tests,
+                                                                      'number_of_hr_rounds': obj.number_of_hr_rounds,
+                                                                      'medical_test_required': obj.medical_test_required,
+                                                                      'min_gpa': obj.min_gpa,
+                                                                      'number_of_members': obj.number_of_members,
+                                                                      'other_details': obj.other_details,
+                                                                      'expiry': obj.expiry})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
         self.message_user(request, "Email Sent")
         return HttpResponseRedirect(".")
 
