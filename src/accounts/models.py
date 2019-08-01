@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
 from django.db.models.signals import pre_save
+from django.core.exceptions import ValidationError
 import random
 
 
@@ -80,10 +81,15 @@ class CompanyPerson(models.Model):
     phone = models.CharField(max_length=15, help_text="For phone numbers outside India, please add country code")
     email = models.EmailField()
 
+def file_size(value):
+    limit = 5 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 5 MB.')
+
 
 class Resume(models.Model):
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
-    file = models.FileField(upload_to='resume')
+    file = models.FileField(upload_to='resume', validators=[file_size])
     is_verified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     reference = models.CharField(max_length=200, null=True, blank=True,
@@ -116,3 +122,4 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(event_pre_save_receiver_resume, sender=Resume)
+
