@@ -12,10 +12,10 @@
                             <div class="col-lg-5">
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <label for="id_roll_no" style="font-size: medium">Roll no:</label> <input
-                                        type="text" name="roll_no" value="{{ form.roll_no.value }}" maxlength="8"
-                                        required id="id_roll_no" readonly/>
+                                    <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                                    {{ form.roll_no }}
+                                        <label id="{{ form.roll_no.id_for_label }}"
+                                               for="{{ form.roll_no.id_for_label }}" >{{ form.roll_no.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -27,125 +27,117 @@
                                 <br>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-percent prefix"></i>
-                                    <label for="id_gpa" style="font-size: medium">GPA:</label> <input type="number"
-                                                                                                      name="gpa"
-                                                                                                      value="{{ form.gpa.value }}"
-                                                                                                      step="any"
-                                                                                                      required
-                                                                                                      id="id_gpa"
-                                                                                                      readonly/>
+                                    <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                    {{ form.gpa }}
+                                        <label id="{{ form.gpa.id_for_label }}"
+                                               for="{{ form.gpa.id_for_label }}" >{{ form.gpa.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-percent prefix"></i>
-                                    <label for="id_ug_gpa" style="font-size: medium">U.G. GPA:</label> <input type="number"
-                                                                                                      name="ug_gpa"
-                                                                                                      value="{{ form.ug_gpa.value }}"
-                                                                                                      step="any"
-                                                                                                      required
-                                                                                                      id="id_ug_gpa"
-                                                                                                      readonly/>
+                                    <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                    {{ form.ug_gpa }}
+                                        <label id="{{ form.ug_gpa.id_for_label }}"
+                                               for="{{ form.ug_gpa.id_for_label }}" >{{ form.ug_gpa.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-phone prefix"></i>
-                                    <label for="id_phone" style="font-size: medium">Phone:</label> <input type="text"
-                                                                                                          name="phone"
-                                                                                                          value="{{ form.phone.value }}"
-                                                                                                          maxlength="11"
-                                                                                                          required
-                                                                                                          id="id_phone"/>
+                                    <i class="fa fa-phone prefix" style="color: cornflowerblue"></i>
+                                    {{ form.phone }}
+                                        <label id="{{ form.phone.id_for_label }}"
+                                               for="{{ form.phone.id_for_label }}" >{{ form.phone.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-birthday-cake prefix"></i>
+                                    <i class="fa fa-birthday-cake prefix" style="color: cornflowerblue"></i>
                                     {{ form.dob }}
+                                        <label id="{{ form.dob.id_for_label }}"
+                                               for="{{ form.dob.id_for_label }}" >{{ form.dob.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-graduation-cap prefix"></i>
+                                    <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
                                     <span>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JEE AIR: {{ studentprofile.jee_air }}</span>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-blind prefix" style="color:cornflowerblue"></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Physical Disability : {{ form.physical_disability }}</span>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.physical_disability.label}}: {{ form.physical_disability }}</span>
+                                    
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-bars prefix" style="color:cornflowerblue"></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category : {{ form.category }}</span>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.category.label}}: {{ form.category }}</span>
+                                    
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-flag prefix" style="color:cornflowerblue"></i>
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nationality : {{ form.nationality }}</span>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.nationality.label}}: {{ form.nationality }}</span>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-1"></div>
                             <div class="col-lg-5">
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-home prefix"></i>
-                                    <label for="id_permanent_address" style="font-size: medium">Permanent
-                                        address:</label> <textarea name="permanent_address" required rows="10"
-                                                                   id="id_permanent_address"
-                                                                   cols="40"> {{ form.permanent_address.value }}</textarea>
+                                    <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
+                                    {{ form.permanent_address }}
+                                        <label id="{{ form.permanent_address.id_for_label }}"
+                                               for="{{ form.permanent_address.id_for_label }}" >{{ form.permanent_address.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-home prefix"></i>
-                                    <label for="id_current_address" style="font-size: medium">Current address:</label>
-                                    <textarea name="current_address" required rows="10" id="id_current_address"
-                                              cols="40"> {{ form.current_address.value }}</textarea>
+                                    <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
+                                    {{ form.current_address }}
+                                        <label id="{{ form.current_address.id_for_label }}"
+                                               for="{{ form.current_address.id_for_label }}" >{{ form.current_address.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_year" style="font-size: medium">Class X year:</label> <input
-                                        type="number" name="x_year" value="{{ form.x_year.value }}" required
-                                        id="id_x_year" readonly/>
+                                    <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
+                                    {{ form.x_year }}
+                                        <label id="{{ form.x_year.id_for_label }}"
+                                               for="{{ form.x_year.id_for_label }}" >{{ form.x_year.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_x_board" style="font-size: medium">Class X Board:</label> <input
-                                        type="text" name="x_board_name" value="{{ form.x_board_name.value }}" required
-                                        id="id_x_board_naem" readonly/>
+                                    <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                                    {{ form.x_board_name }}
+                                        <label id="{{ form.x_board_name.id_for_label }}"
+                                               for="{{ form.x_board_name.id_for_label }}" >{{ form.x_board_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-percent prefix"></i>
-                                    <label for="id_x_percentage" style="font-size: medium">Class X
-                                        Percentage/CGPA:</label>
-                                    <input
-                                            type="text" name="x_percentage" value="{{ form.x_percentage.value }}"
-                                            required
-                                            id="id_x_percentage" readonly/>
+                                    <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                    {{ form.x_percentage }}
+                                        <label id="{{ form.x_percentage.id_for_label }}"
+                                               for="{{ form.x_percentage.id_for_label }}" >{{ form.x_percentage.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_year" style="font-size: medium">Class XII year:</label> <input
-                                        type="number" name="xii_year" value="{{ form.xii_year.value }}" required
-                                        id="id_xii_year" readonly/>
+                                    <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
+                                    {{ form.xii_year }}
+                                        <label id="{{ form.xii_year.id_for_label }}"
+                                               for="{{ form.xii_year.id_for_label }}" >{{ form.xii_year.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-calendar prefix"></i>
-                                    <label for="id_xii_board" style="font-size: medium">Class XII Board:</label> <input
-                                        type="text" name="xii_board_name" value="{{ form.xii_board_name.value }}"
-                                        required id="id_xii_board_name" readonly/>
+                                    <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
+                                    {{ form.xii_board_name }}
+                                        <label id="{{ form.xii_board_name.id_for_label }}"
+                                               for="{{ form.xii_board_name.id_for_label }}" >{{ form.xii_board_name.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-percent prefix"></i>
-                                    <label for="id_xii_percentage" style="font-size: medium">Class XII
-                                        Percentage/CGPA:</label>
-                                    <input type="text" name="xii_percentage" value="{{ form.xii_percentage.value }}"
-                                           required id="id_xii_percentage" readonly/>
+                                    <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
+                                    {{ form.xii_percentage }}
+                                        <label id="{{ form.xii_percentage.id_for_label }}"
+                                               for="{{ form.xii_percentage.id_for_label }}" >{{ form.xii_percentage.label }}</label>
                                 </div>
                                 <br>
                             </div>

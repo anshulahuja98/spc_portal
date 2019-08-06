@@ -31,6 +31,7 @@ class StudentRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         StudentRegisterFormView.create_profile(user, **form.cleaned_data)
+        StudentProfile.student_register_email(StudentProfile.objects.get(user=user))
         return super(StudentRegisterFormView, self).form_valid(form)
 
     @staticmethod
@@ -54,7 +55,8 @@ class StudentRegisterFormView(CreateView):
                                                     x_percentage=kwargs['x_percentage'],
                                                     xii_year=kwargs['xii_year'],
                                                     xii_board_name=kwargs['xii_board_name'],
-                                                    xii_percentage=kwargs['xii_percentage'], )
+                                                    xii_percentage=kwargs['xii_percentage'],
+                                                    std_image=kwargs['std_image'])
         userprofile.save()
 
 
@@ -67,13 +69,16 @@ class CompanyRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         CompanyRegisterFormView.create_profile(user, **form.cleaned_data)
+        CompanyProfile.company_register_email(CompanyProfile.objects.get(user=user))
+        CompanyProfile.company_details_email(CompanyProfile.objects.get(user=user))
         return super(CompanyRegisterFormView, self).form_valid(form)
 
     @staticmethod
     def create_profile(user=None, **kwargs):
+
         # Creates a new UserProfile object after successful creation of User object
         userprofile = CompanyProfile.objects.create(user=user, name=kwargs['name'], domain=kwargs['domain'],
                                                     url=kwargs['url'], city=kwargs['city'], state=kwargs['state'],
                                                     country=kwargs['country'], pin_code=kwargs['pin_code'],
-                                                    contact=kwargs['contact'],)
+                                                    contact=kwargs['contact'], )
         userprofile.save()

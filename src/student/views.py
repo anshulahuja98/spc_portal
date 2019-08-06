@@ -4,7 +4,7 @@ from accounts.models import StudentProfile, Resume
 from company.models import JobAdvertisement, InternshipAdvertisement, JobOffer, InternshipOffer
 from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
-from .forms import InternshipOfferForm, JobOfferForm
+from .forms import InternshipOfferForm, JobOfferForm, StudentDetailsUpdateForm
 from django.shortcuts import HttpResponseRedirect
 
 
@@ -19,12 +19,7 @@ class StudentProfileRequiredMixin(LoginRequiredMixin):
 
 
 class DetailsView(StudentProfileRequiredMixin, UpdateView):
-    model = StudentProfile
-    fields = (
-        'roll_no', 'program_branch', 'gpa', 'ug_gpa', 'phone', 'dob', 'category', 'jee_air',
-        'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
-        'current_address', 'permanent_address', 'nationality', 'physical_disability',
-    )
+    form_class = StudentDetailsUpdateForm
     template_name = 'student/details.html'
     success_url = '/student/details/'
 

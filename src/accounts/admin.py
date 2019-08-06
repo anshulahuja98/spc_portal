@@ -47,6 +47,7 @@ def mark_placed(modeladmin, request, queryset):
 
 @admin.register(StudentProfile)
 class StudentProfileAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['registration_timestamp', ]
     resource_class = StudentProfileResource
     inlines = (ResumeInline,)
     list_display = ['__str__', 'roll_no', 'program_branch', 'year']
@@ -62,6 +63,7 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
 
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['registration_timestamp', ]
     resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', ]
@@ -75,10 +77,11 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
 
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
+    readonly_fields = ['timestamp', ]
     ordering = ['student', ]
-    list_display = ['get_roll_no', 'student', 'file', 'is_verified', ]
+    list_display = ['get_roll_no', 'student', 'file', 'is_verified', 'timestamp']
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
-    list_filter = ['is_verified']
+    list_filter = ['is_verified', 'timestamp']
     actions = [approve_resumes, unapprove_resumes]
 
     def get_roll_no(self, instance):
