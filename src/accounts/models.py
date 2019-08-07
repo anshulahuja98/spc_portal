@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from student.models import ProgramAndBranch
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_delete
 import random
 from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
@@ -168,10 +168,23 @@ def event_pre_save_receiver_resume(sender, instance, *args, **kwargs):
             'IITJodhpur.pdf' not in instance.file.name \
             and instance._state.adding is True:
         instance.file.name = instance.student.user.first_name + '_' + instance.student.user.last_name \
-            + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
-            '_' + 'IITJodhpur.pdf'
+                             + '_' + instance.student.user.username + '_' + str(random.randint(1, 10001)) + \
+                             '_' + 'IITJodhpur.pdf'
     if not instance.reference:
         instance.reference = instance.file.name
 
 
 pre_save.connect(event_pre_save_receiver_resume, sender=Resume)
+
+
+def delete_user(sender, instance=None, **kwargs):
+    try:
+        instance.user
+    except User.DoesNotExist:
+        pass
+    else:
+        instance.user.delete()
+
+
+post_delete.connect(delete_user, sender=StudentProfile)
+post_delete.connect(delete_user, sender=CompanyProfile)
