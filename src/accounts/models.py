@@ -7,6 +7,7 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.core.exceptions import ValidationError
 
 
 class StudentProfile(models.Model):
@@ -138,9 +139,15 @@ class CompanyPerson(models.Model):
     email = models.EmailField()
 
 
+def file_size(value):
+    limit = 5 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 5 MB.')
+
+
 class Resume(models.Model):
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
-    file = models.FileField(upload_to='resume')
+    file = models.FileField(upload_to='resume', validators=[file_size])
     is_verified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     reference = models.CharField(max_length=200, null=True, blank=True,
