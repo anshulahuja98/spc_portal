@@ -50,8 +50,8 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['registration_timestamp', ]
     resource_class = StudentProfileResource
     inlines = (ResumeInline,)
-    list_display = ['__str__', 'roll_no', 'program_branch', 'year']
-    list_filter = ['program_branch', 'year']
+    list_display = ['__str__', 'roll_no', 'program_branch', 'year', 'registration_timestamp']
+    list_filter = ['program_branch', 'year', 'registration_timestamp']
     ordering = ['roll_no', ]
     search_fields = ['roll_no', 'user__first_name', 'user__last_name']
     actions = [ban, mark_placed]
@@ -66,8 +66,8 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['registration_timestamp', ]
     resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
-    list_display = ['name', 'domain', 'url', ]
-    list_filter = ['domain', ]
+    list_display = ['name', 'domain', 'url', 'registration_timestamp']
+    list_filter = ['domain', 'registration_timestamp']
     search_fields = ['name', 'user__username']
 
     class Meta:
