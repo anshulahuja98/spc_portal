@@ -24,38 +24,73 @@
 
 <body>
 {% block navbar %}
-<header id="header" id="home" style="background-color: #F5F5F5">
-    <div class="container-fluid main-menu" style="background-color: #F5F5F5">
-        <div class="row align-items-center justify-content-between d-flex">
-            <div id="logo">
-                <p style="font-size: 20px; color:black "><img src="{% static '/img/logofinalNormal.png' %}"
-                                                              style="height: 100px; width: 100px; font-family: 'Poppins', sans-serif;"
-                                                              alt="" title=""/>&nbsp;&nbsp;&nbsp;&nbsp;Career
-                    Development Cell, IIT Jodhpur</p>
+<nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-dark sticky-top">
+        <div class="container-fluid" style="width: 100%">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="media">
+                        <a class="navbar-brand" href="/">
+
+                            <img src="{% static '/img/logofinalNormal.png' %}" alt="IIT Jodhpur" class="logo">
+                        </a>
+
+                        <div class="media-body pt-1 pl-3">
+                            <div class="pull-right py-1">
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#collapseEx12" aria-controls="collapseEx12" aria-expanded="false"
+                                    aria-label="Toggle navigation" style="background: black">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse" id="collapseEx12">
+
+                                    <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item btn-group hoverable"><a href="/">
+                                                <i style="font-size:36px;color: black" class="fa fa-home"></i>
+                                            </a>&nbsp;&nbsp;</li>
+                                        {% for navbaroption in navbaroptions %}
+                                        <li class="nav-item btn-group hoverable">
+                                            <a class="nav-link dropdown-toggle" id="dropdownMenu1"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif;">{{ navbaroption.title }}</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                {% for suboption in navbaroption.sub_options.all %}
+                                                <a class="dropdown-item"
+                                                    href="{{ suboption.get_absolute_url }}">{{ suboption.title }}</a>
+                                                {% endfor %}
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        <li class="nav-item btn-group hoverable">
+                                            <a class="nav-link dropdown-toggle" id="dropdownMenu1"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif;" >Login</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <a class="dropdown-item" href="{% url 'login' %}">Recruiter Login</a>
+                                                <a class="dropdown-item" href="{% url 'login' %}">Student Login</a>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <h2 class="heading">
+                                <a href="http://spc.iitj.ac.in/">
+                                    Career Development Cell
+                                </a>
+                            </h2>
+                            <h4 class="heading" style="color: black; font-family: 'Poppins', sans-serif; font-size: larger">Indian Institute of Technology Jodhpur</h4>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    {% for navbaroption in navbaroptions %}
-                    <li class="menu-has-children"><a>{{ navbaroption.title }}</a>
-
-
-                        <ul>
-                            {% for suboption in navbaroption.sub_options.all %}
-                            <li><a href="{{ suboption.get_absolute_url }}">{{ suboption.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-
-                    </li>
-                    {% endfor %}
-                </ul>
-            </nav><!-- #nav-menu-container -->
         </div>
-    </div>
-</header>
+
+    </nav>
 <br>
 
 
@@ -80,7 +115,7 @@
             <i style="color: black" class="fa fa-github"></i>
         </a>
     </p>
-    <p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
+    <p class="footer-company-name" style="font-family: 'Poppins', sans-serif;">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
 
 </footer>
 <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>

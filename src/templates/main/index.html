@@ -97,7 +97,7 @@
             <div class="card" style="background-color: #F5F5F5;">
                 <div class="card my-card"><h4 style="color: black"> &nbsp; About Us</h4></div>
                 <div class="card-block" align="justify">
-                    <p class="card-text" style="background: #F5F5F5"> Welcome to the <b>Student Placement Website of IIT Jodhpur!</b>
+                    <p class="card-text" style="background: #F5F5F5; font-family: 'Poppins', sans-serif;"> Welcome to the <b>Student Placement Website of IIT Jodhpur!</b>
                         <br><br>
                         Founded in 2008, IIT Jodhpur has emerged in developing a distinct culture of
                         engineering and science education and other areas of scholarship, to best fulfill the
@@ -156,7 +156,7 @@
 
         <div class="col-md-12" align=center style="padding:12px;padding-top:0px;">
             <center>
-                <h2><b style="font-family: font-family: 'Poppins', sans-serif;">
+                <h2 class="alumni" style="font-family: 'Poppins', sans-serif;" ><b>
                     <mark><font color="black" style="font-family: 'Poppins', sans-serif;" > <u>Alumni's &nbsp Words</u></font></mark>
                 </b></h2>
             </center>
@@ -185,12 +185,12 @@
 
                 <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                     <div class="col-lg-8">
-                        <p style="padding: 1rem;padding-top: 2rem;">{{ alumni_testimonial.testimonial }}</p>
+                        <p style="padding: 1rem;padding-top: 2rem; font-family: 'Poppins', sans-serif">{{ alumni_testimonial.testimonial }}</p>
                     </div>
                     <div class="col-lg-2">
                         <img src="{{ alumni_testimonial.alumni_image.url }}" alt=""
                              style="width: 12rem;height: 12rem;text-align: center; padding-top: 2rem;">
-                        <p style="text-align: center;">{{ alumni_testimonial.alumni_name }}
+                        <p style="text-align: center; font-family: 'Poppins', sans-serif">{{ alumni_testimonial.alumni_name }}
                              <br>{{ alumni_testimonial.designation }}<br>{{ alumni_testimonial.company_working }}</p>
                     </div>
                 </div>
