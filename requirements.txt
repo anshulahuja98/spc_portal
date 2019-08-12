@@ -7,3 +7,4 @@ psycopg2
 django-import-export
 pillow
 django-ckeditor
+django_cleanup
