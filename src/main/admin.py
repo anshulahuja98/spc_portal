@@ -25,7 +25,7 @@ class PastRecruitersAdmin(admin.ModelAdmin):
 
 @admin.register(CoreTeamContacts)
 class CoreTeamContactsAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'designation', 'active', ]
+    list_display = ['__str__', 'user', 'designation', 'active', ]
     list_filter = ['active', 'designation', ]
     ordering = ['order_no', ]
 

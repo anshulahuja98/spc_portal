@@ -3,7 +3,7 @@
         <div class="card text-center " style="margin-right: 0rem; margin-left: 0rem;">
             <div class="card-header" style="font-size: 1.15rem; background-color: #edd9c0; "><i
                     class="fa fa-star-o"></i> &nbsp;
-                <b> {% if contact.designation == '5' %}
+                <b> {% if contact.designation == '5' or contact.designation == '6' %}
                     {{contact.get_designation_display}}</b><br>{{contact.program_branch}}
                 {% else %}
                 {{contact.get_designation_display}}</b><br>{{contact.sub_designation}}
