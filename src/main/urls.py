@@ -7,5 +7,5 @@ urlpatterns = [
     path('', HomepageView.as_view(template_name='main/index.html'), name='home'),
     path('student/', include('student.urls')),
     path('company/', include('company.urls')),
-    path('<slug:slug>', NavBarSubOptionsPageView.as_view(), name='navbarsuboptionpage')
+    path('<slug:slug>/', NavBarSubOptionsPageView.as_view(), name='navbarsuboptionpage')
 ]
