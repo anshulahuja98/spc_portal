@@ -44,10 +44,9 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'company.apps.CompanyConfig',
     'main.apps.MainConfig',
+    'django_cleanup',
     'ckeditor',
     'ckeditor_uploader',
-    'django_cleanup'
-
 ]
 
 MIDDLEWARE = [
