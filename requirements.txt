@@ -8,4 +8,3 @@ django-import-export
 pillow
 django-ckeditor
 django_cleanup
-django_cleanup
