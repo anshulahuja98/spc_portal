@@ -1,0 +1,352 @@
+.container.fullwidth {
+    width: 100%
+}
+
+.container.no-padding {
+    padding-left: 0;
+    padding-right: 0
+}
+
+#nav-menu-container {
+    margin: 0
+}
+
+@media (max-width: 800px) {
+    #mobile-nav-toggle {
+        display: inline
+    }
+
+    #nav-menu-container {
+        display: none
+    }
+}
+
+.row.no-margin {
+    margin-left: 0;
+    margin-right: 0
+}
+
+@media (max-width: 673px) {
+    #logo {
+        margin-left: 20px
+    }
+}
+
+#header #logo h1 {
+    font-size: 4px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 3px
+}
+
+#header #logo h1 a, #header #logo h1 a:hover {
+    color: #000;
+    padding-left: 10px;
+    border-left: 4px solid #3898f8
+}
+
+#header #logo p {
+    font-family: 'Poppins', sans-serif;
+}
+
+#header #logo img {
+    padding: 0;
+    margin: 0
+}
+
+@media (max-width: 8px) {
+    #header #logo h1 {
+        font-size: 8px
+    }
+
+    #header #logo img {
+        max-height: 40px
+    }
+}
+
+
+.link-nav {
+    margin-top: 10px;
+    margin-bottom: 0px
+}
+
+.main-menu {
+    padding-top: 20px
+}
+
+.footer-logos {
+    color: black;
+    font-size: 2rem;
+}
+
+.footer-basic-centered {
+    background-color: #f5f5f5;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font: normal 1rem sans-serif;
+    padding: 1%;
+    padding-bottom: 2%;
+    position: relative;
+
+}
+
+.footer-basic-centered .footer-company-name {
+    color: #212121;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-basic-centered .footer-logos a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
+
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.footer_slider_spc {
+    background-color: fff;
+    padding: 25px;
+    border: 10px black;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+mark {
+    background-color: #f5f5f5;
+    height: 6px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-menu a:not(:first-child) {display: none;}
+  .nav-menu a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav-menu.responsive {position: relative;}
+  .nav-menu.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .nav-menu.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+nav {
+    background-color: #f5f5f5;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.logo {
+    height: 7rem;
+    width: auto;
+}
+
+.media {
+    margin: 0 auto 0 auto;
+}
+
+.media-body {
+    margin-left: 5px;
+    margin-right: 50px;
+    margin-top: 5px;
+}
+
+.media-body .pull-right a {
+    margin: 0rem;
+    color: darkred;
+}
+
+.heading {
+    color: black;
+    vertical-align: middle;
+}
+
+.heading a {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
+}
+
+.pull-right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.login-block {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: right;
+    font-size: large;
+}
+
+.login-block:hover {
+    font-size: x-large;
+}
+
+.carousel-inner2 {
+    width: 100%;
+    height: 28rem;
+}
+
+.mycarousel {
+    margin: auto;
+    width: 100%;
+}
+
+.carousel-inner {
+    border: 3px;
+    border-color: #BB8FCE;
+    width: 100%;
+    height: 28rem;
+}
+
+.carousel-inner_past_recr {
+    width: 100%;
+    height: fit-content
+}
+
+.carousel-image {
+    height: 100%;
+    width: 28rem;
+}
+
+.carousel-inner.anim {
+
+
+> .active {
+    left: 0;
+}
+
+> .next,
+> .prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+> .next.left {
+. flip();
+    left: 0;
+}
+
+> .prev.right {
+. rotateInDownLeft();
+    left: 0;
+}
+
+> .active.left {
+    left: -100%;
+}
+
+> .active.right {
+    left: 100%;
+}
+
+}
+
+.carousel-inner {
+
+> .item {
+    transition: none;
+
+/
+/
+WebKit CSS3 transforms for supported devices
+
+@media all and (transform-3d), (-webkit-transform-3d) {
+    transition: none
+
+;
+    backface-visibility: hidden
+
+;
+    perspective:
+
+1000;
+
+&.next,
+
+&.active.right {
+     transform: none;
+     left: 0;
+ }
+
+&.prev,
+
+&.active.left {
+     transform: none;
+     left: 0;
+ }
+
+&.next.left,
+
+&.prev.right,
+
+&.active {
+     transform: none;
+     left: 0;
+ }
+}
+
+}
+}
+
+
+@keyframes flip {
+    0% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        animation-timing-function: ease-out;
+    }
+
+    40% {
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        animation-timing-function: ease-in;
+    }
+
+    80% {
+        transform: perspective(400px) scale3d(.95, .95, .95);
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        transform: perspective(400px);
+        animation-timing-function: ease-in;
+    }
+}
+
+.flip {
+    backface-visibility: visible;
+    animation-name: flip;
+    animation-duration: 0.6s;
+}
+
+
+
