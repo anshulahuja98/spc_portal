@@ -8,8 +8,14 @@ from student.models import ProgramAndBranch
 from django.core.validators import RegexValidator
 
 
+def check_file_size(value):
+    limit = 3 * 1024 * 1024
+    if value.size > limit:
+        raise forms.ValidationError('File too large. Size should not exceed 3 MB.')
+
+
 class ResumeForm(forms.ModelForm):
-    file = forms.FileField()
+    file = forms.FileField(validators=[check_file_size, ])
 
     class Meta:
         model = Resume
@@ -56,7 +62,7 @@ class StudentRegisterForm(UserCreationForm):
     xii_year = forms.IntegerField(max_value=2050, min_value=1980, label="12th Board Year")
     xii_board_name = forms.CharField(max_length=100, label="12th Board Name")
     xii_percentage = forms.CharField(max_length=16, label="12th Percentage")
-    std_image = forms.ImageField(required=True, label="Upload your image")
+    std_image = forms.ImageField(required=True, label="Upload your image", validators=[check_file_size, ])
 
     def clean_email(self):
         email = self.cleaned_data['email']

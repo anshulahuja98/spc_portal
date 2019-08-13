@@ -10,7 +10,8 @@
                     <div class="table-responsive">
                         <table class="table table-striped" style="border:1rem;">
                             <thead class="lighten-4">
-                            <tr><span class="red-text">You can upload a maximum of 5 Resume which cannot be edited later<br>
+                            <tr><span class="red-text">{{form.errors}}
+                                You can upload a maximum of 5 Resume which cannot be edited later<br>
                             ** After uploading, please click the corresponding RESUME button to check if resume is properly uploaded</span></tr>
                             <tr>
                                 <th class="theader">S.No</th>
@@ -69,6 +70,7 @@
                                     <p>Enter a reference name for this resume by which
                                         you can remember the details of this particular resume</p>
                                 </div>
+
                                 <div class="col-lg-10" style="text-align: center">
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
