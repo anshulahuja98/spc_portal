@@ -8,13 +8,17 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
         <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
-        <link href="{% static '/css/style.css' %} " rel="stylesheet">
+        <link href="{% static '/css/style1.css' %} " rel="stylesheet">
         <link rel="icon" href="{% static 'img/iitj.png' %}">
-        <title>Office of Student Placements, IIT Jodhpur</title>
+         <!--    Google Font APIs-->
+        <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--    Google Font APIs-->
+        <title>Career Development Cell, IIT Jodhpur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% endblock %}
 </head>
-<body style="margin:0px auto ;background-color:#e8f5e9;">
+<body style="margin:0px auto ;background-color: white;">
 {% block heading %}
 <div class="container-fluid">
     <div class="main-heading">
@@ -23,14 +27,13 @@
                 <div class="media" style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
                     <a class="thumbnail pull-left">
                         &nbsp &nbsp
-                        <img src="{% static '/img/logo2.png' %}" alt="IIT Jodhpur" class="logo"
+                        <img src="{% static '/img/logofinalNormal.png' %}" alt="IIT Jodhpur" class="logo"
                              style="height:5rem; width:auto;">
                     </a>
                    <div class="media-body" style="margin-left:10px; margin-top: 10px;">
                     <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem" target="_blank">IIT Jodhpur &nbsp; <i class="fa fa-external-link"></i></a>
                     <h4 class="heading big" style="font-weight:400"><a href="http://spc.iitj.ac.in/"
-                                                                       style="color: black;" >Office of Student
-                        Placements</a></h4>
+                                                                       style="color: black; font-family: 'Poppins', sans-serif;" >Career Development Cell</a></h4>
                     <h6 class="heading" style="margin-top:-0.40rem;">IIT JODHPUR </h6>
                     <br>
                 </div>
@@ -45,21 +48,21 @@
             <div class=" navbar-collapse" id="collapseEx12">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'company:job-offers-added' %}"> Job Offers Added</a>
+                        <a class="nav-link" href="{% url 'company:job-offers-added' %}" style="color: black; font-family: 'Poppins', sans-serif;"> Job Offers Added</a>
                     </li>
                     <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'company:intern-offers-added' %}">Intern Offers Added</a>
+                        <a class="nav-link" href="{% url 'company:intern-offers-added' %}" style="color: black; font-family: 'Poppins', sans-serif;">Intern Offers Added</a>
                     </li>
                     <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'company:job-offer-form' %}">Add Job Offer</a>
+                        <a class="nav-link" href="{% url 'company:job-offer-form' %}" style="color: black; font-family: 'Poppins', sans-serif;">Add Job Offer</a>
                     </li>
                     <li class="nav-item hoverable">
-                        <a class="nav-link" href="{% url 'company:intern-offer-form' %}">Add Intern Offer</a>
+                        <a class="nav-link" href="{% url 'company:intern-offer-form' %}" style="color: black; font-family: 'Poppins', sans-serif;">Add Intern Offer</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav nav-right">
                     <li class="nav-item hoverable" style="float:right;">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}" style="color: black; font-family: 'Poppins', sans-serif;">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -77,19 +80,17 @@
 </div>
 {% block footer %}
  <br>
-    <footer class="footer-basic-centered">
+    <footer class="footer-basic-centered" style="background: #f5f5f5">
 
             <p class="footer-logos" style="color: white; font-size: 2rem;">
 
-				<a href="https://www.facebook.com/SPC.IITJ/" target="_blank"><i class="fa fa-facebook" style="color: #FFFFFF"></i></a>
-				|
-				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/" target="_blank"><i class="fa fa-linkedin" style="color: #FFFFFF"></i></a>
-				|
-				<a href="https://github.com/anshulahuja98/spc_portal" target="_blank"><i class="fa fa-github" style="color: #FFFFFF"></i></a>
+				<a href="https://www.facebook.com/SPC.IITJ/" target="_blank"><i class="fa fa-facebook" style="color: black"></i></a>
+				<a href="https://www.linkedin.com/in/office-of-student-placements-iit-jodhpur-62a31352/" target="_blank"><i class="fa fa-linkedin" style="color: black"></i></a>
+				<a href="https://github.com/anshulahuja98/spc_portal" target="_blank"><i class="fa fa-github" style="color: black"></i></a>
 
 			</p>
 
-			<p class="footer-company-name">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
+			<p class="footer-company-name" style="color: black; font-family: 'Poppins', sans-serif;">Designed & Maintained by Office of Student Placements, IIT Jodhpur</p>
 
 	</footer>
 
