@@ -70,11 +70,11 @@
                         </li>
                         {#                    BTech#}
                         {% if  request.user.username.0 == 'B' %}
-                            {% if request.user.username.2 == '6' %}
+                            {% if request.user.username.2 == '7' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
                                 </li>
-                            {% elif request.user.username.2 <= '5' %}
+                            {% elif request.user.username.2 <= '6' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
                                 </li>
@@ -82,11 +82,11 @@
                         {% endif %}
                         {#                        Mtech#}
                         {% if  request.user.username.0 == 'M' %}
-                            {% if request.user.username.2 == '8' %}
+                            {% if request.user.username.2 == '9' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
                                 </li>
-                            {% elif request.user.username.2 <= '7' %}
+                            {% elif request.user.username.2 <= '8' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
                                 </li>
