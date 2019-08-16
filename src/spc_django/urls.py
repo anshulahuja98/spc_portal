@@ -32,7 +32,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('company/', include('company.urls')),
     path('student/', include('student.urls')),
-    path('', include('main.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('password_reset/',
          PasswordResetView.as_view(html_email_template_name='accounts/password_reset_email.html',
@@ -42,4 +41,5 @@ urlpatterns = [
     path('reset/<uidb64>[0-9A-Za-z_-]+/<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20}/',
          auth_views.password_reset_confirm, name='password_reset_confirm'),
     path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
+    path('', include('main.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
