@@ -133,7 +133,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-ADMINS = [('WebD Head', 'ahuja.2@iitj.ac.in')]
+ADMINS = [('WebD Head', 'ahuja.2@iitj.ac.in'), ('WebD Team', 'dixit.2@iitj.ac.in'),
+          ('WebD Team', 'agarwal.5@iitj.ac.in'), ('WebD Team', 'patel.6@iitj.ac.in'),
+          ('WebD Team', 'gupta.28@iitj.ac.in' )]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
