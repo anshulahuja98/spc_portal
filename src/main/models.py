@@ -129,6 +129,7 @@ class NavBarOptions(models.Model):
     title = models.CharField(max_length=64)
     sub_options = models.ManyToManyField(NavBarSubOptions)
     active = models.BooleanField(default=True)
+    order_no = models.PositiveIntegerField(default=64)
 
     def __str__(self):
         return self.title
