@@ -14,6 +14,8 @@ script:
   - python3 manage.py migrate student
   - python3 manage.py makemigrations
   - python3 manage.py migrate
-  - coverage run --source='.' manage.py test
-after_success:
-  - bash <(curl -s https://codecov.io/bash) || echo 'Codecov failed to upload'
+  - python3 manage.py runserver
+
+  # - coverage run --source='.' manage.py runserver
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash) || echo 'Codecov failed to upload'
