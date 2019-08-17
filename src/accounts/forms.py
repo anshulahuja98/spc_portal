@@ -22,6 +22,29 @@ class ResumeForm(forms.ModelForm):
         fields = ('file', 'reference', 'student')
 
 
+validator_fn = [
+    RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. B17CS006 ). "
+                   "This will be used to login "),
+    RegexValidator(r'[A-Z]{2}[0-9]{2}[A-Z]([A-Z]?)([a-z]?)[A-Z][0-9]{3}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. MT19VSS006 ). "
+                   "This will be used to login ")
+]
+
+
+def regex_validators(value):
+    err = None
+    for validator in validator_fn:
+        try:
+            validator(value)
+            return value
+        except forms.ValidationError as exc:
+            err = exc
+    raise err
+
+
 class StudentRegisterForm(UserCreationForm):
     password1 = forms.CharField(
         label='Password',
@@ -37,11 +60,7 @@ class StudentRegisterForm(UserCreationForm):
     )
     username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
                                label="Username",
-                               validators=[RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}'
-                                                          r'([0-9]?){4}',
-                                                          "Enter your Roll number(in correct "
-                                                          "format like eg. B17CS006 ). "
-                                                          "This will be used to login ")],
+                               validators=[regex_validators],
                                required=True)
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
                               label="Current Year Of Degree")
