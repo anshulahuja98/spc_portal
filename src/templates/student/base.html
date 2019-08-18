@@ -84,7 +84,7 @@
                             {% endif %}
                         {% endif %}
                         {#                        Mtech#}
-                        {% if  request.user.username.0 == 'M' and request.user.username != 'T' %}
+                        {% if  request.user.username.0 == 'M' and request.user.username.1 != 'T' %}
                             {% if request.user.username.2 == '9' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
@@ -96,7 +96,7 @@
                             {% endif %}
                         {% endif %}
                         {#                        Mtech#}
-                        {% if  request.user.username.0 == 'M' and request.user.username == 'T' %}
+                        {% if  request.user.username.0 == 'M' and request.user.username.1 == 'T' %}
                             {% if request.user.username.3 == '9' %}
                                 <li class="nav-item hoverable">
                                     <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
