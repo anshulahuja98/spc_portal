@@ -84,30 +84,41 @@
                             {% endif %}
                         {% endif %}
                         {#                        Mtech#}
-                        {% if  request.user.username.0 == 'M' %}
+                        {% if  request.user.username.0 == 'M' and request.user.username != 'T' %}
                             {% if request.user.username.2 == '9' %}
                                 <li class="nav-item hoverable">
-                                    <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
+                                    <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
                                 </li>
                             {% elif request.user.username.2 <= '8' %}
                                 <li class="nav-item hoverable">
-                                    <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                                    <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                                 </li>
                             {% endif %}
                         {% endif %}
-
+                        {#                        Mtech#}
+                        {% if  request.user.username.0 == 'M' and request.user.username == 'T' %}
+                            {% if request.user.username.3 == '9' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
+                                </li>
+                            {% elif request.user.username.3 <= '8' %}
+                                <li class="nav-item hoverable">
+                                    <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
                         {#PHD#}
                         {% if  request.user.username.0 == 'P' %}
                             <li class="nav-item hoverable">
-                                <a class="nav-link" href="{% url 'student:intern-offers' %}">View Intern Offers</a>
+                                <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
                             </li>
                             <li class="nav-item hoverable">
-                                <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                                <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                             </li>
                         {% endif %}
                         {% if  request.user.username.0 == 'U' %}
                             <li class="nav-item hoverable">
-                                <a class="nav-link" href="{% url 'student:job-offers' %}">View Job Offers</a>
+                                <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                             </li>
                         {% endif %}
                     </ul>
