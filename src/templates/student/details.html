@@ -55,9 +55,10 @@
                                 </div>
                                 <br>
                                 <div class="md-form">
-                                    <i class="fa fa-graduation-cap prefix" style="color:cornflowerblue"></i>
-                                    <span>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JEE AIR: {{ studentprofile.jee_air }}</span>
+                                    <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
+                                    {{ form.jee_air }}
+                                        <label id="{{ form.jee_air.id_for_label }}"
+                                               for="{{ form.jee_air.id_for_label }}" >{{ form.jee_air.label }}</label>
                                 </div>
                                 <br>
                                 <div class="md-form">
