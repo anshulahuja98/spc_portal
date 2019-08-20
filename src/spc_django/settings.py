@@ -149,7 +149,7 @@ SPC_EMAIL_PASSWORD = config('SPC_EMAIL_PASSWORD')
 RECIPIENT_EMAILS = config('RECIPIENT_EMAIL').split(',')  # For getting the details of the company that registered
 
 # Allow students to change GPA
-CHANGE_GPA = config('CHANGE_GPA', default=False, cast=bool)
+ALLOW_DETAILS_UPDATE = config('ALLOW_DETAILS_UPDATE', default=False, cast=bool)
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
