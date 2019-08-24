@@ -1,100 +1,13 @@
-from django.test import SimpleTestCase
+from django.test import TestCase, SimpleTestCase
 from django.urls import reverse, resolve
-from main.views import HomepageView
+from main.views import HomepageView, NavBarSubOptionsPageView
+from main.models import NavBarSubOptions, NavBarOptions
 
 
 class TestMainUrlsResolve(SimpleTestCase):
 
     def test_home_url_resolves(self):
         url = reverse('main:home')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_gradesystem_url_resolve(self):
-        url = reverse('main:gradesystem')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_programs_url_resolve(self):
-        url = reverse('main:programs')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_rules_url_resolve(self):
-        url = reverse('main:rules')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_placementProcedure_url_resolve(self):
-        url = reverse('main:placementProcedure')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_contacts_url_resolve(self):
-        url = reverse('main:contacts')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_admissions_url_resolve(self):
-        url = reverse('main:admissions')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_achievements_url_resolve(self):
-        url = reverse('main:achievements')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_profile_url_resolve(self):
-        url = reverse('main:profile')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_alumni_url_resolve(self):
-        url = reverse('main:alumni')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_student_rules_url_resolve(self):
-        url = reverse('main:student_rules')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_internships_url_resolve(self):
-        url = reverse('main:internships')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_why_recruit_url_resolve(self):
-        url = reverse('main:why-recruit')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_brochure_url_resolve(self):
-        url = reverse('main:brochure')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_summary_url_resolve(self):
-        url = reverse('main:summary')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_company_rules_url_resolve(self):
-        url = reverse('main:company_rules')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_past_recruiters_url_resolve(self):
-        url = reverse('main:past_recruiters')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_aipc_url_resolve(self):
-        url = reverse('main:aipc')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_jaf_url_resolve(self):
-        url = reverse('main:jaf')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_iaf_url_resolve(self):
-        url = reverse('main:iaf')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_reachus_url_resolve(self):
-        url = reverse('main:reachus')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_invitation_url_resolve(self):
-        url = reverse('main:invitation')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
-
-    def test_dir_msg_url_resolve(self):
-        url = reverse('main:dir_msg')
         self.assertEquals(resolve(url).func.view_class, HomepageView)
 
     def test_tutorial_student_url_resolve(self):
@@ -105,6 +18,17 @@ class TestMainUrlsResolve(SimpleTestCase):
         url = reverse('main:tutorial_company')
         self.assertEquals(resolve(url).func.view_class, HomepageView)
 
-    def test_chairman_msg_url_resolve(self):
-        url = reverse('main:chairman_msg')
-        self.assertEquals(resolve(url).func.view_class, HomepageView)
+
+class TestMainUrlsResolve1(TestCase):
+    def setUp(self):
+        self.test_nav_sub_option1 = NavBarSubOptions.objects.create(title='test-sub-nav-option1', description='description for test')
+        self.test_nav_sub_option2 = NavBarSubOptions.objects.create(title='test-sub-nav-option2', use_custom_html=True,
+                                                                    custom_html='main/achievements.html')
+        self.test_nav_option = NavBarOptions.objects.create(title='test-nav-option')
+        self.test_nav_option.sub_options.add(self.test_nav_sub_option1)
+        self.test_nav_option.sub_options.add(self.test_nav_sub_option2)
+
+    def test_slug_url_resolve(self):
+        for sub_option in self.test_nav_option.sub_options.all():
+            url = sub_option.get_absolute_url()
+            self.assertEquals(resolve(url).func.view_class, NavBarSubOptionsPageView)
