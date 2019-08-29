@@ -79,13 +79,16 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
 class ResumeAdmin(admin.ModelAdmin):
     readonly_fields = ['timestamp', ]
     ordering = ['student', ]
-    list_display = ['get_roll_no', 'student', 'file', 'is_verified', 'timestamp']
+    list_display = ['get_roll_no', 'student', 'get_gpa', 'file', 'is_verified', 'timestamp']
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
     list_filter = ['is_verified', 'timestamp']
     actions = [approve_resumes, unapprove_resumes]
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
+
+    def get_gpa(self, instance):
+        return instance.student.gpa
 
     class Meta:
         model = Resume
