@@ -30,6 +30,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
+# Uploaded file permissions
+
+FILE_UPLOAD_PERMISSIONS = 0o755
+
 # Application definition
 
 INSTALLED_APPS = [
