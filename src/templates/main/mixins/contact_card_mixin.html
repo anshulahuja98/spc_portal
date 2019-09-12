@@ -1,21 +1,21 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="margin: auto;margin-bottom: 2.5rem;">
     <div class="card border-dark mb-3">
         <div class="card text-center " style="margin-right: 0rem; margin-left: 0rem;">
-            <div class="card-header" style="font-size: 1.15rem; background-color: #edd9c0; "><i
+            <div class="card-header" style="font-size: 1.15rem; background-color: #f5f5f5; "><i
                     class="fa fa-star-o"></i> &nbsp;
-                <b> {% if contact.designation == '5' %}
+                <b> {% if contact.designation == '5' or contact.designation == '6' %}
                     {{contact.get_designation_display}}</b><br>{{contact.program_branch}}
                 {% else %}
                 {{contact.get_designation_display}}</b><br>{{contact.sub_designation}}
                 {% endif %}
             </div>
-            <div class="card-body" style="background-color: #e3e0cf">
+            <div class="card-body" style="background-color: white">
                 {% if contact.profile_image %}
                 <img src="{{ contact.profile_image.url }}" alt="{{contact.user.get_full_name}}"
                      style="height: 12rem; width: 10rem; margin: auto; margin-top: 0.5rem; margin-bottom: 0.5rem;border-radius: 0.25rem">
                 {% endif %}
             </div>
-            <div class="card-footer text-muted" style="background-color: #f3e5d4">
+            <div class="card-footer text-muted" style="background-color: #f5f5f5">
                 <span style="color: black; font-size: 1.35rem"><b>{{contact.user.get_full_name}}</b></span>
                 <br>
                 <p class="text-left">

@@ -5,14 +5,44 @@ from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
+from django.core.validators import RegexValidator
+
+
+def check_file_size(value):
+    limit = 3 * 1024 * 1024
+    if value.size > limit:
+        raise forms.ValidationError('File too large. Size should not exceed 3 MB.')
 
 
 class ResumeForm(forms.ModelForm):
-    file = forms.FileField()
+    file = forms.FileField(validators=[check_file_size, ])
 
     class Meta:
         model = Resume
         fields = ('file', 'reference', 'student')
+
+
+validator_fn = [
+    RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. B17CS006 ). "
+                   "This will be used to login "),
+    RegexValidator(r'[A-Z]{2}[0-9]{2}[A-Z]([A-Z]?)([a-z]?)[A-Z][0-9]{3}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. MT19VSS006 ). "
+                   "This will be used to login ")
+]
+
+
+def regex_validators(value):
+    err = None
+    for validator in validator_fn:
+        try:
+            validator(value)
+            return value
+        except forms.ValidationError as exc:
+            err = exc
+    raise err
 
 
 class StudentRegisterForm(UserCreationForm):
@@ -28,29 +58,50 @@ class StudentRegisterForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         help_text='Enter the same password as before, for verification.',
     )
-    username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login")
-    year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree")
-    program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all())
-    gpa = forms.FloatField(max_value=10.00)
-    ug_gpa = forms.FloatField(max_value=10.00, required=False)
-    phone = forms.CharField(max_length=15)
-    dob = forms.DateField()
-    category = forms.ChoiceField(choices=StudentProfile.CATEGORY)
-    jee_air = forms.IntegerField(required=False)
-    physical_disability = forms.BooleanField(required=False)
-    nationality = forms.ChoiceField(choices=StudentProfile.NATION)
-    permanent_address = forms.CharField(widget=forms.Textarea)
-    current_address = forms.CharField(widget=forms.Textarea)
-    x_year = forms.IntegerField(max_value=2050, min_value=1980)
-    x_board_name = forms.CharField(max_length=100)
-    x_percentage = forms.CharField(max_length=10)
-    xii_year = forms.IntegerField(max_value=2050, min_value=1980)
-    xii_board_name = forms.CharField(max_length=100)
-    xii_percentage = forms.CharField(max_length=16)
+    username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
+                               label="Username",
+                               validators=[regex_validators],
+                               required=True)
+    year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
+                              label="Current Year Of Degree")
+    program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all(), label="Program Branch")
+    gpa = forms.FloatField(max_value=10.00, label="GPA")
+    ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA")
+    phone = forms.CharField(max_length=15, label="Phone")
+    dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget(years=range(1960, 2020)))
+    category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
+    jee_air = forms.IntegerField(required=False, label="JEE AIR")
+    physical_disability = forms.BooleanField(required=False, label="Physical Disability")
+    nationality = forms.ChoiceField(choices=StudentProfile.NATION, label="Nationality")
+    permanent_address = forms.CharField(widget=forms.Textarea, label="Permanent Address")
+    current_address = forms.CharField(widget=forms.Textarea, label="Current Address")
+    x_year = forms.IntegerField(max_value=2050, min_value=1980, label="10th Board Year")
+    x_board_name = forms.CharField(max_length=100, label="10th Board Name")
+    x_percentage = forms.CharField(max_length=10, label="10th Percentage")
+    xii_year = forms.IntegerField(max_value=2050, min_value=1980, label="12th Board Year")
+    xii_board_name = forms.CharField(max_length=100, label="12th Board Name")
+    xii_percentage = forms.CharField(max_length=16, label="12th Percentage")
+    std_image = forms.ImageField(required=True, label="Upload your image", validators=[check_file_size, ])
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if email.endswith('@iitj.ac.in') is False:
+            raise forms.ValidationError("Enter the IITJ email id.")
+        return email
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.Meta.required:
+            self.fields[field].required = True
 
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password1', 'password2', 'email']
+        required = (
+            'last_name',
+            'email',
+        )
 
 
 class CompanyRegisterForm(UserCreationForm):
@@ -68,15 +119,16 @@ class CompanyRegisterForm(UserCreationForm):
     )
     username = forms.EmailField(
         widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'email', 'maxlength': '254'}),
-        help_text="This Email ID will be your username")
-    name = forms.CharField(max_length=50, help_text="Name of the company")
-    domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ", required=False)
-    url = forms.CharField(required=False)
-    city = forms.CharField(max_length=15, required=False)
-    state = forms.CharField(max_length=15, required=False)
-    country = forms.ChoiceField(choices=CompanyProfile.NATION)
-    pin_code = forms.CharField(max_length=10, required=False)
-    contact = forms.CharField(max_length=20, required=True)
+        label="The Email ID will be your username")
+    name = forms.CharField(max_length=50, help_text="Name of the company", label="Name of the company")
+    domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ", required=False,
+                             label="Domain(Type of company like banking/consulting etc)")
+    url = forms.CharField(required=False, label="Enter the URL of your company's website")
+    city = forms.CharField(max_length=15, required=False, label="City")
+    state = forms.CharField(max_length=15, required=False, label="State")
+    country = forms.ChoiceField(choices=CompanyProfile.NATION, label="Country")
+    pin_code = forms.CharField(max_length=10, required=False, label="Pin Code")
+    contact = forms.CharField(max_length=20, required=True, label="Contact Number")
 
     class Meta:
         model = User

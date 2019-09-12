@@ -100,9 +100,10 @@ def send_email(self, request, obj, subject):
 @admin.register(JobAdvertisement)
 class JobAdvertisementAdmin(ImportExportActionModelAdmin):
     change_form_template = "admin/adversiment_change_form.html"
+    readonly_fields = ['creation_timestamp', ]
     resource_class = JobAdvertisementResource
     list_display = ['company', 'designation', 'ctc', 'min_gpa', 'active', 'expiry', 'email_sent']
-    list_filter = ['company', 'active', ]
+    list_filter = ['company', 'active', 'creation_timestamp', ]
     ordering = ['company']
     search_fields = ['company__name', ]
     actions = [get_zipped_resumes, make_active, make_inactive]
@@ -120,9 +121,10 @@ class JobAdvertisementAdmin(ImportExportActionModelAdmin):
 @admin.register(InternshipAdvertisement)
 class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
     change_form_template = "admin/adversiment_change_form.html"
+    readonly_fields = ['creation_timestamp', ]
     resource_class = InternshipAdvertisementResource
     list_display = ['company', 'designation', 'min_gpa', 'ctc', 'active', 'expiry', 'email_sent']
-    list_filter = ['company', 'active', ]
+    list_filter = ['company', 'active', 'creation_timestamp', ]
     ordering = ['company']
     search_fields = ['company__name', ]
     actions = [get_zipped_resumes, make_active, make_inactive]
@@ -139,6 +141,7 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
 
 @admin.register(InternshipOffer)
 class InternshipOfferAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['application_timestamp', ]
     resource_class = InternshipOfferResource
     list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']
@@ -154,6 +157,7 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
 
 @admin.register(JobOffer)
 class JobOfferAdmin(ImportExportActionModelAdmin):
+    readonly_fields = ['application_timestamp', ]
     resource_class = JobOfferResource
     list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']

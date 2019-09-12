@@ -5,6 +5,7 @@ before_install:
   - export DJANGO_SETTINGS_MODULE=spc_django.settings
 install:
   - pip3 install -r requirements.txt
+  - pip3 install coverage
 script:
   - cp .env.example .env
   - cd src
@@ -13,3 +14,6 @@ script:
   - python3 manage.py migrate student
   - python3 manage.py makemigrations
   - python3 manage.py migrate
+  - coverage run --source='.' manage.py test
+after_success:
+  - bash <(curl -s https://codecov.io/bash) || echo 'Codecov failed to upload'
