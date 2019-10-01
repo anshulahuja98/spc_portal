@@ -74,10 +74,13 @@ class StudentProfile(models.Model):
     def get_all_applied_offers_str(self):
         offers = apps.get_model('company.InternshipAdvertisement').objects.filter(
             id__in=apps.get_model('company.InternshipOffer').objects.filter(student__user=self.user).values_list(
-                'profile')).union(apps.get_model('company.JobAdvertisement').objects.filter(
+                'profile'))
+
+        offers.union(apps.get_model('company.JobAdvertisement').objects.filter(
             id__in=apps.get_model('company.JobOffer').objects.filter(
                 student__user=self.user).values_list(
                 'profile')))
+
         offer_list = ''
         for i in range(offers.count()):
             offer_list += str(offers[i]) + ', '
