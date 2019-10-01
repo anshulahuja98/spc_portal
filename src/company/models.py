@@ -4,7 +4,7 @@ from django.shortcuts import reverse
 from accounts.models import CompanyProfile, StudentProfile, Resume
 from student.models import ProgramAndBranch, ProgramEmailId
 from django.db.models.signals import pre_save
-
+from django.utils.html import format_html
 
 class BaseAdvertisement(models.Model):
     # validity
@@ -89,7 +89,7 @@ class BaseOffer(models.Model):
 
     def get_file(self):
         if self.resume and self.resume.file:
-            return self.resume.file
+            return format_html('<a href="%s">Resume </a>' % (self.resume.file.url))
         else:
             return 'None'
 
