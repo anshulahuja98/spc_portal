@@ -78,13 +78,20 @@ class BaseOfferResource(resources.ModelResource):
         attribute='profile__ctc')
     student_applied_offers = Field(
         column_name='Applied Offers',
-        attribute='student__get_all_applied_offers'
+        attribute='student__get_all_applied_offers_str'
     )
+
+    resume_link = Field(
+        column_name='Link to resume',
+    )
+
+    def dehydrate_resume_link(self, offer):
+        return 'https://spc.iitj.ac.in%s' % (offer.resume.file.url)
 
     class Meta:
         abstract = True
         fields = ('company', 'is_accepted', 'ppo',)
-        export_order = ('student_applied_offers',
+        export_order = ('student_applied_offers', 'resume_link',
                         'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa',
                         'phone',
                         'category',
