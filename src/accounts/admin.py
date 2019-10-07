@@ -45,16 +45,20 @@ def mark_placed(modeladmin, request, queryset):
     queryset.update(placed=True)
 
 
+def mark_unplaced(modeladmin, request, queryset):
+    queryset.update(placed=False)
+
+
 @admin.register(StudentProfile)
 class StudentProfileAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['registration_timestamp', ]
     resource_class = StudentProfileResource
     inlines = (ResumeInline,)
     list_display = ['__str__', 'roll_no', 'program_branch', 'year', 'registration_timestamp']
-    list_filter = ['program_branch', 'year', 'registration_timestamp']
+    list_filter = ['program_branch', 'year', 'registration_timestamp', 'placed']
     ordering = ['roll_no', ]
     search_fields = ['roll_no', 'user__first_name', 'user__last_name']
-    actions = [ban, mark_placed]
+    actions = [ban, mark_placed, mark_unplaced]
 
     class Meta:
         model = StudentProfile
