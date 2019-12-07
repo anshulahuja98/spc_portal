@@ -6,6 +6,7 @@ from student.models import ProgramAndBranch, ProgramEmailId
 from django.db.models.signals import pre_save
 from django.utils.html import format_html
 
+
 class BaseAdvertisement(models.Model):
     # validity
     expiry = models.DateTimeField(null=True, blank=True)
