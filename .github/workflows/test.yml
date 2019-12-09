@@ -20,11 +20,13 @@ jobs:
         sudo apt-get install libpq-dev 
         pip3 install -r requirements.txt
         pip3 install coverage
-    - working-directory: ./src
+    
     - name: Linting
+      working-directory: ./src
       run: |
         flake8 .
     - name: Script
+      working-directory: ./src
       run: |
         python3 manage.py makemigrations student
         python3 manage.py migrate student
