@@ -1,6 +1,6 @@
-name: CI
+name: Tests
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -11,23 +11,30 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.6
-    - name: Export environment variables
+    - name: Setup environment variables
       run: |
+        cp .env.example .env
         export DJANGO_SETTINGS_MODULE=spc_django.settings
     - name: Install dependencies
       run: |
         sudo apt-get install libpq-dev 
         pip3 install -r requirements.txt
         pip3 install coverage
-    - name: Script
+    
+    - name: Linting
+      working-directory: ./src
       run: |
-        cp .env.example .env
-        cd src
         flake8 .
+    - name: Migrations
+      working-directory: ./src
+      run: |
         python3 manage.py makemigrations student
         python3 manage.py migrate student
         python3 manage.py makemigrations
         python3 manage.py migrate
+    - name: Coverage
+      working-directory: ./src
+      run: |
         coverage run --source='.' manage.py test
         bash <(curl -s https://codecov.io/bash) || echo 'Codecov failed to upload'
    
