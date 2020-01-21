@@ -2,8 +2,9 @@ from django.db import models
 from uuid import uuid4
 from django.shortcuts import reverse
 from accounts.models import CompanyProfile, StudentProfile, Resume
-from student.models import ProgramAndBranch
+from student.models import ProgramAndBranch, ProgramEmailId
 from django.db.models.signals import pre_save
+from django.utils.html import format_html
 
 
 class BaseAdvertisement(models.Model):
@@ -37,6 +38,8 @@ class BaseAdvertisement(models.Model):
     min_gpa = models.FloatField()
     number_of_members = models.PositiveIntegerField(null=True, blank=True)
     other_details = models.TextField(null=True, blank=True)
+    email_ids = models.ManyToManyField(ProgramEmailId, blank=True)
+    email_sent = models.BooleanField(default=False)
     creation_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
@@ -87,7 +90,7 @@ class BaseOffer(models.Model):
 
     def get_file(self):
         if self.resume and self.resume.file:
-            return self.resume.file
+            return format_html('<a href="%s">Resume </a>' % (self.resume.file.url))
         else:
             return 'None'
 

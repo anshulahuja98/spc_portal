@@ -7,6 +7,7 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.apps import apps
 
 
 class StudentProfile(models.Model):
@@ -68,6 +69,22 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+    # Used in csv export to get list of all applied offers in string
+    def get_all_applied_offers_str(self):
+        offers = apps.get_model('company.InternshipAdvertisement').objects.filter(
+            id__in=apps.get_model('company.InternshipOffer').objects.filter(student__user=self.user).values_list(
+                'profile'))
+
+        offers.union(apps.get_model('company.JobAdvertisement').objects.filter(
+            id__in=apps.get_model('company.JobOffer').objects.filter(
+                student__user=self.user).values_list(
+                'profile')))
+
+        offer_list = ''
+        for i in range(offers.count()):
+            offer_list += str(offers[i]) + ', '
+        return offer_list
 
 
 class CompanyProfile(models.Model):
