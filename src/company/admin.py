@@ -183,12 +183,15 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
 class InternshipOfferAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['application_timestamp', ]
     resource_class = InternshipOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
+    list_display = ['student', 'roll_no', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
     actions = [get_zipped_resumes, mark_placed, mark_ppo]
+
+    def roll_no(self, obj):
+        return obj.student.user.username
 
     class Meta:
         model = InternshipOffer
@@ -199,12 +202,15 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
 class JobOfferAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['application_timestamp', ]
     resource_class = JobOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
+    list_display = ['student', 'roll_no', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
                      'student__user__last_name', ]
     actions = [get_zipped_resumes, mark_placed, mark_ppo]
+
+    def roll_no(self, obj):
+        return obj.student.user.username
 
     class Meta:
         model = JobOffer
