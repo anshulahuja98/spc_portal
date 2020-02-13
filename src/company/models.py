@@ -94,6 +94,9 @@ class BaseOffer(models.Model):
         else:
             return 'None'
 
+    def get_roll_no(self, obj):
+        return obj.student.user.username
+
 
 class JobOffer(BaseOffer):
     profile = models.ForeignKey(JobAdvertisement, on_delete=models.CASCADE)
