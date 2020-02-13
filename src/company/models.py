@@ -94,8 +94,8 @@ class BaseOffer(models.Model):
         else:
             return 'None'
 
-    def get_roll_no(self, obj):
-        return obj.student.user.username
+    def get_roll_no(self):
+        return self.student.user.username
 
 
 class JobOffer(BaseOffer):
