@@ -10,30 +10,40 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.contrib import messages
 
 
 def get_zipped_resumes_for_ad(modeladmin, request, queryset):
     if queryset.count() != 1:
-        modeladmin.message_user(request, "Can not export more than one object to zip at once.")
+        messages.info(request, "Can not export more than one object to zip at once.")
         return
     if modeladmin.model is JobAdvertisement:
         offers = JobOffer.objects.filter(profile__in=queryset).all()
     elif modeladmin.model is InternshipAdvertisement:
         offers = InternshipOffer.objects.filter(profile__in=queryset).all()
     if not offers.count():
-        modeladmin.message_user(request, "No offers exist for this advertisement")
+        messages.warning(request, "No offers exist for this advertisement")
         return
 
-    zip_path = "resume/zipped/" + offers[0].profile.company.name + '  ' + offers[0].profile.designation + '  ' + str(
-        offers[0].profile_id) + ".zip"
+    zip_path = "resume/zipped/" + offers[0].profile.company.name.replace("/", " or ") + '  ' + offers[0].profile.designation.replace(
+        "/", " or ") + '  ' + str(offers[0].profile_id) + ".zip"
 
-    zip = ZipFile(zip_path, 'w')
+    missing = []
     for offer in offers:
-        zip.write(offer.resume.file.path, basename(offer.resume.file.path))
+        if(not offer.resume):
+            missing.append(offer.student.user.first_name+" "+offer.student.user.last_name+"("+offer.student.roll_no+")")
 
-    zip.close()
-    url = "/media/" + zip_path
-    return HttpResponseRedirect(url)
+    if(missing):
+        messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
+        return
+    else:
+        zip = ZipFile(zip_path, 'w')
+        for offer in offers:
+            zip.write(offer.resume.file.path, basename(offer.resume.file.path))
+
+        zip.close()
+        url = "/media/" + zip_path
+        return HttpResponseRedirect(url)
 
 
 def get_zipped_resumes(modeladmin, request, queryset):
@@ -42,18 +52,27 @@ def get_zipped_resumes(modeladmin, request, queryset):
     elif modeladmin.model is InternshipOffer:
         offers = queryset
     if not offers.count():
-        modeladmin.message_user(request, "Select atleast 1 offer")
+        messages.warning(request, "Select atleast 1 offer")
         return
-    zip_path = "resume/zipped/" + offers[0].profile.company.name + '  ' + offers[0].profile.designation + '  ' + str(
-        offers[0].profile_id) + ".zip"
+    zip_path = "resume/zipped/" + offers[0].profile.company.name.replace("/", " or ") + '  ' + offers[0].profile.designation.replace(
+        "/", " or ") + '  ' + str(offers[0].profile_id) + ".zip"
 
-    zip = ZipFile(zip_path, 'w')
+    missing = []
     for offer in offers:
-        zip.write(offer.resume.file.path, basename(offer.resume.file.path))
+        if(not offer.resume):
+            missing.append(offer.student.user.first_name+" "+offer.student.user.last_name+"("+offer.student.roll_no+")")
 
-    zip.close()
-    url = "/media/" + zip_path
-    return HttpResponseRedirect(url)
+    if(missing):
+        messages.error(request, 'Missing Resume of '+', '.join(missing)+" .")
+        return
+    else:
+        zip = ZipFile(zip_path, 'w')
+        for offer in offers:
+            zip.write(offer.resume.file.path, basename(offer.resume.file.path))
+
+        zip.close()
+        url = "/media/" + zip_path
+        return HttpResponseRedirect(url)
 
 
 def make_active(modeladmin, request, queryset):
@@ -164,7 +183,7 @@ class InternshipAdvertisementAdmin(ImportExportActionModelAdmin):
 class InternshipOfferAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['application_timestamp', ]
     resource_class = InternshipOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
+    list_display = ['student', 'get_roll_no', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',
@@ -180,7 +199,7 @@ class InternshipOfferAdmin(ImportExportActionModelAdmin):
 class JobOfferAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['application_timestamp', ]
     resource_class = JobOfferResource
-    list_display = ['student', 'company', 'profile', 'is_accepted', 'get_file']
+    list_display = ['student', 'get_roll_no', 'company', 'profile', 'is_accepted', 'get_file']
     list_filter = ['company', 'is_accepted', 'profile']
     ordering = ['student']
     search_fields = ['company__name', 'student__user__username', 'student__user__first_name',

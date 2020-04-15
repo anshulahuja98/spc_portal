@@ -6,6 +6,7 @@ from student.models import ProgramAndBranch, ProgramEmailId
 from django.db.models.signals import pre_save
 from django.utils.html import format_html
 
+
 class BaseAdvertisement(models.Model):
     # validity
     expiry = models.DateTimeField(null=True, blank=True)
@@ -92,6 +93,9 @@ class BaseOffer(models.Model):
             return format_html('<a href="%s">Resume </a>' % (self.resume.file.url))
         else:
             return 'None'
+
+    def get_roll_no(self):
+        return self.student.user.username
 
 
 class JobOffer(BaseOffer):
