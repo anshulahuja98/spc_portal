@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel, NavBarOptions, NavBarSubOptions
+from .models import PastRecruiters, CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel, \
+    NavBarOptions, NavBarSubOptions, CareerCommittee
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -31,6 +32,17 @@ class CoreTeamContactsAdmin(admin.ModelAdmin):
 
     class Meta:
         model = CoreTeamContacts
+        fields = '__all__'
+
+
+@admin.register(CareerCommittee)
+class CareerCommitteeAdmin(admin.ModelAdmin):
+    list_display = ['__str__', 'designation', 'active', ]
+    list_filter = ['active', 'designation', ]
+    ordering = ['order_no', ]
+
+    class Meta:
+        model = CareerCommittee
         fields = '__all__'
 
 
