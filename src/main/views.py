@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView, DetailView
-from .models import CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel, NavBarSubOptions
+from .models import CoreTeamContacts, Volunteers, News, AlumniTestimonial, HomeImageCarousel, NavBarSubOptions, \
+    CareerCommittee
 
 
 class HomepageView(TemplateView):
@@ -20,6 +21,7 @@ class NavBarSubOptionsPageView(DetailView):
         context = super(NavBarSubOptionsPageView, self).get_context_data()
         context['contacts'] = CoreTeamContacts.objects.filter(active=True).order_by('order_no')
         context['volunteers'] = Volunteers.objects.filter(active=True).order_by('order_no')
+        context['c3members'] = CareerCommittee.objects.filter(active=True).order_by('order_no')
         return context
 
     def get(self, request, *args, **kwargs):

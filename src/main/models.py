@@ -43,7 +43,7 @@ class CoreTeamContacts(models.Model):
         ('6', 'Team Member'),
         ('7', 'Web Development Team'),
         ('8', 'Internship Co-ordinator'),
-        ('9', 'PG Representative')
+        ('9', 'PG Representative'),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
@@ -106,6 +106,23 @@ class HomeImageCarousel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CareerCommittee(models.Model):
+    DESIGNATION_CHOICES = (
+        ('1', 'Chairman'),
+        ('2', 'Convenor'),
+        ('3', 'Members'),
+    )
+    name = models.CharField(max_length=64, blank=False, null=False, default='Member')
+    email = models.EmailField(max_length=32, blank=False, null=False, default='member@gmail.com')
+    designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
+    profile_image = models.ImageField(upload_to='contacts', blank=True, null=True)
+    active = models.BooleanField(default=True)
+    order_no = models.PositiveIntegerField(default=64)
+
+    def __str__(self):
+        return self.name
 
 
 class NavBarSubOptions(models.Model):
