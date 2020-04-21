@@ -117,6 +117,7 @@ class CareerCommittee(models.Model):
     name = models.CharField(max_length=64, blank=False, null=False, default='Member')
     email = models.EmailField(max_length=32, blank=False, null=False, default='member@gmail.com')
     designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
+    department = models.TextField(max_length=64, default="Department")
     profile_image = models.ImageField(upload_to='contacts', blank=True, null=True)
     active = models.BooleanField(default=True)
     order_no = models.PositiveIntegerField(default=64)
