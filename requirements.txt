@@ -1,4 +1,4 @@
-django==2.0.5
+django==2.2.13
 flake8
 django_heroku
 gunicorn
