@@ -24,8 +24,13 @@
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.username }}
-                                        <label id="{{ form.username.id_for_label }}"
-                                               for="{{ form.username.id_for_label }}" >{{ form.username.label }}</label>
+                                        <label
+                                            id="{{ form.username.id_for_label }}"
+                                            for="{{ form.username.id_for_label }}"
+                                        >
+                                                {{ form.username.label }}
+                                                ({{form.username.help_text}})
+                                        </label>
                                 </div>
                                 <br>
                                 <div class="md-form">
@@ -381,6 +386,7 @@
                 register_form.style.display = "block";
             }
         }*/
+
         function show() {
             var condition = document.getElementById("agree");
             if (condition.checked) {

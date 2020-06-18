@@ -58,7 +58,7 @@ class StudentRegisterForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         help_text='Enter the same password as before, for verification.',
     )
-    username = forms.CharField(max_length=11, help_text="Enter your Roll number, this will be used to login",
+    username = forms.CharField(max_length=11, help_text="Enter your Roll Number, this will be used to login",
                                label="Username",
                                validators=[regex_validators],
                                required=True)
