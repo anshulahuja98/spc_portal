@@ -57,7 +57,7 @@ class StudentProfile(models.Model):
                 username=from_email,
                 password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
-            subject = "Registered with SPC"
+            subject = "Registered with CDC"
             to_email = [self.user.email, ]
             html_content = render_to_string("accounts/student_register_email.html",
                                             {'username': self.user.username, 'email': self.user.email})
@@ -118,7 +118,7 @@ class CompanyProfile(models.Model):
                 username=from_email,
                 password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
-            subject = "Registered with SPC"
+            subject = "Registered with CDC"
             to_email = [self.user.username, ]
             html_content = render_to_string("accounts/company_register_email.html", {'username': self.user.username})
             text_content = strip_tags(html_content)
@@ -133,7 +133,7 @@ class CompanyProfile(models.Model):
                 username=from_email,
                 password=settings.SPC_EMAIL_PASSWORD
         ) as connection:
-            subject = "Company Registered with SPC"
+            subject = "Company Registered with CDC"
             to_email = settings.RECIPIENT_EMAILS
             html_content = render_to_string("accounts/company_details_email.html",
                                             {'name': self.name, 'email': self.user.username,
