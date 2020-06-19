@@ -3,8 +3,7 @@ from django.urls import resolve, reverse
 from django.contrib.auth.models import User
 from accounts.models import CompanyProfile
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, \
-    PasswordResetConfirmView, PasswordResetCompleteView, password_reset_complete, \
-    password_reset_done, password_reset_confirm
+    PasswordResetConfirmView, PasswordResetCompleteView
 
 
 class TestAccountsUrlsResolves(SimpleTestCase):
