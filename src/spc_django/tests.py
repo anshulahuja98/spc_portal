@@ -18,11 +18,15 @@ class TestAccountsUrlsResolves(SimpleTestCase):
 
     def test_password_reset_done_url_resolves(self):
         url = reverse('password_reset_done')
-        self.assertAlmostEquals(resolve(url).func, password_reset_done)
+        self.assertAlmostEquals(resolve(url).func, password_reset_done, PasswordResetDoneView)
+
+    def test_password_reset_confirm_url_resolves(self):
+        url = reverse('password_reset_confirm')
+        self.assertAlmostEquals(resolve(url).func, password_reset_confirm, PasswordResetConfirmView)
 
     def test_password_reset_complete_url_resolves(self):
         url = reverse('password_reset_complete')
-        self.assertAlmostEquals(resolve(url).func, password_reset_complete)
+        self.assertAlmostEquals(resolve(url).func, password_reset_complete, PasswordResetCompleteView)
 
 
 class TestAccountsUrlsResolves1(TestCase):
