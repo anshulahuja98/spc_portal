@@ -20,7 +20,7 @@ from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 
 admin.site.site_title = 'SPC Administration'
 admin.site.site_header = 'SPC Administration'
@@ -34,12 +34,18 @@ urlpatterns = [
     path('student/', include('student.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('password_reset/',
-         PasswordResetView.as_view(html_email_template_name='accounts/password_reset_email.html',
-                                   subject_template_name='accounts/password_reset_subject.txt'),
+         PasswordResetView.as_view(template_name='student/password_reset.html',
+                                    html_email_template_name='accounts/password_reset_email.html',
+                                    subject_template_name='accounts/password_reset_subject.txt'),
          name='password_reset'),
-    path('password_reset/done/', auth_views.password_reset_done, name='password_reset_done'),
+    path('password_reset/done/', 
+        PasswordResetDoneView.as_view(template_name='student/password_reset_done.html'), 
+        name='password_reset_done'),
     path('reset/<uidb64>[0-9A-Za-z_-]+/<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20}/',
-         auth_views.password_reset_confirm, name='password_reset_confirm'),
-    path('reset/done/', auth_views.password_reset_complete, name='password_reset_complete'),
+        PasswordResetConfirmView.as_view(template_name='student/password_reset_confirm.html'), 
+        name='password_reset_confirm'),
+    path('reset/done/', 
+        PasswordResetCompleteView.as_view(template_name='student/password_reset_complete.html'), 
+        name='password_reset_complete'),
     path('', include('main.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
