@@ -43,8 +43,14 @@
                      style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
                     <a class="thumbnail pull-left">
                         &nbsp &nbsp
-                        <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo"
+                        {% if user.is_authenticated %}
+                        <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo",href="http://spc.iitj.ac.in/",
                              style="height:5rem; width:auto;">
+                        {% else %}
+                        <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo",
+                             style="height:5rem; width:auto;">
+                        {% endif %}     
+
                     </a>
                     <div class="media-body" style="margin-left:10px; margin-top: 10px;">
                         <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem"

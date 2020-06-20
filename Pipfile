@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "==2.0.5"
+flake8 = "*"
+django-heroku = "*"
+gunicorn = "*"
+django-decouple = "==2.1"
+psycopg2 = "*"
+django-import-export = "*"
+pillow = "*"
+django-ckeditor = "*"
+django-cleanup = "*"
+
+[requires]
+python_version = "3.6"
