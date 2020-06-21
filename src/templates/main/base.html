@@ -12,6 +12,23 @@
     <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/style1.css' %} " rel="stylesheet">
     <link rel="icon" href="{% static 'img/iitj.png' %}">
+        <style media="screen">
+    @media only screen and (max-width: 500px) {
+      .cdc-logo {
+        margin-right: 0;
+      }
+      .media-body {
+        margin-left: 0;
+      }
+      .title {
+        margin-right: 1.5rem;
+
+      }
+      #cdc-heading {
+        margin-top: 2.5rem;
+      }
+    }
+    </style>
     <!--    Google Font APIs-->
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
@@ -29,7 +46,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="media">
-                        <a class="navbar-brand" href="/">
+                        <a class="navbar-brand cdc-logo" href="/">
 
                             <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo">
                         </a>
@@ -76,13 +93,14 @@
 
                                 </div>
                             </div>
-                            <h2 class="heading">
+                            <div class="title">
+                            <h2 class="heading" id="cdc-heading">
                                 <a href="http://spc.iitj.ac.in/">
                                     Career Development Cell
                                 </a>
                             </h2>
                             <h4 class="heading" style="color: black; font-family: 'Poppins', sans-serif; font-size: larger">Indian Institute of Technology Jodhpur</h4>
-
+                            </div>
                         </div>
                     </div>
                 </div>
