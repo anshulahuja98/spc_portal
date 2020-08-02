@@ -151,6 +151,8 @@ EMAIL_USE_SSL = True
 SPC_EMAIL = config('SPC_EMAIL_ID')  # For Sending other Details
 SPC_EMAIL_PASSWORD = config('SPC_EMAIL_PASSWORD')
 RECIPIENT_EMAILS = config('RECIPIENT_EMAIL').split(',')  # For getting the details of the company that registered
+SEND_MAIL=True
+
 
 # Allow students to change GPA
 ALLOW_DETAILS_UPDATE = config('ALLOW_DETAILS_UPDATE', default=False, cast=bool)
