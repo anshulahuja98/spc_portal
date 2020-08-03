@@ -18,7 +18,7 @@ def validate_gpa(value):
 
 
 def validate_phone(value):
-    reg = re.compile(r'^\+?\s?\(?[0-9]{2}\)?\s?[0-9]{10}$')
+    reg = re.compile(r'^(\+\s?\(?[0-9]{2,4}\)?\s?)?[0-9]{10}$')
     if not reg.match(value):
         raise ValidationError('Please enter valid details')
     return value
