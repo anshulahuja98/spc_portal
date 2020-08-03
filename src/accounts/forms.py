@@ -6,8 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
 from django.core.validators import RegexValidator
-from django.core.exceptions import ValidationError
-from .validators import *
+from .validators import validate_year, validate_gpa, validate_phone, validate_domain, validate_url, validate_pincode
 
 
 def check_file_size(value):
@@ -124,12 +123,17 @@ class CompanyRegisterForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'form-control', 'type': 'email', 'maxlength': '254'}),
         label="The Email ID will be your username")
     name = forms.CharField(max_length=50, help_text="Name of the company", label="Name of the company")
-    domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ", required=False,
-                             label="Domain (Type of company like banking/consulting etc)", validators=[validate_domain])
-    url = forms.CharField(  required=False,
-                            label="Enter the URL of your company's website",
-                            help_text="(Must start with https/http)",
-                            validators=[validate_url])
+    domain = forms.CharField(
+        max_length=15,
+        help_text="Type of company like banking/consulting etc ",
+        required=False,
+        label="Domain (Type of company like banking/consulting etc)",
+        validators=[validate_domain])
+    url = forms.CharField(
+        required=False,
+        label="Enter the URL of your company's website",
+        help_text="(Must start with https/http)",
+        validators=[validate_url])
     city = forms.CharField(max_length=15, required=False, label="City")
     state = forms.CharField(max_length=15, required=False, label="State")
     country = forms.ChoiceField(choices=CompanyProfile.NATION, label="Country")
