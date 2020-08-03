@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+from .validators import *
 
 
 def check_file_size(value):
@@ -63,11 +65,12 @@ class StudentRegisterForm(UserCreationForm):
                                validators=[regex_validators],
                                required=True)
     year = forms.IntegerField(max_value=10, help_text="Enter value between 1-5, the current year of your degree",
-                              label="Current Year Of Degree")
+                              label="Current Year Of Degree",
+                              validators=[validate_year])
     program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all(), label="Program Branch")
-    gpa = forms.FloatField(max_value=10.00, label="GPA")
-    ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA")
-    phone = forms.CharField(max_length=15, label="Phone")
+    gpa = forms.FloatField(max_value=10.00, label="GPA", validators=[validate_gpa])
+    ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA", validators=[validate_gpa])
+    phone = forms.CharField(max_length=15, label="Phone", validators=[validate_phone])
     dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget(years=range(1960, 2020)))
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
     jee_air = forms.IntegerField(required=False, label="JEE AIR")
@@ -122,13 +125,16 @@ class CompanyRegisterForm(UserCreationForm):
         label="The Email ID will be your username")
     name = forms.CharField(max_length=50, help_text="Name of the company", label="Name of the company")
     domain = forms.CharField(max_length=15, help_text="Type of company like banking/consulting etc ", required=False,
-                             label="Domain(Type of company like banking/consulting etc)")
-    url = forms.CharField(required=False, label="Enter the URL of your company's website")
+                             label="Domain (Type of company like banking/consulting etc)", validators=[validate_domain])
+    url = forms.CharField(  required=False,
+                            label="Enter the URL of your company's website",
+                            help_text="(Must start with https/http)",
+                            validators=[validate_url])
     city = forms.CharField(max_length=15, required=False, label="City")
     state = forms.CharField(max_length=15, required=False, label="State")
     country = forms.ChoiceField(choices=CompanyProfile.NATION, label="Country")
-    pin_code = forms.CharField(max_length=10, required=False, label="Pin Code")
-    contact = forms.CharField(max_length=20, required=True, label="Contact Number")
+    pin_code = forms.CharField(max_length=10, required=False, label="Pin Code", validators=[validate_pincode])
+    contact = forms.CharField(max_length=20, required=True, label="Contact Number", validators=[validate_phone])
 
     class Meta:
         model = User
