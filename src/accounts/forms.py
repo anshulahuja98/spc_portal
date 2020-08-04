@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
 from .validators import (
-    validate_year, validate_gpa, validate_phone, validate_domain, validate_url, validate_pincode, check_file_size, regex_validators)
+    validate_year, validate_gpa, validate_domain, validate_url, validate_pincode, check_file_size, regex_validators)
 
 
 class ResumeForm(forms.ModelForm):
@@ -40,7 +40,7 @@ class StudentRegisterForm(UserCreationForm):
     program_branch = forms.ModelChoiceField(queryset=ProgramAndBranch.objects.all(), label="Program Branch")
     gpa = forms.FloatField(max_value=10.00, label="GPA", validators=[validate_gpa])
     ug_gpa = forms.FloatField(max_value=10.00, required=False, label="U.G. GPA", validators=[validate_gpa])
-    phone = forms.CharField(max_length=15, label="Phone", validators=[validate_phone])
+    phone = forms.CharField(max_length=15, label="Phone")
     dob = forms.DateField(required=True, label="Date Of Birth", widget=forms.SelectDateWidget(years=range(1960, 2020)))
     category = forms.ChoiceField(choices=StudentProfile.CATEGORY, label="Category")
     jee_air = forms.IntegerField(required=False, label="JEE AIR")
@@ -109,7 +109,7 @@ class CompanyRegisterForm(UserCreationForm):
     state = forms.CharField(max_length=15, required=False, label="State")
     country = forms.ChoiceField(choices=CompanyProfile.NATION, label="Country")
     pin_code = forms.CharField(max_length=10, required=False, label="Pin Code", validators=[validate_pincode])
-    contact = forms.CharField(max_length=20, required=True, label="Contact Number", validators=[validate_phone])
+    contact = forms.CharField(max_length=20, required=True, label="Contact Number")
 
     class Meta:
         model = User
