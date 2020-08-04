@@ -1,6 +1,35 @@
 import re
 from django.core.exceptions import ValidationError
-from django.core.validators import URLValidator
+from django.core.validators import URLValidator, RegexValidator
+
+
+def check_file_size(value):
+    limit = 3 * 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('File too large. Size should not exceed 3 MB.')
+
+
+validator_fn = [
+    RegexValidator(r'[A-Z]([A-Z]?)[0-9]{2}([A-Z]?)([A-Z]?)([A-Z]?)[0-9]{3}([0-9]?){4}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. B17CS006 ). "
+                   "This will be used to login "),
+    RegexValidator(r'[A-Z]{2}[0-9]{2}[A-Z]([A-Z]?)([a-z]?)[A-Z][0-9]{3}',
+                   "Enter your Roll number(in correct "
+                   "format like eg. MT19VSS006 ). "
+                   "This will be used to login ")
+]
+
+
+def regex_validators(value):
+    err = None
+    for validator in validator_fn:
+        try:
+            validator(value)
+            return value
+        except ValidationError as exc:
+            err = exc
+    raise err
 
 
 def validate_year(value):
