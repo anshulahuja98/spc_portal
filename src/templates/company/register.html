@@ -10,10 +10,9 @@
                 <form method="post">
                     <div class="red-text">
                         {{ form.non_field_errors }}
-                        {% for field in form %}
-                            {% if field.errors %}
-                                <li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-                        {% endfor %}
+                            {% if form.field.errors %}
+                                {{ field.errors|striptags }}
+                            {% endif %}
                     </div>
                     {% csrf_token %}
                     <div class="row">
@@ -23,6 +22,11 @@
                             <div class="md-form">
                                 <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                     {{ form.username }}
+                                    {% if form.username.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.username.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.username.id_for_label }}"
                                            for="{{ form.username.id_for_label }}" >{{ form.username.label }}</label>
                             </div>
@@ -30,6 +34,11 @@
                             <div class="md-form">
                                 <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                     {{ form.password1 }}
+                                    {% if form.password1.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password1.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.password1.id_for_label }}"
                                            for="{{ form.password1.id_for_label }}" >{{ form.password1.label }}</label>
                             </div>
@@ -37,6 +46,11 @@
                             <div class="md-form">
                                 <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                     {{ form.password2 }}
+                                    {% if form.password2.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password2.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.password2.id_for_label }}"
                                            for="{{ form.password2.id_for_label }}" >{{ form.password2.label }}</label>
                                 <p>
@@ -60,6 +74,11 @@
                             <div class="md-form">
                                 <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                     {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.name.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.name.id_for_label }}"
                                            for="{{ form.name.id_for_label }}" >{{ form.name.label }}</label>
                             </div>
@@ -67,6 +86,11 @@
                             <div class="md-form">
                                 <i class="fa fa-globe prefix" style="color: cornflowerblue"></i>
                                     {{ form.domain }}
+                                    {% if form.domain.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.domain.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.domain.id_for_label }}"
                                            for="{{ form.domain.id_for_label }}" >{{ form.domain.label }}</label>
                             </div>
@@ -74,13 +98,23 @@
                             <div class="md-form">
                                 <i class="fa fa-globe prefix" style="color: cornflowerblue"></i>
                                     {{ form.url }}
+                                    {% if form.url.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.url.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.url.id_for_label }}"
-                                           for="{{ form.url.id_for_label }}" >{{ form.url.label }}</label>
+                                           for="{{ form.url.id_for_label }}" >{{ form.url.label }} {{form.url.help_text}}</label>
                             </div>
                             <br>
                             <div class="md-form">
                                 <i class="fa fa-map-marker prefix" style="color: cornflowerblue"></i>
                                     {{ form.city }}
+                                    {% if form.city.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.city.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.city.id_for_label }}"
                                            for="{{ form.city.id_for_label }}" >{{ form.city.label }}</label>
                             </div>
@@ -88,6 +122,11 @@
                             <div class="md-form">
                                 <i class="fa fa-map-marker prefix" style="color: cornflowerblue"></i>
                                     {{ form.state }}
+                                    {% if form.state.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.state.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.state.id_for_label }}"
                                            for="{{ form.state.id_for_label }}" >{{ form.state.label }}</label>
                             </div>
@@ -101,6 +140,11 @@
                             <div class="md-form">
                                 <i class="fa fa-map-marker prefix" style="color: cornflowerblue"></i>
                                     {{ form.pin_code }}
+                                    {% if form.pin_code.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.pin_code.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.pin_code.id_for_label }}"
                                            for="{{ form.pin_code.id_for_label }}"  >{{ form.pin_code.label }}</label>
                             </div>
@@ -108,6 +152,11 @@
                             <div class="md-form">
                                 <i class="fa fa-phone prefix" style="color: cornflowerblue"></i>
                                     {{ form.contact }}
+                                    {% if form.contact.errors %}
+                                        <div class="red-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.contact.errors|striptags }}
+                                        </div>
+                                    {% endif %}
                                     <label id="{{ form.contact.id_for_label }}"
                                            for="{{ form.contact.id_for_label }}" >{{ form.contact.label }}</label>
                             </div>

@@ -11,10 +11,6 @@
                     {% csrf_token %}
                     <div class="red-text">
                         {{ form.non_field_errors }}
-                        {% for field in form %}
-                            {% if field.errors %}
-                                <li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-                        {% endfor %}
                     </div>
                     <div class="row">
                         <div class="col-lg-1"></div>
@@ -24,13 +20,28 @@
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.username }}
-                                        <label id="{{ form.username.id_for_label }}"
-                                               for="{{ form.username.id_for_label }}" >{{ form.username.label }}</label>
+                                        {% if form.username.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.username.errors|striptags }}
+                                            </div>
+                                        {% endif %}
+                                        <label
+                                            id="{{ form.username.id_for_label }}"
+                                            for="{{ form.username.id_for_label }}"
+                                        >
+                                                {{ form.username.label }}
+                                                ({{form.username.help_text}})
+                                        </label>
                                 </div>
                                 <br>
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.first_name }}
+                                        {% if form.first_name.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.first_name.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.first_name.id_for_label }}"
                                                for="{{ form.first_name.id_for_label }}" >{{ form.first_name.label }}</label>
                                 </div>
@@ -38,6 +49,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-user prefix" style="color: cornflowerblue"></i>
                                         {{ form.last_name }}
+                                        {% if form.last_name.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.last_name.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.last_name.id_for_label }}"
                                                for="{{ form.last_name.id_for_label }}" >{{ form.last_name.label }}</label>
                                 </div>
@@ -45,6 +61,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                         {{ form.password1 }}
+                                        {% if form.password1.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password1.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.password1.id_for_label }}"
                                                for="{{ form.password1.id_for_label }}" >{{ form.password1.label }}</label>
                                 </div>
@@ -52,6 +73,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-key prefix" style="color: cornflowerblue"></i>
                                         {{ form.password2 }}
+                                        {% if form.password2.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password2.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.password2.id_for_label }}"
                                                for="{{ form.password2.id_for_label }}" >{{ form.password2.label }}</label>
                                 </div>
@@ -73,6 +99,11 @@
                                 <div class="md-form">
                                     <i  class="fa fa-envelope prefix" style="color: cornflowerblue"></i>
                                         {{ form.email }}
+                                        {% if form.email.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.email.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.email.id_for_label }}"
                                                for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
                                 </div>
@@ -80,6 +111,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.year }}
+                                        {% if form.year.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.year.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.year.id_for_label }}"
                                                for="{{ form.year.id_for_label }}">{{ form.year.label }}</label>
                                 </div>
@@ -98,6 +134,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.gpa }}
+                                        {% if form.gpa.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.contact.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.gpa.id_for_label }}"
                                                for="{{ form.gpa.id_for_label }}" >{{ form.gpa.label }}</label>
                                 </div>
@@ -109,6 +150,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.ug_gpa }}
+                                        {% if form.ug_gpa.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.ug_gpa.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.ug_gpa.id_for_label }}"
                                                for="{{ form.ug_gpa.id_for_label }}" >{{ form.ug_gpa.label }}</label>
                                 </div>
@@ -116,6 +162,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-phone prefix" style="color: cornflowerblue"></i>
                                         {{ form.phone }}
+                                        {% if form.phone.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.phone.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.phone.id_for_label }}"
                                                for="{{ form.phone.id_for_label }}" >{{ form.phone.label }}</label>
                                 </div>
@@ -138,6 +189,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
                                         {{ form.jee_air }}
+                                        {% if form.jee_air.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.jee_air.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.jee_air.id_for_label }}"
                                                for="{{ form.jee_air.id_for_label }}" >{{ form.jee_air.label }}</label>
                                 </div>
@@ -157,6 +213,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
                                         {{ form.permanent_address }}
+                                        {% if form.permanent_address.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.permanent_address.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.permanent_address.id_for_label }}"
                                                for="{{ form.permanent_address.id_for_label }}" >{{ form.permanent_address.label }}</label>
                                 </div>
@@ -164,6 +225,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-home prefix" style="color: cornflowerblue"></i>
                                         {{ form.current_address }}
+                                        {% if form.current_address.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.current_address.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.current_address.id_for_label }}"
                                                for="{{ form.current_address.id_for_label }}" >{{ form.current_address.label }}</label>
                                 </div>
@@ -171,6 +237,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_year }}
+                                        {% if form.x_year.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.x_year.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.x_year.id_for_label }}"
                                                for="{{ form.x_year.id_for_label }}" >{{ form.x_year.label }}</label>
                                 </div>
@@ -178,6 +249,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_board_name }}
+                                        {% if form.x_board_name.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.x_board_name.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.x_board_name.id_for_label }}"
                                                for="{{ form.x_board_name.id_for_label }}" >{{ form.x_board_name.label }}</label>
                                 </div>
@@ -185,6 +261,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.x_percentage }}
+                                        {% if form.x_percentage.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.x_percentage.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.x_percentage.id_for_label }}"
                                                for="{{ form.x_percentage.id_for_label }}" >{{ form.x_percentage.label }}</label>
                                 </div>
@@ -192,6 +273,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_year }}
+                                        {% if form.xii_year.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.xii_year.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.xii_year.id_for_label }}"
                                                for="{{ form.xii_year.id_for_label }}" >{{ form.xii_year.label }}</label>
                                 </div>
@@ -199,6 +285,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-calendar prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_board_name }}
+                                        {% if form.xii_board_name.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.xii_board_name.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.xii_board_name.id_for_label }}"
                                                for="{{ form.xii_board_name.id_for_label }}" >{{ form.xii_board_name.label }}</label>
                                 </div>
@@ -206,6 +297,11 @@
                                 <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                         {{ form.xii_percentage }}
+                                        {% if form.xii_percentage.errors %}
+                                            <div class="red-text">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.xii_percentage.errors|striptags }}
+                                            </div>
+                                        {% endif %}
                                         <label id="{{ form.xii_percentage.id_for_label }}"
                                                for="{{ form.xii_percentage.id_for_label }}" >{{ form.xii_percentage.label }}</label>
                                 </div>
@@ -381,6 +477,7 @@
                 register_form.style.display = "block";
             }
         }*/
+
         function show() {
             var condition = document.getElementById("agree");
             if (condition.checked) {
