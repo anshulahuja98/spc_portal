@@ -4,6 +4,7 @@ from django.views.generic import CreateView
 from .forms import StudentRegisterForm, CompanyRegisterForm
 from accounts.models import StudentProfile, CompanyProfile
 from main.views import HomepageView
+from django.conf import settings
 
 
 class LoginView(DefaultLoginView, HomepageView):
@@ -31,7 +32,8 @@ class StudentRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         StudentRegisterFormView.create_profile(user, **form.cleaned_data)
-        StudentProfile.student_register_email(StudentProfile.objects.get(user=user))
+        if settings.SEND_EMAIL is True:
+            StudentProfile.student_register_email(StudentProfile.objects.get(user=user))
         return super(StudentRegisterFormView, self).form_valid(form)
 
     @staticmethod
@@ -69,8 +71,9 @@ class CompanyRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         CompanyRegisterFormView.create_profile(user, **form.cleaned_data)
-        CompanyProfile.company_register_email(CompanyProfile.objects.get(user=user))
-        CompanyProfile.company_details_email(CompanyProfile.objects.get(user=user))
+        if settings.SEND_EMAIL is True:
+            CompanyProfile.company_register_email(CompanyProfile.objects.get(user=user))
+            CompanyProfile.company_details_email(CompanyProfile.objects.get(user=user))
         return super(CompanyRegisterFormView, self).form_valid(form)
 
     @staticmethod
