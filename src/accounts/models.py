@@ -65,8 +65,7 @@ class StudentProfile(models.Model):
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
                                              connection=connection)
             message.attach_alternative(html_content, "text/html")
-            if settings.SEND_EMAIL is True:
-                message.send()
+            message.send()
 
     def __str__(self):
         return self.user.get_full_name()
@@ -126,8 +125,7 @@ class CompanyProfile(models.Model):
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
                                              connection=connection)
             message.attach_alternative(html_content, "text/html")
-            if settings.SEND_EMAIL is True:
-                message.send()
+            message.send()
 
     def company_details_email(self):
         from_email = settings.SPC_EMAIL
@@ -146,8 +144,7 @@ class CompanyProfile(models.Model):
             message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
                                              connection=connection)
             message.attach_alternative(html_content, "text/html")
-            if settings.SEND_EMAIL is True:
-                message.send()
+            message.send()
 
 
 class CompanyPerson(models.Model):
