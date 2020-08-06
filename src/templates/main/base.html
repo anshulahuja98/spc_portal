@@ -73,7 +73,7 @@
                                                 aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px">{{ navbaroption.title }}</a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 {% for suboption in navbaroption.sub_options.all %}
-                                                <a class="dropdown-item"
+                                                <a style="min-width:10.5rem;white-space: break-spaces;" class="dropdown-item"
                                                     href="{{ suboption.get_absolute_url }}">{{ suboption.title }}</a>
                                                 {% endfor %}
                                             </div>
@@ -83,7 +83,7 @@
                                             <a class="nav-link dropdown-toggle" id="dropdownMenu1"
                                                 data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px " >Login</a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <div style="min-width: 9rem;" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 <a class="dropdown-item" href="{% url 'login' %}">Recruiter Login</a>
                                                 <a class="dropdown-item" href="{% url 'login' %}">Student Login</a>
                                             </div>
