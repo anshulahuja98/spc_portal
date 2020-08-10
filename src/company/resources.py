@@ -117,7 +117,7 @@ class BaseAdvertisementResource(resources.ModelResource):
     class Meta:
         abstract = True
         fields = (
-            'company', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
             'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
@@ -125,7 +125,7 @@ class BaseAdvertisementResource(resources.ModelResource):
             'min_gpa', 'number_of_members', 'other_details',)
 
         export_order = (
-            'company', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
             'tentative_job_location', 'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
