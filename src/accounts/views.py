@@ -32,7 +32,7 @@ class StudentRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         StudentRegisterFormView.create_profile(user, **form.cleaned_data)
-        if settings.SEND_EMAIL is True:
+        if settings.SEND_EMAIL_STUDENT is True:
             StudentProfile.student_register_email(StudentProfile.objects.get(user=user))
         return super(StudentRegisterFormView, self).form_valid(form)
 
@@ -71,8 +71,9 @@ class CompanyRegisterFormView(CreateView):
     def form_valid(self, form):
         user = form.save()
         CompanyRegisterFormView.create_profile(user, **form.cleaned_data)
-        if settings.SEND_EMAIL is True:
+        if settings.SEND_EMAIL_COMPANY is True:
             CompanyProfile.company_register_email(CompanyProfile.objects.get(user=user))
+        if settings.SEND_EMAIL_COMPANY_DETAILS is True:
             CompanyProfile.company_details_email(CompanyProfile.objects.get(user=user))
         return super(CompanyRegisterFormView, self).form_valid(form)
 

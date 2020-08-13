@@ -109,3 +109,4 @@ spc_portal_venv/
 # mypy
 .mypy_cache/
 .DS_Store
+src/student_images
