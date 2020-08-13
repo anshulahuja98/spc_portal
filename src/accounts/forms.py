@@ -5,7 +5,7 @@ from django.contrib.auth import password_validation
 from django.contrib.auth.forms import UserCreationForm
 from .models import CompanyProfile, StudentProfile
 from student.models import ProgramAndBranch
-from .validators import  check_file_size, regex_validators
+from .validators import check_file_size, regex_validators
 
 
 class ResumeForm(forms.ModelForm):
