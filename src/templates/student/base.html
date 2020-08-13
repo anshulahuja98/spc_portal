@@ -107,11 +107,11 @@
 
                     {# New Mtech#}
                     {% if request.user.username.0 == 'M' and request.user.username.1 == 'T' %}
-                    {% if request.user.username.3 == '9' %}
+                    {% if request.user.username.3 == '0' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
                     </li>
-                    {% elif request.user.username.3 <= '8' %}
+                    {% elif request.user.username.3 <= '9' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                     </li>
