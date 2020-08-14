@@ -34,11 +34,12 @@ class StudentDetailsUpdateForm(forms.ModelForm):
     class Meta:
         model = StudentProfile
         fields = (
-            'roll_no', 'gpa', 'ug_gpa', 'phone', 'dob', 'category', 'jee_air',
+            'roll_no', 'year', 'gpa', 'ug_gpa', 'phone', 'dob', 'category', 'jee_air',
             'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name', 'xii_percentage',
             'current_address', 'permanent_address', 'nationality', 'physical_disability',
         )
     roll_no = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly', 'style': 'color: black;'}))
+    year = forms.IntegerField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     gpa = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     ug_gpa = forms.FloatField(required=False, widget=forms.TextInput(attrs={'style': 'color: black;'}))
     x_year = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
@@ -54,6 +55,7 @@ class StudentDetailsUpdateForm(forms.ModelForm):
     permanent_address = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
 
     if(settings.ALLOW_DETAILS_UPDATE):
+        year.widget.attrs['readonly'] = False
         gpa.widget.attrs['readonly'] = False
         ug_gpa.widget.attrs['readonly'] = False
         x_year.widget.attrs['readonly'] = False
@@ -68,6 +70,7 @@ class StudentDetailsUpdateForm(forms.ModelForm):
         xii_percentage.widget.attrs['readonly'] = False
         permanent_address.widget.attrs['readonly'] = False
     else:
+        year.widget.attrs['readonly'] = True
         gpa.widget.attrs['readonly'] = True
         ug_gpa.widget.attrs['readonly'] = True
         x_year.widget.attrs['readonly'] = True
