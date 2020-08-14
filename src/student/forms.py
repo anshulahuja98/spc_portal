@@ -40,7 +40,7 @@ class StudentDetailsUpdateForm(forms.ModelForm):
         )
     roll_no = forms.CharField(widget=forms.TextInput(attrs={'readonly': 'readonly', 'style': 'color: black;'}))
     gpa = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
-    ug_gpa = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
+    ug_gpa = forms.FloatField(required=False, widget=forms.TextInput(attrs={'style': 'color: black;'}))
     x_year = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     x_board_name = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     x_percentage = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
