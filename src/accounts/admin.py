@@ -85,7 +85,7 @@ class ResumeAdmin(admin.ModelAdmin):
     ordering = ['student', ]
     list_display = ['get_roll_no', 'student', 'get_gpa', 'reference', 'file', 'is_verified', 'timestamp', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
-    list_filter = ['is_verified', 'timestamp']
+    list_filter = ['is_verified', 'timestamp', 'student__program_branch', 'student__year']
     actions = [approve_resumes, unapprove_resumes]
 
     def get_roll_no(self, instance):
