@@ -11,7 +11,7 @@
                         <table class="table table-striped" style="border:1rem;">
                             <thead class="lighten-4">
                             <tr><span class="red-text">{{form.errors}}
-                                You can upload a maximum of 5 Resume which cannot be edited later<br>
+                                You can upload a maximum of 7 Resume which cannot be edited later<br>
                             ** After uploading, please click the corresponding RESUME button to check if resume is properly uploaded</span></tr>
                             <tr>
                                 <th class="theader">S.No</th>
@@ -43,7 +43,7 @@
                         </table>
                     </div>
                     <br><br>
-                    {% if resume_list.count < 5 %}
+                    {% if resume_list.count < 7 %}
                         <form method="post" id="new_resume_upload" enctype=multipart/form-data>
                             {% csrf_token %}
                             <hr>
