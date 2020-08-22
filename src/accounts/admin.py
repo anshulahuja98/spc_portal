@@ -90,9 +90,11 @@ class ResumeAdmin(admin.ModelAdmin):
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
+    get_roll_no.admin_order_field = 'student__roll_no'
 
     def get_gpa(self, instance):
         return instance.student.gpa
+    get_gpa.admin_order_field = 'student__gpa'
 
     class Meta:
         model = Resume
