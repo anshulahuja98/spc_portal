@@ -50,7 +50,7 @@ class StudentDetailsUpdateForm(forms.ModelForm):
     xii_percentage = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     phone = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     dob = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
-    jee_air = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
+    jee_air = forms.IntegerField(required=False, widget=forms.TextInput(attrs={'style': 'color: black;'}))
     current_address = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
     permanent_address = forms.CharField(widget=forms.TextInput(attrs={'style': 'color: black;'}))
 
