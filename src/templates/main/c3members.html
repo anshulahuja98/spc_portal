@@ -16,6 +16,18 @@
 <hr style="width: 25rem;">
 
 <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
+        style="font-size: 1.75rem"> &nbsp;FACULTY INCHARGE</span></div>
+
+<hr style="width: 25rem;">
+{% for c3member in c3members %}
+{% if c3member.designation == '4' %}
+{% include 'main/mixins/c3member_card_mixin.html' %}
+{% endif %}
+{% endfor %}
+<br>
+<hr style="width: 25rem;">
+
+<div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
         style="font-size: 1.75rem"> &nbsp;CONVENER </span></div>
 
 <hr style="width: 25rem;">
