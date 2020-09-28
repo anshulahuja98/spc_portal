@@ -19,7 +19,7 @@
     <hr style="width: 25rem;">
 <div class="row" style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
-    {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3' or  contact.designation == '10'%}
+    {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3' or  contact.designation == '10' or contact.designation == '11'%}
     {% include 'main/mixins/contact_card_mixin.html' %}
     {% endif %}
     {% endfor %}

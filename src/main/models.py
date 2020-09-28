@@ -45,6 +45,7 @@ class CoreTeamContacts(models.Model):
         ('8', 'Internship Co-ordinator'),
         ('9', 'PG Representative'),
         ('10', 'Faculty Incharge'),
+        ('11', 'Senior Assistant')
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
