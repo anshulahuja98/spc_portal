@@ -17,9 +17,18 @@
     <div class="body-header text-center text-black"><span style="font-size: 1.5rem"><i class="fa fa-bars"></i></span><span
             style="font-size: 1.75rem"> &nbsp; PLACEMENT TEAM </span></div>
     <hr style="width: 25rem;">
+    <div class="row"style="margin-left: 0.15rem; margin-right: 0.15rem">
+    {% for contact in contacts %}
+    {% if contact.designation == '10' %}
+    {% include 'main/mixins/contact_card_mixin.html' %}
+    {% endif %}
+    {% endfor %}
+</div>
+<br>
+<hr style="width: 25rem;">
 <div class="row" style="margin-left: 0.15rem; margin-right: 0.15rem">
     {% for contact in contacts %}
-    {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3' or  contact.designation == '10' or contact.designation == '11'%}
+    {% if contact.designation == '1' or contact.designation == '2' or contact.designation == '3' or contact.designation == '11'%}
     {% include 'main/mixins/contact_card_mixin.html' %}
     {% endif %}
     {% endfor %}
