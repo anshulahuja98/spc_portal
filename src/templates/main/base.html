@@ -12,22 +12,18 @@
     <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/style1.css' %} " rel="stylesheet">
     <link rel="icon" href="{% static 'img/iitj.png' %}">
-        <style media="screen">
-    @media only screen and (max-width: 500px) {
-      .cdc-logo {
-        margin-right: 0;
-      }
-      .media-body {
-        margin-left: 0;
-      }
-      .title {
-        margin-right: 1.5rem;
 
-      }
-      #cdc-heading {
-        margin-top: 2.5rem;
-      }
-    }
+    <style>
+        .media-body{
+            margin-right: 5px;
+        }
+        @media only screen and (max-width:330px){
+            .logo{
+                height: 4.5rem;
+                
+            }
+            
+        }
     </style>
     <!--    Google Font APIs-->
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
@@ -45,10 +41,10 @@
         <div class="container-fluid" style="width: 100%">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="media">
-                        <a class="navbar-brand cdc-logo" href="/">
-
-                            <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo">
+                    <div class="media" style="flex-flow: wrap; justify-content: center">
+                        <a class="navbar-brand cdc-logo" style="margin-right: 0rem" href="/">
+                            <img src="{% static '/img/iitj.png' %}" alt="IIT Jodhpur" class="logo">
+                            <img src="{% static '/img/cdclogo.png' %}" alt="CDC" class="logo">
                         </a>
 
                         <div class="media-body pt-1 pl-3">
