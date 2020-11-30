@@ -1,6 +1,6 @@
 from import_export import resources
 from import_export.fields import Field
-from .models import CompanyProfile, StudentProfile
+from .models import CompanyProfile, StudentProfile, CompanyPerson
 
 
 class CompanyProfileResource(resources.ModelResource):
@@ -12,6 +12,23 @@ class CompanyProfileResource(resources.ModelResource):
     class Meta:
         model = CompanyProfile
         fields = ('name', 'domain', 'url', 'city', 'pin_code',)
+
+
+class CompanyPersonResource(resources.ModelResource):
+    company__country = Field(
+        column_name='Country',
+        attribute='get_country_display',
+    )
+
+    class Meta:
+        model = CompanyPerson
+        fields = (
+            'company__country', 'company__name', 'company__domain', 'company__url', 'company__city',
+            'company__pin_code', 'name', 'designation', 'phone', 'email')
+        export_order = (
+            'company__country', 'company__name', 'company__domain', 'company__url', 'company__city',
+            'company__pin_code', 'name', 'designation', 'email', 'phone',
+        )
 
 
 class StudentProfileResource(resources.ModelResource):
