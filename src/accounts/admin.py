@@ -82,8 +82,8 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
 @admin.register(CompanyPerson)
 class CompanyPersonAdmin(ImportExportActionModelAdmin):
     resource_class = CompanyPersonResource
-    list_display = ['name', 'designation', 'company', 'company_domain', 'phone', 'email',]
-    list_filter = ['company', 'designation',]
+    list_display = ['name', 'designation', 'company', 'company_domain', 'phone', 'email']
+    list_filter = ['company', 'designation']
     search_fields = ['name', 'company', 'designation']
 
     def company_domain(self, instance):
