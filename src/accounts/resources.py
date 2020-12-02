@@ -24,7 +24,7 @@ class CompanyPersonResource(resources.ModelResource):
         model = CompanyPerson
         fields = (
             'company__country', 'company__name', 'company__domain', 'company__url', 'company__city',
-            'company__pin_code', 'name', 'designation', 'phone', 'email')
+            'company__pin_code', 'name', 'designation', 'phone', 'email', )
         export_order = (
             'company__country', 'company__name', 'company__domain', 'company__url', 'company__city',
             'company__pin_code', 'name', 'designation', 'email', 'phone',

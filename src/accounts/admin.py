@@ -1,7 +1,7 @@
 from django.contrib import admin
 from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement
 from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
-from .resources import StudentProfileResource, CompanyPersonResource
+from .resources import CompanyProfileResource, StudentProfileResource, CompanyPersonResource
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -68,7 +68,7 @@ class StudentProfileAdmin(ImportExportActionModelAdmin):
 @admin.register(CompanyProfile)
 class CompanyProfileAdmin(ImportExportActionModelAdmin):
     readonly_fields = ['registration_timestamp', ]
-    resource_class = CompanyPersonResource
+    resource_class = CompanyProfileResource
     inlines = (CompanyPersonInline, JobOfferInline, InternshipOfferInline,)
     list_display = ['name', 'domain', 'url', 'registration_timestamp']
     list_filter = ['domain', 'registration_timestamp']
@@ -76,6 +76,21 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
 
     class Meta:
         model = CompanyProfile
+        fields = '__all__'
+
+
+@admin.register(CompanyPerson)
+class CompanyPersonAdmin(ImportExportActionModelAdmin):
+    resource_class = CompanyPersonResource
+    list_display = ['name', 'designation', 'company', 'company_domain', 'phone', 'email',]
+    list_filter = ['company', 'designation',]
+    search_fields = ['name', 'company', 'designation']
+
+    def company_domain(self, instance):
+        return instance.company.get_company_domain()
+
+    class Meta:
+        model = CompanyPerson
         fields = '__all__'
 
 
