@@ -15,11 +15,6 @@ class CompanyProfileResource(resources.ModelResource):
 
 
 class CompanyPersonResource(resources.ModelResource):
-    company__country = Field(
-        column_name='Country',
-        attribute='get_country_display',
-    )
-
     class Meta:
         model = CompanyPerson
         fields = (

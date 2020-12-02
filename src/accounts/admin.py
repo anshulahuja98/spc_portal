@@ -87,7 +87,7 @@ class CompanyPersonAdmin(ImportExportActionModelAdmin):
     search_fields = ['name', 'company', 'designation']
 
     def company_domain(self, instance):
-        return instance.company.get_company_domain()
+        return instance.company.domain
 
     class Meta:
         model = CompanyPerson
