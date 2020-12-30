@@ -95,7 +95,7 @@ class BaseOfferResource(resources.ModelResource):
         abstract = True
         fields = ('company', 'is_accepted', 'ppo',)
         export_order = ('student_applied_offers', 'resume_link',
-                        'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa','ug_gpa',
+                        'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
