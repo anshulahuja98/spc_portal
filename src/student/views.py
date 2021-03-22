@@ -7,6 +7,10 @@ from accounts.forms import ResumeForm
 from .forms import InternshipOfferForm, JobOfferForm, StudentDetailsUpdateForm
 from django.shortcuts import HttpResponseRedirect
 
+from django.conf import settings
+from django.core.mail import get_connection, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 class StudentProfileRequiredMixin(LoginRequiredMixin):
     """Verify that the current user is authenticated."""
@@ -188,3 +192,41 @@ class ResumeView(StudentProfileRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         view = ResumeUploadFormView.as_view()
         return view(request, *args, **kwargs)
+
+class FeedbackFormView(View):
+    def get(self, request):
+        return render(request, 'student/feedback.html')
+    def post(self, request):
+        user = request.user
+        student_profile = get_object_or_404(StudentProfile, user=self.request.user)
+        user_first_name = user.first_name
+        user_last_name = user.last_name
+        user_roll_no = student_profile.roll_no
+        user_branch = student_profile.program_branch.name
+        user_email = user.email
+        feedback_type = request.POST['feedback_type']
+        feedback_subject = request.POST['subject']
+        feedback_text = request.POST['feedback_text']
+
+        if (feedback_type == "Complaint"):
+            send_to_email = settings.COMPLAINT_RECIPIENT_EMAIL
+        else:
+            send_to_email = settings.SUGGESTION_RECIPIENT_EMAIL
+
+        from_email = settings.FEEDBACK_SENDER_EMAIL
+        
+        with get_connection(
+                username=from_email,
+                password=settings.FEEDBACK_SENDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_subject
+            to_email = [send_to_email, ]
+            html_content = render_to_string("student/feedback_email_template.html",
+                                            {'name': user_first_name + " " + user_last_name,'branch': user_branch, 'roll_no': user_roll_no, 'email': user_email, 'feedback_type': feedback_type, 'feedback_text': feedback_text})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        return redirect('/student/feedback/')
