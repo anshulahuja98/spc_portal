@@ -27,6 +27,13 @@
                                 <br>
                                 <br>
                                 <div class="md-form">
+                                    <i class="fa fa-graduation-cap prefix" style="color: cornflowerblue"></i>
+                                    {{ form.year }}
+                                        <label id="{{ form.year.id_for_label }}"
+                                               for="{{ form.year.id_for_label }}" >{{ form.year.label }}</label>
+                                </div>
+                                <br>
+                                <div class="md-form">
                                     <i class="fa fa-percent prefix" style="color: cornflowerblue"></i>
                                     {{ form.gpa }}
                                         <label id="{{ form.gpa.id_for_label }}"

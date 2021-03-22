@@ -74,7 +74,7 @@ class BaseOffer(models.Model):
     company = models.ForeignKey(CompanyProfile, on_delete=models.SET_NULL, null=True)
     is_accepted = models.BooleanField(default=False)
     ppo = models.BooleanField(default=False)
-    resume = models.ForeignKey(Resume, on_delete=models.SET_NULL, null=True)
+    resume = models.ForeignKey(Resume, on_delete=models.PROTECT, null=True)
     application_timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     @property

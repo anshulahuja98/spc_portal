@@ -33,6 +33,9 @@ class BaseOfferResource(resources.ModelResource):
     gpa = Field(
         column_name='GPA',
         attribute='student__gpa')
+    ug_gpa = Field(
+        column_name='UG GPA',
+        attribute='student__ug_gpa')
     phone = Field(
         column_name='Phone Number',
         attribute='student__phone')
@@ -92,7 +95,7 @@ class BaseOfferResource(resources.ModelResource):
         abstract = True
         fields = ('company', 'is_accepted', 'ppo',)
         export_order = ('student_applied_offers', 'resume_link',
-                        'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa',
+                        'company', 'designation', 'roll_no', 'name', 'email', 'dob', 'year', 'program_branch', 'gpa', 'ug_gpa',
                         'phone',
                         'category',
                         'jee_air', 'x_year', 'x_board_name', 'x_percentage', 'xii_year', 'xii_board_name',
@@ -117,7 +120,7 @@ class BaseAdvertisementResource(resources.ModelResource):
     class Meta:
         abstract = True
         fields = (
-            'company', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'tentative_job_location',
             'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',
@@ -125,7 +128,7 @@ class BaseAdvertisementResource(resources.ModelResource):
             'min_gpa', 'number_of_members', 'other_details',)
 
         export_order = (
-            'company', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
+            'company__name', 'designation', 'description', 'tentative_join_date', 'eligible_program_branch', 'min_gpa',
             'tentative_job_location', 'ctc', 'gross_salary', 'bonus', 'bond', 'bond_details', 'resume_required',
             'resume_shortlist_criteria', 'aptitude_test_required', 'group_discussion_required',
             'number_of_technical_interviews', 'number_of_technical_tests', 'number_of_hr_rounds',

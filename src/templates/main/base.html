@@ -12,6 +12,19 @@
     <link href="{% static '/css/mdb.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/style1.css' %} " rel="stylesheet">
     <link rel="icon" href="{% static 'img/iitj.png' %}">
+
+    <style>
+        .media-body{
+            margin-right: 5px;
+        }
+        @media only screen and (max-width:330px){
+            .logo{
+                height: 4.5rem;
+                
+            }
+            
+        }
+    </style>
     <!--    Google Font APIs-->
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
@@ -28,10 +41,10 @@
         <div class="container-fluid" style="width: 100%">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="media">
-                        <a class="navbar-brand" href="/">
-
-                            <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo">
+                    <div class="media" style="flex-flow: wrap; justify-content: center">
+                        <a class="navbar-brand cdc-logo" style="margin-right: 0rem" href="/">
+                            <img src="{% static '/img/iitj.png' %}" alt="IIT Jodhpur" class="logo">
+                            <img src="{% static '/img/cdclogo.png' %}" alt="CDC" class="logo">
                         </a>
 
                         <div class="media-body pt-1 pl-3">
@@ -56,7 +69,7 @@
                                                 aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px">{{ navbaroption.title }}</a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 {% for suboption in navbaroption.sub_options.all %}
-                                                <a class="dropdown-item"
+                                                <a style="min-width:10.5rem;white-space: break-spaces;" class="dropdown-item"
                                                     href="{{ suboption.get_absolute_url }}">{{ suboption.title }}</a>
                                                 {% endfor %}
                                             </div>
@@ -66,7 +79,7 @@
                                             <a class="nav-link dropdown-toggle" id="dropdownMenu1"
                                                 data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false" style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px " >Login</a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <div style="min-width: 9rem;" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 <a class="dropdown-item" href="{% url 'login' %}">Recruiter Login</a>
                                                 <a class="dropdown-item" href="{% url 'login' %}">Student Login</a>
                                             </div>
@@ -76,13 +89,14 @@
 
                                 </div>
                             </div>
-                            <h2 class="heading">
+                            <div class="title">
+                            <h2 class="heading" id="cdc-heading">
                                 <a href="http://spc.iitj.ac.in/">
                                     Career Development Cell
                                 </a>
                             </h2>
                             <h4 class="heading" style="color: black; font-family: 'Poppins', sans-serif; font-size: larger">Indian Institute of Technology Jodhpur</h4>
-
+                            </div>
                         </div>
                     </div>
                 </div>

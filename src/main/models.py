@@ -44,6 +44,8 @@ class CoreTeamContacts(models.Model):
         ('7', 'Web Development Team'),
         ('8', 'Internship Co-ordinator'),
         ('9', 'PG Representative'),
+        ('10', 'Faculty Incharge'),
+        ('11', 'Senior Assistant')
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     designation = models.CharField(max_length=64, choices=DESIGNATION_CHOICES)
@@ -113,6 +115,7 @@ class CareerCommittee(models.Model):
         ('1', 'Chairman'),
         ('2', 'Convenor'),
         ('3', 'Members'),
+        ('4', 'Faculty Incharge'),
     )
     name = models.CharField(max_length=64, blank=False, null=False, default='Member')
     email = models.EmailField(max_length=32, blank=False, null=False, default='member@gmail.com')

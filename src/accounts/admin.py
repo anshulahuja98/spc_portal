@@ -1,7 +1,7 @@
 from django.contrib import admin
 from company.models import JobOffer, InternshipOffer, JobAdvertisement, InternshipAdvertisement
 from accounts.models import StudentProfile, CompanyPerson, CompanyProfile, Resume
-from .resources import CompanyProfileResource, StudentProfileResource
+from .resources import CompanyProfileResource, StudentProfileResource, CompanyPersonResource
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -79,20 +79,37 @@ class CompanyProfileAdmin(ImportExportActionModelAdmin):
         fields = '__all__'
 
 
+@admin.register(CompanyPerson)
+class CompanyPersonAdmin(ImportExportActionModelAdmin):
+    resource_class = CompanyPersonResource
+    list_display = ['name', 'designation', 'company', 'company_domain', 'phone', 'email']
+    list_filter = ['company', 'designation']
+    search_fields = ['name', 'company', 'designation']
+
+    def company_domain(self, instance):
+        return instance.company.domain
+
+    class Meta:
+        model = CompanyPerson
+        fields = '__all__'
+
+
 @admin.register(Resume)
 class ResumeAdmin(admin.ModelAdmin):
     readonly_fields = ['timestamp', ]
     ordering = ['student', ]
     list_display = ['get_roll_no', 'student', 'get_gpa', 'reference', 'file', 'is_verified', 'timestamp', ]
     search_fields = ['student__user__first_name', 'student__user__last_name', 'student__user__username']
-    list_filter = ['is_verified', 'timestamp']
+    list_filter = ['is_verified', 'timestamp', 'student__program_branch', 'student__year']
     actions = [approve_resumes, unapprove_resumes]
 
     def get_roll_no(self, instance):
         return instance.student.roll_no
+    get_roll_no.admin_order_field = 'student__roll_no'
 
     def get_gpa(self, instance):
         return instance.student.gpa
+    get_gpa.admin_order_field = 'student__gpa'
 
     class Meta:
         model = Resume

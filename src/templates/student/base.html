@@ -43,8 +43,11 @@
                      style="margin-left: auto; margin-bottom: 1px; margin-top: 1rem; margin-right: auto;">
                     <a class="thumbnail pull-left">
                         &nbsp &nbsp
-                        <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo"
+                       
+                        <img src="{% static '/img/cdclogo.png' %}" alt="IIT Jodhpur" class="logo",href="/",
                              style="height:5rem; width:auto;">
+                            
+
                     </a>
                     <div class="media-body" style="margin-left:10px; margin-top: 10px;">
                         <a href="http://iitj.ac.in/" class=" pull-right" style="margin-right: 0.5rem"
@@ -77,12 +80,12 @@
                     </li>
                     {# BTech#}
                     {% if request.user.username.0 == 'B' %}
-                    {% if request.user.username.2 == '7' %}
+                    {% if request.user.username.2 == '8' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern
                             Offers</a>
                     </li>
-                    {% elif request.user.username.2 <= '6' %}
+                    {% elif request.user.username.2 <= '7' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job
                             Offers</a>
@@ -91,11 +94,11 @@
                     {% endif %}
                     {# Mtech#}
                     {% if request.user.username.0 == 'M' and request.user.username.1 != 'T' %}
-                    {% if request.user.username.2 == '9' %}
+                    {% if request.user.username.2 == '0' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
                     </li>
-                    {% elif request.user.username.2 <= '8' %}
+                    {% elif request.user.username.2 <= '9' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                     </li>
@@ -104,11 +107,11 @@
 
                     {# New Mtech#}
                     {% if request.user.username.0 == 'M' and request.user.username.1 == 'T' %}
-                    {% if request.user.username.3 == '9' %}
+                    {% if request.user.username.3 == '0' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:intern-offers' %}" style="color: black">View Intern Offers</a>
                     </li>
-                    {% elif request.user.username.3 <= '8' %}
+                    {% elif request.user.username.3 <= '9' %}
                     <li class="nav-item hoverable">
                         <a class="nav-link" href="{% url 'student:job-offers' %}" style="color: black">View Job Offers</a>
                     </li>
