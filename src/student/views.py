@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView, FormView, CreateView, View
 from accounts.models import StudentProfile, Resume
