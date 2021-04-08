@@ -14,6 +14,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.contrib import messages
 
+
 class StudentProfileRequiredMixin(LoginRequiredMixin):
     """Verify that the current user is authenticated."""
 
@@ -241,7 +242,7 @@ class ComplaintsFormView(View):
                                              cc=cc, connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
-        
+
         # Confirmation mail to user
         from_success_email = settings.FEEDBACK_RESPONDER_EMAIL
         with get_connection(
@@ -257,8 +258,8 @@ class ComplaintsFormView(View):
                                              connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
-        
-        message_text =  "Your "+ feedback_type.lower() +" has been submitted."
+
+        message_text = "Your " + feedback_type.lower() + " has been submitted."
         messages.success(request, message_text)
 
         return redirect('/student/complaint/')
@@ -315,8 +316,8 @@ class SuggestionsFormView(View):
                                              connection=connection)
             message.attach_alternative(html_content, "text/html")
             message.send()
-        
-        message_text =  "Your "+ feedback_type.lower() +" has been submitted."
+
+        message_text = "Your " + feedback_type.lower() + " has been submitted."
         messages.success(request, message_text)
 
         return redirect('/student/suggestion/')
