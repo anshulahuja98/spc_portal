@@ -197,9 +197,9 @@ class ResumeView(StudentProfileRequiredMixin, View):
         return view(request, *args, **kwargs)
 
 
-class ComplaintsFormView(View):
+class InquirysFormView(View):
     def get(self, request):
-        return render(request, 'student/complaint.html')
+        return render(request, 'student/inquiry.html')
 
     def post(self, request):
         user = request.user
@@ -212,18 +212,18 @@ class ComplaintsFormView(View):
         send_mail_to = request.POST['send_mail_to']
         feedback_subject = request.POST['subject']
         feedback_text = request.POST['feedback_text']
-        feedback_type = 'Complaint'
+        feedback_type = 'Inquiry'
 
         if (send_mail_to == "Chemistry"):
-            send_to_email = 'noreply@localhost.com'
+            send_to_email = 'ananya@iitj.ac.in'
         elif (send_mail_to == "Civil and Infrastructure Engineering"):
-            send_to_email = 'noreply@localhost.com'
+            send_to_email = 'pkdammala@iitj.ac.in'
         elif (send_mail_to == "Computer Science and Engineering"):
-            send_to_email = 'noreply@localhost.com'
+            send_to_email = 'mishra@iitj.ac.in'
         elif (send_mail_to == "Humanites and Social Sciences"):
-            send_to_email = 'noreply@localhost.com'
-        elif (send_mail_to == "Metallurgical and Materials Engineering"):
-            send_to_email = 'noreply@localhost.com'
+            send_to_email = 'ruhisonal@iitj.ac.in'
+        elif send_mail_to == "Metallurgical and Materials Engineering":
+            send_to_email = 'abir@iitj.ac.in'
 
         from_email = settings.FEEDBACK_SENDER_EMAIL
         with get_connection(
@@ -262,7 +262,7 @@ class ComplaintsFormView(View):
         message_text = "Your " + feedback_type.lower() + " has been submitted."
         messages.success(request, message_text)
 
-        return redirect('/student/complaint/')
+        return redirect('/student/inquiry/')
 
 
 class SuggestionsFormView(View):

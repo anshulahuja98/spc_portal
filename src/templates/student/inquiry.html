@@ -17,10 +17,10 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-8" style="margin-inline: auto">
         <div class="card">
-            <div class="card" id="my-card"><span style="font-size: 1.5rem"> <center>Complaint Form</center> </span></div>
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> <center>Inquiry Form</center> </span></div>
             <div class="card-block">
                 <br>
-                <form name="my-form" action="{% url 'student:complaint' %}" method="post">
+                <form name="my-form" action="{% url 'student:inquiry' %}" method="post">
                     <!--Header-->
                     {% csrf_token %}
                     {% include 'student/message.html' %}
@@ -40,7 +40,7 @@
                     </div>
                     <div class="md-form mb-4 pink-textarea active-pink-textarea">
                         <textarea name="feedback_text" required="required" id="feedback_text" class="md-textarea form-control" rows="8"></textarea>
-                        <label id="feedback_text">Describe Your Complaint</label>
+                        <label id="feedback_text">Describe Your Inquiry</label>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary" type="submit">Submit</button>
