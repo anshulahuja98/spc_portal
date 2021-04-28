@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView, ListView, FormView, CreateView, View
 from accounts.models import StudentProfile, Resume
@@ -6,6 +7,12 @@ from django.shortcuts import get_object_or_404
 from accounts.forms import ResumeForm
 from .forms import InternshipOfferForm, JobOfferForm, StudentDetailsUpdateForm
 from django.shortcuts import HttpResponseRedirect
+
+from django.conf import settings
+from django.core.mail import get_connection, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.contrib import messages
 
 
 class StudentProfileRequiredMixin(LoginRequiredMixin):
@@ -188,3 +195,129 @@ class ResumeView(StudentProfileRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         view = ResumeUploadFormView.as_view()
         return view(request, *args, **kwargs)
+
+
+class InquirysFormView(View):
+    def get(self, request):
+        return render(request, 'student/inquiry.html')
+
+    def post(self, request):
+        user = request.user
+        student_profile = get_object_or_404(StudentProfile, user=self.request.user)
+        user_first_name = user.first_name
+        user_last_name = user.last_name
+        user_roll_no = student_profile.roll_no
+        user_branch = student_profile.program_branch.name
+        user_email = user.email
+        send_mail_to = request.POST['send_mail_to']
+        feedback_subject = request.POST['subject']
+        feedback_text = request.POST['feedback_text']
+        feedback_type = 'Inquiry'
+
+        if (send_mail_to == "Chemistry"):
+            send_to_email = 'ananya@iitj.ac.in'
+        elif (send_mail_to == "Civil and Infrastructure Engineering"):
+            send_to_email = 'pkdammala@iitj.ac.in'
+        elif (send_mail_to == "Computer Science and Engineering"):
+            send_to_email = 'mishra@iitj.ac.in'
+        elif (send_mail_to == "Humanites and Social Sciences"):
+            send_to_email = 'ruhisonal@iitj.ac.in'
+        elif send_mail_to == "Metallurgical and Materials Engineering":
+            send_to_email = 'abir@iitj.ac.in'
+
+        from_email = settings.FEEDBACK_SENDER_EMAIL
+        with get_connection(
+                username=from_email,
+                password=settings.FEEDBACK_SENDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_subject
+            to_email = [send_to_email, ]
+            cc = [settings.CHAIRMAN_ID, settings.OFFICE_CDC_ID, settings.FACULTY_INCHARGE_ID, ]
+            html_content = render_to_string("student/feedback_email_template.html",
+                                            {'name': user_first_name + " " + user_last_name, 'branch': user_branch,
+                                             'roll_no': user_roll_no, 'email': user_email, 'feedback_type': feedback_type,
+                                             'feedback_text': feedback_text})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             cc=cc, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        # Confirmation mail to user
+        from_success_email = settings.FEEDBACK_RESPONDER_EMAIL
+        with get_connection(
+                username=from_success_email,
+                password=settings.FEEDBACK_RESPONDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_type + ' ' + 'received'
+            to_email = [user_email, ]
+            html_content = render_to_string("student/feedback_confirmation.html",
+                                            {'feedback_type': feedback_type})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_success_email, to=to_email,
+                                             connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        message_text = "Your " + feedback_type.lower() + " has been submitted."
+        messages.success(request, message_text)
+
+        return redirect('/student/inquiry/')
+
+
+class SuggestionsFormView(View):
+    def get(self, request):
+        return render(request, 'student/suggestion.html')
+
+    def post(self, request):
+        user = request.user
+        student_profile = get_object_or_404(StudentProfile, user=self.request.user)
+        user_first_name = user.first_name
+        user_last_name = user.last_name
+        user_roll_no = student_profile.roll_no
+        user_branch = student_profile.program_branch.name
+        user_email = user.email
+        feedback_type = 'Suggestion'
+        feedback_subject = request.POST['subject']
+        feedback_text = request.POST['feedback_text']
+
+        send_to_email = settings.SUGGESTION_RECIPIENT_EMAIL
+
+        from_email = settings.FEEDBACK_SENDER_EMAIL
+        with get_connection(
+                username=from_email,
+                password=settings.FEEDBACK_SENDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_subject
+            to_email = [send_to_email, ]
+            cc = [settings.CHAIRMAN_ID, settings.OFFICE_CDC_ID, settings.FACULTY_INCHARGE_ID, ]
+            html_content = render_to_string("student/feedback_email_template.html",
+                                            {'name': user_first_name + " " + user_last_name, 'branch': user_branch,
+                                             'roll_no': user_roll_no, 'email': user_email, 'feedback_type': feedback_type,
+                                             'feedback_text': feedback_text})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_email, to=to_email,
+                                             cc=cc, connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        # Confirmation mail to user
+        from_success_email = settings.FEEDBACK_RESPONDER_EMAIL
+        with get_connection(
+                username=from_success_email,
+                password=settings.FEEDBACK_RESPONDER_EMAIL_PASSWORD
+        ) as connection:
+            subject = feedback_type + ' ' + 'received'
+            to_email = [user_email, ]
+            html_content = render_to_string("student/feedback_confirmation.html",
+                                            {'feedback_type': feedback_type})
+            text_content = strip_tags(html_content)
+            message = EmailMultiAlternatives(subject=subject, body=text_content, from_email=from_success_email, to=to_email,
+                                             connection=connection)
+            message.attach_alternative(html_content, "text/html")
+            message.send()
+
+        message_text = "Your " + feedback_type.lower() + " has been submitted."
+        messages.success(request, message_text)
+
+        return redirect('/student/suggestion/')
