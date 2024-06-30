@@ -1,0 +1,45 @@
+{% extends 'student/base.html' %}
+{% block body %}
+    <style>
+        .pink-textarea textarea.md-textarea:focus:not([readonly]) {
+            border-bottom: 1px solid #4285F4;
+            box-shadow: 0 1px 0 0 #4285F4;
+            overflow-y: auto;
+            min-height: 200px;
+          }
+          .active-pink-textarea.md-form label.active {
+            color: #4285F4;
+          }
+          .active-pink-textarea.md-form textarea.md-textarea:focus:not([readonly])+label {
+            color: #4285F4;
+          }          
+    </style>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-8" style="margin-inline: auto">
+        <div class="card">
+            <div class="card" id="my-card"><span style="font-size: 1.5rem"> <center>Suggestion Form</center> </span></div>
+            <div class="card-block">
+                <br>
+                <form name="my-form" action="{% url 'student:suggestion' %}" method="post">
+                    <!--Header-->
+                    {% csrf_token %}
+                    {% include 'student/message.html' %}
+                    <div class="md-form">
+                        <input type="text" required="required" name="subject" id="subject" class="form-control">
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="md-form mb-4 pink-textarea active-pink-textarea">
+                        <textarea name="feedback_text" required="required" id="feedback_text" class="md-textarea form-control" rows="8"></textarea>
+                        <label id="feedback_text">Describe Your Suggestion</label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+
+{% endblock %}
